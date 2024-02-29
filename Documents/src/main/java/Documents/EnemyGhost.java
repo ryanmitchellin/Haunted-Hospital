@@ -1,11 +1,11 @@
 public class EnemyGhost extends DynamicCharacter {
-    public EnemyGhost(int x, int y) {
-        super(x, y);
+    public EnemyGhost(int x, int y, double movementSpeed) {
+        super(x, y, movementSpeed);
     }
 
     @Override
     public void move(int dx, int dy) {
-        // Implement enemy ghost movement
+        // Implement enemy ghost movement using AI path finding
     }
 
     @Override
