@@ -1,3 +1,5 @@
+package com.Documents.Entities;
+
 public abstract class Character {
     protected int x, y; // Position of the character
 

@@ -1,4 +1,4 @@
-package com.phase2;
+package com.Documents.Entities;
 
 public class MainCharacter extends DynamicCharacter {
     private int health;

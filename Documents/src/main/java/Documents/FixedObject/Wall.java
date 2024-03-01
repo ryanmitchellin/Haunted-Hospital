@@ -1,8 +1,8 @@
-package com.phase2;
+package com.Documents.FixedObject;
 /**
  * Child class Wall of parent MapSite. A wall blocks off one side of a room
  */
-public class Wall extends MapSite{
+public class Wall extends MapObject{
     private int _wallNr;
     private static int _wallCnt = 1;
     /** 

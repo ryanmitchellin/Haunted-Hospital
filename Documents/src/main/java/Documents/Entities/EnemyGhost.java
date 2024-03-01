@@ -1,4 +1,4 @@
-package com.phase2;
+package com.Documents.Entities;
 
 public class EnemyGhost extends DynamicCharacter {
     public EnemyGhost(int x, int y, double movementSpeed) {

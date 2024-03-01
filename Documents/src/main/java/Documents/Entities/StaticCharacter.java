@@ -1,4 +1,4 @@
-package com.phase2;
+package com.Documents.Entities;
 
 public abstract class StaticCharacter extends Character {
     public StaticCharacter(int x, int y) {
