@@ -1,3 +1,5 @@
+package com.Documents.Entities;
+
 public class Rewards extends StaticCharacter {
     public Rewards(int x, int y) {
         super(x, y);

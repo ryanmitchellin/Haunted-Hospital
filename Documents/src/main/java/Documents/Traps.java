@@ -1,3 +1,5 @@
+package com.Documents.Entities;
+
 public class Traps extends StaticCharacter {
     public Traps(int x, int y) {
         super(x, y);

@@ -1,3 +1,5 @@
+package com.Documents.Entities;
+
 public class EnemyGhost extends DynamicCharacter {
     public EnemyGhost(int x, int y, double movementSpeed) {
         super(x, y, movementSpeed);

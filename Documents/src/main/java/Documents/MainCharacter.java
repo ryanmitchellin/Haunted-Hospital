@@ -1,3 +1,7 @@
+package com.Documents.Entities;
+
+
+import java.awt.event.KeyEvent;
 public class MainCharacter extends DynamicCharacter {
     private int health;
     private int count;
