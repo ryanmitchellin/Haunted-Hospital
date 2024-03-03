@@ -32,16 +32,21 @@ public class MainCharacter extends DynamicCharacter {
     public void move(int dx, int dy, Board board) {
         // Implement main character movement
         
-        MapObject temp = super.tilePrev;
+        MapObject temp = super.getPrevTile();
+
         int tempX = getX();
         int tempY = getY();
         setX((int) (getX()+ dx * movementSpeed));
         setY((int) (getY()+ dy * movementSpeed));
         if(checkCollision((board.board[getX()][getY()]))){
-
+            tilePrev = new Room();
+        }
+        else{
+            tilePrev = board.board[getX()][getY()];
         }
         this.tilePrev = board.board[getX()][getY()];
         board.board[getX()][getY()]=this;
+        
         board.board[tempX][tempY]=temp;
     }
 

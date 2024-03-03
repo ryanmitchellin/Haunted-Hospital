@@ -6,7 +6,7 @@ public abstract class DynamicCharacter extends Character {
     public DynamicCharacter(int x, int y, double movementSpeed, MapObject tile) {
         super(x, y);
         
-    
+        tilePrev = tile;
         this.movementSpeed = movementSpeed;
     }
 
@@ -14,9 +14,14 @@ public abstract class DynamicCharacter extends Character {
         return movementSpeed;
     }
 
+    public MapObject getPrevTile(){
+        return tilePrev;
+    }
     public void setMovementSpeed(double movementSpeed) {
         this.movementSpeed = movementSpeed;
     }
+
+
 
     public abstract void move(int dx, int dy, Board board);
 

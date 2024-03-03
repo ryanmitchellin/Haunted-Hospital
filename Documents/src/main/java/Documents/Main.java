@@ -8,8 +8,11 @@ public class Main {
         board.printBoard();
         // System.out.println("X "+board.mainCharacter.getX()+" Y "+board.mainCharacter.getY());
         board.mainCharacter.move(-1, 0, board);
+    
+        board.moveEnemies();
         board.printBoard();
         board.mainCharacter.move(0, 1, board);
+        board.moveEnemies();
         board.printBoard();
         
     }

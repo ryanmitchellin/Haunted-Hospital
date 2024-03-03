@@ -67,6 +67,14 @@ public class Board{
         board[startTile.getX()][startTile.getY()] = mainCharacter;
         characterList.add(mainCharacter);
     }
+    void moveEnemies(){
+        for(int i = 0; i<characterList.size(); i++){
+            if(characterList.get(i) instanceof EnemyGhost){
+                EnemyGhost ghost =(EnemyGhost) characterList.get(i);
+                ghost.calculateMove(this);
+            }
+        }
+    }
     void printBoard(){
         System.out.println("Printing board");
         for(int i = 0; i<board.length; i++){
