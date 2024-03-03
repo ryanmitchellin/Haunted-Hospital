@@ -7,7 +7,7 @@ public class MainCharacter extends DynamicCharacter {
     private int count;
 
     public MainCharacter(int x, int y, double movementSpeed, int health, int count, MapObject prevTile) {
-        super(x, y, movementSpeed, Tile.M, prevTile);
+        super(x, y, movementSpeed, prevTile);
         this.health = health;
         this.count = count;
     }
@@ -29,14 +29,24 @@ public class MainCharacter extends DynamicCharacter {
     }
 
     @Override
-    public void move(int dx, int dy) {
+    public void move(int dx, int dy, Board board) {
         // Implement main character movement
-        x += dx * movementSpeed;
-        y += dy * movementSpeed;
+        
+        MapObject temp = super.tilePrev;
+        int tempX = getX();
+        int tempY = getY();
+        setX((int) (getX()+ dx * movementSpeed));
+        setY((int) (getY()+ dy * movementSpeed));
+        if(checkCollision((board.board[getX()][getY()]))){
+
+        }
+        this.tilePrev = board.board[getX()][getY()];
+        board.board[getX()][getY()]=this;
+        board.board[tempX][tempY]=temp;
     }
 
    @Override
-    public boolean checkCollision(Character other) {
+    public boolean checkCollision(MapObject other) {
         if (other instanceof EnemyGhost) {
             health = 0;
             return true;
@@ -51,27 +61,27 @@ public class MainCharacter extends DynamicCharacter {
     }
 
     // Arrow keyboard click movement
-    public void moveByKey(KeyEvent e, int maxX, int maxY) {
+    public void moveByKey(KeyEvent e, Board board) {
     int keyCode = e.getKeyCode();
     switch (keyCode) {
         case KeyEvent.VK_UP:
-            if (y > 0) { // Check if moving up will keep the character within the bounds
-                move(0, -1);
+            if (getY() > 0&&board.board[getX()][getY()-1] instanceof Wall) { // Check if moving up will keep the character within the bounds
+                move(0, 1, board);
             }
             break;
         case KeyEvent.VK_DOWN:
-            if (y < maxY - 1) { // Check if moving down will keep the character within the bounds
-                move(0, 1);
+            if (getY() < board.board.length - 1&&board.board[getX()][getY()+1] instanceof Wall) { // Check if moving down will keep the character within the bounds
+                move(0, -1, board);
             }
             break;
         case KeyEvent.VK_LEFT:
-            if (x > 0) { // Check if moving left will keep the character within the bounds
-                move(-1, 0);
+            if (getX() > 0&&board.board[getX()-1][getY()] instanceof Wall) { // Check if moving left will keep the character within the bounds
+                move(1, 0, board);
             }
             break;
         case KeyEvent.VK_RIGHT:
-            if (x < maxX - 1) { // Check if moving right will keep the character within the bounds
-                move(1, 0);
+            if (getX() < board.board[0].length - 1&&board.board[getX()+1][getY()] instanceof Wall) { // Check if moving right will keep the character within the bounds
+                move(-1, 0, board);
             }
             break;
         default:

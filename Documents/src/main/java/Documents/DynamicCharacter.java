@@ -3,9 +3,10 @@ package com.Documents;
 public abstract class DynamicCharacter extends Character {
     protected double movementSpeed; // Movement speed of the character
     MapObject tilePrev; //What used to be on the tile the character is now on
-    public DynamicCharacter(int x, int y, double movementSpeed, Tile tile, MapObject prevTile) {
-        super(x, y, tile);
-        tilePrev = prevTile;
+    public DynamicCharacter(int x, int y, double movementSpeed, MapObject tile) {
+        super(x, y);
+        
+    
         this.movementSpeed = movementSpeed;
     }
 
@@ -13,13 +14,10 @@ public abstract class DynamicCharacter extends Character {
         return movementSpeed;
     }
 
-    public MapObject getTilePrev(){
-        return tilePrev;
-    }
     public void setMovementSpeed(double movementSpeed) {
         this.movementSpeed = movementSpeed;
     }
 
-    public abstract void move(int dx, int dy);
+    public abstract void move(int dx, int dy, Board board);
 
 }

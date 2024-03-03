@@ -6,7 +6,6 @@ public class Room extends MapObject{
     
  
     Room(){
-        super(Tile.R);
         _roomNr = _roomCnt++;
         
         // System.out.println("creating Room #" + _roomNr);

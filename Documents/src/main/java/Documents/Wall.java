@@ -9,7 +9,6 @@ public class Wall extends MapObject{
      * <p> Constructor function to create one wall
      */
     Wall(){
-        super(Tile.W);
         _wallNr = _wallCnt++;
         
 

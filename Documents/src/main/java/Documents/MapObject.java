@@ -11,20 +11,15 @@ public abstract class MapObject {
     private int xPos;
     private int yPos;
     private int charType;
-    private Tile tileType;
 
     MapObject(){
 
     }
-    MapObject(int x, int y,  Tile type){
+    MapObject(int x, int y){
         xPos = x;
         yPos = y;
-        tileType = type;
     }
 
-    MapObject(Tile type){
-        tileType = type;
-    }
     /**
      * Getters for the positions of objects?
      *
@@ -49,9 +44,6 @@ public abstract class MapObject {
         return charType;
     }
 
-    public Tile getTileType(){
-        return tileType;
-    }
     /**
      * Setters for the positions of objects?
      *
