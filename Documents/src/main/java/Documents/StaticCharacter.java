@@ -1,8 +1,8 @@
-package com.Documents.Entities;
+package com.Documents;
 
 public abstract class StaticCharacter extends Character {
-    public StaticCharacter(int x, int y) {
-        super(x, y);
+    public StaticCharacter(int x, int y, Tile tile) {
+        super(x, y, tile);
     }
 
 }

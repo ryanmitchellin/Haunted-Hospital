@@ -1,4 +1,4 @@
-package com.Documents.Entities;
+package com.Documents;
 
 
 import java.awt.event.KeyEvent;
@@ -6,8 +6,8 @@ public class MainCharacter extends DynamicCharacter {
     private int health;
     private int count;
 
-    public MainCharacter(int x, int y, double movementSpeed, int health, int count) {
-        super(x, y, movementSpeed);
+    public MainCharacter(int x, int y, double movementSpeed, int health, int count, MapObject prevTile) {
+        super(x, y, movementSpeed, Tile.M, prevTile);
         this.health = health;
         this.count = count;
     }

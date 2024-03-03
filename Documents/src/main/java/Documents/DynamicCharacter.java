@@ -1,10 +1,11 @@
-package com.Documents.Entities;
+package com.Documents;
 
 public abstract class DynamicCharacter extends Character {
     protected double movementSpeed; // Movement speed of the character
-
-    public DynamicCharacter(int x, int y, double movementSpeed) {
-        super(x, y);
+    MapObject tilePrev; //What used to be on the tile the character is now on
+    public DynamicCharacter(int x, int y, double movementSpeed, Tile tile, MapObject prevTile) {
+        super(x, y, tile);
+        tilePrev = prevTile;
         this.movementSpeed = movementSpeed;
     }
 
@@ -12,6 +13,9 @@ public abstract class DynamicCharacter extends Character {
         return movementSpeed;
     }
 
+    public MapObject getTilePrev(){
+        return tilePrev;
+    }
     public void setMovementSpeed(double movementSpeed) {
         this.movementSpeed = movementSpeed;
     }

@@ -1,8 +1,10 @@
-package com.Documents.Entities;
+package com.Documents;
 
 public class EnemyGhost extends DynamicCharacter {
-    public EnemyGhost(int x, int y, double movementSpeed) {
-        super(x, y, movementSpeed);
+
+
+    public EnemyGhost(int x, int y, double movementSpeed, MapObject prevTile) {
+        super(x, y, movementSpeed, Tile.G, prevTile);
     }
 
     @Override
@@ -13,6 +15,7 @@ public class EnemyGhost extends DynamicCharacter {
     @Override
     public boolean checkCollision(Character other) {
         // Implement collision detection for enemy ghosts
+        
         return false;
     }
 

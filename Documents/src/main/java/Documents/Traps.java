@@ -1,8 +1,8 @@
-package com.Documents.Entities;
+package com.Documents;
 
 public class Traps extends StaticCharacter {
     public Traps(int x, int y) {
-        super(x, y);
+        super(x, y, Tile.T);
     }
 
     @Override

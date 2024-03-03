@@ -1,8 +1,8 @@
-package com.Documents.Entities;
+package com.Documents;
 
 public class Rewards extends StaticCharacter {
     public Rewards(int x, int y) {
-        super(x, y);
+        super(x, y, Tile.Re);
     }
 
     @Override
