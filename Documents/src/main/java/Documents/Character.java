@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 public abstract class Character extends MapObject{
     protected int x, y; // Position of the character

@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 public class Room extends MapObject{
     private int _roomNr;

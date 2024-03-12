@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 public abstract class DynamicCharacter extends Character {
     protected double movementSpeed; // Movement speed of the character

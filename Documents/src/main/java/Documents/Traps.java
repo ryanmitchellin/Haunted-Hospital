@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 public class Traps extends StaticCharacter {
     public Traps(int x, int y) {

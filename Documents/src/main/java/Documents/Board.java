@@ -1,4 +1,4 @@
-package com.Documents;
+package Documents;
 
 import java.util.ArrayList;
 import java.util.List;

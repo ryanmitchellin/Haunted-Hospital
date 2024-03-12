@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 /**
  * Child class Wall of parent MapSite. A wall blocks off one side of a room
  */

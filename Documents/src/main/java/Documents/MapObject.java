@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 
 public abstract class MapObject {

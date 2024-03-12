@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 
 import java.awt.event.KeyEvent;

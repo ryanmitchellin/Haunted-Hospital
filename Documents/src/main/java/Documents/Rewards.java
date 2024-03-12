@@ -1,4 +1,5 @@
-package com.Documents;
+package Documents;
+
 
 public class Rewards extends StaticCharacter {
     public Rewards(int x, int y) {
