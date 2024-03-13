@@ -9,6 +9,10 @@ public class Traps extends StaticCharacter {
     @Override
     public boolean checkCollision(MapObject other) {
         // Implement collision detection for traps
+
+        if (other instanceof MainCharacter) {
+            return true;
+        }
         return false;
     }
 
