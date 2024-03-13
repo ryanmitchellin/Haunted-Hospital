@@ -62,7 +62,7 @@ public class EnemyGhost extends DynamicCharacter {
     @Override
     public boolean checkCollision(MapObject other) {
         // Implement collision detection for enemy ghosts
-        if (other instanceof EnemyGhost) {
+        if (other instanceof MainCharacter) {
             return true;
         }
         return false;
