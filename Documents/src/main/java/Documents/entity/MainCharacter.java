@@ -49,10 +49,15 @@ import java.awt.Rectangle;
 public class MainCharacter extends Entity {
 	GamePanel gp;
 	KeyControl keyControl;
+	public final int screenX;
+	public final int screenY;
 
 	public MainCharacter(GamePanel gp, KeyControl keyControl) {
 		this.gp = gp;
 		this.keyControl = keyControl;
+
+		screenX = gp.screenWidth/2 - (gp.tileSize/2);
+		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
 		detectionArea = new Rectangle(8,6,32,32);
 
@@ -61,8 +66,8 @@ public class MainCharacter extends Entity {
 	}
 
 	public void settingDefaultValue() {
-		xPos = gp.screenWidth/2 - (gp.tileSize*3/2);
-		yPos = gp.screenHeight - gp.tileSize*3;
+		wxPos = gp.tileSize * 20 - gp.tileSize/2;
+		wyPos = gp.tileSize * 18 - gp.tileSize/2;
 		vel = 4;
 
 		direction = "down";
@@ -107,10 +112,10 @@ public class MainCharacter extends Entity {
 			//if its false, character can move else cannot
 			if(isCollision == false) {
 				switch(direction) {
-				case "up": this.yPos -= this.vel; break;
-				case "down": this.yPos += this.vel; break;
-				case "left": this.xPos -= this.vel; break;
-				case "right": this.xPos += this.vel; break;
+				case "up": this.wyPos -= this.vel; break;
+				case "down": this.wyPos += this.vel; break;
+				case "left": this.wxPos -= this.vel; break;
+				case "right": this.wxPos += this.vel; break;
 				}
 			}
 
@@ -167,7 +172,7 @@ public class MainCharacter extends Entity {
 			break;
 		}
 		//image observer
-		g2.drawImage(image, xPos, yPos, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 	}
 }
 
