@@ -1,15 +1,8 @@
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Rewards.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/App.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/EndTile.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/MapObject.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/MainCharacter.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Room.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/EnemyGhost.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/StartTile.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Main.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Traps.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/DynamicCharacter.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Board.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/StaticCharacter.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Wall.java
-/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/src/main/java/Documents/Character.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/entity/MainCharacter.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/tile/TileFactory.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/main/Main.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/entity/Entity.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/tile/Tile.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/main/KeyControl.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/main/CollisionCheck.java
+/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/src/main/java/Documents/main/GamePanel.java

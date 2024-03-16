@@ -15,10 +15,10 @@ public class AppTest {
     void testMovementUp() {
         MainCharacter character = new MainCharacter(gamePanel, keyControl);
         character.settingDefaultValue();
-        int originY = character.yPos;
+        int originY = character.wyPos;
         keyControl.upPressed = true;
         character.move();
 
-        assertEquals(originY - character.vel, character.yPos, "Character did not move up as expected");
+        assertEquals(originY - character.vel, character.wyPos, "Character did not move up as expected");
     }
 }
