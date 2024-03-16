@@ -100,6 +100,21 @@ public class TileFactory {
 			tiles[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/018.png"));
 			tiles[18].collision = true;
 
+			tiles[19] = new Tile();
+			tiles[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/019.png"));
+
+			tiles[20] = new Tile();
+			tiles[20].image = ImageIO.read(getClass().getResourceAsStream("/tiles/020.png"));
+			tiles[20].collision = true;
+
+			tiles[21] = new Tile();
+			tiles[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/021.png"));
+			tiles[21].collision = true;
+
+			tiles[22] = new Tile();
+			tiles[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/022.png"));
+			tiles[22].collision = true;
+
 		} catch(IOException e) {
     		//checking if the image has been loaded correctly
     		//throw error
