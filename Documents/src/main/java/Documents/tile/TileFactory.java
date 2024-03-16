@@ -19,7 +19,7 @@ public class TileFactory {
 	public TileFactory(GamePanel gp) {
 		this.gp = gp;
 		tiles = new Tile[20];
-		tileMapNum = new int[gp.maxCol][gp.maxRow];
+		tileMapNum = new int[gp.maxWCol][gp.maxWRow];
 		gettingTileImg();
 		loadingMap("/maps/map01.txt");
 	}
@@ -27,63 +27,16 @@ public class TileFactory {
 	public void gettingTileImg() {
 		try {
 			tiles[0] = new Tile();
-			//outside the map (the gray area)
-			tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/outside.png"));
+			tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/000.png"));
 
 
 			tiles[1] = new Tile();
-			//main flooring
-			tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/floor.png"));
+			tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/001.png"));
 
+			//grey wall center
 			tiles[2] = new Tile();
-			//wall left
-			tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wallleft.png"));
+			tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/002.png"));
 			tiles[2].collision = true;
-
-			tiles[3] = new Tile();
-			//wall right
-			tiles[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wallright.png"));
-			tiles[3].collision = true;
-
-			tiles[4] = new Tile();
-			//wall left connector
-			tiles[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wallConnectLeft.png"));
-			tiles[4].collision = true;
-
-			tiles[5] = new Tile();
-			//wall right connector
-			tiles[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wallConnectRight.png"));
-			tiles[5].collision = true;
-
-			tiles[6] = new Tile();
-			//wall bottom
-			tiles[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bottomWall.png"));
-			tiles[6].collision = true;
-
-			tiles[7] = new Tile();
-			//wall bottom Right Dot
-			tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bottomWAlltoRight.png"));
-			tiles[7].collision = true;
-
-			tiles[8] = new Tile();
-			//wall bottom Left Dot 
-			tiles[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bottomWallLeft.png"));
-			tiles[8].collision = true;
-
-			tiles[10] = new Tile();
-			//wall bottom Left Dot 
-			tiles[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/leftWall.png"));
-			tiles[10].collision = true;
-
-			tiles[11] = new Tile();
-			//wall bottom Left Dot 
-			tiles[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/centerWall.png"));
-			tiles[11].collision = true;
-
-			tiles[12] = new Tile();
-			//wall bottom Left Dot 
-			tiles[12].image = ImageIO.read(getClass().getResourceAsStream("/tiles/rightWall.png"));
-			tiles[12].collision = true;
 
 		} catch(IOException e) {
     		//checking if the image has been loaded correctly
@@ -100,7 +53,7 @@ public class TileFactory {
 			int column = 0;
 			int row = 0;
 
-			while(column < gp.maxCol && row < gp.maxRow) {
+			while(column < gp.maxWCol && row < gp.maxWRow) {
 				String line = br.readLine();//read a line of .txt
 
 				while(column < gp.maxCol) {
@@ -138,23 +91,29 @@ public class TileFactory {
 	public void draw(Graphics2D g2) {
 		int column = 0;
 		int row = 0;
-		int xPos = 0;
-		int yPos = 0;
 
-		while(column < gp.maxCol && row < gp.maxRow) {
+		while(column < gp.maxWCol && row < gp.maxWRow) {
 			//extracting tile map number which stored in tileMapNum[0][0]
 			//use this as index for type of tile that needs to be printed on the map
 			int tileNum = tileMapNum[column][row];
 
-			g2.drawImage(tiles[tileNum].image, xPos, yPos, gp.tileSize, gp.tileSize, null);
+			int worldX = column * gp.tileSize;
+			int worldY = row * gp.tileSize;
+			int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
+			int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+
+			//checking if the tile is within the boundary
+			if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
+			   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
+			   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
+			   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+				g2.drawImage(tiles[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+			}
 			column++;
-			xPos += gp.tileSize;
 
 			if(column == gp.maxCol) {
 				column = 0;
-				xPos = 0;
 				row++;
-				yPos += gp.tileSize;
 			}
 
 		}

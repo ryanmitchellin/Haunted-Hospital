@@ -13,10 +13,10 @@ public class CollisionCheck {
 
 
 	public void tileCheck(Entity entity) {
-		int left = entity.xPos + entity.detectionArea.x;
-		int right = entity.xPos + entity.detectionArea.x + entity.detectionArea.width;
-		int top = entity.yPos + entity.detectionArea.y;
-		int bottom = entity.yPos + entity.detectionArea.y + entity.detectionArea.height;
+		int left = entity.wxPos + entity.detectionArea.x;
+		int right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
+		int top = entity.wyPos + entity.detectionArea.y;
+		int bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;
 
 		int leftCol = left/gp.tileSize;
 		int rightCol = right/gp.tileSize;
