@@ -1,20 +1,24 @@
-package Documents;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.assertTrue;
+import Documents.main.GamePanel;
+import Documents.main.KeyControl;
+import Documents.entity.Entity;
+import Documents.entity.MainCharacter;
+import Documents.tile.TileFactory;
 
-import org.junit.Test;
+public class AppTest {
+    GamePanel gamePanel = new GamePanel();
+    KeyControl keyControl = new KeyControl();
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void testMovementUp() {
+        MainCharacter character = new MainCharacter(gamePanel, keyControl);
+        character.settingDefaultValue();
+        int originY = character.yPos;
+        keyControl.upPressed = true;
+        character.move();
+
+        assertEquals(originY - character.vel, character.yPos, "Character did not move up as expected");
     }
 }
