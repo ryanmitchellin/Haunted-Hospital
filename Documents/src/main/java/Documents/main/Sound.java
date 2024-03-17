@@ -1,4 +1,4 @@
-import Documents.main;
+package Documents.main;
 
 import java.net.URL;
 import javax.sound.sampled.Clip;
@@ -13,12 +13,12 @@ public class Sound {
 	URL soundURL[] = new URL[20];
 
 	public Sound() {
-		soundURL[0] = getClass().getResource("/sound/map1darkSound.wav");
+		soundURL[0] = getClass().getResource("/sound/map1.wav");
 		soundURL[1] = getClass().getResource("/sound/collectkey.wav");
 	}
 
 	//adding the audio and set if not able to load catch error
-	public void fileSet(int a) {
+	public void fileSet(int i) {
 		try {
 			AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
 			clip = AudioSystem.getClip();
