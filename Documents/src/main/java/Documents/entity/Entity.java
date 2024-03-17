@@ -19,6 +19,11 @@ public class Entity {
 
 	//collision for the tiles
 	public Rectangle detectionArea;
+
+	//
+	public int detectionDefaultX;
+	public int detectionDefaultY;
+
 	public boolean isCollision = false;
 
 }
