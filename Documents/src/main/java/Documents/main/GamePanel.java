@@ -29,19 +29,17 @@ public class GamePanel extends JPanel implements Runnable{
 	//setting world map
 	public final int maxWCol = 40;
 	public final int maxWRow = 36;
-	public final int worldWidth = tileSize * maxWCol;
-	public final int worldHeight = tileSize * maxWRow;
 
 	//Frames per second
 	int FPS = 60;
 	
 	TileFactory tileFactory = new TileFactory(this);	
 	KeyControl keyControl = new KeyControl();
-	Thread gameThread;
+	Sound sound = new Sound();
 	public CollisionCheck checkCollision = new CollisionCheck(this);
 	public SetAsset setAsset = new SetAsset(this);
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
-
+	Thread gameThread;
 	//object
 	public ObjectFactory obj[] = new ObjectFactory[10];
 
@@ -120,4 +118,18 @@ public class GamePanel extends JPanel implements Runnable{
 		g2.dispose();
 	}
 
+	public void musicPlay(int i) {
+		sound.fileSet(i);
+		sound.play();
+		sound.loop();
+	}
+
+	public void musicStop() {
+		sound.stop();
+	}
+
+	public void soundEffectObj(int i) {
+		sound.fileSet(i);
+		sound.play();
+	}
 }
