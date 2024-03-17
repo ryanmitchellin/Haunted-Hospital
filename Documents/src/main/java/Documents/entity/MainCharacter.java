@@ -53,7 +53,7 @@ public class MainCharacter extends Entity {
 	public final int screenY;
 
 	//key count
-	int keyNum = 0;
+	public int keyNum = 0;
 
 	public MainCharacter(GamePanel gp, KeyControl keyControl) {
 		this.gp = gp;
