@@ -56,6 +56,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void setGame() {
 		setAsset.setObj();
+
+		//map 1 music
+		musicPlay(0);
 	}
 
 	//when start the thread it will auto run this
