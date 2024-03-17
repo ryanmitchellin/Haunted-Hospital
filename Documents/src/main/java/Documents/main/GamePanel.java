@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public CollisionCheck checkCollision = new CollisionCheck(this);
 	public SetAsset setAsset = new SetAsset(this);
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
+	public UserInterface ui = new UserInterface(this);
 	Thread gameThread;
 	//object
 	public ObjectFactory obj[] = new ObjectFactory[10];
@@ -118,6 +119,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 		//maincharacter 
 		mainCharacter.draw(g2);
+
+		//ui draw method
+		ui.draw(g2);
 		g2.dispose();
 	}
 
