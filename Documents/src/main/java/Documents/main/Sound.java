@@ -15,6 +15,7 @@ public class Sound {
 	public Sound() {
 		soundURL[0] = getClass().getResource("/sound/map1.wav");
 		soundURL[1] = getClass().getResource("/sound/collectkey.wav");
+		soundURL[2] = getClass().getResource("/sound/doorOpen.wav");
 	}
 
 	//adding the audio and set if not able to load catch error

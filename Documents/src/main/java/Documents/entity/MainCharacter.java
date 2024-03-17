@@ -166,6 +166,7 @@ public class MainCharacter extends Entity {
 				break;
 			case "door":
 				if(keyNum == 3) {
+					gp.soundEffectObj(2);
 					gp.obj[i] = null;
 					keyNum = 0;
 					break;
