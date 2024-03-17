@@ -159,6 +159,7 @@ public class MainCharacter extends Entity {
 			//depending on obj reaction
 			switch(objName) {
 			case "keyCard":
+				gp.soundEffectObj(1);
 				keyNum++;
 				//null to remove the object
 				gp.obj[i] = null;
