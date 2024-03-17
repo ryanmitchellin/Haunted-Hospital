@@ -1,0 +1,12 @@
+Documents/tile/TileFactory.class
+Documents/entity/Entity.class
+Documents/entity/MainCharacter.class
+Documents/object/Door.class
+Documents/object/ObjectFactory.class
+Documents/main/GamePanel.class
+Documents/object/KeyCard.class
+Documents/main/SetAsset.class
+Documents/main/KeyControl.class
+Documents/main/Main.class
+Documents/main/CollisionCheck.class
+Documents/tile/Tile.class
