@@ -1,6 +1,7 @@
 package Documents.main;
 import Documents.entity.MainCharacter;
 import Documents.tile.TileFactory;
+import Documents.object.ObjectFactory;
 
 
 import javax.swing.JPanel;
@@ -38,7 +39,11 @@ public class GamePanel extends JPanel implements Runnable{
 	KeyControl keyControl = new KeyControl();
 	Thread gameThread;
 	public CollisionCheck checkCollision = new CollisionCheck(this);
+	public SetAsset setAsset = new SetAsset(this);
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
+
+	//object
+	public ObjectFactory obj[] = new ObjectFactory[10];
 
 	//constructor
 	public GamePanel() {
@@ -49,6 +54,10 @@ public class GamePanel extends JPanel implements Runnable{
 		//key control method
 		this.addKeyListener(keyControl);
 		this.setFocusable(true);
+	}
+
+	public void setGame() {
+		setAsset.setObj();
 	}
 
 	//when start the thread it will auto run this
@@ -97,8 +106,16 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D)g;
+		//tile
 		tileFactory.draw(g2);
-		//displayment of the player 
+		//object
+		for(int i = 0; i < obj.length; i++) {
+			if(obj[i] != null) {
+				obj[i].draw(g2, this);
+			}
+		}
+
+		//maincharacter 
 		mainCharacter.draw(g2);
 		g2.dispose();
 	}
