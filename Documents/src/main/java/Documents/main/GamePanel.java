@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	//object
 	public ObjectFactory obj[] = new ObjectFactory[10];
-
+	public Entity npc[] = new Entity[10];
 
 	//for gamestate mangement
 	public int gameState;
@@ -64,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public void setGame() {
 		setAsset.setObj();
+		setAsset.setNpc();
 
 		//map 1 music
 		musicPlay(0);
@@ -134,6 +135,13 @@ public class GamePanel extends JPanel implements Runnable{
 
 		//maincharacter 
 		mainCharacter.draw(g2);
+
+		//npc
+		for(int i = 0; i < npc.length; i++){ //XXX
+			if(obj[i] != null) {
+				obj[i].draw(g2);
+			}
+		}
 
 		//ui draw method
 		ui.draw(g2);
