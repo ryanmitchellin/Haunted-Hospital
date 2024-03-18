@@ -73,6 +73,8 @@ public class GamePanel extends JPanel implements Runnable{
 
 	public Entity npc[] = new Entity[10];
 
+	public Entity monster[] = new Entity[20];
+
 	//for gamestate mangement
 	public int gameState;
 	public final int titleState = 0;
@@ -99,6 +101,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setGame() {
 		setAsset.setObj();
 		setAsset.setNpc();
+		setAsset.setMonster();
 
 		//map 1 music
 		musicPlay(0);

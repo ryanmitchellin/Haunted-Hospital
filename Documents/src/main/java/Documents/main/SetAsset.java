@@ -6,6 +6,7 @@ import Documents.object.KeyCard;
 import Documents.object.Door;
 import Documents.object.Stair;
 import Documents.entity.Npc;
+import Documents.entity.Monster;
 
 
 /**
@@ -67,5 +68,11 @@ public class SetAsset {
 		gp.npc[0].wxPos = gp.tileSize*22 - gp.tileSize/2;
 		gp.npc[0].wyPos = gp.tileSize*18 - gp.tileSize/2;
 
+	}
+
+	public void setMonster() { 
+		gp.monster[0] = new Monster(gp);
+		gp.monster[0].wxPos = gp.tileSize*30 - gp.tileSize/2;
+		gp.monster[0].wyPos = gp.tileSize*30 - gp.tileSize/2;
 	}
 }
