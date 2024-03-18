@@ -83,21 +83,39 @@ public class UserInterface {
 
 	public void drawTitleScreen() {
 
-		g2.setColor(new Color(70,120,80));
+		g2.setColor(new Color(0,0,0));
 		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
 		// Title Name
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
-		String text = "Blue Boy Adventure";
+		String text = "Ghost Castle";
 		int x = getXCenterText(text);
-		int y = gp.tileSize*4;
+		int y = gp.tileSize*3;
 
 		// Shadow
-		g2.setColor(Color.black);
+		g2.setColor(Color.gray);
 		g2.drawString(text,x+5,y+5);
 
 		// Main color
 		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+
+		// Boy Image
+		x = gp.screenWidth/2- (gp.tileSize*2)/2;
+		y += gp.tileSize*2;
+		g2.drawImage(gp.mainCharacter.downward1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+
+		// Menu
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+
+		text = "NEW GAME";
+		x = getXCenterText(text);
+		y += gp.tileSize;
+		g2.drawString(text,x,y);
+
+		text = "LOAD GAME";
+		x = getXCenterText(text);
+		y += gp.tileSize;
 		g2.drawString(text, x, y);
 	}
 
