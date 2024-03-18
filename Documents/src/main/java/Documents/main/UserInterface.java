@@ -45,6 +45,10 @@ public class UserInterface {
 		g2.setFont(arialFont_40);
 		g2.setColor(Color.white);
 
+		// Title State
+		if (gp.gameState == gp.titleState) {
+			drawTitleScreen();
+		}
 		//play state
 		if (gp.gameState == gp.playState) {
 			g2.setFont(arialFont_40);
@@ -76,6 +80,27 @@ public class UserInterface {
 			drawDialogueScreen();
 		}
 	}
+
+	public void drawTitleScreen() {
+
+		g2.setColor(new Color(70,120,80));
+		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+		// Title Name
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+		String text = "Blue Boy Adventure";
+		int x = getXCenterText(text);
+		int y = gp.tileSize*4;
+
+		// Shadow
+		g2.setColor(Color.black);
+		g2.drawString(text,x+5,y+5);
+
+		// Main color
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+	}
+
 	public void drawPauseScreen() {
 
 		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,80F));
