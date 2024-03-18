@@ -61,25 +61,6 @@ public class MainCharacter extends Entity {
     	rightward2 = setup("/mainCharacter/boy_right_2");
 	}
 
-	public BufferedImage setup(String imgName) {
-		UtilityTools tools = new UtilityTools();
-		BufferedImage img = null;
-
-		try {
-			img = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/"+ imgName + ".png"));
-		    //ensure the image supports alpha (transparency)
-		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
-		    Graphics2D g2 = newImg.createGraphics();
-		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);
-		    g2.dispose();
-		    img = newImg;
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		return img;
-	}
-
-
 	//method update for player movement depending on the keypressed
 	public void move() {
 		if(keyControl.upPressed == true || keyControl.downPressed == true ||
