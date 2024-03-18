@@ -146,6 +146,12 @@ public class MainCharacter extends Entity {
 		}
 	}
 
+	public void interactNpc(int i){ //XXX
+		if(i != 999){
+			System.out.println("Your are hitting npc");
+		}
+	}
+
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 
