@@ -21,6 +21,7 @@ public class MainCharacter extends Entity {
 	public int keyNum = 0;
 
 	public MainCharacter(GamePanel gp, KeyControl keyControl) {
+		super(gp);
 		this.gp = gp;
 		this.keyControl = keyControl;
 
@@ -50,14 +51,14 @@ public class MainCharacter extends Entity {
 	}
 
 	public void getMainCharacterImg() {
-    	upward1 = setup("boy_up_1");
-    	upward2 = setup("boy_up_2");
-    	downward1 = setup("boy_down_1");
-    	downward2 = setup("boy_down_2");
-    	leftward1 = setup("boy_left_1");
-    	leftward2 = setup("boy_left_2");
-    	rightward1 = setup("boy_right_1");
-    	rightward2 = setup("boy_right_2");
+    	upward1 = setup("/mainCharacter/boy_up_1");
+    	upward2 = setup("/mainCharacter/boy_up_2");
+    	downward1 = setup("/mainCharacter/boy_down_1");
+    	downward2 = setup("/mainCharacter/boy_down_2");
+    	leftward1 = setup("/mainCharacter/boy_left_1");
+    	leftward2 = setup("/mainCharacter/boy_left_2");
+    	rightward1 = setup("/mainCharacter/boy_right_1");
+    	rightward2 = setup("/mainCharacter/boy_right_2");
 	}
 
 	public BufferedImage setup(String imgName) {
