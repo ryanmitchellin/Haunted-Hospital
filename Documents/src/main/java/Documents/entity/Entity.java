@@ -31,7 +31,7 @@ public class Entity {
 		this.gp = gp;
 	}
 
-	public void draw(Graphics2D g2){ //XXX
+	public void draw(Graphics2D g2){
 		BufferedImage image = null;
 		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
 		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
@@ -77,4 +77,22 @@ public class Entity {
 		}
 			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
+	}
+	public BufferedImage setup(String imgPath) {
+		UtilityTools tools = new UtilityTools();
+		BufferedImage img = null;
+
+		try {
+			img = ImageIO.read(getClass().getResourceAsStream(imgPath + ".png"));
+		    //ensure the image supports alpha (transparency)
+		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
+		    Graphics2D g2 = newImg.createGraphics();
+		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);
+		    g2.dispose();
+		    img = newImg;
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return img;
+	}
 }
