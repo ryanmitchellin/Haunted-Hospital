@@ -10,39 +10,67 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-
+/**
+ * The main panel for the maze managing the game logic and rendering the maze.
+ */
 public class GamePanel extends JPanel implements Runnable{
-	//Screening setting
+	/** The original size of a 16 x 16 tile. */
+	final int originalTileSize = 16;
 
-	final int originalTileSize = 16; //Tile will be 16x16 as default
-	final int scale = 3; // 16*3 Scaling to 48 pixel
+	/** The scaling factor for tiles. */
+	final int scale = 3;
 
-	//public to ensure the MainCharacter has access to the the tileSize
-	public final int tileSize = originalTileSize * scale; //48 pixel per tile
+	/** The size of a tile after scaling. */
+	public final int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile
 	
-	//setting the screen size 4:3 default
-	public final int maxCol = 16;
-	public final int maxRow = 12;
+	/** The number of columns in the screen. (4 : 3 by default) */
+	public final int maxCol = 24;
+
+	/** The number of rows in the screen. (4 : 3 by default) */
+	public final int maxRow = 18;
+
+	/** The width of the screen. */
 	public final int screenWidth = tileSize * maxCol; // Width of the screen : 1152 pixels
+
+	/** The height of the screen. */
 	public final int screenHeight = tileSize * maxRow; // Height of the screen : 864 pixels
 
-	//setting world map
+	/** The number of columns in world map. */
 	public final int maxWCol = 50;
+
+	/** The number of rows in world map. */
 	public final int maxWRow = 50;
 
-	//Frames per second
+	/** The number of frames per second for the game. */
 	int FPS = 60;
-	
-	TileFactory tileFactory = new TileFactory(this);	
+
+	/** The tile factory for creating and managing tiles. */
+	TileFactory tileFactory = new TileFactory(this);
+
+	/** The key control for managing user input. */
 	public KeyControl keyControl = new KeyControl(this);
+
+	/** The sound manager for handling game sounds. */
 	Sound sound = new Sound();
+
+	/** The collision checker for detecting collisions in the maze. */
 	public CollisionCheck checkCollision = new CollisionCheck(this);
+
+	/** The asset manager for setting up the maze. */
 	public SetAsset setAsset = new SetAsset(this);
+
+	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
+	
+	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
+	
+	/** The thread for running the maze game. */
 	Thread gameThread;
-	//object
+	
+	/** The array of objects in the maze. */
 	public ObjectFactory obj[] = new ObjectFactory[10];
+
 	public Entity npc[] = new Entity[10];
 
 	//for gamestate mangement
@@ -52,8 +80,9 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int stopState = 2;
 	public final int dialogueState = 3;
 
-
-	//constructor
+	/**
+     * Constructs a new GamePanel with default settings.
+     */
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //setting the size of panel
 		this.setBackground(Color.black); //setting default background as black
@@ -64,6 +93,9 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	}
 
+	/**
+     * Initializes the game settings and assets.
+     */
 	public void setGame() {
 		setAsset.setObj();
 		setAsset.setNpc();
@@ -74,13 +106,19 @@ public class GamePanel extends JPanel implements Runnable{
 		gameState = titleState;
 	}
 
-	//when start the thread it will auto run this
+	/**
+     * Starts the game thread.
+     */
 	public void gameStartThread() {
 		//passing gamePanel class to thread constructor
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
 
+	/**
+	 * The main game loop controlling the game's update and rendering process.
+	 * It runs continuously as long as the game thread is active, ensuring a consistent frame rate.
+	 */
 	@Override
 	public void run() {
 		double displayInterval = 1000000000/FPS; //1second / 60FPS = 0.16 second/frame
@@ -111,6 +149,9 @@ public class GamePanel extends JPanel implements Runnable{
 		} 
 	}
 
+	/**
+     * Updates the game logic reflecting towards the main character movement.
+     */
 	public void update() {
 		if(gameState == playState) {
 			//movement for the character
@@ -129,6 +170,10 @@ public class GamePanel extends JPanel implements Runnable{
 		
 	}
 
+	/**
+	 * This method draws the game tiles, objects, main character, and UI components on the screen.
+	 * @param g The Graphics object used for rendering.
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -165,17 +210,27 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 	}
 
-
+	/**
+     * Plays the specified music track.
+     * @param i The index of the music track to play.
+     */
 	public void musicPlay(int i) {
 		sound.fileSet(i);
 		sound.play();
 		sound.loop();
 	}
 
+	/**
+     * Stops the current music.
+     */
 	public void musicStop() {
 		sound.stop();
 	}
 
+	/**
+     * Plays a sound effect for the specified object.
+     * @param i The index of the sound effect to play.
+     */
 	public void soundEffectObj(int i) {
 		sound.fileSet(i);
 		sound.play();
