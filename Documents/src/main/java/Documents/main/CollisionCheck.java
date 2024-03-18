@@ -3,14 +3,25 @@ package Documents.main;
 import Documents.tile.TileFactory;
 import Documents.entity.Entity;
 
-
+/**
+ * Class for checking collisions between entities and tiles/objects in the maze.
+ */
 public class CollisionCheck {
+	/** The GamePanel instance associated with the collision check. */
 	GamePanel gp;
 
+	/**
+     * Constructs a CollisionCheck object with the specified GamePanel.
+     * @param gp The GamePanel instance.
+     */
 	public CollisionCheck(GamePanel gp) {
 		this.gp = gp;
 	}
 
+	/**
+     * Checks for collisions between an entity and tiles.
+     * @param entity The entity to check collisions for.
+     */
 	public void tileCheck(Entity entity) {
 		int left = entity.wxPos + entity.detectionArea.x;
 		int right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
@@ -60,6 +71,12 @@ public class CollisionCheck {
 		} 
 	}
 
+	/**
+     * Checks for collisions between an entity and objects.
+     * @param entity The entity to check collisions for.
+     * @param mainChar Indicates whether the entity is the main character.
+     * @return The index of the object with which the entity collides.
+     */
 	public int objCheck(Entity entity, boolean mainChar) {
 		int index = 999;
 
