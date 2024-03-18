@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="AppTest" time="0.278" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="AppTest" time="0.391" tests="1" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire/surefirebooter17618981429867177215.jar /Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire 2024-03-15T23-42-30_683-jvmRun1 surefire7695300762177834912tmp surefire_06624864538150225698tmp"/>
+    <property name="sun.java.command" value="/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire/surefirebooter15031951435046154806.jar /Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire 2024-03-17T17-18-51_932-jvmRun1 surefire14189910490511690300tmp surefire_014794926155190255997tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/test-classes:/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/classes:/Users/jaylee/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/jaylee/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/jaylee/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/jaylee/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/jaylee/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/jaylee/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire/surefirebooter17618981429867177215.jar"/>
+    <property name="surefire.real.class.path" value="/Users/jaylee/Desktop/CMPT276/CMPT276S24_group20/Documents/target/surefire/surefirebooter15031951435046154806.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
@@ -58,5 +58,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testMovementUp" classname="AppTest" time="0.014"/>
+  <testcase name="testMovementUp" classname="AppTest" time="0.025">
+    <failure message="Character did not move up as expected ==&gt; expected: &lt;836&gt; but was: &lt;840&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Character did not move up as expected ==> expected: <836> but was: <840>
+	at AppTest.testMovementUp(AppTest.java:22)
+]]></failure>
+  </testcase>
 </testsuite>

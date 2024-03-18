@@ -2,7 +2,6 @@ package Documents.main;
 
 import javax.swing.JFrame;
 import java.awt.Dimension;
-import java.awt.Color;
 
 
 public class Main {

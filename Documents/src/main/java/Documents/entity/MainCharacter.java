@@ -38,10 +38,10 @@ Mapping Tile design
 
 import Documents.main.GamePanel;
 import Documents.main.KeyControl;
+import Documents.main.UtilityTools;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.Graphics2D;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 
@@ -85,21 +85,32 @@ public class MainCharacter extends Entity {
 	}
 
 	public void getMainCharacterImg() {
-    	try {
-        	upward1 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_up_1.png"));
-        	upward2 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_up_2.png"));
-        	downward1 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_down_1.png"));
-        	downward2 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_down_2.png"));
-    	    leftward1 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_left_1.png"));
-	        leftward2 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_left_2.png"));
-	        rightward1 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_right_1.png"));
-	        rightward2 = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/boy_right_2.png")); 
+    	upward1 = setup("boy_up_1");
+    	upward2 = setup("boy_up_2");
+    	downward1 = setup("boy_down_1");
+    	downward2 = setup("boy_down_2");
+    	leftward1 = setup("boy_left_1");
+    	leftward2 = setup("boy_left_2");
+    	rightward1 = setup("boy_right_1");
+    	rightward2 = setup("boy_right_2");
+	}
 
-    	} catch(IOException e) {
-    		//checking if the image has been loaded correctly
-    		//throw error
-        	e.printStackTrace();
-    	}
+	public BufferedImage setup(String imgName) {
+		UtilityTools tools = new UtilityTools();
+		BufferedImage img = null;
+
+		try {
+			img = ImageIO.read(getClass().getResourceAsStream("/mainCharacter/"+ imgName + ".png"));
+		    //ensure the image supports alpha (transparency)
+		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
+		    Graphics2D g2 = newImg.createGraphics();
+		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);
+		    g2.dispose();
+		    img = newImg;
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return img;
 	}
 
 
@@ -163,14 +174,23 @@ public class MainCharacter extends Entity {
 				keyNum++;
 				//null to remove the object
 				gp.obj[i] = null;
+				gp.ui.displayMessage("Key Card collected!");
 				break;
 			case "door":
-				if(keyNum == 3) {
+				if(keyNum == 4) {
 					gp.soundEffectObj(2);
 					gp.obj[i] = null;
 					keyNum = 0;
+					gp.ui.displayMessage("The door is now open!");
 					break;
+				} else {
+					gp.ui.displayMessage("You need 4 card keys to open");
 				}
+			case "stair":
+				gp.ui.gameDone = true;
+				gp.musicStop();
+				//gp.soundEffectObj();
+				break;
 			}
 			
 		}
@@ -214,7 +234,7 @@ public class MainCharacter extends Entity {
 			break;
 		}
 		//image observer
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, null);
 	}
 }
 

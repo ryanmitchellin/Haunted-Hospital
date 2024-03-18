@@ -1,5 +1,6 @@
 package Documents.object;
 import Documents.main.GamePanel;
+import Documents.main.UtilityTools;
 
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
@@ -15,6 +16,7 @@ public class ObjectFactory {
 	public Rectangle detectionArea = new Rectangle(0,0,48,48);
 	public int detectionDefaultX = 0;
 	public int detectionDefaultY = 0;
+	UtilityTools tools = new UtilityTools();
 
 
 	public void draw(Graphics2D g2, GamePanel gp) {

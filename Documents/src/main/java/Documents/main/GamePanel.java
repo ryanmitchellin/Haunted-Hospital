@@ -21,14 +21,14 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int tileSize = originalTileSize * scale; //48 pixel per tile
 	
 	//setting the screen size 4:3 default
-	public final int maxCol = 24;
-	public final int maxRow = 18;
+	public final int maxCol = 16;
+	public final int maxRow = 12;
 	public final int screenWidth = tileSize * maxCol; // Width of the screen : 1152 pixels
 	public final int screenHeight = tileSize * maxRow; // Height of the screen : 864 pixels
 
 	//setting world map
-	public final int maxWCol = 40;
-	public final int maxWRow = 36;
+	public final int maxWCol = 50;
+	public final int maxWRow = 50;
 
 	//Frames per second
 	int FPS = 60;
@@ -43,6 +43,13 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	//object
 	public ObjectFactory obj[] = new ObjectFactory[10];
+
+
+	//for gamestate mangement
+	public int gameState;
+	public final int playState = 1;
+	public final int stopState = 2;
+
 
 	//constructor
 	public GamePanel() {
@@ -60,6 +67,8 @@ public class GamePanel extends JPanel implements Runnable{
 
 		//map 1 music
 		musicPlay(0);
+		musicStop();
+		gameState = playState;
 	}
 
 	//when start the thread it will auto run this
@@ -100,8 +109,14 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
 	public void update() {
-		//movement for the character
-		mainCharacter.move();
+		if(gameState == playState) {
+			//movement for the character
+			mainCharacter.move();
+		}
+		if(gameState == stopState) {
+			
+		}
+		
 	}
 
 	public void paintComponent(Graphics g) {

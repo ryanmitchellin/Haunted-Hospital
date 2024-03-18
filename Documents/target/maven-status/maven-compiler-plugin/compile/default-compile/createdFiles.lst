@@ -1,13 +1,16 @@
+Documents/main/UserInterface.class
 Documents/entity/Entity.class
 Documents/main/Sound.class
 Documents/entity/MainCharacter.class
 Documents/object/ObjectFactory.class
 Documents/main/KeyControl.class
+Documents/object/Stair.class
 Documents/tile/TileFactory.class
 Documents/object/Door.class
 Documents/main/GamePanel.class
 Documents/object/KeyCard.class
 Documents/main/SetAsset.class
+Documents/main/UtilityTools.class
 Documents/main/Main.class
 Documents/main/CollisionCheck.class
 Documents/tile/Tile.class
