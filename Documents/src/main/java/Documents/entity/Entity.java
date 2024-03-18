@@ -41,7 +41,40 @@ public class Entity {
 		   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
 		   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
 		   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
-			
+			switch(direction) {
+				case "up":
+					if(spriteNum == 1) {
+						image = upward1;
+					}
+					if(spriteNum == 2) {
+						image = upward2;
+					}
+					break;
+				case "down":
+					if(spriteNum == 1) {
+						image = downward1;
+					}
+					if(spriteNum == 2) {
+						image = downward2;
+					}
+					break;
+				case "left":
+					if(spriteNum == 1) {
+						image = leftward1;
+					}
+					if(spriteNum == 2) {
+						image = leftward2;
+					}
+					break;
+				case "right":
+					if(spriteNum == 1) {
+						image = rightward1;
+					}
+					if(spriteNum == 2) {
+						image = rightward2;
+					}
+					break;
+		}
 			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 }
