@@ -24,7 +24,10 @@ public class Npc extends Entity {
     	rightward2 = setup("/npc/boy_right_2");
 	}
     public void setDialogue(){
-        dialogues[0] = "Hello";
+        dialogues[0] = "Hello1";
+        dialogues[0] = "Hello2";
+        dialogues[0] = "Hello3";
+        dialogues[0] = "Hello4";
     }
     public void setAction(){
 
@@ -50,4 +53,10 @@ public class Npc extends Entity {
         }
         
     }
+    
+    public void speak(){
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
+    }
+
 }

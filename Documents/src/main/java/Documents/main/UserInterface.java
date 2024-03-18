@@ -69,6 +69,11 @@ public class UserInterface {
 		int height = gp.tileSize*4;
 
 		drawSubWindow(x, y, width, height);
+
+		g2.setFont(g2.getFont().derivativeFont(Font.PLAIN, 80F));
+		x += gp.tileSize;
+		y += gp.tileSize;
+		g2.drawString(currentDialogue, x, y);
 	}
 	public void drawSubWindow (int x, int y, int width, int height){
 		Color c = new Color(0,0,0, 220);
