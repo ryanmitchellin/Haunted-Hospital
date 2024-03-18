@@ -182,4 +182,45 @@ public class CollisionCheck {
 
 		return index;
 	}
+
+	public void playerCheck(Entity entity){
+		//get Entity's detection area pos
+		entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
+		entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
+
+		//get the object's detection area pos
+		gp.player.detectionArea.x = gp.player.worldX + gp.player.detectionArea.x;
+		gp.player.detectionArea.y = gp.player.worldY + gp.player.detectionArea.y;
+
+		switch(entity.direction) {
+		case "up":
+			entity.detectionArea.y -= entity.vel;
+			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+					entity.isCollision = true;
+			}
+			break;
+		case "down":
+			entity.detectionArea.y += entity.vel;
+			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+				entity.isCollision = true;
+			}
+			break;
+		case "left":
+			entity.detectionArea.x -= entity.vel;
+			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+				entity.isCollision = true;
+			}
+			break;
+		case "right":
+			entity.detectionArea.x += entity.vel;
+			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+				entity.isCollision = true;
+			}
+			break;
+		}
+		entity.detectionArea.x = entity.detectionDefaultX;
+		entity.detectionArea.y = entity.detectionDefaultY;
+		gp.player.detectionArea.x = gp.player.detectionDefaultX;
+		gp.player.detectionArea.y = gp.player.detectionDefaultY;
+	}
 }
