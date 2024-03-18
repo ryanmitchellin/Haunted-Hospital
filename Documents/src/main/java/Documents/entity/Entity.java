@@ -1,8 +1,13 @@
 package Documents.entity;
 
+import java.awt.Graphics2D; 
 import java.awt.image.BufferedImage;
 import java.awt.geom.AffineTransform;
 import java.awt.Rectangle;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import Documents.main.GamePanel;
+import Documents.main.UtilityTools;
 
 public class Entity {
 	GamePanel gp;
@@ -90,14 +95,14 @@ public class Entity {
 
 	public void draw(Graphics2D g2){
 		BufferedImage image = null;
-		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+		int screenX = wxPos - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
+		int screenY = wyPos - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
 
 		//checking if the tile is within the boundary
-		if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
-		   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-		   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-		   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+		if(wxPos + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
+		   wxPos - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
+		   wyPos + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
+		   wyPos - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
 			switch(direction) {
 				case "up":
 					if(spriteNum == 1) {
@@ -132,7 +137,7 @@ public class Entity {
 					}
 					break;
 		}
-			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);
+			g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
 	public BufferedImage setup(String imgPath) {

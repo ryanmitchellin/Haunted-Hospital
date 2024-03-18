@@ -12,6 +12,7 @@ public class UserInterface {
 	GamePanel gp;
 	Graphics2D g2; //maybe rename
 	Font arialFont_40,arialFont_80;
+	BufferedImage cardKeyImg;
 
 	int msgCount = 0;
 
@@ -20,11 +21,16 @@ public class UserInterface {
 	public String msg = "";
 	public boolean gameDone = false;
 	public String currentDialogue = "";
+	double gameTime;
+	DecimalFormat dFormat = new DecimalFormat("#0.00");
+
 
 	public UserInterface(GamePanel gp) {
 		this.gp = gp;
 		arialFont_40 = new Font("Arial", Font.PLAIN, 40);
 		arialFont_80 = new Font("Arial", Font.BOLD, 80);
+		KeyCard keyCard = new KeyCard(gp);
+		cardKeyImg = keyCard.img;
 	}
 
 	public void displayMessage(String text) {
@@ -35,19 +41,37 @@ public class UserInterface {
 	public void draw(Graphics2D g2) {
 		this.g2 = g2;
 
-		g2.setFont(arial_40);
+		g2.setFont(arialFont_40);
 		g2.setColor(Color.white);
 
 		//play state
 		if (gp.gameState == gp.playState) {
-			// Do playState stuff later
+			g2.setFont(arialFont_40);
+			g2.setColor(Color.white);
+			g2.drawImage(cardKeyImg, gp.tileSize/2, gp.tileSize/6, gp.tileSize, gp.tileSize, null);
+			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 4", 74, 50);
+			gameTime += (double)1/60;
+			g2.drawString("Time:" + dFormat.format(gameTime), gp.tileSize*11, 50);
+
+			//displaying message
+			if(printMessage == true) {
+				g2.setFont(g2.getFont().deriveFont(20));
+				g2.drawString(msg,gp.tileSize,gp.tileSize * 5); 
+
+				msgCount++;
+
+				if(msgCount > 120) {
+					msgCount = 0;
+					printMessage = false;
+				}
+			}
 		}
 		//pause state
-		if (gp.gameState == gp.pauseState) {
+		if (gp.gameState == gp.stopState) {
 			drawPauseScreen();
 		}
 		//dialogue state
-		if (gp.gameState == gp.dialogueStateState) {
+		if (gp.gameState == gp.dialogueState) {
 			drawDialogueScreen();
 		}
 	}
@@ -61,7 +85,7 @@ public class UserInterface {
 		g2.drawString(text, x, y);
 	}
 
-	public void draw drawDialogueScreen(){
+	public void drawDialogueScreen(){
 		//Window
 		int x = gp.tileSize*2;
 		int y = gp.tileSize/2;
@@ -70,7 +94,7 @@ public class UserInterface {
 
 		drawSubWindow(x, y, width, height);
 
-		g2.setFont(g2.getFont().derivativeFont(Font.PLAIN, 80F));
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 80F));
 		x += gp.tileSize;
 		y += gp.tileSize;
 		g2.drawString(currentDialogue, x, y);
@@ -86,7 +110,7 @@ public class UserInterface {
 		g2.fillRoundRect(x, y, width, height, 35, 35);
 
 		c = new Color(255,255,255);
-		g2.setStroke(new BasicStroke(5));
+		//g2.setStroke(new BasicStroke(5));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 	}
 	public int getXCenterText(String text) {

@@ -2,6 +2,7 @@ package Documents.main;
 import Documents.entity.MainCharacter;
 import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
+import Documents.entity.Entity;
 
 
 import javax.swing.JPanel;
@@ -34,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 	
 	TileFactory tileFactory = new TileFactory(this);	
-	KeyControl keyControl = new KeyControl(this);
+	public KeyControl keyControl = new KeyControl(this);
 	Sound sound = new Sound();
 	public CollisionCheck checkCollision = new CollisionCheck(this);
 	public SetAsset setAsset = new SetAsset(this);
@@ -115,8 +116,6 @@ public class GamePanel extends JPanel implements Runnable{
 			//movement for the character
 			mainCharacter.move();
 
-			//player
-			player.update();
 			//npc
 			for(int i = 0; i < npc.length; i++){
 				if(npc[i] != null){
@@ -149,7 +148,7 @@ public class GamePanel extends JPanel implements Runnable{
 		//npc
 		for(int i = 0; i < npc.length; i++){ //XXX
 			if(obj[i] != null) {
-				obj[i].draw(g2);
+				obj[i].draw(g2, this);
 			}
 		}
 

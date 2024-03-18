@@ -153,7 +153,7 @@ public class MainCharacter extends Entity {
 				gp.npc[i].speak();
 			}
 		}
-		gp.keyControl.enterPressed == false;
+		gp.keyControl.enterPressed = false;
 	}
 
 	public void draw(Graphics2D g2) {

@@ -1,13 +1,14 @@
-package entity;
+package Documents.entity;
+import java.util.Random;
 
-import main.GamePanel;
+import Documents.main.GamePanel;
 
 public class Npc extends Entity {
     public Npc (GamePanel gp) {
         super(gp);
 
         direction = "down";
-        speed = 1;
+        vel = 1;
 
         getImg();
         setDialogue();

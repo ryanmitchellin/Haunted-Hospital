@@ -2,6 +2,7 @@ Documents/main/UserInterface.class
 Documents/entity/Entity.class
 Documents/main/Sound.class
 Documents/entity/MainCharacter.class
+Documents/entity/Npc.class
 Documents/object/ObjectFactory.class
 Documents/main/KeyControl.class
 Documents/object/Stair.class

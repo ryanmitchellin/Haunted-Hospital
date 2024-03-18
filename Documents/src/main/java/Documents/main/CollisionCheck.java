@@ -140,8 +140,8 @@ public class CollisionCheck {
 				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
 
 				//get the object's detection area pos
-				target[i].detectionArea.x = target[i].worldX + target[i].detectionArea.x;
-				target[i].detectionArea.y = target[i].worldY + target[i].detectionArea.y;
+				target[i].detectionArea.x = target[i].wxPos + target[i].detectionArea.x;
+				target[i].detectionArea.y = target[i].wyPos + target[i].detectionArea.y;
 
 				switch(entity.direction) {
 				case "up":
@@ -189,38 +189,38 @@ public class CollisionCheck {
 		entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
 
 		//get the object's detection area pos
-		gp.player.detectionArea.x = gp.player.worldX + gp.player.detectionArea.x;
-		gp.player.detectionArea.y = gp.player.worldY + gp.player.detectionArea.y;
+		gp.mainCharacter.detectionArea.x = gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x;
+		gp.mainCharacter.detectionArea.y = gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y;
 
 		switch(entity.direction) {
 		case "up":
 			entity.detectionArea.y -= entity.vel;
-			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 					entity.isCollision = true;
 			}
 			break;
 		case "down":
 			entity.detectionArea.y += entity.vel;
-			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}
 			break;
 		case "left":
 			entity.detectionArea.x -= entity.vel;
-			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}
 			break;
 		case "right":
 			entity.detectionArea.x += entity.vel;
-			if(entity.detectionArea.intersects(gp.player.detectionArea)) {
+			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}
 			break;
 		}
 		entity.detectionArea.x = entity.detectionDefaultX;
 		entity.detectionArea.y = entity.detectionDefaultY;
-		gp.player.detectionArea.x = gp.player.detectionDefaultX;
-		gp.player.detectionArea.y = gp.player.detectionDefaultY;
+		gp.mainCharacter.detectionArea.x = gp.mainCharacter.detectionDefaultX;
+		gp.mainCharacter.detectionArea.y = gp.mainCharacter.detectionDefaultY;
 	}
 }

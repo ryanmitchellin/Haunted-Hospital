@@ -8,7 +8,7 @@ public class KeyControl implements KeyListener{
 	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 	boolean checkDrawTime = false;
 
-	public KeyHandler(GamePanel gp) {
+	public KeyControl(GamePanel gp) {
 		this.gp = gp;
 	}
 
@@ -36,8 +36,8 @@ public class KeyControl implements KeyListener{
 			case KeyEvent.VK_RIGHT:
 				rightPressed = true;
 				break;
-			case KeyEvent.VK_PAUSE:
-				gp.gameState = gp.pauseState;
+			case KeyEvent.VK_P:
+				gp.gameState = gp.stopState;
 				break;
 			case KeyEvent.VK_ENTER:
 				enterPressed = true;
@@ -48,8 +48,8 @@ public class KeyControl implements KeyListener{
 			}
 		}
 		// pause state
-		else if(gp.gameState == gp.pauseState){
-			if(code == KeyEvent.VK_PAUSE){
+		else if(gp.gameState == gp.stopState){
+			if(code == KeyEvent.VK_P){
 				gp.gameState = gp.playState;
 			}
 		}
