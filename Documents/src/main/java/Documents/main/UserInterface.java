@@ -9,10 +9,18 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat; 
 import java.awt.BasicStroke;
 
+/**
+ * The UserInterface class handles the display of the game's user interface elements.
+ * It includes the key card image and the number of keys collected by the main character.
+ */
 public class UserInterface {
+	/** The GamePanel associated with this user interface. */
 	GamePanel gp;
+
 	Graphics2D g2; //maybe rename
 	Font arialFont_40,arialFont_80;
+
+	/** The image representing the key card in the user interface. */
 	BufferedImage cardKeyImg;
 
 	int msgCount = 0;
@@ -26,7 +34,10 @@ public class UserInterface {
 	DecimalFormat dFormat = new DecimalFormat("#0.00");
 	public int commandingNumber = 0;
 
-
+	/**
+     * Constructs a new UserInterface object with the specified GamePanel.
+     * @param gp The GamePanel associated with this user interface.
+     */
 	public UserInterface(GamePanel gp) {
 		this.gp = gp;
 		arialFont_40 = new Font("Arial", Font.PLAIN, 40);
@@ -40,6 +51,10 @@ public class UserInterface {
 		printMessage = true;
 	}
 
+	/**
+     * Draws the user interface elements inside the maze.
+     * @param g2 The graphics context to draw on.
+     */
 	public void draw(Graphics2D g2) {
 		this.g2 = g2;
 
