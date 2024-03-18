@@ -3,20 +3,45 @@ package Documents.main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class for handling keyboard input for main character movement.
+ */
 public class KeyControl implements KeyListener{
+	/** The GamePanel instance associated with the key control. */
 	GamePanel gp;
-	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+	
+	/** Indicates whether the down arrow key is currently pressed. */
+    public boolean downPressed;
+    
+    /** Indicates whether the left arrow key is currently pressed. */
+    public boolean leftPressed;
+    
+    /** Indicates whether the right arrow key is currently pressed. */
+    public boolean rightPressed;
+
+	/** Indicates whether the enter key is currently pressed. */
+    public boolean enterPressed;
+
 	boolean checkDrawTime = false;
 
+	/** Constructs key control */
 	public KeyControl(GamePanel gp) {
 		this.gp = gp;
 	}
 
+	/**
+     * Invoked when a key has been typed.
+     * @param e The KeyEvent associated with this event.
+     */
 	@Override
 	public void keyTyped(KeyEvent e) {
 
 	}
 
+	/**
+     * Invoked when a key has been pressed.
+     * @param e The KeyEvent associated with this event.
+     */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();//return int keyCode associated with the key in event
@@ -88,6 +113,10 @@ public class KeyControl implements KeyListener{
 		}
 	}
 
+	/**
+     * Invoked when a key has been released.
+     * @param e The KeyEvent associated with this event.
+     */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int code = e.getKeyCode();//return int keyCode associated with the key in event
