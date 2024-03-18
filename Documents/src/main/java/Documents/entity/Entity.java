@@ -9,28 +9,67 @@ import java.io.IOException;
 import Documents.main.GamePanel;
 import Documents.main.UtilityTools;
 
+/**
+ * Represents an entity inside the maze.
+ */
 public class Entity {
+	/** The GamePanel instance associated with the entity. */
 	GamePanel gp;
+
+	/** The x-coordinate for the entity. */
 	public int wxPos;
+
+	/** The y-coordinate for the entity. */
 	public int wyPos;
+
+	/** The velocity for the entity. */
 	public int vel;
 
-	//for character image load
-	public BufferedImage upward1,upward2,downward1,downward2,leftward1,leftward2,rightward1,rightward2;
-	public String direction;
-	//for animation count for the movement
-	public int spriteCount = 0;
-	public int spriteNum = 1;
+	 /** The image for the entity facing upward motion 1. */
+    public BufferedImage upward1;
+    
+    /** The image for the entity facing upward motion 2. */
+    public BufferedImage upward2;
+    
+    /** The image for the entity facing downward motion 1. */
+    public BufferedImage downward1;
+    
+    /** The image for the entity facing downward motion 2. */
+    public BufferedImage downward2;
+    
+    /** The image for the entity facing leftward motion 1. */
+    public BufferedImage leftward1;
+    
+    /** The image for the entity facing leftward motion 2. */
+    public BufferedImage leftward2;
+    
+    /** The image for the entity facing rightward motion 1. */
+    public BufferedImage rightward1;
+    
+    /** Another image for the entity facing rightward motion 2. */
+    public BufferedImage rightward2;
 
+	/** The direction of the entity facing into. */
+    public String direction;
 
-	//collision for the tiles
+    /** The count of sprites for the entity's movement animation. */
+    public int spriteCount = 0;
+
+    /** The number of sprites for the entity's movement animation. */
+    public int spriteNum = 1;
+
+	/** The area used for collision detection with tiles. */
 	public Rectangle detectionArea  = new Rectangle (0, 0, 48, 48);
 
-	//
-	public int detectionDefaultX;
-	public int detectionDefaultY;
+	/** The default x-coordinate for the detection area. */
+    public int detectionDefaultX;
 
-	public boolean isCollision = false;
+    /** The default y-coordinate for the detection area. */
+    public int detectionDefaultY;
+
+    /** Indicates the states whether the entity is currently collides with another entity. */
+    public boolean isCollision = false;
+
 	public int actionLockCount = 0;
 
 	String dialogues[] = new String[20];
