@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.Rectangle;
 
 public class Entity {
+	GamePanel gp;
 	public int wxPos;
 	public int wyPos;
 	public int vel;
@@ -18,7 +19,7 @@ public class Entity {
 
 
 	//collision for the tiles
-	public Rectangle detectionArea;
+	public Rectangle detectionArea  = new Rectangle (0, 0, 48, 48);
 
 	//
 	public int detectionDefaultX;
@@ -26,4 +27,7 @@ public class Entity {
 
 	public boolean isCollision = false;
 
+	public Entity (GamePanel gp) {
+		this.gp = gp;
+	}
 }
