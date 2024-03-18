@@ -21,6 +21,33 @@ public class KeyControl implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();//return int keyCode associated with the key in event
 
+		// Title State
+		if (gp.gameState == gp.titleState) {
+			if (code == KeyEvent.VK_UP) {
+				gp.ui.commandingNumber--;
+				if (gp.ui.commandingNumber < 0) {
+					gp.ui.commandingNumber = 2;
+				}
+			}
+			if (code == KeyEvent.VK_DOWN) {
+				gp.ui.commandingNumber++;
+				if (gp.ui.commandingNumber > 2) {
+					gp.ui.commandingNumber = 0;
+				}
+			}
+			if (code == KeyEvent.VK_ENTER) {
+				if (gp.ui.commandingNumber == 0) {
+					gp.gameState = gp.playState;
+					gp.musicPlay(0);
+				}
+				if (gp.ui.commandingNumber == 1) {
+					// add later
+				}
+				if (gp.ui.commandingNumber == 2) {
+					System.exit(0);
+				}
+			}
+		}
 		//play state
 		if(gp.gameState == gp.playState){
 			switch(code) {
