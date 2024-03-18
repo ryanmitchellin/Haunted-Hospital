@@ -11,7 +11,6 @@ public class CollisionCheck {
 		this.gp = gp;
 	}
 
-
 	public void tileCheck(Entity entity) {
 		int left = entity.wxPos + entity.detectionArea.x;
 		int right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
@@ -124,6 +123,60 @@ public class CollisionCheck {
 				entity.detectionArea.y = entity.detectionDefaultY;
 				gp.obj[i].detectionArea.x = gp.obj[i].detectionDefaultX;
 				gp.obj[i].detectionArea.y = gp.obj[i].detectionDefaultY;
+			}
+		}
+
+		return index;
+	}
+
+	//npc or momster
+	public int entityCheck(Entity entity, Entity[] target){
+		int index = 999;
+
+		for(int i = 0; i < target.length; i++) {
+			if(target[i] != null) {
+				//get Entity's detection area pos
+				entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
+				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
+
+				//get the object's detection area pos
+				target[i].detectionArea.x = target[i].worldX + target[i].detectionArea.x;
+				target[i].detectionArea.y = target[i].worldY + target[i].detectionArea.y;
+
+				switch(entity.direction) {
+				case "up":
+					entity.detectionArea.y -= entity.vel;
+					if(entity.detectionArea.intersects(target[i].detectionArea)) {
+							entity.isCollision = true;
+							index = i;
+					}
+					break;
+				case "down":
+					entity.detectionArea.y += entity.vel;
+					if(entity.detectionArea.intersects(target[i].detectionArea)) {
+						entity.isCollision = true;
+							index = i;
+					}
+					break;
+				case "left":
+					entity.detectionArea.x -= entity.vel;
+					if(entity.detectionArea.intersects(target[i].detectionArea)) {
+						entity.isCollision = true;
+							index = i;
+					}
+					break;
+				case "right":
+					entity.detectionArea.x += entity.vel;
+					if(entity.detectionArea.intersects(target[i].detectionArea)) {
+						entity.isCollision = true;
+							index = i;
+					}
+					break;
+				}
+				entity.detectionArea.x = entity.detectionDefaultX;
+				entity.detectionArea.y = entity.detectionDefaultY;
+				target[i].detectionArea.x = target[i].detectionDefaultX;
+				target[i].detectionArea.y = target[i].detectionDefaultY;
 			}
 		}
 
