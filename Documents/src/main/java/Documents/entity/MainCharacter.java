@@ -10,16 +10,30 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 
-
+/**
+ * Represents the main character in the maze, extending the Entity class.
+ */
 public class MainCharacter extends Entity {
-	GamePanel gp;
-	KeyControl keyControl;
-	public final int screenX;
-	public final int screenY;
+	/** The GamePanel instance associated with the character. */
+    GamePanel gp;
+    
+    /** The KeyControl instance associated with the character. */
+    KeyControl keyControl;
+    
+    /** The x-coordinate of the character inside the maze. */
+    public final int screenX;
+    
+    /** The y-coordinate of the character inside the maze */
+    public final int screenY;
+    
+    /** The number of keys the character currently holds. */
+    public int keyNum = 0;
 
-	//key count
-	public int keyNum = 0;
-
+	/**
+     * Constructs a MainCharacter object with the specified GamePanel and KeyControl instances.
+     * @param gp The GamePanel instance.
+     * @param keyControl The KeyControl instance.
+     */
 	public MainCharacter(GamePanel gp, KeyControl keyControl) {
 		super(gp);
 		this.gp = gp;
@@ -42,6 +56,9 @@ public class MainCharacter extends Entity {
 		getMainCharacterImg();
 	}
 
+	/**
+     * Initializes the default values for the character.
+     */
 	public void settingDefaultValue() {
 		wxPos = gp.tileSize * 20 - gp.tileSize/2;
 		wyPos = gp.tileSize * 18 - gp.tileSize/2;
@@ -50,6 +67,9 @@ public class MainCharacter extends Entity {
 		direction = "down";
 	}
 
+	/**
+     * Loads the main character's images from resources folder.
+     */
 	public void getMainCharacterImg() {
     	upward1 = setup("/mainCharacter/boy_up_1");
     	upward2 = setup("/mainCharacter/boy_up_2");
@@ -61,7 +81,9 @@ public class MainCharacter extends Entity {
     	rightward2 = setup("/mainCharacter/boy_right_2");
 	}
 
-	//method update for player movement depending on the keypressed
+	/**
+     * Update the character direction based on the key press.
+     */
 	public void update() {
 		if(keyControl.upPressed == true || keyControl.downPressed == true ||
 			keyControl.leftPressed == true || keyControl.rightPressed == true) {
@@ -112,6 +134,10 @@ public class MainCharacter extends Entity {
 		}
 	}
 
+	/**
+     * Picks up an object at the specified index.
+     * @param i The index of the object to pick up.
+     */
 	public void pickUpObj(int i) {
 		//if index is not 999 it means the collision has happened
 		if(i !=  999) {
@@ -157,6 +183,10 @@ public class MainCharacter extends Entity {
 		gp.keyControl.enterPressed = false;
 	}
 
+	/**
+     * Draws the character inside the maze.
+     * @param g2 The graphics context.
+     */
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 
