@@ -30,4 +30,18 @@ public class Entity {
 	public Entity (GamePanel gp) {
 		this.gp = gp;
 	}
+
+	public void draw(Graphics2D g2){ //XXX
+		BufferedImage image = null;
+		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
+		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+
+		//checking if the tile is within the boundary
+		if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
+		   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
+		   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
+		   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+			
+			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		}
 }
