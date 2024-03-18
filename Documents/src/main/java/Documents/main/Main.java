@@ -36,8 +36,16 @@ package Documents.main;
 import javax.swing.JFrame;
 import java.awt.Dimension;
 
-
+/**
+ * The main class of the game. It creates a JFrame window and adds a GamePanel into it.
+ * The GamePanel contains the game's graphical components and logic.
+ */
 public class Main {
+    /**
+     * The main method that starts the game.
+     * It creates a JFrame window, sets up the GamePanel, and starts the game thread.
+     * @param args variable to take input from user.
+     */
     public static void main(String[] args) {
 
         JFrame window = new JFrame ();
