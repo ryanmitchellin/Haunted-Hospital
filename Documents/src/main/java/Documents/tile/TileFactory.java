@@ -10,13 +10,23 @@ import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.BufferedReader;
 
-
-
+/**
+ * Factory class for creating and managing tiles in the maze.
+ */
 public class TileFactory {
+	/** The GamePanel instance associated with the tile factory. */
 	GamePanel gp;
+
+    /** Array for the tiles. */
 	Tile[] tiles;
+
+    /** 2D array for the tile map. */
 	int tileMapNum[][];
 
+	/**
+     * Constructs a TileFactory object with the specified GamePanel.
+     * @param gp The GamePanel instance.
+     */
 	public TileFactory(GamePanel gp) {
 		this.gp = gp;
 		tiles = new Tile[50];
@@ -26,6 +36,9 @@ public class TileFactory {
 		loadingMap("/maps/map01.txt");
 	}
 
+	/**
+     * Loads tile images from resources folder.
+     */
 	public void gettingTileImg() {
 		setup(0, "voidspace", false);
 		setup(1, "rightsideWallEnd", true);
@@ -69,7 +82,10 @@ public class TileFactory {
 		}
 	}
 
-	//loading map from the txt file
+	/**
+     * Loads a map from a text file.
+     * @param fileName The name of the file containing the map.
+     */
 	public void loadingMap(String fileName) {
 		try {
 			InputStream is = getClass().getResourceAsStream(fileName);
@@ -104,15 +120,29 @@ public class TileFactory {
 		}
 	}
 
-    
+    /**
+     * Gets a tile at the specified index.
+     * @param index The index of the tile.
+     * @return The tile at the specified index.
+     */
     public Tile getTile(int index) {
         return tiles[index];
     }
 
+	/**
+     * Gets the tile map number at the specified column and row.
+     * @param col The column index.
+     * @param row The row index.
+     * @return The tile map number at the specified column and row.
+     */
     public int getTileMapNum(int col, int row) {
          return tileMapNum[col][row];
     }
 
+	/**
+     * Draws the tiles inside the maze.
+     * @param g2 The graphics context.
+     */
 	public void draw(Graphics2D g2) {
 		int column = 0;
 		int row = 0;
