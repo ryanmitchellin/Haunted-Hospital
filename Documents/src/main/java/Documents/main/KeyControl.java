@@ -21,30 +21,37 @@ public class KeyControl implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();//return int keyCode associated with the key in event
 
-		switch(code) {
-		case KeyEvent.VK_UP:
-			upPressed = true;
-			break;
-		case KeyEvent.VK_DOWN:
-			downPressed = true;
-			break;
-		case KeyEvent.VK_LEFT:
-			leftPressed = true;
-			break;
-		case KeyEvent.VK_RIGHT:
-			rightPressed = true;
-			break;
-		case KeyEvent.VK_PAUSE:
-			if(gp.gameState == gp.playState) {
+		//play state
+		if(gp.gameState == gp.playState){
+			switch(code) {
+			case KeyEvent.VK_UP:
+				upPressed = true;
+				break;
+			case KeyEvent.VK_DOWN:
+				downPressed = true;
+				break;
+			case KeyEvent.VK_LEFT:
+				leftPressed = true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				rightPressed = true;
+				break;
+			case KeyEvent.VK_PAUSE:
 				gp.gameState = gp.pauseState;
+				
+			default:
+				break;
 			}
-			else if(gp.gameState == gp.pauseState) {
+		}
+		// pause state
+		if(gp.gameState == gp.pauseState){
+			if(code == KeyEvent.VK_PAUSE){
 				gp.gameState = gp.playState;
 			}
-			break;
-		default:
-			break;
 		}
+		//dialogue state
+		if(gp.gameState == gp.dialogueState){
+		
 	}
 
 	@Override
