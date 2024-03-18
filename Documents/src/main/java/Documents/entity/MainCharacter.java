@@ -86,7 +86,7 @@ public class MainCharacter extends Entity {
 			// npc collision
 			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc); //XXX
 			interactNpc(npcIndex);
-
+ 
 			//if its false, character can move else cannot
 			if(isCollision == false) {
 				switch(direction) {
@@ -148,6 +148,7 @@ public class MainCharacter extends Entity {
 
 	public void interactNpc(int i){
 		if(i != 999){
+			//System.out.println("you are hitting npc");
 			if(gp.keyControl.enterPressed == true){
 				gp.gameState = gp.dialogueState;
 				gp.npc[i].speak();

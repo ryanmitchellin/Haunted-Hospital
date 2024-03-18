@@ -31,7 +31,6 @@ public class Npc extends Entity {
         dialogues[0] = "Hello4";
     }
     public void setAction(){
-
         actionLockCount++;
         if (actionLockCount == 120){
             Random random = new Random();

@@ -39,7 +39,7 @@ public class KeyControl implements KeyListener{
 			case KeyEvent.VK_P:
 				gp.gameState = gp.stopState;
 				break;
-			case KeyEvent.VK_ENTER:
+			case KeyEvent.VK_SPACE:
 				enterPressed = true;
 				break;
 				
@@ -55,7 +55,7 @@ public class KeyControl implements KeyListener{
 		}
 		//dialogue state
 		else if(gp.gameState == gp.dialogueState){
-			if(code == KeyEvent.VK_ENTER){
+			if(code == KeyEvent.VK_SPACE){
 				gp.gameState = gp.playState;
 			}
 		}

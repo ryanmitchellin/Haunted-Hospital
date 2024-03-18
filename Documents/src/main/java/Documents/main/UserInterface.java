@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat; 
+import java.awt.BasicStroke;
 
 public class UserInterface {
 	GamePanel gp;
@@ -90,7 +91,7 @@ public class UserInterface {
 		int x = gp.tileSize*2;
 		int y = gp.tileSize/2;
 		int width = gp.screenWidth - (gp.tileSize*4);
-		int height = gp.tileSize*4;
+		int height = gp.tileSize*5;
 
 		drawSubWindow(x, y, width, height);
 
@@ -110,7 +111,7 @@ public class UserInterface {
 		g2.fillRoundRect(x, y, width, height, 35, 35);
 
 		c = new Color(255,255,255);
-		//g2.setStroke(new BasicStroke(5));
+		g2.setStroke(new BasicStroke(5));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 	}
 	public int getXCenterText(String text) {

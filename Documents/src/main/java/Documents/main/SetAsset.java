@@ -48,9 +48,10 @@ public class SetAsset {
 	}
 
 	public void setNpc() {
+
 		gp.npc[0] = new Npc(gp);
-		gp.npc[0].wxPos = gp.tileSize*21;
-		gp.npc[0].wyPos = gp.tileSize*21;
+		gp.npc[0].wxPos = gp.tileSize*22 - gp.tileSize/2;
+		gp.npc[0].wyPos = gp.tileSize*18 - gp.tileSize/2;
 
 	}
 }
