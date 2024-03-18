@@ -146,9 +146,9 @@ public class MainCharacter extends Entity {
 		}
 	}
 
-	public void interactNpc(int i){ //XXX
+	public void interactNpc(int i){
 		if(i != 999){
-			System.out.println("Your are hitting npc");
+			gp.gameState = gp.dialogueState;
 		}
 	}
 
