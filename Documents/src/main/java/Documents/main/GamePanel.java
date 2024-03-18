@@ -113,6 +113,15 @@ public class GamePanel extends JPanel implements Runnable{
 		if(gameState == playState) {
 			//movement for the character
 			mainCharacter.move();
+
+			//player
+			player.update();
+			//npc
+			for(int i = 0; i < npc.length; i++){
+				if(npc[i] != null){
+					npc[i].update();
+				}
+			}
 		}
 		if(gameState == stopState) {
 			
