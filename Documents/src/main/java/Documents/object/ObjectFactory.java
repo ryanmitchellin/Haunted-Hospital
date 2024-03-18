@@ -6,19 +6,41 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-
+/**
+ * Factory class for creating and managing objects in the maze.
+ */
 public class ObjectFactory {
-	public BufferedImage img;
-	public String type;
-	public boolean isCollision = false;
-	public int worldX;
-	public int worldY;
-	public Rectangle detectionArea = new Rectangle(0,0,48,48);
-	public int detectionDefaultX = 0;
-	public int detectionDefaultY = 0;
+	/** The image associated with the object. */
+    public BufferedImage img;
+    
+    /** The type of the object. */
+    public String type;
+    
+    /** Indicates if the collision happened. */
+    public boolean isCollision = false;
+    
+    /** The x-coordinate of the object in the world. */
+    public int worldX;
+    
+    /** The y-coordinate of the object in the world. */
+    public int worldY;
+    
+    /** The detection area of the object for collision detection. */
+    public Rectangle detectionArea = new Rectangle(0, 0, 48, 48);
+    
+    /** The default x-coordinate for the detection area. */
+    public int detectionDefaultX = 0;
+    
+    /** The default y-coordinate for the detection area. */
+    public int detectionDefaultY = 0;
+
 	UtilityTools tools = new UtilityTools();
 
-
+	/**
+     * Draws the object inside the maze.
+     * @param g2 The graphics context.
+     * @param gp The GamePanel instance.
+     */
 	public void draw(Graphics2D g2, GamePanel gp) {
 		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
 		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
