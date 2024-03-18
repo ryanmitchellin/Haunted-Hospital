@@ -83,6 +83,9 @@ public class MainCharacter extends Entity {
 			int objIndex = gp.checkCollision.objCheck(this,true);
 			pickUpObj(objIndex);
 
+			// npc collision
+			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc); //XXX
+			interactNpc(npcIndex);
 
 			//if its false, character can move else cannot
 			if(isCollision == false) {
