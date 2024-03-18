@@ -10,6 +10,9 @@ public class KeyControl implements KeyListener{
 	/** The GamePanel instance associated with the key control. */
 	GamePanel gp;
 	
+	/** Indicates whether the up arrow key is currently pressed. */
+	public boolean upPressed;
+
 	/** Indicates whether the down arrow key is currently pressed. */
     public boolean downPressed;
     
