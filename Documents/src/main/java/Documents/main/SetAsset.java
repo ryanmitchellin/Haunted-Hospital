@@ -7,14 +7,28 @@ import Documents.object.Door;
 import Documents.object.Stair;
 import Documents.entity.Npc;
 
+
+/**
+ * The SetAsset class is responsible for initializing maze assets such as key cards and doors.
+ * It sets the world positions for these assets to be displayed in the maze.
+ */
 public class SetAsset {
+	/** The GamePanel instance associated with the set assets. */
 	GamePanel gp;
 
+	/**
+     * Constructs a SetAsset object with the specified GamePanel instance.
+     * @param gp The GamePanel instance to associate with the SetAsset object.
+     */
 	public SetAsset (GamePanel gp) {
 		this.gp = gp;
 
 	}
 
+	/**
+     * Initializes the key cards and door objects in the game.
+     * Sets their world positions based on tile coordinates.
+     */
 	public void setObj() {
 		//setting the keycard information that will be displayed on screen
 		//setting the keycard information that will be displayed on screen

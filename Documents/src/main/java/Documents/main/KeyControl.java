@@ -24,7 +24,10 @@ public class KeyControl implements KeyListener{
 
 	boolean checkDrawTime = false;
 
-	/** Constructs key control */
+	/**
+     * Constructs a KeyControl object with the specified GamePanel instance.
+     * @param gp The GamePanel instance to associate with the KeyControl object.
+     */
 	public KeyControl(GamePanel gp) {
 		this.gp = gp;
 	}
