@@ -10,6 +10,7 @@ public class Npc extends Entity {
         speed = 1;
 
         getImg();
+        setDialogue();
     }
 
     public void getImg() {
@@ -22,7 +23,9 @@ public class Npc extends Entity {
     	rightward1 = setup("/npc/boy_right_1");
     	rightward2 = setup("/npc/boy_right_2");
 	}
-
+    public void setDialogue(){
+        dialogues[0] = "Hello";
+    }
     public void setAction(){
 
         actionLockCount++;

@@ -19,6 +19,7 @@ public class UserInterface {
 	public boolean printMessage = false;
 	public String msg = "";
 	public boolean gameDone = false;
+	public String currentDialogue = "";
 
 	public UserInterface(GamePanel gp) {
 		this.gp = gp;
