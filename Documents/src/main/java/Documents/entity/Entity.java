@@ -26,9 +26,41 @@ public class Entity {
 	public int detectionDefaultY;
 
 	public boolean isCollision = false;
+	public int actionLockCount = 0;
 
 	public Entity (GamePanel gp) {
 		this.gp = gp;
+	}
+
+	public void setAction(){}
+	public void update(){
+		setAction();
+		isCollision = false;
+		gp.checkCollision.tileCheck(this);
+		gp.checkCollision.objCheck(this, false);
+		gp.checkCollision.playerCheck(this);
+		//if its false, character can move else cannot
+			if(isCollision == false) {
+				switch(direction) {
+				case "up": this.wyPos -= this.vel; break;
+				case "down": this.wyPos += this.vel; break;
+				case "left": this.wxPos -= this.vel; break;
+				case "right": this.wxPos += this.vel; break;
+				}
+			}
+
+			//animation
+			//the move() method gets called 60 times per second
+			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
+			spriteCount++;
+			if(spriteCount > 10) {
+				if(spriteNum == 1) {
+					spriteNum = 2;
+				}else if(spriteNum == 2) {
+					spriteNum = 1;
+				}
+				spriteCount = 0;
+			}
 	}
 
 	public void draw(Graphics2D g2){
