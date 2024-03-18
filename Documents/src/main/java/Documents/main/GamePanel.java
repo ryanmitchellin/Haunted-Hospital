@@ -47,6 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	//for gamestate mangement
 	public int gameState;
+	public final int titleState = 0;
 	public final int playState = 1;
 	public final int stopState = 2;
 	public final int dialogueState = 3;
@@ -70,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
 		//map 1 music
 		musicPlay(0);
 		musicStop();
-		gameState = playState;
+		gameState = titleState;
 	}
 
 	//when start the thread it will auto run this
@@ -134,27 +135,36 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		//tile
 		tileFactory.draw(g2);
-		//object
-		for(int i = 0; i < obj.length; i++) {
-			if(obj[i] != null) {
-				obj[i].draw(g2, this);
-			}
+
+		// Title Screen
+		if(gameState == titleState) {
+			ui.draw(g2);
 		}
-
-		//maincharacter 
-		mainCharacter.draw(g2);
-
-		//npc
-		for(int i = 0; i < npc.length; i++){ //XXX
-			if(npc[i] != null) {
-				npc[i].draw(g2);
+		// Otherwise (in-game)
+		else {
+			//object
+			for(int i = 0; i < obj.length; i++) {
+				if(obj[i] != null) {
+					obj[i].draw(g2, this);
+				}
 			}
-		}
 
-		//ui draw method
-		ui.draw(g2);
-		g2.dispose();
+			//main character
+			mainCharacter.draw(g2);
+
+			//npc
+			for(int i = 0; i < npc.length; i++){ //XXX
+				if(npc[i] != null) {
+					npc[i].draw(g2);
+				}
+			}
+
+			//ui draw method
+			ui.draw(g2);
+			g2.dispose();
+		}
 	}
+
 
 	public void musicPlay(int i) {
 		sound.fileSet(i);
