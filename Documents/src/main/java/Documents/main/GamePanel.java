@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 	
 	TileFactory tileFactory = new TileFactory(this);	
-	KeyControl keyControl = new KeyControl();
+	KeyControl keyControl = new KeyControl(this);
 	Sound sound = new Sound();
 	public CollisionCheck checkCollision = new CollisionCheck(this);
 	public SetAsset setAsset = new SetAsset(this);
