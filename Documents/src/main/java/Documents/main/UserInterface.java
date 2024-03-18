@@ -62,7 +62,17 @@ public class UserInterface {
 
 	public void draw drawDialogueScreen(){
 		//Window
-		int x, y, width, height;
+		int x = gp.tileSize*2;
+		int y = gp.tileSize/2;
+		int width = gp.screenWidth - (gp.tileSize*4);
+		int height = gp.tileSize*5;
+
+		drawSubWindow(x, y, width, height);
+	}
+	public void drawSubWindow (int x, int y, int width, int height){
+		Color c = new Color(0,0,0);
+		g2.setColor(c);
+		g2.fillRoundRect(x, y, width, height, 35, 35);
 	}
 	public int getXCenterText(String text) {
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
