@@ -148,9 +148,12 @@ public class MainCharacter extends Entity {
 
 	public void interactNpc(int i){
 		if(i != 999){
-			gp.gameState = gp.dialogueState;
-			gp.npc[i].speak();
+			if(gp.keyControl.enterPressed == true){
+				gp.gameState = gp.dialogueState;
+				gp.npc[i].speak();
+			}
 		}
+		gp.keyControl.enterPressed == false;
 	}
 
 	public void draw(Graphics2D g2) {
