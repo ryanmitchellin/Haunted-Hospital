@@ -25,10 +25,10 @@ public class Npc extends Entity {
     	rightward2 = setup("/npc/boy_right_2");
 	}
     public void setDialogue(){
-        dialogues[0] = "Hello1";
-        dialogues[0] = "Hello2";
-        dialogues[0] = "Hello3";
-        dialogues[0] = "Hello4";
+        dialogues[0] = "....Who are you?";
+        dialogues[1] = "Do you see..me?";
+        dialogues[2] = "They are coming..you better run..";
+        dialogues[3] = ".....RUN!";
     }
     public void setAction(){
         actionLockCount++;

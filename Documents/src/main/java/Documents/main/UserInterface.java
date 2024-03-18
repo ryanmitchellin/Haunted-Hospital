@@ -95,10 +95,10 @@ public class UserInterface {
 
 		drawSubWindow(x, y, width, height);
 
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 80F));
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32F));
 		x += gp.tileSize;
 		y += gp.tileSize;
-		g2.drawString(currentDialogue, x, y);
+		//g2.drawString(currentDialogue, x, y);
 
 		for(String line: currentDialogue.split("\n")){
 			g2.drawString(line, x, y);
@@ -111,6 +111,7 @@ public class UserInterface {
 		g2.fillRoundRect(x, y, width, height, 35, 35);
 
 		c = new Color(255,255,255);
+		g2.setColor(c);
 		g2.setStroke(new BasicStroke(5));
 		g2.drawRoundRect(x+5, y+5, width-10, height-10, 25, 25);
 	}

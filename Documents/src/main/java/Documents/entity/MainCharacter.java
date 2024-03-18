@@ -62,7 +62,7 @@ public class MainCharacter extends Entity {
 	}
 
 	//method update for player movement depending on the keypressed
-	public void move() {
+	public void update() {
 		if(keyControl.upPressed == true || keyControl.downPressed == true ||
 			keyControl.leftPressed == true || keyControl.rightPressed == true) {
 			if(keyControl.upPressed == true) {

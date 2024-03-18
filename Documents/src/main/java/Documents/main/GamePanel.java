@@ -4,7 +4,6 @@ import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
 import Documents.entity.Entity;
 
-
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -114,7 +113,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void update() {
 		if(gameState == playState) {
 			//movement for the character
-			mainCharacter.move();
+			mainCharacter.update();
 
 			//npc
 			for(int i = 0; i < npc.length; i++){
