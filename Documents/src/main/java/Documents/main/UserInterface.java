@@ -24,6 +24,7 @@ public class UserInterface {
 	public String currentDialogue = "";
 	double gameTime;
 	DecimalFormat dFormat = new DecimalFormat("#0.00");
+	public int commandingNumber = 0;
 
 
 	public UserInterface(GamePanel gp) {
@@ -110,13 +111,27 @@ public class UserInterface {
 
 		text = "NEW GAME";
 		x = getXCenterText(text);
-		y += gp.tileSize;
+		y += gp.tileSize*4;
 		g2.drawString(text,x,y);
+		if (commandingNumber == 0) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
 
 		text = "LOAD GAME";
 		x = getXCenterText(text);
 		y += gp.tileSize;
 		g2.drawString(text, x, y);
+		if (commandingNumber == 1) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+
+		text = "QUIT";
+		x = getXCenterText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if (commandingNumber == 2) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
 	}
 
 	public void drawPauseScreen() {
