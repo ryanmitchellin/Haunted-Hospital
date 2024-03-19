@@ -75,11 +75,17 @@ public class SetAsset {
 		gp.monster[0] = new Ghost(gp);
 		gp.monster[0].wxPos = gp.tileSize*30 - gp.tileSize/2;
 		gp.monster[0].wyPos = gp.tileSize*30 - gp.tileSize/2;
+		gp.monster[0].vel = 1;
+		gp.monster[1] = new Ghost(gp);
+		gp.monster[1].wxPos = gp.tileSize*10 - gp.tileSize/2;
+		gp.monster[1].wyPos = gp.tileSize*5 - gp.tileSize/2;
+		gp.monster[1].vel = 2;
 	}
+	
 
 	public void setDemon() {
-		gp.monster[1] = new Demon(gp);
-		gp.monster[1].wxPos = gp.tileSize*22 - gp.tileSize/2;
-		gp.monster[1].wyPos = gp.tileSize*18 - gp.tileSize/2;
+		gp.monster[2] = new Demon(gp);
+		gp.monster[2].wxPos = gp.tileSize*22 - gp.tileSize/2;
+		gp.monster[2].wyPos = gp.tileSize*18 - gp.tileSize/2;
 	}
 }

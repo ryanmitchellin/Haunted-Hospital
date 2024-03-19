@@ -1,6 +1,9 @@
 package Documents.entity;
 
 import Documents.main.GamePanel;
+
+import java.util.Random;
+
 import Documents.entity.MainCharacter;
 
 public class Ghost extends Monster {
@@ -10,7 +13,7 @@ public class Ghost extends Monster {
         
 
         direction = "down";
-        vel = 1;
+        this.vel = 1;
 
         getGhostImage();
      
@@ -36,21 +39,23 @@ public class Ghost extends Monster {
         int mainX = gp.mainCharacter.getMainWxPos();
         int mainY = gp.mainCharacter.getMainWyPos();
 
-        int distance = Math.abs(mainX - this.wxPos) + Math.abs(mainY - this.wyPos);
+        int distance = Math.abs(mainX - wxPos) + Math.abs(mainY - wyPos);
 
-        if(distance>(Math.abs(mainX-(this.wxPos+1))+Math.abs(mainY-(this.wyPos)))){
-            this.wxPos += this.vel;
+        if(distance>(Math.abs(mainX-(wxPos+vel))+Math.abs(mainY-(wyPos)))){
+            wxPos += vel;
         }
-        else if(distance>(Math.abs(mainX-(this.wxPos-1))+Math.abs(mainY-(this.wyPos)))){
-            this.wxPos -= this.vel;
+        else if(distance>(Math.abs(mainX-(wxPos-vel))+Math.abs(mainY-(wyPos)))){
+            wxPos -= vel;
         }
 
-        if(distance>(Math.abs(mainX-(this.wxPos))+Math.abs(mainY-(this.wyPos+1)))){
-            this.wyPos += this.vel;
+        if(distance>(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos+vel)))){
+            wyPos += vel;
         }
-        else if(distance>(Math.abs(mainX-(this.wxPos))+Math.abs(mainY-(this.wyPos-1)))){
-            this.wyPos -= this.vel;
+        else if(distance>(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos-vel)))){
+            wyPos -= vel;
         }
+        
+   
     
         //animation
         //the move() method gets called 60 times per second

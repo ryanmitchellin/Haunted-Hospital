@@ -101,7 +101,10 @@ public class GamePanel extends JPanel implements Runnable{
 	public void setGame() {
 		setAsset.setObj();
 		// setAsset.setNpc();
+		
 		setAsset.setGhost();
+		
+		
 		// setAsset.setDemon();
 
 		//map 1 music
@@ -215,6 +218,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 
 			for(int i = 0; i < monster.length; i++){
+				
 				if(monster[i]!=null){
 					monster[i].draw(g2);
 				}

@@ -49,8 +49,8 @@ public class MainCharacter extends Entity {
 		detectionDefaultX = detectionArea.x;
 		detectionDefaultY = detectionArea.y;
 
-		detectionArea.width = 30;
-		detectionArea.height = 30;
+		detectionArea.width = 28;
+		detectionArea.height = 28;
 
 		settingDefaultValue();
 		getMainCharacterImg();
@@ -69,7 +69,7 @@ public class MainCharacter extends Entity {
 	public void settingDefaultValue() {
 		wxPos = gp.tileSize * 20 - gp.tileSize/2;
 		wyPos = gp.tileSize * 18 - gp.tileSize/2;
-		vel = 4;
+		vel = 6;
 
 		direction = "down";
 	}
