@@ -73,8 +73,6 @@ public class Pathfinding {
             // Set Solid NOde
             // Check tiles
             int tileNum = gp.tileFactory.tileMapNum[column][row];
-            System.out.println("TileNum:"+ tileNum);
-            System.out.println("TileNum:"+ row);
             if (gp.tileFactory.getTile(tileNum).collision == true) {
                 System.out.println("checked that there is a solid tile");
                 node[column][row].solid = true;
