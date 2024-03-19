@@ -77,6 +77,9 @@ public class Pathfinding {
                 System.out.println("checked that there is a solid tile");
                 node[column][row].solid = true;
             }
+            // if (gp.tileFactory.getTile(tileNum).collision == false) {
+            //     System.out.println("checked that there is no solid tile");
+            // }
 
             // Set Cost
             getCost(node[column][row]);
