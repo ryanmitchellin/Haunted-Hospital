@@ -21,18 +21,18 @@ public class SetAsset {
 	GamePanel gp;
 
 	/**
-	 * Constructs a SetAsset object with the specified GamePanel instance.
-	 * @param gp The GamePanel instance to associate with the SetAsset object.
-	 */
+     * Constructs a SetAsset object with the specified GamePanel instance.
+     * @param gp The GamePanel instance to associate with the SetAsset object.
+     */
 	public SetAsset (GamePanel gp) {
 		this.gp = gp;
 
 	}
 
 	/**
-	 * Initializes the key cards and door objects in the game.
-	 * Sets their world positions based on tile coordinates.
-	 */
+     * Initializes the key cards and door objects in the game.
+     * Sets their world positions based on tile coordinates.
+     */
 	public void setObj() {
 		//setting the keycard information that will be displayed on screen
 		//setting the keycard information that will be displayed on screen
@@ -73,7 +73,7 @@ public class SetAsset {
 
 	}
 
-	public void setGhost() {
+	public void setGhost() { 
 		gp.monster[0] = new Ghost(gp);
 		gp.monster[0].wxPos = gp.tileSize*30 - gp.tileSize/2;
 		gp.monster[0].wyPos = gp.tileSize*30 - gp.tileSize/2;
@@ -83,7 +83,7 @@ public class SetAsset {
 		gp.monster[1].wyPos = gp.tileSize*5 - gp.tileSize/2;
 		gp.monster[1].vel = 2;
 	}
-
+	
 	public void setTraps(){
 		gp.obj[6] = new Bloodstain(gp);
 		gp.obj[6].worldX = 15*gp.tileSize;

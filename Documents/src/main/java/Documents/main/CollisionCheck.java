@@ -203,7 +203,7 @@ public class CollisionCheck {
 		return index;
 	}
 
-	public boolean playerCheck(Entity entity){
+	public void playerCheck(Entity entity){
 		//get Entity's detection area pos
 		entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
 		entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
@@ -242,6 +242,5 @@ public class CollisionCheck {
 		entity.detectionArea.y = entity.detectionDefaultY;
 		gp.mainCharacter.detectionArea.x = gp.mainCharacter.detectionDefaultX;
 		gp.mainCharacter.detectionArea.y = gp.mainCharacter.detectionDefaultY;
-		return entity.isCollision;
 	}
 }
