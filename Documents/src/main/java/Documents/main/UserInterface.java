@@ -30,7 +30,8 @@ public class UserInterface {
 	public String msg = "";
 	public boolean gameDone = false;
 	public String currentDialogue = "";
-	double gameTime;
+	public static double gameTime;
+	public static double score = 100;
 	DecimalFormat dFormat = new DecimalFormat("#0.00");
 	public int commandingNumber = 0;
 
@@ -73,6 +74,7 @@ public class UserInterface {
 			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 4", 74, 50);
 			gameTime += (double)1/60;
 			g2.drawString("Time:" + dFormat.format(gameTime), gp.tileSize*11, 50);
+			g2.drawString("Score:" + dFormat.format((int) (score-gameTime)), gp.tileSize*11, 100);
 
 			//displaying message
 			if(printMessage == true) {
