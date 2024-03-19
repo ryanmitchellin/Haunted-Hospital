@@ -1,4 +1,5 @@
 package Documents.main;
+import Documents.SearchAI.Pathfinding;
 import Documents.entity.MainCharacter;
 import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
@@ -9,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.nio.file.Path;
 
 /**
  * The main panel for the maze managing the game logic and rendering the maze.
@@ -61,6 +63,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
+	public Pathfinding pFinder = new Pathfinding(this);
 	
 	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
