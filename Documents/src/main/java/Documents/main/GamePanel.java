@@ -102,7 +102,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setAsset.setObj();
 		// setAsset.setNpc();
 		
-		// setAsset.setGhost();
+		setAsset.setGhost();
 		
 		setAsset.setTraps();
 		
