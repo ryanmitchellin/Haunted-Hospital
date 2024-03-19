@@ -9,23 +9,18 @@ public class Monster extends Entity{
 
     }
 
-    
+
     public void update() {
-
-        //checking collision with the wall tile
-        isCollision = false;
-        gp.checkCollision.tileCheck(this);
-
-        //if its false, character can move else cannot
-        if(isCollision == false) {
-            switch(direction) {
+        super.update();
+        //if(isCollision == false) {
+        switch(direction) {
             case "up": this.wyPos -= this.vel; break;
             case "down": this.wyPos += this.vel; break;
             case "left": this.wxPos -= this.vel; break;
             case "right": this.wxPos += this.vel; break;
-            }
         }
-
+        // }
+        //checking collision with the wall tile
         //animation
         //the move() method gets called 60 times per second
         //the spritecount gets increments 1 per frame and every 20 frames the sprite image change
@@ -38,10 +33,6 @@ public class Monster extends Entity{
             }
             spriteCount = 0;
         }
-		
-	}
 
-
-
-
+    }
 }
