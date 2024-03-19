@@ -29,6 +29,7 @@ public class MainCharacter extends Entity {
     /** The number of keys the character currently holds. */
     public int keyNum = 0;
 
+	int stall = 0;
 	/**
      * Constructs a MainCharacter object with the specified GamePanel and KeyControl instances.
      * @param gp The GamePanel instance.
@@ -122,14 +123,19 @@ public class MainCharacter extends Entity {
  
 			//if its false, character can move else cannot
 			if(isCollision == false) {
-				switch(direction) {
-				case "up": this.wyPos -= this.vel; break;
-				case "down": this.wyPos += this.vel; break;
-				case "left": this.wxPos -= this.vel; break;
-				case "right": this.wxPos += this.vel; break;
+				if(stall==0){
+					switch(direction) {
+					case "up": this.wyPos -= this.vel; break;
+					case "down": this.wyPos += this.vel; break;
+					case "left": this.wxPos -= this.vel; break;
+					case "right": this.wxPos += this.vel; break;
+					}
 				}
 			}
 
+			if(stall!=0){
+				stall -=1;
+			}
 			//animation
 			//the move() method gets called 60 times per second
 			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
@@ -178,6 +184,11 @@ public class MainCharacter extends Entity {
 				gp.musicStop();
 				//gp.soundEffectObj();
 				break;
+			case "bloodstain":
+				stall = 40;
+
+				
+				gp.obj[i] = null;
 			}
 			
 		}
