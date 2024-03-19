@@ -1,4 +1,5 @@
 package Documents.main;
+import Documents.SearchAI.Pathfinding;
 import Documents.entity.MainCharacter;
 import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
@@ -62,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable{
 	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
 	
-	public PathFinding pFinder = new PathFfinding(this);
+	public Pathfinding pFinder = new Pathfinding(this);
 	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
 	
