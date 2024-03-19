@@ -188,14 +188,14 @@ public class MainCharacter extends Entity {
 				//gp.soundEffectObj();
 				break;
 			case "bloodstain":
-				UserInterface.score += 10;
+				UserInterface.score -= 10;
 				stall = 40;
-
-				
 				gp.obj[i] = null;
+				break;
 			case "candy":
-				UserInterface.score -= 20;
+				UserInterface.score += 20;
 				gp.obj[i] = null;
+				break;
 			}
 		}
 	}
