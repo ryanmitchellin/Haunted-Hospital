@@ -21,7 +21,7 @@ public class TileFactory {
 	Tile[] tiles;
 
     /** 2D array for the tile map. */
-	int tileMapNum[][];
+	public int tileMapNum[][];
 
 	/**
      * Constructs a TileFactory object with the specified GamePanel.
