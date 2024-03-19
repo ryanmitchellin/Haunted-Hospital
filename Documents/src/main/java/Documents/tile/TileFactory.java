@@ -136,7 +136,7 @@ public class TileFactory {
      * @return The tile map number at the specified column and row.
      */
     public int getTileMapNum(int col, int row) {
-         return tileMapNum[col][row];
+        return tileMapNum[col][row];
     }
 
 	/**

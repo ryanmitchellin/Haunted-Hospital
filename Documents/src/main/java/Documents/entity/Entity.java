@@ -79,6 +79,7 @@ public class Entity {
 		this.gp = gp;
 	}
 
+
 	public void setAction(){}
 	public void speak(){
 		 if(dialogues[dialogueIndex] == null){

@@ -24,10 +24,10 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile
 	
 	/** The number of columns in the screen. (4 : 3 by default) */
-	public final int maxCol = 24;
+	public final int maxCol = 16;
 
 	/** The number of rows in the screen. (4 : 3 by default) */
-	public final int maxRow = 18;
+	public final int maxRow = 12;
 
 	/** The width of the screen. */
 	public final int screenWidth = tileSize * maxCol; // Width of the screen : 1152 pixels
@@ -100,8 +100,9 @@ public class GamePanel extends JPanel implements Runnable{
      */
 	public void setGame() {
 		setAsset.setObj();
-		setAsset.setNpc();
-		setAsset.setMonster();
+		// setAsset.setNpc();
+		setAsset.setGhost();
+		// setAsset.setDemon();
 
 		//map 1 music
 		musicPlay(0);
@@ -166,6 +167,12 @@ public class GamePanel extends JPanel implements Runnable{
 					npc[i].update();
 				}
 			}
+			for(int i = 0; i < monster.length; i++){
+				if(monster[i] != null){
+				
+					monster[i].update();
+				}
+			}
 		}
 		if(gameState == stopState) {
 			
@@ -204,6 +211,12 @@ public class GamePanel extends JPanel implements Runnable{
 			for(int i = 0; i < npc.length; i++){ //XXX
 				if(npc[i] != null) {
 					npc[i].draw(g2);
+				}
+			}
+
+			for(int i = 0; i < monster.length; i++){
+				if(monster[i]!=null){
+					monster[i].draw(g2);
 				}
 			}
 

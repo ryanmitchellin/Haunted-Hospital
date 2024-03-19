@@ -49,13 +49,20 @@ public class MainCharacter extends Entity {
 		detectionDefaultX = detectionArea.x;
 		detectionDefaultY = detectionArea.y;
 
-		detectionArea.width = 32;
-		detectionArea.height = 32;
+		detectionArea.width = 30;
+		detectionArea.height = 30;
 
 		settingDefaultValue();
 		getMainCharacterImg();
 	}
 
+	public int getMainWxPos(){
+		return wxPos;
+	}
+
+	public int getMainWyPos(){
+		return wyPos;
+	}
 	/**
      * Initializes the default values for the character.
      */
