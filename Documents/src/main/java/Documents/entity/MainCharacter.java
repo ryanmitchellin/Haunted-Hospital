@@ -49,8 +49,8 @@ public class MainCharacter extends Entity {
 		detectionDefaultX = detectionArea.x;
 		detectionDefaultY = detectionArea.y;
 
-		detectionArea.width = 28;
-		detectionArea.height = 28;
+		detectionArea.width = 26;
+		detectionArea.height = 26;
 
 		settingDefaultValue();
 		getMainCharacterImg();
