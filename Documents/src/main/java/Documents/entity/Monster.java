@@ -9,7 +9,7 @@ public class Monster extends Entity{
 
     }
 
-    
+
     public void update() {
 
         //checking collision with the wall tile
@@ -19,10 +19,10 @@ public class Monster extends Entity{
         //if its false, character can move else cannot
         if(isCollision == false) {
             switch(direction) {
-            case "up": this.wyPos -= this.vel; break;
-            case "down": this.wyPos += this.vel; break;
-            case "left": this.wxPos -= this.vel; break;
-            case "right": this.wxPos += this.vel; break;
+                case "up": this.wyPos -= this.vel; break;
+                case "down": this.wyPos += this.vel; break;
+                case "left": this.wxPos -= this.vel; break;
+                case "right": this.wxPos += this.vel; break;
             }
         }
 
@@ -38,10 +38,7 @@ public class Monster extends Entity{
             }
             spriteCount = 0;
         }
-		
-	}
 
-
-
+    }
 
 }

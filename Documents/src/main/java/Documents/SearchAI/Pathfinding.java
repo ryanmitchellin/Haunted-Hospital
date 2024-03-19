@@ -6,14 +6,15 @@ import java.util.ArrayList;
 public class Pathfinding {
     GamePanel gp;
     Node[][] node;
-    ArrayList<Node> openList = new ArrayList<Node>();
-    public ArrayList<Node> pathList = new ArrayList<Node>();
+    ArrayList<Node> openList = new ArrayList<>();
+    public ArrayList<Node> pathList = new ArrayList<>();
     Node startNode, goalNode, currentNode;
     boolean goalReached = false;
     int step = 0;
 
     public Pathfinding(GamePanel gp) {
         this.gp = gp;
+        instantiateNodes(); //potential error #1
     }
     public void instantiateNodes() {
         node = new Node[gp.maxWCol][gp.maxWRow];
@@ -55,7 +56,7 @@ public class Pathfinding {
         goalReached = false;
         step = 0;
     }
-    public void setNode(int startCol, int startRow, int goalCol, int goalRow, Entity entity) {
+    public void setNode(int startCol, int startRow, int goalCol, int goalRow) {
         resetNodes();
 
         // Set Start and Goal node
@@ -71,8 +72,11 @@ public class Pathfinding {
 
             // Set Solid NOde
             // Check tiles
-            int tileNum = gp.tileM.mapTileNum[gp.currentMap][column][row];
-            if (gp.tileMapNum.tile[tileNum].collision == true) {
+            int tileNum = gp.tileFactory.tileMapNum[column][row];
+            System.out.println("TileNum:"+ tileNum);
+            System.out.println("TileNum:"+ row);
+            if (gp.tileFactory.getTile(tileNum).collision == true) {
+                System.out.println("checked that there is a solid tile");
                 node[column][row].solid = true;
             }
 

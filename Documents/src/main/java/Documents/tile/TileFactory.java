@@ -17,16 +17,16 @@ public class TileFactory {
 	/** The GamePanel instance associated with the tile factory. */
 	GamePanel gp;
 
-    /** Array for the tiles. */
+	/** Array for the tiles. */
 	Tile[] tiles;
 
-    /** 2D array for the tile map. */
-	int tileMapNum[][];
+	/** 2D array for the tile map. */
+	public int tileMapNum[][];
 
 	/**
-     * Constructs a TileFactory object with the specified GamePanel.
-     * @param gp The GamePanel instance.
-     */
+	 * Constructs a TileFactory object with the specified GamePanel.
+	 * @param gp The GamePanel instance.
+	 */
 	public TileFactory(GamePanel gp) {
 		this.gp = gp;
 		tiles = new Tile[50];
@@ -37,8 +37,8 @@ public class TileFactory {
 	}
 
 	/**
-     * Loads tile images from resources folder.
-     */
+	 * Loads tile images from resources folder.
+	 */
 	public void gettingTileImg() {
 		setup(0, "voidspace", false);
 		setup(1, "rightsideWallEnd", true);
@@ -63,29 +63,29 @@ public class TileFactory {
 		setup(20, "rightsideWall", true);
 		setup(21, "cornerLeftBottomToup", true);
 
-		
+
 	}
 	public void setup(int i, String imgPath,boolean collision) {
 		UtilityTools tools = new UtilityTools();
 		try {
 			tiles[i] = new Tile();
-		    BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imgPath + ".png"));
-		    //ensure the image supports alpha (transparency)
-		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
-		    Graphics2D g2 = newImg.createGraphics();
-		    g2.drawImage(originalImage, 0, 0, gp.tileSize, gp.tileSize, null);
-		    g2.dispose();
-		    tiles[i].image = newImg;
-		    tiles[i].collision = collision;
+			BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imgPath + ".png"));
+			//ensure the image supports alpha (transparency)
+			BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2 = newImg.createGraphics();
+			g2.drawImage(originalImage, 0, 0, gp.tileSize, gp.tileSize, null);
+			g2.dispose();
+			tiles[i].image = newImg;
+			tiles[i].collision = collision;
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-     * Loads a map from a text file.
-     * @param fileName The name of the file containing the map.
-     */
+	 * Loads a map from a text file.
+	 * @param fileName The name of the file containing the map.
+	 */
 	public void loadingMap(String fileName) {
 		try {
 			InputStream is = getClass().getResourceAsStream(fileName);
@@ -112,7 +112,7 @@ public class TileFactory {
 					//go to next row if the col is maxed
 					row++;
 				}
-			}	
+			}
 
 
 		}catch(Exception e) {
@@ -120,29 +120,29 @@ public class TileFactory {
 		}
 	}
 
-    /**
-     * Gets a tile at the specified index.
-     * @param index The index of the tile.
-     * @return The tile at the specified index.
-     */
-    public Tile getTile(int index) {
-        return tiles[index];
-    }
+	/**
+	 * Gets a tile at the specified index.
+	 * @param index The index of the tile.
+	 * @return The tile at the specified index.
+	 */
+	public Tile getTile(int index) {
+		return tiles[index];
+	}
 
 	/**
-     * Gets the tile map number at the specified column and row.
-     * @param col The column index.
-     * @param row The row index.
-     * @return The tile map number at the specified column and row.
-     */
-    public int getTileMapNum(int col, int row) {
-        return tileMapNum[col][row];
-    }
+	 * Gets the tile map number at the specified column and row.
+	 * @param col The column index.
+	 * @param row The row index.
+	 * @return The tile map number at the specified column and row.
+	 */
+	public int getTileMapNum(int col, int row) {
+		return tileMapNum[col][row];
+	}
 
 	/**
-     * Draws the tiles inside the maze.
-     * @param g2 The graphics context.
-     */
+	 * Draws the tiles inside the maze.
+	 * @param g2 The graphics context.
+	 */
 	public void draw(Graphics2D g2) {
 		int column = 0;
 		int row = 0;
@@ -159,9 +159,9 @@ public class TileFactory {
 
 			//checking if the tile is within the boundary
 			if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
-			   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-			   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-			   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+					worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
+					worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
+					worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
 				g2.drawImage(tiles[tileNum].image, screenX, screenY, null);
 			}
 			column++;
