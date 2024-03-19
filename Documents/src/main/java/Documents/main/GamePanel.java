@@ -69,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	
 	/** The array of objects in the maze. */
-	public ObjectFactory obj[] = new ObjectFactory[10];
+	public ObjectFactory obj[] = new ObjectFactory[20];
 
 	public Entity npc[] = new Entity[10];
 
@@ -104,6 +104,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		setAsset.setGhost();
 		
+		setAsset.setTraps();
 		
 		// setAsset.setDemon();
 

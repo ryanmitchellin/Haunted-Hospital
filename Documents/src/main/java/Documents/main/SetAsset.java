@@ -9,6 +9,7 @@ import Documents.entity.Npc;
 import Documents.entity.Ghost;
 import Documents.entity.Demon;
 import Documents.object.Bloodstain;
+import Documents.object.Candy;
 
 
 /**
@@ -87,6 +88,22 @@ public class SetAsset {
 		gp.obj[6] = new Bloodstain(gp);
 		gp.obj[6].worldX = 15*gp.tileSize;
 		gp.obj[6].worldY = 23*gp.tileSize;
+		gp.obj[7] = new Bloodstain(gp);
+		gp.obj[7].worldX = 20*gp.tileSize;
+		gp.obj[7].worldY = 13*gp.tileSize;
+		gp.obj[8] = new Bloodstain(gp);
+		gp.obj[8].worldX = 24*gp.tileSize;
+		gp.obj[8].worldY = 16*gp.tileSize;
+		gp.obj[9] = new Bloodstain(gp);
+		gp.obj[9].worldX = 32*gp.tileSize;
+		gp.obj[9].worldY = 6*gp.tileSize;
+	}
+
+	public void setReward(){
+		gp.obj[10] = new Candy(gp);
+		gp.obj[10].worldX = 31*gp.tileSize;
+		gp.obj[10].worldY = 6*gp.tileSize;
+
 	}
 
 	public void setDemon() {
