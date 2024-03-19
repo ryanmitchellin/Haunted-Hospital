@@ -6,8 +6,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.Rectangle;
 import javax.imageio.ImageIO;
 import java.io.IOException;
+
+import Documents.SearchAI.Pathfinding;
 import Documents.main.GamePanel;
 import Documents.main.UtilityTools;
+
 
 /**
  * Represents an entity inside the maze.
@@ -52,7 +55,7 @@ public class Entity {
 	/** The direction of the entity facing into. */
     public String direction;
 	/** Indicates if the Entities are on a path towards the main character. */
-	public boolean onPath = false;
+	//public boolean onPath = false; wait this might be for NPC
 
     /** The count of sprites for the entity's movement animation. */
     public int spriteCount = 0;
@@ -198,5 +201,28 @@ public class Entity {
 			e.printStackTrace();
 		}
 		return img;
+	}
+	public void searchPath(int goalColumn, int goalRow) {
+		int startColumn = (wxPos + detectionArea.x)/gp.tileSize;
+		int startRow = (wxPos + detectionArea.y)/gp.tileSize;
+
+		gp.pFinder.setNode(startColumn, startRow, goalColumn, goalRow);
+
+		if(gp.pFinder.search() == true) {
+
+			// Next wxPos and wyPos
+			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;
+			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
+
+			// Entity's solidArea position
+			int enLeftX = wxPos + detectionArea.x;
+			int enRightX = wxPos + detectionArea.x + detectionArea.width;
+			int enTopY = wyPos + detectionArea.y;
+			int enBottomY = wyPos + detectionArea.y + detectionArea.height;
+
+			if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+				//implement further
+			}
+		}
 	}
 }
