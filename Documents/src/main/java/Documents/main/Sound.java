@@ -17,8 +17,8 @@ public class Sound {
 	URL soundURL[] = new URL[20];
 
 	/**
-     * Constructs a Sound object and initializes the URLs for the sound files.
-     */
+	 * Constructs a Sound object and initializes the URLs for the sound files.
+	 */
 	public Sound() {
 		soundURL[0] = getClass().getResource("/sound/map1.wav");
 		soundURL[1] = getClass().getResource("/sound/collectkey.wav");
@@ -26,9 +26,9 @@ public class Sound {
 	}
 
 	/**
-     * Loads the audio file specified by the index i.
-     * @param i The index of the sound file to load.
-     */
+	 * Loads the audio file specified by the index i.
+	 * @param i The index of the sound file to load.
+	 */
 	public void fileSet(int i) {
 		try {
 			AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
@@ -40,22 +40,22 @@ public class Sound {
 	}
 
 	/**
-     * Starts playing the loaded audio file.
-     */
+	 * Starts playing the loaded audio file.
+	 */
 	public void play() {
 		clip.start();
 	}
 
 	/**
-     * Loops the loaded audio file continuously.
-     */
+	 * Loops the loaded audio file continuously.
+	 */
 	public void loop() {
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
 	/**
-     * Stops playing the audio file.
-     */
+	 * Stops playing the audio file.
+	 */
 	public void stop() {
 		clip.stop();
 	}
