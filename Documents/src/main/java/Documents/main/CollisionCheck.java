@@ -12,17 +12,18 @@ public class CollisionCheck {
 	GamePanel gp;
 
 	/**
-     * Constructs a CollisionCheck object with the specified GamePanel.
-     * @param gp The GamePanel instance.
-     */
+	 * Constructs a CollisionCheck object with the specified GamePanel.
+	 * @param gp The GamePanel instance.
+	 */
 	public CollisionCheck(GamePanel gp) {
 		this.gp = gp;
 	}
 
 	/**
-     * Checks for collisions between an entity and tiles.
-     * @param entity The entity to check collisions for.
-     */
+	 * Checks for collisions between an enti
+	 * ty and tiles.
+	 * @param entity The entity to check collisions for.
+	 */
 	public void tileCheck(Entity entity) {
 		if(!(entity instanceof Ghost)){
 			int left = entity.wxPos + entity.detectionArea.x;
@@ -38,48 +39,48 @@ public class CollisionCheck {
 			int tile1, tile2;
 
 			switch(entity.direction) {
-			case "up":
-				topRow = (top - entity.vel)/gp.tileSize;
-				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
-				tile2 = gp.tileFactory.getTileMapNum(rightCol, topRow);
-				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
-					entity.isCollision = true;
-				}
-				break;
-			case "down":
-				bottomRow = (bottom + entity.vel)/gp.tileSize;
-				tile1 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
-				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
-				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
-					entity.isCollision = true;
-				}
-				break;
-			case "left":
-				leftCol = (left - entity.vel)/gp.tileSize;
-				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
-				tile2 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
-				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
-					entity.isCollision = true;
-				}
-				break;
-			case "right":
-				rightCol = (right + entity.vel)/gp.tileSize;
-				tile1 = gp.tileFactory.getTileMapNum(rightCol, topRow);
-				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
-				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
-					entity.isCollision = true;
-				}
-				break;
-			} 
+				case "up":
+					topRow = (top - entity.vel)/gp.tileSize;
+					tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
+					tile2 = gp.tileFactory.getTileMapNum(rightCol, topRow);
+					if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
+						entity.isCollision = true;
+					}
+					break;
+				case "down":
+					bottomRow = (bottom + entity.vel)/gp.tileSize;
+					tile1 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
+					tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
+					if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
+						entity.isCollision = true;
+					}
+					break;
+				case "left":
+					leftCol = (left - entity.vel)/gp.tileSize;
+					tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
+					tile2 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
+					if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
+						entity.isCollision = true;
+					}
+					break;
+				case "right":
+					rightCol = (right + entity.vel)/gp.tileSize;
+					tile1 = gp.tileFactory.getTileMapNum(rightCol, topRow);
+					tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
+					if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
+						entity.isCollision = true;
+					}
+					break;
+			}
 		}
 	}
 
 	/**
-     * Checks for collisions between an entity and objects.
-     * @param entity The entity to check collisions for.
-     * @param mainChar Indicates whether the entity is the main character.
-     * @return The index of the object with which the entity collides.
-     */
+	 * Checks for collisions between an entity and objects.
+	 * @param entity The entity to check collisions for.
+	 * @param mainChar Indicates whether the entity is the main character.
+	 * @return The index of the object with which the entity collides.
+	 */
 	public int objCheck(Entity entity, boolean mainChar) {
 		int index = 999;
 
@@ -94,50 +95,50 @@ public class CollisionCheck {
 				gp.obj[i].detectionArea.y = gp.obj[i].worldY + gp.obj[i].detectionArea.y;
 
 				switch(entity.direction) {
-				case "up":
-					entity.detectionArea.y -= entity.vel;
-					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
-						if(gp.obj[i].isCollision == true) {
-							entity.isCollision = true;
+					case "up":
+						entity.detectionArea.y -= entity.vel;
+						if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
+							if(gp.obj[i].isCollision == true) {
+								entity.isCollision = true;
+							}
+							if(mainChar == true) {
+								index = i;
+							}
 						}
-						if(mainChar == true) {
-							index = i;
+						break;
+					case "down":
+						entity.detectionArea.y += entity.vel;
+						if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
+							if(gp.obj[i].isCollision == true) {
+								entity.isCollision = true;
+							}
+							if(mainChar == true) {
+								index = i;
+							}
 						}
-					}
-					break;
-				case "down":
-					entity.detectionArea.y += entity.vel;
-					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
-						if(gp.obj[i].isCollision == true) {
-							entity.isCollision = true;
+						break;
+					case "left":
+						entity.detectionArea.x -= entity.vel;
+						if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
+							if(gp.obj[i].isCollision == true) {
+								entity.isCollision = true;
+							}
+							if(mainChar == true) {
+								index = i;
+							}
 						}
-						if(mainChar == true) {
-							index = i;
+						break;
+					case "right":
+						entity.detectionArea.x += entity.vel;
+						if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
+							if(gp.obj[i].isCollision == true) {
+								entity.isCollision = true;
+							}
+							if(mainChar == true) {
+								index = i;
+							}
 						}
-					}
-					break;
-				case "left":
-					entity.detectionArea.x -= entity.vel;
-					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
-						if(gp.obj[i].isCollision == true) {
-							entity.isCollision = true;
-						}
-						if(mainChar == true) {
-							index = i;
-						}
-					}
-					break;
-				case "right":
-					entity.detectionArea.x += entity.vel;
-					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
-						if(gp.obj[i].isCollision == true) {
-							entity.isCollision = true;
-						}
-						if(mainChar == true) {
-							index = i;
-						}
-					}
-					break;
+						break;
 				}
 				entity.detectionArea.x = entity.detectionDefaultX;
 				entity.detectionArea.y = entity.detectionDefaultY;
@@ -164,34 +165,34 @@ public class CollisionCheck {
 				target[i].detectionArea.y = target[i].wyPos + target[i].detectionArea.y;
 
 				switch(entity.direction) {
-				case "up":
-					entity.detectionArea.y -= entity.vel;
-					if(entity.detectionArea.intersects(target[i].detectionArea)) {
+					case "up":
+						entity.detectionArea.y -= entity.vel;
+						if(entity.detectionArea.intersects(target[i].detectionArea)) {
 							entity.isCollision = true;
 							index = i;
-					}
-					break;
-				case "down":
-					entity.detectionArea.y += entity.vel;
-					if(entity.detectionArea.intersects(target[i].detectionArea)) {
-						entity.isCollision = true;
+						}
+						break;
+					case "down":
+						entity.detectionArea.y += entity.vel;
+						if(entity.detectionArea.intersects(target[i].detectionArea)) {
+							entity.isCollision = true;
 							index = i;
-					}
-					break;
-				case "left":
-					entity.detectionArea.x -= entity.vel;
-					if(entity.detectionArea.intersects(target[i].detectionArea)) {
-						entity.isCollision = true;
+						}
+						break;
+					case "left":
+						entity.detectionArea.x -= entity.vel;
+						if(entity.detectionArea.intersects(target[i].detectionArea)) {
+							entity.isCollision = true;
 							index = i;
-					}
-					break;
-				case "right":
-					entity.detectionArea.x += entity.vel;
-					if(entity.detectionArea.intersects(target[i].detectionArea)) {
-						entity.isCollision = true;
+						}
+						break;
+					case "right":
+						entity.detectionArea.x += entity.vel;
+						if(entity.detectionArea.intersects(target[i].detectionArea)) {
+							entity.isCollision = true;
 							index = i;
-					}
-					break;
+						}
+						break;
 				}
 				entity.detectionArea.x = entity.detectionDefaultX;
 				entity.detectionArea.y = entity.detectionDefaultY;
@@ -213,30 +214,30 @@ public class CollisionCheck {
 		gp.mainCharacter.detectionArea.y = gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y;
 
 		switch(entity.direction) {
-		case "up":
-			entity.detectionArea.y -= entity.vel;
-			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
+			case "up":
+				entity.detectionArea.y -= entity.vel;
+				if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 					entity.isCollision = true;
-			}
-			break;
-		case "down":
-			entity.detectionArea.y += entity.vel;
-			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
-				entity.isCollision = true;
-			}
-			break;
-		case "left":
-			entity.detectionArea.x -= entity.vel;
-			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
-				entity.isCollision = true;
-			}
-			break;
-		case "right":
-			entity.detectionArea.x += entity.vel;
-			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
-				entity.isCollision = true;
-			}
-			break;
+				}
+				break;
+			case "down":
+				entity.detectionArea.y += entity.vel;
+				if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
+					entity.isCollision = true;
+				}
+				break;
+			case "left":
+				entity.detectionArea.x -= entity.vel;
+				if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
+					entity.isCollision = true;
+				}
+				break;
+			case "right":
+				entity.detectionArea.x += entity.vel;
+				if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
+					entity.isCollision = true;
+				}
+				break;
 		}
 		entity.detectionArea.x = entity.detectionDefaultX;
 		entity.detectionArea.y = entity.detectionDefaultY;
