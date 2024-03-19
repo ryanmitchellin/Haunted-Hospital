@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
-
+import Documents.main.UserInterface;
 /**
  * Represents the main character in the maze, extending the Entity class.
  */
@@ -121,6 +121,9 @@ public class MainCharacter extends Entity {
 			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);
 			interactMob(mobIndex);
  
+			if((int)(UserInterface.score-UserInterface.gameTime)<=0){
+				gp.gameState = gp.stopState;
+			}
 			//if its false, character can move else cannot
 			if(isCollision == false) {
 				if(stall==0){
@@ -185,12 +188,15 @@ public class MainCharacter extends Entity {
 				//gp.soundEffectObj();
 				break;
 			case "bloodstain":
+				UserInterface.score += 10;
 				stall = 40;
 
 				
 				gp.obj[i] = null;
+			case "candy":
+				UserInterface.score -= 20;
+				gp.obj[i] = null;
 			}
-			
 		}
 	}
 
