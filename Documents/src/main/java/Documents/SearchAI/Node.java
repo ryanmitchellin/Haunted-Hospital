@@ -1,7 +1,7 @@
 package Documents.SearchAI;
 
 public class Node {
-    Node parent; // would this be Node head?
+    Node parent;
     public int column;
     public int row;
     int gCost;
