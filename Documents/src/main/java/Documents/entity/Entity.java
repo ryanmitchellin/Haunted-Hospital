@@ -55,7 +55,7 @@ public class Entity {
 	/** The direction of the entity facing into. */
     public String direction;
 	/** Indicates if the Entities are on a path towards the main character. */
-	//public boolean onPath = false; wait this might be for NPC
+	public boolean onPath = false;
 
     /** The count of sprites for the entity's movement animation. */
     public int spriteCount = 0;
@@ -108,8 +108,19 @@ public class Entity {
                 break;
         }
 	}
+	public void checkCollision() {
+		isCollision = false;
+		gp.checkCollision.tileCheck(this);
+		gp.checkCollision.objCheck(this, false);
+		gp.checkCollision.entityCheck(this, gp.npc);
+		gp.checkCollision.entityCheck(this, gp.monster);
+		boolean contactPlayer = gp.checkCollision.playerCheck(this);
+
+	}
 	public void update(){
 		setAction();
+		checkCollision();
+
 		isCollision = false;
 		gp.checkCollision.tileCheck(this);
 		gp.checkCollision.objCheck(this, false);
@@ -221,7 +232,54 @@ public class Entity {
 			int enBottomY = wyPos + detectionArea.y + detectionArea.height;
 
 			if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-				//implement further
+				direction = "up";
+			}
+			else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
+				direction = "down";
+			}
+			else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
+				if (enLeftX > nextX) {
+					direction = "left";
+				}
+				if (enLeftX < nextX) {
+					direction = "right";
+				}
+			}
+			else if (enTopY > nextY && enLeftX > nextX) {
+				//up or left
+				direction = "up";
+				checkCollision();
+				;
+				if (isCollision == true) {
+					direction = "left";
+				}
+			}
+			else if (enTopY > nextY && enLeftX < nextX) {
+				direction = "up";
+				checkCollision();
+				if (isCollision == true) {
+					direction = "right";
+				}
+			}
+			else if (enTopY < nextY && enLeftX > nextX) {
+				direction = "down";
+				checkCollision();
+				if(isCollision == true) {
+					direction = "left";
+				}
+			}
+			else if (enTopY < nextY && enLeftX < nextX) {
+				direction = "down";
+				checkCollision();
+				if (isCollision == true) {
+					direction = "right";
+				}
+			}
+
+			int nextColumn = gp.pFinder.pathList.get(0).column;
+			int nextRow = gp.pFinder.pathList.get(0).row;
+			if(nextColumn == goalColumn && nextRow == goalRow) {
+				onPath = false;
 			}
 		}
 	}
