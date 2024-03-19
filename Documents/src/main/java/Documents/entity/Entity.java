@@ -82,7 +82,10 @@ public class Entity {
 	}
 
 
-	public void setAction(){}
+	public void setAction(){
+
+	}
+
 	public void speak(){
 		if(dialogues[dialogueIndex] == null){
 			dialogueIndex = 0;
@@ -211,7 +214,7 @@ public class Entity {
 
 	public void searchPath(int goalColumn, int goalRow) {
 		int startColumn = (wxPos + detectionArea.x)/gp.tileSize;
-		int startRow = (wxPos + detectionArea.y)/gp.tileSize;
+		int startRow = (wyPos + detectionArea.y)/gp.tileSize;
 
 		gp.pFinder.setNode(startColumn, startRow, goalColumn, goalRow);
 
@@ -220,6 +223,7 @@ public class Entity {
 			// Next wxPos and wyPos
 			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;
 			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
+
 
 			// Entity's solidArea position
 			int enLeftX = wxPos + detectionArea.x;
@@ -245,7 +249,6 @@ public class Entity {
 				//up or left
 				direction = "up";
 				checkCollision();
-				;
 				if (isCollision == true) {
 					direction = "left";
 				}
@@ -272,11 +275,11 @@ public class Entity {
 				}
 			}
 
-			int nextColumn = gp.pFinder.pathList.get(0).column;
-			int nextRow = gp.pFinder.pathList.get(0).row;
-			if(nextColumn == goalColumn && nextRow == goalRow) {
-				onPath = false;
-			}
+			// int nextColumn = gp.pFinder.pathList.get(0).column;
+			// int nextRow = gp.pFinder.pathList.get(0).row;
+			// if(nextColumn == goalColumn && nextRow == goalRow) {
+			// 	onPath = false;
+			// }
 		}
 	}
 }
