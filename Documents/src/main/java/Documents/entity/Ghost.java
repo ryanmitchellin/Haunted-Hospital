@@ -6,6 +6,8 @@ import java.util.Random;
 
 import Documents.entity.MainCharacter;
 
+import java.awt.Rectangle;
+
 public class Ghost extends Monster {
 
     public Ghost(GamePanel gp) {
@@ -17,6 +19,13 @@ public class Ghost extends Monster {
 
         getGhostImage();
      
+        detectionArea = new Rectangle();
+        detectionArea.x = 8;
+        detectionArea.y = 16;
+
+        detectionArea.width = 16;
+        detectionArea.height = 16;
+
 
     }
 
