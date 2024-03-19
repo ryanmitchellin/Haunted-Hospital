@@ -115,6 +115,10 @@ public class MainCharacter extends Entity {
 			// npc collision
 			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc); //XXX
 			interactNpc(npcIndex);
+
+			//monster collision
+			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);
+			interactMob(mobIndex);
  
 			//if its false, character can move else cannot
 			if(isCollision == false) {
@@ -190,6 +194,13 @@ public class MainCharacter extends Entity {
 		gp.keyControl.enterPressed = false;
 	}
 
+
+	public void interactMob(int i){
+		if(i != 999) {
+			// System.out.println("You are hitting mob");
+			gp.gameState = gp.stopState;
+		}
+	}
 	/**
      * Draws the character inside the maze.
      * @param g2 The graphics context.
