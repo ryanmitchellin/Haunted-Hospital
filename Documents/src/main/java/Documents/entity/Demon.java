@@ -6,11 +6,11 @@ import java.util.Random;
 
 public class Demon extends Monster {
 
-    public Demon(GamePanel gp) {
+	public Demon(GamePanel gp) {
 		super(gp);
 		//TODO Auto-generated constructor stub
 		direction = "down";
-		this.vel = 1;
+		this.vel = 2;
 
 		getDemonImage();
 
@@ -21,19 +21,19 @@ public class Demon extends Monster {
 
 		detectionArea.width = 18;
 		detectionArea.height = 18;
-    }
-    
+	}
 
-    public void getDemonImage(){
-        upward1 = setup("/npc/boy_up_1");
-    	upward2 = setup("/npc/boy_up_2");
-    	downward1 = setup("/npc/boy_down_1");
-    	downward2 = setup("/npc/boy_down_2");
-    	leftward1 = setup("/npc/boy_left_1");
-    	leftward2 = setup("/npc/boy_left_2");
-    	rightward1 = setup("/npc/boy_right_1");
-    	rightward2 = setup("/npc/boy_right_2");
-    }
+
+	public void getDemonImage(){
+		upward1 = setup("/npc/boy_up_1");
+		upward2 = setup("/npc/boy_up_2");
+		downward1 = setup("/npc/boy_down_1");
+		downward2 = setup("/npc/boy_down_2");
+		leftward1 = setup("/npc/boy_left_1");
+		leftward2 = setup("/npc/boy_left_2");
+		rightward1 = setup("/npc/boy_right_1");
+		rightward2 = setup("/npc/boy_right_2");
+	}
 
 	public void setAction() {
 
@@ -68,14 +68,13 @@ public class Demon extends Monster {
 
 	@Override
 	public void update() {
-
 		super.update();
-
+		//System.out.println("updating demon");
 		int mainX = Math.abs(wxPos - gp.mainCharacter.wxPos);
 		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);
 		int tDist = (mainX + mainY)/gp.tileSize;
 
-		if (onPath == false && tDist < 500) {
+		if (onPath == false && tDist <  50) {
 			int i = new Random().nextInt(100)+1;
 			if (i > 50) {
 				onPath = true;
