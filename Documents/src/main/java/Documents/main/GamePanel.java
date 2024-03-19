@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 
 	/** The tile factory for creating and managing tiles. */
-	TileFactory tileFactory = new TileFactory(this);
+	public TileFactory tileFactory = new TileFactory(this);
 
 	/** The key control for managing user input. */
 	public KeyControl keyControl = new KeyControl(this);
@@ -62,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
 	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
 	
+	public PathFinding pFinder = new PathFfinding(this);
 	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
 	
@@ -197,7 +198,7 @@ public class GamePanel extends JPanel implements Runnable{
 			// }
 			
 		}
-		
+
 		
 	}
 
