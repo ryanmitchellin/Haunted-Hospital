@@ -15,26 +15,26 @@ import Documents.main.UserInterface;
  */
 public class MainCharacter extends Entity {
 	/** The GamePanel instance associated with the character. */
-    GamePanel gp;
-    
-    /** The KeyControl instance associated with the character. */
-    KeyControl keyControl;
-    
-    /** The x-coordinate of the character inside the maze. */
-    public final int screenX;
-    
-    /** The y-coordinate of the character inside the maze */
-    public final int screenY;
-    
-    /** The number of keys the character currently holds. */
-    public int keyNum = 0;
+	GamePanel gp;
+
+	/** The KeyControl instance associated with the character. */
+	KeyControl keyControl;
+
+	/** The x-coordinate of the character inside the maze. */
+	public final int screenX;
+
+	/** The y-coordinate of the character inside the maze */
+	public final int screenY;
+
+	/** The number of keys the character currently holds. */
+	public int keyNum = 0;
 
 	int stall = 0;
 	/**
-     * Constructs a MainCharacter object with the specified GamePanel and KeyControl instances.
-     * @param gp The GamePanel instance.
-     * @param keyControl The KeyControl instance.
-     */
+	 * Constructs a MainCharacter object with the specified GamePanel and KeyControl instances.
+	 * @param gp The GamePanel instance.
+	 * @param keyControl The KeyControl instance.
+	 */
 	public MainCharacter(GamePanel gp, KeyControl keyControl) {
 		super(gp);
 		this.gp = gp;
@@ -65,8 +65,8 @@ public class MainCharacter extends Entity {
 		return wyPos;
 	}
 	/**
-     * Initializes the default values for the character.
-     */
+	 * Initializes the default values for the character.
+	 */
 	public void settingDefaultValue() {
 		wxPos = gp.tileSize * 20 - gp.tileSize/2;
 		wyPos = gp.tileSize * 18 - gp.tileSize/2;
@@ -76,25 +76,25 @@ public class MainCharacter extends Entity {
 	}
 
 	/**
-     * Loads the main character's images from resources folder.
-     */
+	 * Loads the main character's images from resources folder.
+	 */
 	public void getMainCharacterImg() {
-    	upward1 = setup("/mainCharacter/boy_up_1");
-    	upward2 = setup("/mainCharacter/boy_up_2");
-    	downward1 = setup("/mainCharacter/boy_down_1");
-    	downward2 = setup("/mainCharacter/boy_down_2");
-    	leftward1 = setup("/mainCharacter/boy_left_1");
-    	leftward2 = setup("/mainCharacter/boy_left_2");
-    	rightward1 = setup("/mainCharacter/boy_right_1");
-    	rightward2 = setup("/mainCharacter/boy_right_2");
+		upward1 = setup("/mainCharacter/boy_up_1");
+		upward2 = setup("/mainCharacter/boy_up_2");
+		downward1 = setup("/mainCharacter/boy_down_1");
+		downward2 = setup("/mainCharacter/boy_down_2");
+		leftward1 = setup("/mainCharacter/boy_left_1");
+		leftward2 = setup("/mainCharacter/boy_left_2");
+		rightward1 = setup("/mainCharacter/boy_right_1");
+		rightward2 = setup("/mainCharacter/boy_right_2");
 	}
 
 	/**
-     * Update the character direction based on the key press.
-     */
+	 * Update the character direction based on the key press.
+	 */
 	public void update() {
 		if(keyControl.upPressed == true || keyControl.downPressed == true ||
-			keyControl.leftPressed == true || keyControl.rightPressed == true) {
+				keyControl.leftPressed == true || keyControl.rightPressed == true) {
 			if(keyControl.upPressed == true) {
 				direction = "up";
 			}else if(keyControl.downPressed == true) {
@@ -120,7 +120,7 @@ public class MainCharacter extends Entity {
 			//monster collision
 			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);
 			interactMob(mobIndex);
- 
+
 			if((int)(UserInterface.score-UserInterface.gameTime)<=0){
 				gp.gameState = gp.stopState;
 			}
@@ -128,10 +128,10 @@ public class MainCharacter extends Entity {
 			if(isCollision == false) {
 				if(stall==0){
 					switch(direction) {
-					case "up": this.wyPos -= this.vel; break;
-					case "down": this.wyPos += this.vel; break;
-					case "left": this.wxPos -= this.vel; break;
-					case "right": this.wxPos += this.vel; break;
+						case "up": this.wyPos -= this.vel; break;
+						case "down": this.wyPos += this.vel; break;
+						case "left": this.wxPos -= this.vel; break;
+						case "right": this.wxPos += this.vel; break;
 					}
 				}
 			}
@@ -155,9 +155,9 @@ public class MainCharacter extends Entity {
 	}
 
 	/**
-     * Picks up an object at the specified index.
-     * @param i The index of the object to pick up.
-     */
+	 * Picks up an object at the specified index.
+	 * @param i The index of the object to pick up.
+	 */
 	public void pickUpObj(int i) {
 		//if index is not 999 it means the collision has happened
 		if(i !=  999) {
@@ -165,37 +165,37 @@ public class MainCharacter extends Entity {
 
 			//depending on obj reaction
 			switch(objName) {
-			case "keyCard":
-				gp.soundEffectObj(1);
-				keyNum++;
-				//null to remove the object
-				gp.obj[i] = null;
-				gp.ui.displayMessage("Key Card collected!");
-				break;
-			case "door":
-				if(keyNum == 4) {
-					gp.soundEffectObj(2);
+				case "keyCard":
+					gp.soundEffectObj(1);
+					keyNum++;
+					//null to remove the object
 					gp.obj[i] = null;
-					keyNum = 0;
-					gp.ui.displayMessage("The door is now open!");
+					gp.ui.displayMessage("Key Card collected!");
 					break;
-				} else {
-					gp.ui.displayMessage("You need 4 card keys to open");
-				}
-			case "stair":
-				gp.ui.gameDone = true;
-				gp.musicStop();
-				//gp.soundEffectObj();
-				break;
-			case "bloodstain":
-				UserInterface.score -= 10;
-				stall = 40;
-				gp.obj[i] = null;
-				break;
-			case "candy":
-				UserInterface.score += 20;
-				gp.obj[i] = null;
-				break;
+				case "door":
+					if(keyNum == 4) {
+						gp.soundEffectObj(2);
+						gp.obj[i] = null;
+						keyNum = 0;
+						gp.ui.displayMessage("The door is now open!");
+						break;
+					} else {
+						gp.ui.displayMessage("You need 4 card keys to open");
+					}
+				case "stair":
+					gp.ui.gameDone = true;
+					gp.musicStop();
+					//gp.soundEffectObj();
+					break;
+				case "bloodstain":
+					UserInterface.score -= 10;
+					stall = 40;
+					gp.obj[i] = null;
+					break;
+				case "candy":
+					UserInterface.score += 20;
+					gp.obj[i] = null;
+					break;
 			}
 		}
 	}
@@ -219,45 +219,45 @@ public class MainCharacter extends Entity {
 		}
 	}
 	/**
-     * Draws the character inside the maze.
-     * @param g2 The graphics context.
-     */
+	 * Draws the character inside the maze.
+	 * @param g2 The graphics context.
+	 */
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
 
 		switch(direction) {
-		case "up":
-			if(spriteNum == 1) {
-				image = upward1;
-			}
-			if(spriteNum == 2) {
-				image = upward2;
-			}
-			break;
-		case "down":
-			if(spriteNum == 1) {
-				image = downward1;
-			}
-			if(spriteNum == 2) {
-				image = downward2;
-			}
-			break;
-		case "left":
-			if(spriteNum == 1) {
-				image = leftward1;
-			}
-			if(spriteNum == 2) {
-				image = leftward2;
-			}
-			break;
-		case "right":
-			if(spriteNum == 1) {
-				image = rightward1;
-			}
-			if(spriteNum == 2) {
-				image = rightward2;
-			}
-			break;
+			case "up":
+				if(spriteNum == 1) {
+					image = upward1;
+				}
+				if(spriteNum == 2) {
+					image = upward2;
+				}
+				break;
+			case "down":
+				if(spriteNum == 1) {
+					image = downward1;
+				}
+				if(spriteNum == 2) {
+					image = downward2;
+				}
+				break;
+			case "left":
+				if(spriteNum == 1) {
+					image = leftward1;
+				}
+				if(spriteNum == 2) {
+					image = leftward2;
+				}
+				break;
+			case "right":
+				if(spriteNum == 1) {
+					image = rightward1;
+				}
+				if(spriteNum == 2) {
+					image = rightward2;
+				}
+				break;
 		}
 		//image observer
 		g2.drawImage(image, screenX, screenY, null);
