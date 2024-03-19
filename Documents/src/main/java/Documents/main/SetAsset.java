@@ -52,16 +52,32 @@ public class SetAsset {
 		gp.obj[3].worldX = 17 * gp.tileSize;
 		gp.obj[3].worldY = 28* gp.tileSize;
 
+		gp.obj[4] = new KeyCard(gp);
+		gp.obj[4].worldX = 10 * gp.tileSize;
+		gp.obj[4].worldY = 42 * gp.tileSize;
+
+		gp.obj[5] = new KeyCard(gp);
+		gp.obj[5].worldX = 14 * gp.tileSize;
+		gp.obj[5].worldY = 40 * gp.tileSize;
+
+		gp.obj[6] = new KeyCard(gp);
+		gp.obj[6].worldX = 43 * gp.tileSize;
+		gp.obj[6].worldY = 31* gp.tileSize;
+
+		gp.obj[7] = new KeyCard(gp);
+		gp.obj[7].worldX = 5 * gp.tileSize;
+		gp.obj[7].worldY = 43* gp.tileSize;
+
 
 		//door
-		gp.obj[4] = new Door(gp);
-		gp.obj[4].worldX = 11 * gp.tileSize;
-		gp.obj[4].worldY = 10* gp.tileSize;
+		gp.obj[8] = new Door(gp);
+		gp.obj[8].worldX = 11 * gp.tileSize;
+		gp.obj[8].worldY = 10* gp.tileSize;
 
 		//start
-		gp.obj[5] = new Stair(gp);
-		gp.obj[5].worldX = 11 * gp.tileSize;
-		gp.obj[5].worldY = 9* gp.tileSize;
+		gp.obj[9] = new Stair(gp);
+		gp.obj[9].worldX = 11 * gp.tileSize;
+		gp.obj[9].worldY = 9* gp.tileSize;
 
 	}
 
@@ -85,24 +101,42 @@ public class SetAsset {
 	}
 	
 	public void setTraps(){
-		gp.obj[6] = new Bloodstain(gp);
-		gp.obj[6].worldX = 15*gp.tileSize;
-		gp.obj[6].worldY = 23*gp.tileSize;
-		gp.obj[7] = new Bloodstain(gp);
-		gp.obj[7].worldX = 20*gp.tileSize;
-		gp.obj[7].worldY = 13*gp.tileSize;
-		gp.obj[8] = new Bloodstain(gp);
-		gp.obj[8].worldX = 24*gp.tileSize;
-		gp.obj[8].worldY = 16*gp.tileSize;
-		gp.obj[9] = new Bloodstain(gp);
-		gp.obj[9].worldX = 32*gp.tileSize;
-		gp.obj[9].worldY = 6*gp.tileSize;
+		gp.obj[10] = new Bloodstain(gp);
+		gp.obj[10].worldX = 15*gp.tileSize;
+		gp.obj[10].worldY = 23*gp.tileSize;
+		gp.obj[11] = new Bloodstain(gp);
+		gp.obj[11].worldX = 20*gp.tileSize;
+		gp.obj[11].worldY = 13*gp.tileSize;
+		gp.obj[12] = new Bloodstain(gp);
+		gp.obj[12].worldX = 24*gp.tileSize;
+		gp.obj[12].worldY = 16*gp.tileSize;
+		gp.obj[13] = new Bloodstain(gp);
+		gp.obj[13].worldX = 32*gp.tileSize;
+		gp.obj[13].worldY = 6*gp.tileSize;
+		gp.obj[14] = new Bloodstain(gp);
+		gp.obj[14].worldX = 9*gp.tileSize;
+		gp.obj[14].worldY = 34*gp.tileSize;
+		gp.obj[15] = new Bloodstain(gp);
+		gp.obj[15].worldX = 11*gp.tileSize;
+		gp.obj[15].worldY = 35*gp.tileSize;
+		gp.obj[16] = new Bloodstain(gp);
+		gp.obj[16].worldX = 13*gp.tileSize;
+		gp.obj[16].worldY = 34*gp.tileSize;
+		gp.obj[17] = new Bloodstain(gp);
+		gp.obj[17].worldX = 28*gp.tileSize;
+		gp.obj[17].worldY = 40*gp.tileSize;
 	}
 
 	public void setReward(){
-		gp.obj[10] = new Candy(gp);
-		gp.obj[10].worldX = 31*gp.tileSize;
-		gp.obj[10].worldY = 6*gp.tileSize;
+		gp.obj[18] = new Candy(gp);
+		gp.obj[18].worldX = 31*gp.tileSize;
+		gp.obj[18].worldY = 6*gp.tileSize;
+		gp.obj[19] = new Candy(gp);
+		gp.obj[19].worldX = 43*gp.tileSize;
+		gp.obj[19].worldY = 31*gp.tileSize;
+		gp.obj[20] = new Candy(gp);
+		gp.obj[20].worldX = 11*gp.tileSize;
+		gp.obj[20].worldY = 43*gp.tileSize;
 
 	}
 

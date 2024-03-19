@@ -76,6 +76,10 @@ public class UserInterface {
 		if (gp.gameState == gp.deathState) {
 			drawDeathScreen();
 		}
+
+		if (gp.gameState == gp.winState) {
+			drawWinScreen();
+		}
 		//play state
 		if (gp.gameState == gp.playState) {
 			g2.setFont(arialFont_40);
@@ -233,6 +237,80 @@ public class UserInterface {
 		}
 	}
 
+	public void drawWinScreen(){
+		g2.setColor(new Color(0,0,0));
+		g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+		// Title Name
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+		String text = "You Won!";
+		int x = getXCenterText(text);
+		int y = gp.tileSize*3;
+
+		// Shadow
+		g2.setColor(Color.gray);
+		g2.drawString(text,x+5,y+5);
+
+		// Main color
+		g2.setColor(Color.white);
+		g2.drawString(text, x, y);
+
+		// Boy Image
+		x = gp.screenWidth/2- (gp.tileSize*2)/2;
+		y += gp.tileSize*2;
+		
+		spriteCount++;
+		if(spriteCount > 10) {
+			if(spriteNum == 1) {
+				spriteNum = 2;
+			}else if(spriteNum == 2) {
+				spriteNum = 3;
+			}else if(spriteNum == 3) {
+				spriteNum = 4;
+			}else if(spriteNum == 4) {
+				spriteNum = 5;
+			}else if(spriteNum == 5) {
+				spriteNum = 1;
+			}
+
+			spriteCount = 0;
+		}
+		if(spriteNum==1){
+			g2.drawImage(setup("/trophy/trophy0"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==2){
+			g2.drawImage(setup("/trophy/trophy1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==3){
+			g2.drawImage(setup("/trophy/trophy2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==4){
+			g2.drawImage(setup("/trophy/trophy3"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==5){
+			g2.drawImage(setup("/trophy/trophy4"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+
+		// Menu
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
+
+		text = "PLAY AGAIN";
+		x = getXCenterText(text);
+		y += gp.tileSize*4;
+		g2.drawString(text,x,y);
+		if (commandingNumber == 0) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+
+		text = "QUIT";
+		x = getXCenterText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if (commandingNumber == 1) {
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+
+	}
 	public BufferedImage setup(String imgPath) {
 		UtilityTools tools = new UtilityTools();
 		BufferedImage img = null;
