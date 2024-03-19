@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.BufferedReader;
+import java.awt.Color;
 
 /**
  * Factory class for creating and managing tiles in the maze.
@@ -21,7 +22,8 @@ public class TileFactory {
 	Tile[] tiles;
 
     /** 2D array for the tile map. */
-	public int tileMapNum[][];
+	public int[][] tileMapNum;
+	boolean drawPath = true;
 
 	/**
      * Constructs a TileFactory object with the specified GamePanel.
@@ -172,5 +174,16 @@ public class TileFactory {
 			}
 
 		}
+		// if(drawPath == true) {
+		// 	g2.setColor(new Color(255,0,0,70));
+		// 	for(int i = 0; i < gp.pFinder.pathList.size(); i++) {
+		// 		int worldX = gp.pFinder.pathList.get(i).column * gp.tileSize;
+		// 		int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
+		// 		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
+		// 		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+
+		// 		g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
+		// 	}
+		// }
 	}
 }

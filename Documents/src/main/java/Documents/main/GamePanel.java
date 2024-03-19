@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.nio.file.Path;
 
 /**
  * The main panel for the maze managing the game logic and rendering the maze.
@@ -62,8 +63,8 @@ public class GamePanel extends JPanel implements Runnable{
 
 	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
-	
 	public Pathfinding pFinder = new Pathfinding(this);
+	
 	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
 	
@@ -71,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
 	Thread gameThread;
 	
 	/** The array of objects in the maze. */
-	public ObjectFactory obj[] = new ObjectFactory[20];
+	public ObjectFactory obj[] = new ObjectFactory[30];
 
 	public Entity npc[] = new Entity[10];
 
@@ -99,13 +100,6 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	}
 
-	public void resetGame(){
-		UserInterface.score = 101;
-		UserInterface.gameTime = 0;
-		mainCharacter.keyNum = 0;
-		mainCharacter.settingDefaultValue();
-		setGame();
-	}
 	/**
      * Initializes the game settings and assets.
      */
@@ -118,7 +112,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setAsset.setTraps();
 		
 		setAsset.setReward();
-		// setAsset.setDemon();
+		setAsset.setDemon();
 
 		//map 1 music
 		musicPlay(0);
@@ -169,6 +163,14 @@ public class GamePanel extends JPanel implements Runnable{
 		} 
 	}
 
+	public void resetGame() {
+		UserInterface.score = 101;
+		UserInterface.gameTime = 0;
+		mainCharacter.keyNum = 0;
+		mainCharacter.settingDefaultValue();
+		setGame();
+	}
+
 	/**
      * Updates the game logic reflecting towards the main character movement.
      */
@@ -191,15 +193,8 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		}
 		if(gameState == stopState) {
-			// if(keyControl.enterPressed==true){
-
-			
-		
-
-			// }
 			
 		}
-
 		
 	}
 

@@ -183,7 +183,6 @@ public class MainCharacter extends Entity {
 					gp.ui.displayMessage("You need 4 card keys to open");
 				}
 			case "stair":
-				// System.out.println("stair");
 				gp.gameState = gp.winState;
 				gp.ui.gameDone = true;
 				gp.musicStop();
@@ -202,11 +201,6 @@ public class MainCharacter extends Entity {
 		}
 	}
 
-	public void interactStair(int i){
-		if(i!=999){
-			gp.gameState = gp.winState;
-		}
-	}
 	public void interactNpc(int i){
 		if(i != 999){
 			//System.out.println("you are hitting npc");
@@ -218,7 +212,6 @@ public class MainCharacter extends Entity {
 		gp.keyControl.enterPressed = false;
 	}
 
-	
 
 	public void interactMob(int i){
 		if(i != 999) {

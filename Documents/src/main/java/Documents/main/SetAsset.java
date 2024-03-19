@@ -36,6 +36,8 @@ public class SetAsset {
 	public void setObj() {
 		//setting the keycard information that will be displayed on screen
 		//setting the keycard information that will be displayed on screen
+		//setting the keycard information that will be displayed on screen
+		//setting the keycard information that will be displayed on screen
 		gp.obj[0] = new KeyCard(gp);
 		gp.obj[0].worldX = 38 * gp.tileSize;
 		gp.obj[0].worldY = 27 * gp.tileSize;
@@ -79,10 +81,10 @@ public class SetAsset {
 		gp.obj[9].worldX = 11 * gp.tileSize;
 		gp.obj[9].worldY = 9* gp.tileSize;
 
+
 	}
 
 	public void setNpc() {
-
 		gp.npc[0] = new Npc(gp);
 		gp.npc[0].wxPos = gp.tileSize*22 - gp.tileSize/2;
 		gp.npc[0].wyPos = gp.tileSize*18 - gp.tileSize/2;

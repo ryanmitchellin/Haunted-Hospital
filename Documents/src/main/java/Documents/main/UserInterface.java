@@ -85,7 +85,7 @@ public class UserInterface {
 			g2.setFont(arialFont_40);
 			g2.setColor(Color.white);
 			g2.drawImage(cardKeyImg, gp.tileSize/2, gp.tileSize/6, gp.tileSize, gp.tileSize, null);
-			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 4", 74, 50);
+			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 8", 74, 50);
 			gameTime += (double)1/60;
 			g2.drawString("Time:" + dFormat.format(gameTime), gp.tileSize*11, 50);
 			g2.drawString("Score:" + (int) (score-gameTime), gp.tileSize*11, 100);
