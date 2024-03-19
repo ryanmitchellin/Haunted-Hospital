@@ -8,6 +8,7 @@ import Documents.object.Stair;
 import Documents.entity.Npc;
 import Documents.entity.Ghost;
 import Documents.entity.Demon;
+import Documents.object.Bloodstain;
 
 
 /**
@@ -82,6 +83,11 @@ public class SetAsset {
 		gp.monster[1].vel = 2;
 	}
 	
+	public void setTraps(){
+		gp.obj[6] = new Bloodstain(gp);
+		gp.obj[6].worldX = 15*gp.tileSize;
+		gp.obj[6].worldY = 23*gp.tileSize;
+	}
 
 	public void setDemon() {
 		gp.monster[2] = new Demon(gp);
