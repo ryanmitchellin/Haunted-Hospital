@@ -92,7 +92,7 @@ public class Pathfinding {
         //G cost
         int xDist = Math.abs(node.column - startNode.column);
         int yDist = Math.abs(node.row - startNode.row);
-        node.gCost = xDist = yDist;
+        node.gCost = xDist + yDist;
         // H Cost
         xDist = Math.abs(node.column - goalNode.column);
         yDist = Math.abs(node.row - goalNode.row);
@@ -101,7 +101,82 @@ public class Pathfinding {
         node.fCost = node.gCost + node.hCost;
     }
 
-    public boo
+    public boolean search() {
+        while (goalReached == false && step < 500) {
+            int column = currentNode.column;
+            int row = currentNode.row;
 
+            // Check the current node
+            currentNode.checked = true;
+            openList.remove(currentNode);
 
+            //Open the Up node
+            if (row - 1 >= 0) {
+                openNode(node[column][row-1]);
+            }
+            //Open the left node
+            if (column - 1 >= 0) {
+                openNode(node[column-1][row]);
+            }
+            //Open the down node
+            if (row + 1 >= 0) {
+                openNode(node[column][row+1]);
+            }
+            //Open the right node
+            if (column + 1 >= 0) {
+                openNode(node[column+1][row]);
+            }
+
+            // Finding best node
+            int bestNodeIndex = 0;
+            int bestNodefCost = 999;
+
+            for(int i = 0; i < openList.size(); i++) {
+
+                // Check if this node's F cost is better
+                if (openList.get(i).fCost < bestNodefCost) {
+                    bestNodeIndex = i;
+                    bestNodefCost = openList.get(i).fCost;
+                }
+                // IF F cost is equalm check the G cost
+                else if (openList.get(i).fCost == bestNodefCost) {
+                    if (openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
+                        bestNodeIndex = i;
+                    }
+                }
+            }
+
+            // IF there is no node in openList, end loop
+            if (openList.size() == 0) {
+                break;
+            }
+            // After the loop, openList[bestNodeIndex] is the next step
+            currentNode = openList.get(bestNodeIndex);
+
+            if (currentNode == goalNode) {
+                goalReached = true;
+                trackPath();
+            }
+            step++;
+        }
+        return goalReached;
+    }
+
+    public void openNode(Node node) {
+
+        if (node.open == false && node.checked == false && node.solid == false) {
+
+            node.open = true;
+            node.parent = currentNode;
+            openList.add(node);
+        }
+    }
+
+    public void trackPath() {
+        Node current = goalNode;
+        while (current != startNode) {
+            pathList.add(0, current);
+            current = current.parent;
+        }
+    }
 }
