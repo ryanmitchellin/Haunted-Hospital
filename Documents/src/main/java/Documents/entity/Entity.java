@@ -106,7 +106,7 @@ public class Entity {
 		}
 	}
 
-	public checkCollision() {
+	public void checkCollision() {
 		isCollision = false;
 		gp.checkCollision.tileCheck(this);
 		gp.checkCollision.objCheck(this, false);
