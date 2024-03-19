@@ -51,6 +51,8 @@ public class Entity {
 
 	/** The direction of the entity facing into. */
     public String direction;
+	/** Indicates if the Entities are on a path towards the main character. */
+	public boolean onPath = false;
 
     /** The count of sprites for the entity's movement animation. */
     public int spriteCount = 0;
