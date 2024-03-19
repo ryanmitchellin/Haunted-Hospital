@@ -1,5 +1,4 @@
 package Documents.main;
-import Documents.SearchAI.Pathfinding;
 import Documents.entity.MainCharacter;
 import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
@@ -10,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.nio.file.Path;
 
 /**
  * The main panel for the maze managing the game logic and rendering the maze.
@@ -47,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 
 	/** The tile factory for creating and managing tiles. */
-	public TileFactory tileFactory = new TileFactory(this);
+	TileFactory tileFactory = new TileFactory(this);
 
 	/** The key control for managing user input. */
 	public KeyControl keyControl = new KeyControl(this);
@@ -63,7 +61,6 @@ public class GamePanel extends JPanel implements Runnable{
 
 	 /** The main character inside the maze. */
 	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);
-	public Pathfinding pFinder = new Pathfinding(this);
 	
 	/** The user interface manager for rendering UI elements. */
 	public UserInterface ui = new UserInterface(this);
@@ -84,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int playState = 1;
 	public final int stopState = 2;
 	public final int dialogueState = 3;
+	public final int deathState = 4;
 
 	/**
      * Constructs a new GamePanel with default settings.
@@ -98,6 +96,13 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setFocusable(true);
 	}
 
+	public void resetGame(){
+		UserInterface.score = 101;
+		UserInterface.gameTime = 0;
+		mainCharacter.keyNum = 0;
+		mainCharacter.settingDefaultValue();
+		setGame();
+	}
 	/**
      * Initializes the game settings and assets.
      */
@@ -183,6 +188,12 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		}
 		if(gameState == stopState) {
+			// if(keyControl.enterPressed==true){
+
+			gameState = deathState;
+		
+
+			// }
 			
 		}
 		
