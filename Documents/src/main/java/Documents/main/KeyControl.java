@@ -53,7 +53,7 @@ public class KeyControl implements KeyListener{
 		int code = e.getKeyCode();//return int keyCode associated with the key in event
 
 		// Title State and Death State
-		if (gp.gameState == gp.titleState||gp.gameState == gp.deathState) {
+		if (gp.gameState == gp.titleState||gp.gameState == gp.deathState||gp.gameState == gp.winState) {
 			if (code == KeyEvent.VK_UP) {
 				gp.ui.commandingNumber--;
 				if (gp.ui.commandingNumber < 0) {
