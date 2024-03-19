@@ -74,7 +74,7 @@ public class UserInterface {
 			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 4", 74, 50);
 			gameTime += (double)1/60;
 			g2.drawString("Time:" + dFormat.format(gameTime), gp.tileSize*11, 50);
-			g2.drawString("Score:" + dFormat.format((int) (score-gameTime)), gp.tileSize*11, 100);
+			g2.drawString("Score:" + (int) (score-gameTime), gp.tileSize*11, 100);
 
 			//displaying message
 			if(printMessage == true) {
