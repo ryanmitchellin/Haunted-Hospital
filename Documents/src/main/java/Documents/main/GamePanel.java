@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int FPS = 60;
 
 	/** The tile factory for creating and managing tiles. */
-	TileFactory tileFactory = new TileFactory(this);
+	public TileFactory tileFactory = new TileFactory(this);
 
 	/** The key control for managing user input. */
 	public KeyControl keyControl = new KeyControl(this);
