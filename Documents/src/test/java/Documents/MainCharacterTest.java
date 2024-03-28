@@ -18,4 +18,23 @@ public class MainCharacterTest {
         keyControl = new KeyControl(gamePanel);
         mainCharacter = new MainCharacter(gamePanel, keyControl);
     }
+
+    @Test
+    public void testUpdate() {
+        keyControl.upPressed = true;
+        mainCharacter.update();
+        assertEquals("up", mainCharacter.direction);
+
+        keyControl.downPressed = true;
+        mainCharacter.update();
+        assertEquals("down", mainCharacter.direction);
+
+        keyControl.leftPressed = true;
+        mainCharacter.update();
+        assertEquals("left", mainCharacter.direction);
+
+        keyControl.rightPressed = true;
+        mainCharacter.update();
+        assertEquals("right", mainCharacter.direction);
+    }
 }
