@@ -2,24 +2,10 @@ package Documents.entity;
 
 import Documents.main.GamePanel;
 import Documents.main.KeyControl;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainCharacterTest {
-    private MainCharacter mainCharacter;
-    private GamePanel gamePanel;
-    private KeyControl keyControl;
-
-    // @BeforeAll
-    // public static void setUp() {
-    //     MainCharacter mainCharacter;
-    //     GamePanel gamePanel;
-    //     KeyControl keyControl;
-    //     gamePanel = new GamePanel();
-    //     keyControl = new KeyControl(gamePanel);
-    //     mainCharacter = new MainCharacter(gamePanel, keyControl);
-    // }
 
     @Test
     public void testUpdate() {
