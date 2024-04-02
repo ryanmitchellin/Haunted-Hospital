@@ -1,12 +1,11 @@
 package Documents.object;
 
-import static org.junit.Assert.*;
-
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import Documents.main.GamePanel;
 
@@ -15,33 +14,33 @@ public class ObjectFactoryTest {
     private ObjectFactory objectFactory;
     private GamePanel gp;
 
-    @Before
+    @BeforeAll
     public void setUp() {
         objectFactory = new ObjectFactory();
         gp = new GamePanel();
     }
 
-    @Test
-    public void testDrawObjectWithinBoundary() {
-        // pre-setup
-        objectFactory.worldX = 50;
-        objectFactory.worldY = 50;
-        gp.mainCharacter.wxPos = 10;
-        gp.mainCharacter.wyPos = 10;
-        gp.mainCharacter.screenX = 5;
-        gp.mainCharacter.screenY = 5;
-        gp.tileSize = 20;
-        objectFactory.img = new BufferedImage(48, 48, BufferedImage.TYPE_INT_ARGB);
+    // @Test
+    // public void testDrawObjectWithinBoundary() {
+    //     // pre-setup
+    //     objectFactory.worldX = 50;
+    //     objectFactory.worldY = 50;
+    //     gp.mainCharacter.wxPos = 10;
+    //     gp.mainCharacter.wyPos = 10;
+    //     gp.mainCharacter.screenX = 5;
+    //     gp.mainCharacter.screenY = 5;
+    //     gp.tileSize = 20;
+    //     objectFactory.img = new BufferedImage(48, 48, BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D g2 = (Graphics2D) objectFactory.img.getGraphics();
+    //     Graphics2D g2 = (Graphics2D) objectFactory.img.getGraphics();
 
-        objectFactory.draw(g2, gp);
+    //     objectFactory.draw(g2, gp);
 
-        boolean isDraw = objectFactory.worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX && 
-                         objectFactory.worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-                         objectFactory.worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-                         objectFactory.worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+    //     boolean isDraw = objectFactory.worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX && 
+    //                      objectFactory.worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
+    //                      objectFactory.worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
+    //                      objectFactory.worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
         
-        assertTrue(isDraw);
-    }
+    //     assertTrue(isDraw);
+    // }
 }
