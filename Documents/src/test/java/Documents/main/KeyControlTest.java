@@ -1,15 +1,17 @@
-import org.junit.Before;
-import org.junit.Test;
+package Documents.main;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class KeyControlTest {
 
     private KeyControl keyControl;
     private GamePanel gamePanel;
 
-    @Before
+    @BeforeAll
     public void setUp() {
         gamePanel = new GamePanel();
         keyControl = new KeyControl(gamePanel);

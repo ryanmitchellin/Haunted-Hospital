@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: Documents.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! - in Documents.AppTest
+testMovementUp  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	The declared package "" does not match the expected package "Documents"
+	The constructor KeyControl() is undefined
+	The method move() is undefined for the type MainCharacter
+
+	at Documents.AppTest.<init>(AppTest.java:1)
+
