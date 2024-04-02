@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Entity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Documents</a> &gt; <a href="index.source.html" class="el_package">Documents.entity</a> &gt; <span class="el_source">Entity.java</span></div><h1>Entity.java</h1><pre class="source lang-java linenums">package Documents.entity;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.awt.geom.AffineTransform;
+import java.awt.Rectangle;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import Documents.main.GamePanel;
+import Documents.main.UtilityTools;
+
+/**
+ * Represents an entity inside the maze.
+ */
+public class Entity {
+	/** The GamePanel instance associated with the entity. */
+	GamePanel gp;
+
+	/** The x-coordinate for the entity. */
+	public int wxPos;
+
+	/** The y-coordinate for the entity. */
+	public int wyPos;
+
+	/** The velocity for the entity. */
+	public int vel;
+
+	/** The image for the entity facing upward motion 1. */
+	public BufferedImage upward1;
+
+	/** The image for the entity facing upward motion 2. */
+	public BufferedImage upward2;
+
+	/** The image for the entity facing downward motion 1. */
+	public BufferedImage downward1;
+
+	/** The image for the entity facing downward motion 2. */
+	public BufferedImage downward2;
+
+	/** The image for the entity facing leftward motion 1. */
+	public BufferedImage leftward1;
+
+	/** The image for the entity facing leftward motion 2. */
+	public BufferedImage leftward2;
+
+	/** The image for the entity facing rightward motion 1. */
+	public BufferedImage rightward1;
+
+	/** Another image for the entity facing rightward motion 2. */
+	public BufferedImage rightward2;
+
+	/** The direction of the entity facing into. */
+	public String direction;
+
+	/** Indicates if the Entities are on a path towards the main character. */
+<span class="fc" id="L56">	public boolean onPath = false;</span>
+
+<span class="fc" id="L58">	public int spriteCount = 0;</span>
+
+	/** The number of sprites for the entity's movement animation. */
+<span class="fc" id="L61">	public int spriteNum = 1;</span>
+
+	/** The area used for collision detection with tiles. */
+<span class="fc" id="L64">	public Rectangle detectionArea  = new Rectangle (0, 0, 48, 48);</span>
+
+	/** The default x-coordinate for the detection area. */
+	public int detectionDefaultX;
+
+	/** The default y-coordinate for the detection area. */
+	public int detectionDefaultY;
+
+	/** Indicates the states whether the entity is currently collides with another entity. */
+<span class="fc" id="L73">	public boolean isCollision = false;</span>
+
+<span class="fc" id="L75">	public int actionLockCount = 0;</span>
+
+<span class="fc" id="L77">	String dialogues[] = new String[20];</span>
+<span class="fc" id="L78">	int dialogueIndex = 0;</span>
+
+<span class="fc" id="L80">	public Entity (GamePanel gp) {</span>
+<span class="fc" id="L81">		this.gp = gp;</span>
+<span class="fc" id="L82">	}</span>
+
+
+	public void setAction(){
+
+<span class="nc" id="L87">	}</span>
+
+	public void speak(){
+<span class="nc bnc" id="L90" title="All 2 branches missed.">		if(dialogues[dialogueIndex] == null){</span>
+<span class="nc" id="L91">			dialogueIndex = 0;</span>
+		}
+<span class="nc" id="L93">		gp.ui.currentDialogue = dialogues[dialogueIndex];</span>
+<span class="nc" id="L94">		dialogueIndex++;</span>
+
+<span class="nc bnc" id="L96" title="All 5 branches missed.">		switch(gp.mainCharacter.direction){</span>
+			case &quot;up&quot;:
+<span class="nc" id="L98">				direction = &quot;down&quot;;</span>
+<span class="nc" id="L99">				break;</span>
+			case &quot;down&quot;:
+<span class="nc" id="L101">				direction = &quot;up&quot;;</span>
+<span class="nc" id="L102">				break;</span>
+			case &quot;left&quot;:
+<span class="nc" id="L104">				direction = &quot;right&quot;;</span>
+<span class="nc" id="L105">				break;</span>
+			case &quot;right&quot;:
+<span class="nc" id="L107">				direction = &quot;left&quot;;</span>
+				break;
+		}
+<span class="nc" id="L110">	}</span>
+
+	public void checkCollision() {
+<span class="nc" id="L113">		isCollision = false;</span>
+<span class="nc" id="L114">		gp.checkCollision.tileCheck(this);</span>
+<span class="nc" id="L115">		gp.checkCollision.objCheck(this, false);</span>
+<span class="nc" id="L116">		gp.checkCollision.playerCheck(this);</span>
+<span class="nc" id="L117">		gp.checkCollision.entityCheck(this,gp.npc);</span>
+<span class="nc" id="L118">		gp.checkCollision.entityCheck(this, gp.monster);</span>
+<span class="nc" id="L119">		boolean contactPlayer = gp.checkCollision.playerCheck(this);</span>
+<span class="nc" id="L120">	}</span>
+
+	public void update(){
+<span class="nc" id="L123">		setAction();</span>
+<span class="nc" id="L124">		checkCollision();</span>
+
+		//if its false, character can move else cannot
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		if(isCollision == false) {</span>
+<span class="nc bnc" id="L128" title="All 5 branches missed.">			switch(direction) {</span>
+<span class="nc" id="L129">				case &quot;up&quot;: this.wyPos -= this.vel; break;</span>
+<span class="nc" id="L130">				case &quot;down&quot;: this.wyPos += this.vel; break;</span>
+<span class="nc" id="L131">				case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
+<span class="nc" id="L132">				case &quot;right&quot;: this.wxPos += this.vel; break;</span>
+<span class="nc" id="L133">			}</span>
+		}
+
+		//animation
+		//the move() method gets called 60 times per second
+		//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
+<span class="nc" id="L139">		spriteCount++;</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">		if(spriteCount &gt; 10) {</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="nc" id="L142">				spriteNum = 2;</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">			}else if(spriteNum == 2) {</span>
+<span class="nc" id="L144">				spriteNum = 1;</span>
+			}
+<span class="nc" id="L146">			spriteCount = 0;</span>
+		}
+<span class="nc" id="L148">	}</span>
+
+	public void draw(Graphics2D g2){
+<span class="nc" id="L151">		BufferedImage image = null;</span>
+<span class="nc" id="L152">		int screenX = wxPos - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;</span>
+<span class="nc" id="L153">		int screenY = wyPos - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
+
+		//checking if the tile is within the boundary
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		if(wxPos + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">				wxPos - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">				wyPos + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">				wyPos - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {</span>
+<span class="nc bnc" id="L160" title="All 5 branches missed.">			switch(direction) {</span>
+				case &quot;up&quot;:
+<span class="nc bnc" id="L162" title="All 2 branches missed.">					if(spriteNum == 1) {</span>
+<span class="nc" id="L163">						image = upward1;</span>
+					}
+<span class="nc bnc" id="L165" title="All 2 branches missed.">					if(spriteNum == 2) {</span>
+<span class="nc" id="L166">						image = upward2;</span>
+					}
+<span class="nc" id="L168">					break;</span>
+				case &quot;down&quot;:
+<span class="nc bnc" id="L170" title="All 2 branches missed.">					if(spriteNum == 1) {</span>
+<span class="nc" id="L171">						image = downward1;</span>
+					}
+<span class="nc bnc" id="L173" title="All 2 branches missed.">					if(spriteNum == 2) {</span>
+<span class="nc" id="L174">						image = downward2;</span>
+					}
+<span class="nc" id="L176">					break;</span>
+				case &quot;left&quot;:
+<span class="nc bnc" id="L178" title="All 2 branches missed.">					if(spriteNum == 1) {</span>
+<span class="nc" id="L179">						image = leftward1;</span>
+					}
+<span class="nc bnc" id="L181" title="All 2 branches missed.">					if(spriteNum == 2) {</span>
+<span class="nc" id="L182">						image = leftward2;</span>
+					}
+<span class="nc" id="L184">					break;</span>
+				case &quot;right&quot;:
+<span class="nc bnc" id="L186" title="All 2 branches missed.">					if(spriteNum == 1) {</span>
+<span class="nc" id="L187">						image = rightward1;</span>
+					}
+<span class="nc bnc" id="L189" title="All 2 branches missed.">					if(spriteNum == 2) {</span>
+<span class="nc" id="L190">						image = rightward2;</span>
+					}
+					break;
+			}
+<span class="nc" id="L194">			g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);</span>
+		}
+<span class="nc" id="L196">	}</span>
+	public BufferedImage setup(String imgPath) {
+<span class="fc" id="L198">		UtilityTools tools = new UtilityTools();</span>
+<span class="fc" id="L199">		BufferedImage img = null;</span>
+
+		try {
+<span class="fc" id="L202">			img = ImageIO.read(getClass().getResourceAsStream(imgPath + &quot;.png&quot;));</span>
+			//ensure the image supports alpha (transparency)
+<span class="fc" id="L204">			BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);</span>
+<span class="fc" id="L205">			Graphics2D g2 = newImg.createGraphics();</span>
+<span class="fc" id="L206">			g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);</span>
+<span class="fc" id="L207">			g2.dispose();</span>
+<span class="fc" id="L208">			img = newImg;</span>
+<span class="pc" id="L209">		}catch(IOException e) {</span>
+<span class="nc" id="L210">			e.printStackTrace();</span>
+		}
+<span class="fc" id="L212">		return img;</span>
+	}
+
+	public void searchPath(int goalColumn, int goalRow) {
+<span class="nc" id="L216">		int startColumn = (wxPos + detectionArea.x)/gp.tileSize;</span>
+<span class="nc" id="L217">		int startRow = (wyPos + detectionArea.y)/gp.tileSize;</span>
+
+<span class="nc" id="L219">		gp.pFinder.setNode(startColumn, startRow, goalColumn, goalRow);</span>
+
+<span class="nc bnc" id="L221" title="All 2 branches missed.">		if(gp.pFinder.search() == true) {</span>
+
+			// Next wxPos and wyPos
+<span class="nc" id="L224">			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;</span>
+<span class="nc" id="L225">			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;</span>
+
+
+			// Entity's solidArea position
+<span class="nc" id="L229">			int enLeftX = wxPos + detectionArea.x;</span>
+<span class="nc" id="L230">			int enRightX = wxPos + detectionArea.x + detectionArea.width;</span>
+<span class="nc" id="L231">			int enTopY = wyPos + detectionArea.y;</span>
+<span class="nc" id="L232">			int enBottomY = wyPos + detectionArea.y + detectionArea.height;</span>
+
+<span class="nc bnc" id="L234" title="All 6 branches missed.">			if (enTopY &gt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
+<span class="nc" id="L235">				direction = &quot;up&quot;;</span>
+<span class="nc" id="L236">			}</span>
+<span class="nc bnc" id="L237" title="All 6 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
+<span class="nc" id="L238">				direction = &quot;down&quot;;</span>
+<span class="nc" id="L239">			}</span>
+<span class="nc bnc" id="L240" title="All 4 branches missed.">			else if (enTopY &gt;= nextY &amp;&amp; enBottomY &lt; nextY + gp.tileSize) {</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">				if (enLeftX &gt; nextX) {</span>
+<span class="nc" id="L242">					direction = &quot;left&quot;;</span>
+				}
+<span class="nc bnc" id="L244" title="All 2 branches missed.">				if (enLeftX &lt; nextX) {</span>
+<span class="nc" id="L245">					direction = &quot;right&quot;;</span>
+				}
+<span class="nc" id="L247">			}</span>
+<span class="nc bnc" id="L248" title="All 4 branches missed.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
+				//up or left
+<span class="nc" id="L250">				direction = &quot;up&quot;;</span>
+<span class="nc" id="L251">				checkCollision();</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">				if (isCollision == true) {</span>
+<span class="nc" id="L253">					direction = &quot;left&quot;;</span>
+				}
+<span class="nc" id="L255">			}</span>
+<span class="nc bnc" id="L256" title="All 4 branches missed.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
+<span class="nc" id="L257">				direction = &quot;up&quot;;</span>
+<span class="nc" id="L258">				checkCollision();</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">				if (isCollision == true) {</span>
+<span class="nc" id="L260">					direction = &quot;right&quot;;</span>
+				}
+<span class="nc" id="L262">			}</span>
+<span class="nc bnc" id="L263" title="All 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
+<span class="nc" id="L264">				direction = &quot;down&quot;;</span>
+<span class="nc" id="L265">				checkCollision();</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">				if(isCollision == true) {</span>
+<span class="nc" id="L267">					direction = &quot;left&quot;;</span>
+				}
+<span class="nc" id="L269">			}</span>
+<span class="nc bnc" id="L270" title="All 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
+<span class="nc" id="L271">				direction = &quot;down&quot;;</span>
+<span class="nc" id="L272">				checkCollision();</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">				if (isCollision == true) {</span>
+<span class="nc" id="L274">					direction = &quot;right&quot;;</span>
+				}
+			}
+
+			// int nextColumn = gp.pFinder.pathList.get(0).column;
+			// int nextRow = gp.pFinder.pathList.get(0).row;
+			// if(nextColumn == goalColumn &amp;&amp; nextRow == goalRow) {
+			// 	onPath = false;
+			// }
+		}
+<span class="nc" id="L284">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

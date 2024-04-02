@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CollisionCheck.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Documents</a> &gt; <a href="index.source.html" class="el_package">Documents.main</a> &gt; <span class="el_source">CollisionCheck.java</span></div><h1>CollisionCheck.java</h1><pre class="source lang-java linenums">package Documents.main;
+
+import Documents.tile.TileFactory;
+import Documents.entity.Entity;
+import Documents.entity.Ghost;
+
+/**
+ * Class for checking collisions between entities and tiles/objects in the maze.
+ */
+public class CollisionCheck {
+	/** The GamePanel instance associated with the collision check. */
+	GamePanel gp;
+
+	/**
+     * Constructs a CollisionCheck object with the specified GamePanel.
+     * @param gp The GamePanel instance.
+     */
+<span class="fc" id="L18">	public CollisionCheck(GamePanel gp) {</span>
+<span class="fc" id="L19">		this.gp = gp;</span>
+<span class="fc" id="L20">	}</span>
+
+	/**
+     * Checks for collisions between an enti
+     * ty and tiles.
+     * @param entity The entity to check collisions for.
+     */
+	public void tileCheck(Entity entity) {
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">		if(!(entity instanceof Ghost)){</span>
+<span class="fc" id="L29">			int left = entity.wxPos + entity.detectionArea.x;</span>
+<span class="fc" id="L30">			int right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;</span>
+<span class="fc" id="L31">			int top = entity.wyPos + entity.detectionArea.y;</span>
+<span class="fc" id="L32">			int bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;</span>
+
+<span class="fc" id="L34">			int leftCol = left/gp.tileSize;</span>
+<span class="fc" id="L35">			int rightCol = right/gp.tileSize;</span>
+<span class="fc" id="L36">			int topRow = top/gp.tileSize;</span>
+<span class="fc" id="L37">			int bottomRow = bottom/gp.tileSize;</span>
+
+			int tile1, tile2;
+
+<span class="fc bfc" id="L41" title="All 5 branches covered.">			switch(entity.direction) {</span>
+			case &quot;up&quot;:
+<span class="fc" id="L43">				topRow = (top - entity.vel)/gp.tileSize;</span>
+<span class="fc" id="L44">				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);</span>
+<span class="fc" id="L45">				tile2 = gp.tileFactory.getTileMapNum(rightCol, topRow);</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
+<span class="nc" id="L47">					entity.isCollision = true;</span>
+				}
+<span class="nc" id="L49">				break;</span>
+			case &quot;down&quot;:
+<span class="fc" id="L51">				bottomRow = (bottom + entity.vel)/gp.tileSize;</span>
+<span class="fc" id="L52">				tile1 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);</span>
+<span class="fc" id="L53">				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);</span>
+<span class="pc bpc" id="L54" title="2 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
+<span class="nc" id="L55">					entity.isCollision = true;</span>
+				}
+<span class="nc" id="L57">				break;</span>
+			case &quot;left&quot;:
+<span class="fc" id="L59">				leftCol = (left - entity.vel)/gp.tileSize;</span>
+<span class="fc" id="L60">				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);</span>
+<span class="fc" id="L61">				tile2 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);</span>
+<span class="pc bpc" id="L62" title="2 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
+<span class="nc" id="L63">					entity.isCollision = true;</span>
+				}
+<span class="nc" id="L65">				break;</span>
+			case &quot;right&quot;:
+<span class="fc" id="L67">				rightCol = (right + entity.vel)/gp.tileSize;</span>
+<span class="fc" id="L68">				tile1 = gp.tileFactory.getTileMapNum(rightCol, topRow);</span>
+<span class="fc" id="L69">				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);</span>
+<span class="pc bpc" id="L70" title="2 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
+<span class="nc" id="L71">					entity.isCollision = true;</span>
+				}
+				break;
+			} 
+		}
+<span class="fc" id="L76">	}</span>
+
+	/**
+     * Checks for collisions between an entity and objects.
+     * @param entity The entity to check collisions for.
+     * @param mainChar Indicates whether the entity is the main character.
+     * @return The index of the object with which the entity collides.
+     */
+	public int objCheck(Entity entity, boolean mainChar) {
+<span class="fc" id="L85">		int index = 999;</span>
+
+<span class="fc bfc" id="L87" title="All 2 branches covered.">		for(int i = 0; i &lt; gp.obj.length; i++) {</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">			if(gp.obj[i] != null) {</span>
+				//get Entity's detection area pos
+<span class="nc" id="L90">				entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;</span>
+<span class="nc" id="L91">				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;</span>
+
+				//get the object's detection area pos
+<span class="nc" id="L94">				gp.obj[i].detectionArea.x = gp.obj[i].worldX + gp.obj[i].detectionArea.x;</span>
+<span class="nc" id="L95">				gp.obj[i].detectionArea.y = gp.obj[i].worldY + gp.obj[i].detectionArea.y;</span>
+
+<span class="nc bnc" id="L97" title="All 5 branches missed.">				switch(entity.direction) {</span>
+				case &quot;up&quot;:
+<span class="nc" id="L99">					entity.detectionArea.y -= entity.vel;</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">						if(gp.obj[i].isCollision == true) {</span>
+<span class="nc" id="L102">							entity.isCollision = true;</span>
+						}
+<span class="nc bnc" id="L104" title="All 2 branches missed.">						if(mainChar == true) {</span>
+<span class="nc" id="L105">							index = i;</span>
+						}
+					}
+<span class="nc" id="L108">					break;</span>
+				case &quot;down&quot;:
+<span class="nc" id="L110">					entity.detectionArea.y += entity.vel;</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">						if(gp.obj[i].isCollision == true) {</span>
+<span class="nc" id="L113">							entity.isCollision = true;</span>
+						}
+<span class="nc bnc" id="L115" title="All 2 branches missed.">						if(mainChar == true) {</span>
+<span class="nc" id="L116">							index = i;</span>
+						}
+					}
+<span class="nc" id="L119">					break;</span>
+				case &quot;left&quot;:
+<span class="nc" id="L121">					entity.detectionArea.x -= entity.vel;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">						if(gp.obj[i].isCollision == true) {</span>
+<span class="nc" id="L124">							entity.isCollision = true;</span>
+						}
+<span class="nc bnc" id="L126" title="All 2 branches missed.">						if(mainChar == true) {</span>
+<span class="nc" id="L127">							index = i;</span>
+						}
+					}
+<span class="nc" id="L130">					break;</span>
+				case &quot;right&quot;:
+<span class="nc" id="L132">					entity.detectionArea.x += entity.vel;</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">						if(gp.obj[i].isCollision == true) {</span>
+<span class="nc" id="L135">							entity.isCollision = true;</span>
+						}
+<span class="nc bnc" id="L137" title="All 2 branches missed.">						if(mainChar == true) {</span>
+<span class="nc" id="L138">							index = i;</span>
+						}
+					}
+					break;
+<span class="nc" id="L142">				}</span>
+<span class="nc" id="L143">				entity.detectionArea.x = entity.detectionDefaultX;</span>
+<span class="nc" id="L144">				entity.detectionArea.y = entity.detectionDefaultY;</span>
+<span class="nc" id="L145">				gp.obj[i].detectionArea.x = gp.obj[i].detectionDefaultX;</span>
+<span class="nc" id="L146">				gp.obj[i].detectionArea.y = gp.obj[i].detectionDefaultY;</span>
+			}
+		}
+
+<span class="fc" id="L150">		return index;</span>
+	}
+
+	//npc or momster
+	public int entityCheck(Entity entity, Entity[] target){
+<span class="fc" id="L155">		int index = 999;</span>
+
+<span class="fc bfc" id="L157" title="All 2 branches covered.">		for(int i = 0; i &lt; target.length; i++) {</span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">			if(target[i] != null) {</span>
+				//get Entity's detection area pos
+<span class="nc" id="L160">				entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;</span>
+<span class="nc" id="L161">				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;</span>
+
+				//get the object's detection area pos
+<span class="nc" id="L164">				target[i].detectionArea.x = target[i].wxPos + target[i].detectionArea.x;</span>
+<span class="nc" id="L165">				target[i].detectionArea.y = target[i].wyPos + target[i].detectionArea.y;</span>
+
+<span class="nc bnc" id="L167" title="All 5 branches missed.">				switch(entity.direction) {</span>
+				case &quot;up&quot;:
+<span class="nc" id="L169">					entity.detectionArea.y -= entity.vel;</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
+<span class="nc" id="L171">							entity.isCollision = true;</span>
+<span class="nc" id="L172">							index = i;</span>
+					}
+<span class="nc" id="L174">					break;</span>
+				case &quot;down&quot;:
+<span class="nc" id="L176">					entity.detectionArea.y += entity.vel;</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
+<span class="nc" id="L178">						entity.isCollision = true;</span>
+<span class="nc" id="L179">							index = i;</span>
+					}
+<span class="nc" id="L181">					break;</span>
+				case &quot;left&quot;:
+<span class="nc" id="L183">					entity.detectionArea.x -= entity.vel;</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
+<span class="nc" id="L185">						entity.isCollision = true;</span>
+<span class="nc" id="L186">							index = i;</span>
+					}
+<span class="nc" id="L188">					break;</span>
+				case &quot;right&quot;:
+<span class="nc" id="L190">					entity.detectionArea.x += entity.vel;</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
+<span class="nc" id="L192">						entity.isCollision = true;</span>
+<span class="nc" id="L193">							index = i;</span>
+					}
+					break;
+<span class="nc" id="L196">				}</span>
+<span class="nc" id="L197">				entity.detectionArea.x = entity.detectionDefaultX;</span>
+<span class="nc" id="L198">				entity.detectionArea.y = entity.detectionDefaultY;</span>
+<span class="nc" id="L199">				target[i].detectionArea.x = target[i].detectionDefaultX;</span>
+<span class="nc" id="L200">				target[i].detectionArea.y = target[i].detectionDefaultY;</span>
+			}
+		}
+
+<span class="fc" id="L204">		return index;</span>
+	}
+
+	public boolean playerCheck(Entity entity){
+		//get Entity's detection area pos
+<span class="nc" id="L209">		entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;</span>
+<span class="nc" id="L210">		entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;</span>
+
+		//get the object's detection area pos
+<span class="nc" id="L213">		gp.mainCharacter.detectionArea.x = gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x;</span>
+<span class="nc" id="L214">		gp.mainCharacter.detectionArea.y = gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y;</span>
+
+<span class="nc bnc" id="L216" title="All 5 branches missed.">		switch(entity.direction) {</span>
+		case &quot;up&quot;:
+<span class="nc" id="L218">			entity.detectionArea.y -= entity.vel;</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
+<span class="nc" id="L220">					entity.isCollision = true;</span>
+			}
+<span class="nc" id="L222">			break;</span>
+		case &quot;down&quot;:
+<span class="nc" id="L224">			entity.detectionArea.y += entity.vel;</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
+<span class="nc" id="L226">				entity.isCollision = true;</span>
+			}
+<span class="nc" id="L228">			break;</span>
+		case &quot;left&quot;:
+<span class="nc" id="L230">			entity.detectionArea.x -= entity.vel;</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
+<span class="nc" id="L232">				entity.isCollision = true;</span>
+			}
+<span class="nc" id="L234">			break;</span>
+		case &quot;right&quot;:
+<span class="nc" id="L236">			entity.detectionArea.x += entity.vel;</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
+<span class="nc" id="L238">				entity.isCollision = true;</span>
+			}
+			break;
+<span class="nc" id="L241">		}</span>
+<span class="nc" id="L242">		entity.detectionArea.x = entity.detectionDefaultX;</span>
+<span class="nc" id="L243">		entity.detectionArea.y = entity.detectionDefaultY;</span>
+<span class="nc" id="L244">		gp.mainCharacter.detectionArea.x = gp.mainCharacter.detectionDefaultX;</span>
+<span class="nc" id="L245">		gp.mainCharacter.detectionArea.y = gp.mainCharacter.detectionDefaultY;</span>
+<span class="nc" id="L246">		return entity.isCollision;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KeyControl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Documents</a> &gt; <a href="index.source.html" class="el_package">Documents.main</a> &gt; <span class="el_source">KeyControl.java</span></div><h1>KeyControl.java</h1><pre class="source lang-java linenums">package Documents.main;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+/**
+ * Class for handling keyboard input for main character movement.
+ */
+public class KeyControl implements KeyListener{
+	/** The GamePanel instance associated with the key control. */
+	GamePanel gp;
+	
+	/** Indicates whether the up arrow key is currently pressed. */
+	public boolean upPressed;
+
+	/** Indicates whether the down arrow key is currently pressed. */
+    public boolean downPressed;
+    
+    /** Indicates whether the left arrow key is currently pressed. */
+    public boolean leftPressed;
+    
+    /** Indicates whether the right arrow key is currently pressed. */
+    public boolean rightPressed;
+
+	/** Indicates whether the enter key is currently pressed. */
+    public boolean enterPressed;
+
+<span class="fc" id="L28">	boolean checkDrawTime = false;</span>
+
+	/**
+     * Constructs a KeyControl object with the specified GamePanel instance.
+     * @param gp The GamePanel instance to associate with the KeyControl object.
+     */
+<span class="fc" id="L34">	public KeyControl(GamePanel gp) {</span>
+<span class="fc" id="L35">		this.gp = gp;</span>
+<span class="fc" id="L36">	}</span>
+
+	/**
+     * Invoked when a key has been typed.
+     * @param e The KeyEvent associated with this event.
+     */
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+<span class="nc" id="L45">	}</span>
+
+	/**
+     * Invoked when a key has been pressed.
+     * @param e The KeyEvent associated with this event.
+     */
+	@Override
+	public void keyPressed(KeyEvent e) {
+<span class="fc" id="L53">		int code = e.getKeyCode();//return int keyCode associated with the key in event</span>
+
+		// Title State and Death State
+<span class="pc bpc" id="L56" title="3 of 6 branches missed.">		if (gp.gameState == gp.titleState||gp.gameState == gp.deathState||gp.gameState == gp.winState) {</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">			if (code == KeyEvent.VK_UP) {</span>
+<span class="nc" id="L58">				gp.ui.commandingNumber--;</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">				if (gp.ui.commandingNumber &lt; 0) {</span>
+<span class="nc" id="L60">					gp.ui.commandingNumber = 2;</span>
+				}
+			}
+<span class="nc bnc" id="L63" title="All 2 branches missed.">			if (code == KeyEvent.VK_DOWN) {</span>
+<span class="nc" id="L64">				gp.ui.commandingNumber++;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">				if (gp.ui.commandingNumber &gt; 2) {</span>
+<span class="nc" id="L66">					gp.ui.commandingNumber = 0;</span>
+				}
+			}
+<span class="nc bnc" id="L69" title="All 2 branches missed.">			if (code == KeyEvent.VK_ENTER) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">				if (gp.ui.commandingNumber == 0) {</span>
+<span class="nc" id="L71">					gp.resetGame();</span>
+<span class="nc" id="L72">					gp.gameState = gp.playState;</span>
+<span class="nc" id="L73">					gp.musicPlay(0);</span>
+				}
+<span class="nc bnc" id="L75" title="All 2 branches missed.">				if (gp.ui.commandingNumber == 1) {</span>
+<span class="nc" id="L76">					System.exit(0);</span>
+				}
+			}
+		}
+		//play state
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">		if(gp.gameState == gp.playState){</span>
+<span class="pc bpc" id="L82" title="3 of 7 branches missed.">			switch(code) {</span>
+			case KeyEvent.VK_UP:
+<span class="fc" id="L84">				upPressed = true;</span>
+<span class="fc" id="L85">				break;</span>
+			case KeyEvent.VK_DOWN:
+<span class="fc" id="L87">				downPressed = true;</span>
+<span class="fc" id="L88">				break;</span>
+			case KeyEvent.VK_LEFT:
+<span class="fc" id="L90">				leftPressed = true;</span>
+<span class="fc" id="L91">				break;</span>
+			case KeyEvent.VK_RIGHT:
+<span class="fc" id="L93">				rightPressed = true;</span>
+<span class="fc" id="L94">				break;</span>
+			case KeyEvent.VK_P:
+<span class="nc" id="L96">				gp.gameState = gp.stopState;</span>
+<span class="nc" id="L97">				break;</span>
+			case KeyEvent.VK_SPACE:
+<span class="nc" id="L99">				enterPressed = true;</span>
+<span class="nc" id="L100">				break;</span>
+				
+			default:
+				break;
+			}
+<span class="nc" id="L105">		}</span>
+		// pause state
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		else if(gp.gameState == gp.stopState){</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">			if(code == KeyEvent.VK_P){</span>
+<span class="nc" id="L109">				gp.gameState = gp.playState;</span>
+			}
+<span class="nc" id="L111">		}</span>
+		//dialogue state
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		else if(gp.gameState == gp.dialogueState){</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">			if(code == KeyEvent.VK_SPACE){</span>
+<span class="nc" id="L115">				gp.gameState = gp.playState;</span>
+			}
+		}
+<span class="fc" id="L118">	}</span>
+
+	/**
+     * Invoked when a key has been released.
+     * @param e The KeyEvent associated with this event.
+     */
+	@Override
+	public void keyReleased(KeyEvent e) {
+<span class="nc" id="L126">		int code = e.getKeyCode();//return int keyCode associated with the key in event</span>
+
+<span class="nc bnc" id="L128" title="All 5 branches missed.">		switch(code) {</span>
+		case KeyEvent.VK_UP:
+<span class="nc" id="L130">			upPressed = false;</span>
+<span class="nc" id="L131">			break;</span>
+		case KeyEvent.VK_DOWN:
+<span class="nc" id="L133">			downPressed = false;</span>
+<span class="nc" id="L134">			break;</span>
+		case KeyEvent.VK_LEFT:
+<span class="nc" id="L136">			leftPressed = false;</span>
+<span class="nc" id="L137">			break;</span>
+		case KeyEvent.VK_RIGHT:
+<span class="nc" id="L139">			rightPressed = false;</span>
+<span class="nc" id="L140">			break;</span>
+		default:
+			break;
+		}
+<span class="nc" id="L144">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

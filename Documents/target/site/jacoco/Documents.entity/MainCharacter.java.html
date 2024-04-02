@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainCharacter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Documents</a> &gt; <a href="index.source.html" class="el_package">Documents.entity</a> &gt; <span class="el_source">MainCharacter.java</span></div><h1>MainCharacter.java</h1><pre class="source lang-java linenums">package Documents.entity;
+
+
+import Documents.main.GamePanel;
+import Documents.main.KeyControl;
+import Documents.main.UtilityTools;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
+import Documents.main.UserInterface;
+/**
+ * Represents the main character in the maze, extending the Entity class.
+ */
+public class MainCharacter extends Entity {
+	/** The GamePanel instance associated with the character. */
+    GamePanel gp;
+    
+    /** The KeyControl instance associated with the character. */
+    KeyControl keyControl;
+    
+    /** The x-coordinate of the character inside the maze. */
+    public final int screenX;
+    
+    /** The y-coordinate of the character inside the maze */
+    public final int screenY;
+    
+    /** The number of keys the character currently holds. */
+<span class="fc" id="L30">    public int keyNum = 0;</span>
+
+<span class="fc" id="L32">	int stall = 0;</span>
+	/**
+     * Constructs a MainCharacter object with the specified GamePanel and KeyControl instances.
+     * @param gp The GamePanel instance.
+     * @param keyControl The KeyControl instance.
+     */
+	public MainCharacter(GamePanel gp, KeyControl keyControl) {
+<span class="fc" id="L39">		super(gp);</span>
+<span class="fc" id="L40">		this.gp = gp;</span>
+<span class="fc" id="L41">		this.keyControl = keyControl;</span>
+
+<span class="fc" id="L43">		screenX = gp.screenWidth/2 - (gp.tileSize/2);</span>
+<span class="fc" id="L44">		screenY = gp.screenHeight/2 - (gp.tileSize/2);</span>
+
+<span class="fc" id="L46">		detectionArea = new Rectangle();</span>
+<span class="fc" id="L47">		detectionArea.x = 8;</span>
+<span class="fc" id="L48">		detectionArea.y = 16;</span>
+
+<span class="fc" id="L50">		detectionDefaultX = detectionArea.x;</span>
+<span class="fc" id="L51">		detectionDefaultY = detectionArea.y;</span>
+
+<span class="fc" id="L53">		detectionArea.width = 26;</span>
+<span class="fc" id="L54">		detectionArea.height = 26;</span>
+
+<span class="fc" id="L56">		settingDefaultValue();</span>
+<span class="fc" id="L57">		getMainCharacterImg();</span>
+<span class="fc" id="L58">	}</span>
+
+	public int getMainWxPos(){
+<span class="nc" id="L61">		return wxPos;</span>
+	}
+
+	public int getMainWyPos(){
+<span class="nc" id="L65">		return wyPos;</span>
+	}
+	/**
+     * Initializes the default values for the character.
+     */
+	public void settingDefaultValue() {
+<span class="fc" id="L71">		wxPos = gp.tileSize * 20 - gp.tileSize/2;</span>
+<span class="fc" id="L72">		wyPos = gp.tileSize * 18 - gp.tileSize/2;</span>
+<span class="fc" id="L73">		vel = 6;</span>
+
+<span class="fc" id="L75">		direction = &quot;down&quot;;</span>
+<span class="fc" id="L76">	}</span>
+
+	/**
+     * Loads the main character's images from resources folder.
+     */
+	public void getMainCharacterImg() {
+<span class="fc" id="L82">    	upward1 = setup(&quot;/mainCharacter/boy_up_1&quot;);</span>
+<span class="fc" id="L83">    	upward2 = setup(&quot;/mainCharacter/boy_up_2&quot;);</span>
+<span class="fc" id="L84">    	downward1 = setup(&quot;/mainCharacter/boy_down_1&quot;);</span>
+<span class="fc" id="L85">    	downward2 = setup(&quot;/mainCharacter/boy_down_2&quot;);</span>
+<span class="fc" id="L86">    	leftward1 = setup(&quot;/mainCharacter/boy_left_1&quot;);</span>
+<span class="fc" id="L87">    	leftward2 = setup(&quot;/mainCharacter/boy_left_2&quot;);</span>
+<span class="fc" id="L88">    	rightward1 = setup(&quot;/mainCharacter/boy_right_1&quot;);</span>
+<span class="fc" id="L89">    	rightward2 = setup(&quot;/mainCharacter/boy_right_2&quot;);</span>
+<span class="fc" id="L90">	}</span>
+
+	/**
+     * Update the character direction based on the key press.
+     */
+	public void update() {
+<span class="fc bfc" id="L96" title="All 4 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
+<span class="pc bpc" id="L97" title="1 of 4 branches missed.">			keyControl.leftPressed == true || keyControl.rightPressed == true) {</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">			if(keyControl.upPressed == true) {</span>
+<span class="fc" id="L99">				direction = &quot;up&quot;;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">			}else if(keyControl.downPressed == true) {</span>
+<span class="fc" id="L101">				direction = &quot;down&quot;;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">			}else if(keyControl.leftPressed == true) {</span>
+<span class="fc" id="L103">				direction = &quot;left&quot;;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">			}else if(keyControl.rightPressed == true) {</span>
+<span class="fc" id="L105">				direction = &quot;right&quot;;</span>
+			}
+
+			//checking collision with the wall tile
+<span class="fc" id="L109">			isCollision = false;</span>
+<span class="fc" id="L110">			gp.checkCollision.tileCheck(this);</span>
+
+			//obj collision
+<span class="fc" id="L113">			int objIndex = gp.checkCollision.objCheck(this,true);</span>
+<span class="fc" id="L114">			pickUpObj(objIndex);</span>
+
+			// npc collision
+<span class="fc" id="L117">			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc); //XXX</span>
+<span class="fc" id="L118">			interactNpc(npcIndex);</span>
+
+			//monster collision
+<span class="fc" id="L121">			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);</span>
+<span class="fc" id="L122">			interactMob(mobIndex);</span>
+ 
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">			if((int)(UserInterface.score-UserInterface.gameTime)&lt;=0){</span>
+<span class="nc" id="L125">				gp.gameState = gp.stopState;</span>
+			}
+			//if its false, character can move else cannot
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">			if(isCollision == false) {</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">				if(stall==0){</span>
+<span class="fc bfc" id="L130" title="All 5 branches covered.">					switch(direction) {</span>
+<span class="fc" id="L131">					case &quot;up&quot;: this.wyPos -= this.vel; break;</span>
+<span class="fc" id="L132">					case &quot;down&quot;: this.wyPos += this.vel; break;</span>
+<span class="fc" id="L133">					case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
+<span class="fc" id="L134">					case &quot;right&quot;: this.wxPos += this.vel; break;</span>
+					}
+				}
+			}
+
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">			if(stall!=0){</span>
+<span class="nc" id="L140">				stall -=1;</span>
+			}
+			//animation
+			//the move() method gets called 60 times per second
+			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
+<span class="fc" id="L145">			spriteCount++;</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">			if(spriteCount &gt; 10) {</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">				if(spriteNum == 1) {</span>
+<span class="nc" id="L148">					spriteNum = 2;</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">				}else if(spriteNum == 2) {</span>
+<span class="nc" id="L150">					spriteNum = 1;</span>
+				}
+<span class="nc" id="L152">				spriteCount = 0;</span>
+			}
+		}
+<span class="fc" id="L155">	}</span>
+
+	/**
+     * Picks up an object at the specified index.
+     * @param i The index of the object to pick up.
+     */
+	public void pickUpObj(int i) {
+		//if index is not 999 it means the collision has happened
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">		if(i !=  999) {</span>
+<span class="nc" id="L164">			String objName = gp.obj[i].type;</span>
+
+			//depending on obj reaction
+<span class="pc bpc" id="L167" title="5 of 6 branches missed.">			switch(objName) {</span>
+			case &quot;keyCard&quot;:
+<span class="nc" id="L169">				gp.soundEffectObj(1);</span>
+<span class="nc" id="L170">				keyNum++;</span>
+				//null to remove the object
+<span class="nc" id="L172">				gp.obj[i] = null;</span>
+<span class="nc" id="L173">				gp.ui.displayMessage(&quot;Key Card collected!&quot;);</span>
+<span class="nc" id="L174">				break;</span>
+			case &quot;door&quot;:
+<span class="nc bnc" id="L176" title="All 2 branches missed.">				if(keyNum == 4) {</span>
+<span class="nc" id="L177">					gp.soundEffectObj(2);</span>
+<span class="nc" id="L178">					gp.obj[i] = null;</span>
+<span class="nc" id="L179">					keyNum = 0;</span>
+<span class="nc" id="L180">					gp.ui.displayMessage(&quot;The door is now open!&quot;);</span>
+<span class="nc" id="L181">					break;</span>
+				} else {
+<span class="nc" id="L183">					gp.ui.displayMessage(&quot;You need 4 card keys to open&quot;);</span>
+				}
+			case &quot;stair&quot;:
+<span class="nc" id="L186">				gp.gameState = gp.winState;</span>
+<span class="nc" id="L187">				gp.ui.gameDone = true;</span>
+<span class="nc" id="L188">				gp.musicStop();</span>
+				//gp.soundEffectObj();
+<span class="nc" id="L190">				break;</span>
+			case &quot;bloodstain&quot;:
+<span class="nc" id="L192">				UserInterface.score -= 10;</span>
+<span class="nc" id="L193">				stall = 40;</span>
+<span class="nc" id="L194">				gp.obj[i] = null;</span>
+<span class="nc" id="L195">				break;</span>
+			case &quot;candy&quot;:
+<span class="nc" id="L197">				UserInterface.score += 20;</span>
+<span class="nc" id="L198">				gp.obj[i] = null;</span>
+				break;
+			}
+		}
+<span class="fc" id="L202">	}</span>
+
+	public void interactNpc(int i){
+<span class="pc bpc" id="L205" title="1 of 2 branches missed.">		if(i != 999){</span>
+			//System.out.println(&quot;you are hitting npc&quot;);
+<span class="nc bnc" id="L207" title="All 2 branches missed.">			if(gp.keyControl.enterPressed == true){</span>
+<span class="nc" id="L208">				gp.gameState = gp.dialogueState;</span>
+<span class="nc" id="L209">				gp.npc[i].speak();</span>
+			}
+		}
+<span class="fc" id="L212">		gp.keyControl.enterPressed = false;</span>
+<span class="fc" id="L213">	}</span>
+
+
+	public void interactMob(int i){
+<span class="pc bpc" id="L217" title="1 of 2 branches missed.">		if(i != 999) {</span>
+			// System.out.println(&quot;You are hitting mob&quot;);
+<span class="nc" id="L219">			gp.gameState = gp.deathState;</span>
+		}
+<span class="fc" id="L221">	}</span>
+	/**
+     * Draws the character inside the maze.
+     * @param g2 The graphics context.
+     */
+	public void draw(Graphics2D g2) {
+<span class="nc" id="L227">		BufferedImage image = null;</span>
+
+<span class="nc bnc" id="L229" title="All 5 branches missed.">		switch(direction) {</span>
+		case &quot;up&quot;:
+<span class="nc bnc" id="L231" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="nc" id="L232">				image = upward1;</span>
+			}
+<span class="nc bnc" id="L234" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
+<span class="nc" id="L235">				image = upward2;</span>
+			}
+<span class="nc" id="L237">			break;</span>
+		case &quot;down&quot;:
+<span class="nc bnc" id="L239" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="nc" id="L240">				image = downward1;</span>
+			}
+<span class="nc bnc" id="L242" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
+<span class="nc" id="L243">				image = downward2;</span>
+			}
+<span class="nc" id="L245">			break;</span>
+		case &quot;left&quot;:
+<span class="nc bnc" id="L247" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="nc" id="L248">				image = leftward1;</span>
+			}
+<span class="nc bnc" id="L250" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
+<span class="nc" id="L251">				image = leftward2;</span>
+			}
+<span class="nc" id="L253">			break;</span>
+		case &quot;right&quot;:
+<span class="nc bnc" id="L255" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="nc" id="L256">				image = rightward1;</span>
+			}
+<span class="nc bnc" id="L258" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
+<span class="nc" id="L259">				image = rightward2;</span>
+			}
+			break;
+		}
+		//image observer
+<span class="nc" id="L264">		g2.drawImage(image, screenX, screenY, null);</span>
+<span class="nc" id="L265">	}</span>
+}
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
