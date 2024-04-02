@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter842876786160640565.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-02T14-21-17_699-jvmRun1 surefire15634066357764499879tmp surefire_013620068882355605636tmp"/>
+    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter1973139207432340160.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-02T14-23-04_015-jvmRun1 surefire17470979739427591078tmp surefire_08694407071712772033tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/test-classes:/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/classes:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/ryanmitchellin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter842876786160640565.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter1973139207432340160.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
