@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.nio.file.Path;
 
 /**
  * The main panel for the maze managing the game logic and rendering the maze.
@@ -23,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable{
 	final int scale = 3;
 
 	/** The size of a tile after scaling. */
-	public final int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile
+	public int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile
 	
 	/** The number of columns in the screen. (4 : 3 by default) */
 	public final int maxCol = 16;
@@ -38,10 +37,10 @@ public class GamePanel extends JPanel implements Runnable{
 	public final int screenHeight = tileSize * maxRow; // Height of the screen : 864 pixels
 
 	/** The number of columns in world map. */
-	public final int maxWCol = 50;
+	public int maxWCol = 50;
 
 	/** The number of rows in world map. */
-	public final int maxWRow = 50;
+	public int maxWRow = 50;
 
 	/** The number of frames per second for the game. */
 	int FPS = 60;
@@ -226,7 +225,7 @@ public class GamePanel extends JPanel implements Runnable{
 			mainCharacter.draw(g2);
 
 			//npc
-			for(int i = 0; i < npc.length; i++){ //XXX
+			for(int i = 0; i < npc.length; i++){
 				if(npc[i] != null) {
 					npc[i].draw(g2);
 				}

@@ -2,12 +2,10 @@ package Documents.entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.geom.AffineTransform;
 import java.awt.Rectangle;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import Documents.main.GamePanel;
-import Documents.main.UtilityTools;
 
 /**
  * Represents an entity inside the maze.
@@ -116,7 +114,6 @@ public class Entity {
 		gp.checkCollision.playerCheck(this);
 		gp.checkCollision.entityCheck(this,gp.npc);
 		gp.checkCollision.entityCheck(this, gp.monster);
-		boolean contactPlayer = gp.checkCollision.playerCheck(this);
 	}
 
 	public void update(){
@@ -195,7 +192,6 @@ public class Entity {
 		}
 	}
 	public BufferedImage setup(String imgPath) {
-		UtilityTools tools = new UtilityTools();
 		BufferedImage img = null;
 
 		try {

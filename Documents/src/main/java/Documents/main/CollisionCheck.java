@@ -1,6 +1,5 @@
 package Documents.main;
 
-import Documents.tile.TileFactory;
 import Documents.entity.Entity;
 import Documents.entity.Ghost;
 

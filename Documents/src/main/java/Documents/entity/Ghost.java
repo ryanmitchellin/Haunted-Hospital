@@ -1,11 +1,6 @@
 package Documents.entity;
 
 import Documents.main.GamePanel;
-
-import java.util.Random;
-
-import Documents.entity.MainCharacter;
-
 import java.awt.Rectangle;
 
 public class Ghost extends Monster {

@@ -1,6 +1,5 @@
 package Documents.main;
 
-import Documents.main.GamePanel;
 //list of object class
 import Documents.object.KeyCard;
 import Documents.object.Door;

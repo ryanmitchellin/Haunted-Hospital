@@ -1,7 +1,6 @@
 package Documents.object;
 
 import Documents.main.GamePanel;
-import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 

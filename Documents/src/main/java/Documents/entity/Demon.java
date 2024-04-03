@@ -8,7 +8,6 @@ public class Demon extends Monster {
 
     public Demon(GamePanel gp) {
 		super(gp);
-		//TODO Auto-generated constructor stub
 		direction = "down";
 		this.vel = 2;
 

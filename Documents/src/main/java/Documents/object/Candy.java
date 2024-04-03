@@ -1,7 +1,6 @@
 package Documents.object;
 
 import java.io.IOException;
-import java.nio.channels.CancelledKeyException;
 
 import javax.imageio.ImageIO;
 

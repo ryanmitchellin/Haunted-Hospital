@@ -12,7 +12,6 @@ import java.text.DecimalFormat;
 import javax.imageio.ImageIO;
 
 import java.awt.BasicStroke;
-import Documents.entity.Entity;
 
 /**
  * The UserInterface class handles the display of the game's user interface elements.
@@ -312,7 +311,6 @@ public class UserInterface {
 
 	}
 	public BufferedImage setup(String imgPath) {
-		UtilityTools tools = new UtilityTools();
 		BufferedImage img = null;
 
 		try {

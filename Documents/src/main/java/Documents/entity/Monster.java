@@ -1,7 +1,6 @@
 package Documents.entity;
 
 import Documents.main.GamePanel;
-import Documents.entity.MainCharacter;
 
 public class Monster extends Entity{
     public Monster(GamePanel gp){

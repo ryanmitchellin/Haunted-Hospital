@@ -3,9 +3,6 @@ package Documents.entity;
 
 import Documents.main.GamePanel;
 import Documents.main.KeyControl;
-import Documents.main.UtilityTools;
-import javax.imageio.ImageIO;
-import java.io.IOException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
@@ -114,7 +111,7 @@ public class MainCharacter extends Entity {
 			pickUpObj(objIndex);
 
 			// npc collision
-			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc); //XXX
+			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc);
 			interactNpc(npcIndex);
 
 			//monster collision

@@ -1,7 +1,6 @@
 package Documents.tile;
 
 import Documents.main.GamePanel;
-import Documents.main.UtilityTools;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.Graphics2D;
@@ -9,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.BufferedReader;
-import java.awt.Color;
 
 /**
  * Factory class for creating and managing tiles in the maze.
@@ -68,7 +66,6 @@ public class TileFactory {
 		
 	}
 	public void setup(int i, String imgPath,boolean collision) {
-		UtilityTools tools = new UtilityTools();
 		try {
 			tiles[i] = new Tile();
 		    BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imgPath + ".png"));

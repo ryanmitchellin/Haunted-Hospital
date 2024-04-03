@@ -36,7 +36,6 @@ package Documents.main;
 
 
 import javax.swing.JFrame;
-import java.awt.Dimension;
 
 /**
  * The main class of the game. It creates a JFrame window and adds a GamePanel into it.
