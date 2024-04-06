@@ -180,5 +180,265 @@ public class CollisionCheckTest {
         assertEquals(false, mainCharacter.isCollision);
     }
 
-   
+    @Test
+    public void objCheckLeft1(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "left";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckLeft2(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = false;
+        mainCharacter.direction = "left";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckLeft3(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = 0;
+        gp.obj[0].worldY = 0;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "left";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckLeft4(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "left";
+        collisionCheck.objCheck(mainCharacter, false);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+
+    @Test
+    public void objCheckRight1(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = right;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "right";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckRight2(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = right;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = false;
+        mainCharacter.direction = "right";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckRight3(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = 0;
+        gp.obj[0].worldY = 0;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "right";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckRight4(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = right;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "right";
+        collisionCheck.objCheck(mainCharacter, false);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckUp1(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "up";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckUp2(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = right;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = false;
+        mainCharacter.direction = "up";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckUp3(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = 0;
+        gp.obj[0].worldY = 0;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "up";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckUp4(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = top;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "up";
+        collisionCheck.objCheck(mainCharacter, false);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+
+    @Test
+    public void objCheckDown1(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = bottom;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "down";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckDown2(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = right;
+        gp.obj[0].worldY = bottom;
+        gp.obj[0].isCollision = false;
+        mainCharacter.direction = "down";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckDown3(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = 0;
+        gp.obj[0].worldY = 0;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "down";
+        collisionCheck.objCheck(mainCharacter, true);
+        assertEquals(false, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    @Test
+    public void objCheckDown4(){
+
+        gp.obj[0] = new Bloodstain(gp);
+        gp.obj[0].worldX = left;
+        gp.obj[0].worldY = bottom;
+        gp.obj[0].isCollision = true;
+        mainCharacter.direction = "down";
+        collisionCheck.objCheck(mainCharacter, false);
+        assertEquals(true, mainCharacter.isCollision);
+        mainCharacter.isCollision = false;
+        gp.obj[0] = null;
+        
+
+    }
+
+    
+
+    
 }
