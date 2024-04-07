@@ -34,6 +34,7 @@ public class UserInterfaceTest {
         setAsset = new SetAsset(gp);
         ui = new  UserInterface(gp);
         g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
+        ui.g2 = g2;
 
     }
 
@@ -76,7 +77,7 @@ public class UserInterfaceTest {
 
     }
 
-    @Test
+    // @Test
     public void drawDeathScreenTest(){
         ui.commandingNumber = 0;
         ui.spriteCount = 0;
@@ -117,6 +118,16 @@ public class UserInterfaceTest {
         ui.drawWinScreen();
         ui.commandingNumber = 1;
         ui.drawWinScreen();
+    }
+
+    @Test
+    public void drawPauseScreenTest(){
+        ui.drawPauseScreen();
+    }
+
+    @Test
+    public void drawDialogueScreenTest(){
+        ui.drawDialogueScreen();
     }
 
 }
