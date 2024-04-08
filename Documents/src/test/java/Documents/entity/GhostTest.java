@@ -1,7 +1,6 @@
 package Documents.entity;
 
 import Documents.main.GamePanel;
-import Documents.tile.TileFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
