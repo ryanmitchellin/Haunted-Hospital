@@ -1,2 +1,4 @@
-package Documents.entity;public class GhostTest {
+package Documents.entity;
+
+public class GhostTest {
 }
