@@ -3,7 +3,7 @@ import Documents.main.GamePanel;
 import Documents.tile.TileFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DemonTest {
 
@@ -108,6 +108,34 @@ public class DemonTest {
     }
 
     @Test
+    public void testUpdateWithoutDistanceExceeding1(){
+        demon.vel = 5;
+        demon.direction = "right";
+        demon.wxPos = 2500;
+        demon.wyPos = 2500;
+        gamePanel.mainCharacter.wxPos = 1250;
+        gamePanel.mainCharacter.wyPos = 1250;
+        demon.onPath = false;
+        demon.isCollision = false;
+        demon.update();
+        assertFalse(demon.onPath);
+    }
+
+    @Test
+    public void testUpdateWithoutDistanceExceeding2(){
+        demon.vel = 5;
+        demon.direction = "right";
+        demon.wxPos = 2500;
+        demon.wyPos = 2500;
+        gamePanel.mainCharacter.wxPos = 1250;
+        gamePanel.mainCharacter.wyPos = 1250;
+        demon.onPath = true;
+        demon.isCollision = false;
+        demon.update();
+        assertTrue(demon.onPath);
+    }
+
+    @Test
     public void testUpdateSpriteCountSame() {
         demon.direction = "up";
         demon.spriteCount = 1;
@@ -141,6 +169,233 @@ public class DemonTest {
         demon.spriteNum = 3;
         demon.update();
         assertEquals(3, demon.spriteNum);
+    }
+
+    @Test
+    public void testSetActionOnPathTrue() {
+        demon.direction = "up";
+        demon.onPath = true;
+        demon.setAction();
+        //assertEquals(); // dont know what to check for assert equals. have to pick variables and calculate an outcome for expected.
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue1() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue2() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue3() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue4() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue5() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue6() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue7() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue8() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue9() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionTrue10() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 119;
+        demon.setAction();
+        assertEquals(0, demon.actionLockCount);
+        if (demon.randomI <= 25) {
+            assertEquals("up", demon.direction);
+        }
+        if (demon.randomI > 25 && demon.randomI <= 50) {
+            assertEquals("down", demon.direction);
+        }
+        if (demon.randomI > 50 && demon.randomI <= 75) {
+            assertEquals("left", demon.direction);
+        }
+        if (demon.randomI > 75 && demon.randomI <= 100) {
+            assertEquals("right", demon.direction);
+        }
+    }
+
+    @Test
+    public void testSetActionOnPathFalseActionFalse() {
+        demon.direction = "up";
+        demon.onPath = false;
+        demon.actionLockCount = 0;
+        demon.setAction();
+        assertEquals(1, demon.actionLockCount);
     }
 }
 
