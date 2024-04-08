@@ -19,7 +19,7 @@ public class SetAssetTest {
     
 
     @BeforeAll
-    public void setup(){
+    public static void setup(){
         gp = new GamePanel();
         collisionCheck = new CollisionCheck(gp);
         keyControl = new KeyControl(gp);
