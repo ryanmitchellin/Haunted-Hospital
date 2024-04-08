@@ -25,5 +25,11 @@ class GamePanelTest {
         assertEquals(101, UserInterface.score, "score should reset");
     }
 
-    
+    @Test
+    void threadStartTest() {
+        assertNull(gamePanel.gameThread, "gamethread should initially be null");
+        
+        gamePanel.gameStartThread();
+        assertNotNull(gamePanel.gameThread, "gamethread should not be null after startThread");
+    }
 }
