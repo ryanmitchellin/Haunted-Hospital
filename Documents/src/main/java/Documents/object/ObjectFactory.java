@@ -34,6 +34,13 @@ public class ObjectFactory {
     /** The default y-coordinate for the detection area. */
     public int detectionDefaultY = 0;
 
+    // made public
+    /** The . */
+    public int screenX;
+
+    /** The . */
+    public int screenY;
+
 	UtilityTools tools = new UtilityTools();
 
 	/**
@@ -42,8 +49,8 @@ public class ObjectFactory {
      * @param gp The GamePanel instance.
      */
 	public void draw(Graphics2D g2, GamePanel gp) {
-		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+		screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
+		screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
 
 		//checking if the tile is within the boundary
 		if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
