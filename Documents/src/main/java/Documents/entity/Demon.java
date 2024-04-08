@@ -22,8 +22,8 @@ public class Demon extends Monster {
 		detectionArea.y = 8;
 
 
-		detectionArea.width = 18;
-		detectionArea.height = 18;
+		detectionArea.width = 8;
+		detectionArea.height = 8;
     }
     
 
