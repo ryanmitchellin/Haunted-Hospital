@@ -45,7 +45,7 @@ public class CollisionCheck {
 <span class="pc bpc" id="L45" title="1 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
 <span class="fc" id="L46">					entity.isCollision = true;</span>
 				}
-				break;
+<span class="fc" id="L48">				break;</span>
 			case &quot;down&quot;:
 <span class="fc" id="L50">				bottomRow = (bottom + entity.vel)/gp.tileSize;</span>
 <span class="fc" id="L51">				tile1 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);</span>
@@ -53,7 +53,7 @@ public class CollisionCheck {
 <span class="pc bpc" id="L53" title="1 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
 <span class="fc" id="L54">					entity.isCollision = true;</span>
 				}
-				break;
+<span class="fc" id="L56">				break;</span>
 			case &quot;left&quot;:
 <span class="fc" id="L58">				leftCol = (left - entity.vel)/gp.tileSize;</span>
 <span class="fc" id="L59">				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);</span>
@@ -61,7 +61,7 @@ public class CollisionCheck {
 <span class="pc bpc" id="L61" title="1 of 4 branches missed.">				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {</span>
 <span class="fc" id="L62">					entity.isCollision = true;</span>
 				}
-				break;
+<span class="fc" id="L64">				break;</span>
 			case &quot;right&quot;:
 <span class="fc" id="L66">				rightCol = (right + entity.vel)/gp.tileSize;</span>
 <span class="fc" id="L67">				tile1 = gp.tileFactory.getTileMapNum(rightCol, topRow);</span>
@@ -93,7 +93,7 @@ public class CollisionCheck {
 <span class="fc" id="L93">				gp.obj[i].detectionArea.x = gp.obj[i].worldX + gp.obj[i].detectionArea.x;</span>
 <span class="fc" id="L94">				gp.obj[i].detectionArea.y = gp.obj[i].worldY + gp.obj[i].detectionArea.y;</span>
 
-<span class="pc bpc" id="L96" title="1 of 5 branches missed.">				switch(entity.direction) {</span>
+<span class="fc bfc" id="L96" title="All 5 branches covered.">				switch(entity.direction) {</span>
 				case &quot;up&quot;:
 <span class="fc" id="L98">					entity.detectionArea.y -= entity.vel;</span>
 <span class="fc bfc" id="L99" title="All 2 branches covered.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
@@ -104,7 +104,7 @@ public class CollisionCheck {
 <span class="fc" id="L104">							index = i;</span>
 						}
 					}
-					break;
+<span class="fc" id="L107">					break;</span>
 				case &quot;down&quot;:
 <span class="fc" id="L109">					entity.detectionArea.y += entity.vel;</span>
 <span class="fc bfc" id="L110" title="All 2 branches covered.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
@@ -115,7 +115,7 @@ public class CollisionCheck {
 <span class="fc" id="L115">							index = i;</span>
 						}
 					}
-					break;
+<span class="fc" id="L118">					break;</span>
 				case &quot;left&quot;:
 <span class="fc" id="L120">					entity.detectionArea.x -= entity.vel;</span>
 <span class="fc bfc" id="L121" title="All 2 branches covered.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
@@ -126,7 +126,7 @@ public class CollisionCheck {
 <span class="fc" id="L126">							index = i;</span>
 						}
 					}
-					break;
+<span class="fc" id="L129">					break;</span>
 				case &quot;right&quot;:
 <span class="fc" id="L131">					entity.detectionArea.x += entity.vel;</span>
 <span class="fc bfc" id="L132" title="All 2 branches covered.">					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {</span>
@@ -138,7 +138,7 @@ public class CollisionCheck {
 						}
 					}
 					break;
-				}
+<span class="fc" id="L141">				}</span>
 <span class="fc" id="L142">				entity.detectionArea.x = entity.detectionDefaultX;</span>
 <span class="fc" id="L143">				entity.detectionArea.y = entity.detectionDefaultY;</span>
 <span class="fc" id="L144">				gp.obj[i].detectionArea.x = gp.obj[i].detectionDefaultX;</span>
@@ -163,28 +163,28 @@ public class CollisionCheck {
 <span class="fc" id="L163">				target[i].detectionArea.x = target[i].wxPos + target[i].detectionArea.x;</span>
 <span class="fc" id="L164">				target[i].detectionArea.y = target[i].wyPos + target[i].detectionArea.y;</span>
 
-<span class="pc bpc" id="L166" title="1 of 5 branches missed.">				switch(entity.direction) {</span>
+<span class="fc bfc" id="L166" title="All 5 branches covered.">				switch(entity.direction) {</span>
 				case &quot;up&quot;:
 <span class="fc" id="L168">					entity.detectionArea.y -= entity.vel;</span>
 <span class="fc bfc" id="L169" title="All 2 branches covered.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
 <span class="fc" id="L170">							entity.isCollision = true;</span>
 <span class="fc" id="L171">							index = i;</span>
 					}
-					break;
+<span class="fc" id="L173">					break;</span>
 				case &quot;down&quot;:
 <span class="fc" id="L175">					entity.detectionArea.y += entity.vel;</span>
 <span class="pc bpc" id="L176" title="1 of 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
 <span class="nc" id="L177">						entity.isCollision = true;</span>
 <span class="nc" id="L178">							index = i;</span>
 					}
-					break;
+<span class="nc" id="L180">					break;</span>
 				case &quot;left&quot;:
 <span class="fc" id="L182">					entity.detectionArea.x -= entity.vel;</span>
 <span class="pc bpc" id="L183" title="1 of 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
 <span class="nc" id="L184">						entity.isCollision = true;</span>
 <span class="nc" id="L185">							index = i;</span>
 					}
-					break;
+<span class="nc" id="L187">					break;</span>
 				case &quot;right&quot;:
 <span class="fc" id="L189">					entity.detectionArea.x += entity.vel;</span>
 <span class="pc bpc" id="L190" title="1 of 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
@@ -192,7 +192,7 @@ public class CollisionCheck {
 <span class="nc" id="L192">							index = i;</span>
 					}
 					break;
-				}
+<span class="fc" id="L195">				}</span>
 <span class="fc" id="L196">				entity.detectionArea.x = entity.detectionDefaultX;</span>
 <span class="fc" id="L197">				entity.detectionArea.y = entity.detectionDefaultY;</span>
 <span class="fc" id="L198">				target[i].detectionArea.x = target[i].detectionDefaultX;</span>
@@ -218,26 +218,26 @@ public class CollisionCheck {
 <span class="pc bpc" id="L218" title="1 of 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
 <span class="nc" id="L219">					entity.isCollision = true;</span>
 			}
-			break;
+<span class="nc" id="L221">			break;</span>
 		case &quot;down&quot;:
 <span class="fc" id="L223">			entity.detectionArea.y += entity.vel;</span>
 <span class="pc bpc" id="L224" title="1 of 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
 <span class="nc" id="L225">				entity.isCollision = true;</span>
 			}
-			break;
+<span class="nc" id="L227">			break;</span>
 		case &quot;left&quot;:
 <span class="fc" id="L229">			entity.detectionArea.x -= entity.vel;</span>
 <span class="pc bpc" id="L230" title="1 of 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
 <span class="nc" id="L231">				entity.isCollision = true;</span>
 			}
-			break;
+<span class="nc" id="L233">			break;</span>
 		case &quot;right&quot;:
 <span class="fc" id="L235">			entity.detectionArea.x += entity.vel;</span>
 <span class="pc bpc" id="L236" title="1 of 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
 <span class="nc" id="L237">				entity.isCollision = true;</span>
 			}
 			break;
-		}
+<span class="fc" id="L240">		}</span>
 <span class="fc" id="L241">		entity.detectionArea.x = entity.detectionDefaultX;</span>
 <span class="fc" id="L242">		entity.detectionArea.y = entity.detectionDefaultY;</span>
 <span class="fc" id="L243">		gp.mainCharacter.detectionArea.x = gp.mainCharacter.detectionDefaultX;</span>

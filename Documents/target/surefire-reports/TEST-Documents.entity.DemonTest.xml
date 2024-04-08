@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.entity.DemonTest" time="0.722" tests="25" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.entity.DemonTest" time="0.748" tests="25" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter13366777848759839528.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-07T23-44-36_895-jvmRun1 surefire538624878201679446tmp surefire_013010658659501077701tmp"/>
+    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter9099696433747914782.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-08T00-19-26_894-jvmRun1 surefire4851505135679196887tmp surefire_018259181475069172642tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/test-classes:/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/classes:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/ryanmitchellin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter13366777848759839528.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter9099696433747914782.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
@@ -58,29 +58,29 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testUpdateWithoutDistanceExceeding1" classname="Documents.entity.DemonTest" time="0.277"/>
-  <testcase name="testUpdateWithoutDistanceExceeding2" classname="Documents.entity.DemonTest" time="0.036"/>
-  <testcase name="testUpdateWithoutCollisionDirectionNone" classname="Documents.entity.DemonTest" time="0.028"/>
-  <testcase name="testUpdateWithoutCollisionMovementNone" classname="Documents.entity.DemonTest" time="0.021"/>
+  <testcase name="testUpdateWithoutDistanceExceeding1" classname="Documents.entity.DemonTest" time="0.305"/>
+  <testcase name="testUpdateWithoutDistanceExceeding2" classname="Documents.entity.DemonTest" time="0.033"/>
+  <testcase name="testUpdateWithoutCollisionDirectionNone" classname="Documents.entity.DemonTest" time="0.025"/>
+  <testcase name="testUpdateWithoutCollisionMovementNone" classname="Documents.entity.DemonTest" time="0.02"/>
   <testcase name="testUpdateWithoutCollisionUp" classname="Documents.entity.DemonTest" time="0.019"/>
-  <testcase name="testUpdateWithoutCollisionRight" classname="Documents.entity.DemonTest" time="0.021"/>
-  <testcase name="testUpdateSpriteCountIncrement" classname="Documents.entity.DemonTest" time="0.034"/>
+  <testcase name="testUpdateWithoutCollisionRight" classname="Documents.entity.DemonTest" time="0.027"/>
+  <testcase name="testUpdateSpriteCountIncrement" classname="Documents.entity.DemonTest" time="0.02"/>
   <testcase name="testUpdateSpriteNumToggles" classname="Documents.entity.DemonTest" time="0.017"/>
-  <testcase name="testUpdateDistance" classname="Documents.entity.DemonTest" time="0.018"/>
-  <testcase name="testSetActionOnPathTrue" classname="Documents.entity.DemonTest" time="0.03"/>
-  <testcase name="testUpdateWithCollision" classname="Documents.entity.DemonTest" time="0.01"/>
-  <testcase name="testSetActionOnPathFalseActionTrue10" classname="Documents.entity.DemonTest" time="0.017"/>
-  <testcase name="testSetActionOnPathFalseActionFalse" classname="Documents.entity.DemonTest" time="0.016"/>
-  <testcase name="testSetActionOnPathFalseActionTrue1" classname="Documents.entity.DemonTest" time="0.016"/>
-  <testcase name="testSetActionOnPathFalseActionTrue2" classname="Documents.entity.DemonTest" time="0.018"/>
-  <testcase name="testSetActionOnPathFalseActionTrue3" classname="Documents.entity.DemonTest" time="0.015"/>
-  <testcase name="testSetActionOnPathFalseActionTrue4" classname="Documents.entity.DemonTest" time="0.013"/>
+  <testcase name="testUpdateDistance" classname="Documents.entity.DemonTest" time="0.017"/>
+  <testcase name="testSetActionOnPathTrue" classname="Documents.entity.DemonTest" time="0.027"/>
+  <testcase name="testUpdateWithCollision" classname="Documents.entity.DemonTest" time="0.015"/>
+  <testcase name="testSetActionOnPathFalseActionTrue10" classname="Documents.entity.DemonTest" time="0.019"/>
+  <testcase name="testSetActionOnPathFalseActionFalse" classname="Documents.entity.DemonTest" time="0.02"/>
+  <testcase name="testSetActionOnPathFalseActionTrue1" classname="Documents.entity.DemonTest" time="0.025"/>
+  <testcase name="testSetActionOnPathFalseActionTrue2" classname="Documents.entity.DemonTest" time="0.017"/>
+  <testcase name="testSetActionOnPathFalseActionTrue3" classname="Documents.entity.DemonTest" time="0.014"/>
+  <testcase name="testSetActionOnPathFalseActionTrue4" classname="Documents.entity.DemonTest" time="0.014"/>
   <testcase name="testSetActionOnPathFalseActionTrue5" classname="Documents.entity.DemonTest" time="0.013"/>
   <testcase name="testSetActionOnPathFalseActionTrue6" classname="Documents.entity.DemonTest" time="0.013"/>
   <testcase name="testSetActionOnPathFalseActionTrue7" classname="Documents.entity.DemonTest" time="0.013"/>
-  <testcase name="testSetActionOnPathFalseActionTrue8" classname="Documents.entity.DemonTest" time="0.013"/>
-  <testcase name="testSetActionOnPathFalseActionTrue9" classname="Documents.entity.DemonTest" time="0.013"/>
-  <testcase name="testUpdateWithoutCollisionDown" classname="Documents.entity.DemonTest" time="0.013"/>
+  <testcase name="testSetActionOnPathFalseActionTrue8" classname="Documents.entity.DemonTest" time="0.014"/>
+  <testcase name="testSetActionOnPathFalseActionTrue9" classname="Documents.entity.DemonTest" time="0.014"/>
+  <testcase name="testUpdateWithoutCollisionDown" classname="Documents.entity.DemonTest" time="0.015"/>
   <testcase name="testUpdateWithoutCollisionLeft" classname="Documents.entity.DemonTest" time="0.014"/>
   <testcase name="testUpdateSpriteCountSame" classname="Documents.entity.DemonTest" time="0.014"/>
 </testsuite>
