@@ -103,30 +103,30 @@ public class GamePanel extends JPanel implements Runnable{
      * Initializes the game settings and assets.
      */
 	public void setGame() {
-<span class="nc" id="L106">		setAsset.setObj();</span>
+<span class="fc" id="L106">		setAsset.setObj();</span>
 		// setAsset.setNpc();
 		
-<span class="nc" id="L109">		setAsset.setGhost();</span>
+<span class="fc" id="L109">		setAsset.setGhost();</span>
 		
-<span class="nc" id="L111">		setAsset.setTraps();</span>
+<span class="fc" id="L111">		setAsset.setTraps();</span>
 		
-<span class="nc" id="L113">		setAsset.setReward();</span>
-<span class="nc" id="L114">		setAsset.setDemon();</span>
+<span class="fc" id="L113">		setAsset.setReward();</span>
+<span class="fc" id="L114">		setAsset.setDemon();</span>
 
 		//map 1 music
-<span class="nc" id="L117">		musicPlay(0);</span>
-<span class="nc" id="L118">		musicStop();</span>
-<span class="nc" id="L119">		gameState = titleState;</span>
-<span class="nc" id="L120">	}</span>
+<span class="fc" id="L117">		musicPlay(0);</span>
+<span class="fc" id="L118">		musicStop();</span>
+<span class="fc" id="L119">		gameState = titleState;</span>
+<span class="fc" id="L120">	}</span>
 
 	/**
      * Starts the game thread.
      */
 	public void gameStartThread() {
 		//passing gamePanel class to thread constructor
-<span class="nc" id="L127">		gameThread = new Thread(this);</span>
-<span class="nc" id="L128">		gameThread.start();</span>
-<span class="nc" id="L129">	}</span>
+<span class="fc" id="L127">		gameThread = new Thread(this);</span>
+<span class="fc" id="L128">		gameThread.start();</span>
+<span class="fc" id="L129">	}</span>
 
 	/**
 	 * The main game loop controlling the game's update and rendering process.
@@ -134,58 +134,58 @@ public class GamePanel extends JPanel implements Runnable{
 	 */
 	@Override
 	public void run() {
-<span class="nc" id="L137">		double displayInterval = 1000000000/FPS; //1second / 60FPS = 0.16 second/frame</span>
-<span class="nc" id="L138">		double nextDrawTime = System.nanoTime() + displayInterval;</span>
+<span class="fc" id="L137">		double displayInterval = 1000000000/FPS; //1second / 60FPS = 0.16 second/frame</span>
+<span class="fc" id="L138">		double nextDrawTime = System.nanoTime() + displayInterval;</span>
 
 		//game core : if the game thread exist it will run
-<span class="nc bnc" id="L141" title="All 2 branches missed.">		while(gameThread != null) {</span>
+<span class="pc bpc" id="L141" title="1 of 2 branches missed.">		while(gameThread != null) {</span>
 			//testing purpose to check if the loop is working
 			//System.out.println(&quot;The game running&quot;);
 
-<span class="nc" id="L145">			update();</span>
-<span class="nc" id="L146">			repaint();</span>
+<span class="fc" id="L145">			update();</span>
+<span class="fc" id="L146">			repaint();</span>
 
 			try {
-<span class="nc" id="L149">				double remainingTime = nextDrawTime - System.nanoTime();</span>
-<span class="nc" id="L150">				remainingTime = remainingTime/1000000;</span>
+<span class="fc" id="L149">				double remainingTime = nextDrawTime - System.nanoTime();</span>
+<span class="fc" id="L150">				remainingTime = remainingTime/1000000;</span>
 
-<span class="nc bnc" id="L152" title="All 2 branches missed.">				if(remainingTime &lt;= 0) {</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">				if(remainingTime &lt;= 0) {</span>
 <span class="nc" id="L153">					remainingTime = 0;</span>
 				}
 
-<span class="nc" id="L156">				Thread.sleep((long) remainingTime);</span>
-<span class="nc" id="L157">				nextDrawTime += displayInterval ; </span>
+<span class="fc" id="L156">				Thread.sleep((long) remainingTime);</span>
+<span class="fc" id="L157">				nextDrawTime += displayInterval ; </span>
 
-<span class="nc" id="L159">			} catch(InterruptedException e) {</span>
+<span class="pc" id="L159">			} catch(InterruptedException e) {</span>
 <span class="nc" id="L160">				e.printStackTrace();</span>
 			}
 		} 
 <span class="nc" id="L163">	}</span>
 
 	public void resetGame() {
-<span class="nc" id="L166">		UserInterface.score = 101;</span>
-<span class="nc" id="L167">		UserInterface.gameTime = 0;</span>
-<span class="nc" id="L168">		mainCharacter.keyNum = 0;</span>
-<span class="nc" id="L169">		mainCharacter.settingDefaultValue();</span>
-<span class="nc" id="L170">		setGame();</span>
-<span class="nc" id="L171">	}</span>
+<span class="fc" id="L166">		UserInterface.score = 101;</span>
+<span class="fc" id="L167">		UserInterface.gameTime = 0;</span>
+<span class="fc" id="L168">		mainCharacter.keyNum = 0;</span>
+<span class="fc" id="L169">		mainCharacter.settingDefaultValue();</span>
+<span class="fc" id="L170">		setGame();</span>
+<span class="fc" id="L171">	}</span>
 
 	/**
      * Updates the game logic reflecting towards the main character movement.
      */
 	public void update() {
-<span class="nc bnc" id="L177" title="All 2 branches missed.">		if(gameState == playState) {</span>
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">		if(gameState == playState) {</span>
 			//movement for the character
-<span class="nc" id="L179">			mainCharacter.update();</span>
+<span class="fc" id="L179">			mainCharacter.update();</span>
 
 			//npc
-<span class="nc bnc" id="L182" title="All 2 branches missed.">			for(int i = 0; i &lt; npc.length; i++){</span>
-<span class="nc bnc" id="L183" title="All 2 branches missed.">				if(npc[i] != null){</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">			for(int i = 0; i &lt; npc.length; i++){</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">				if(npc[i] != null){</span>
 <span class="nc" id="L184">					npc[i].update();</span>
 				}
 			}
-<span class="nc bnc" id="L187" title="All 2 branches missed.">			for(int i = 0; i &lt; monster.length; i++){</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">				if(monster[i] != null){</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">			for(int i = 0; i &lt; monster.length; i++){</span>
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">				if(monster[i] != null){</span>
 				
 <span class="nc" id="L190">					monster[i].update();</span>
 				}
@@ -195,7 +195,7 @@ public class GamePanel extends JPanel implements Runnable{
 			
 		}
 		
-<span class="nc" id="L198">	}</span>
+<span class="fc" id="L198">	}</span>
 
 	/**
 	 * This method draws the game tiles, objects, main character, and UI components on the screen.
@@ -249,17 +249,17 @@ public class GamePanel extends JPanel implements Runnable{
      * @param i The index of the music track to play.
      */
 	public void musicPlay(int i) {
-<span class="nc" id="L252">		sound.fileSet(i);</span>
-<span class="nc" id="L253">		sound.play();</span>
-<span class="nc" id="L254">		sound.loop();</span>
-<span class="nc" id="L255">	}</span>
+<span class="fc" id="L252">		sound.fileSet(i);</span>
+<span class="fc" id="L253">		sound.play();</span>
+<span class="fc" id="L254">		sound.loop();</span>
+<span class="fc" id="L255">	}</span>
 
 	/**
      * Stops the current music.
      */
 	public void musicStop() {
-<span class="nc" id="L261">		sound.stop();</span>
-<span class="nc" id="L262">	}</span>
+<span class="fc" id="L261">		sound.stop();</span>
+<span class="fc" id="L262">	}</span>
 
 	/**
      * Plays a sound effect for the specified object.
