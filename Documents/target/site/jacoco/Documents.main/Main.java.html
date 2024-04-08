@@ -36,13 +36,12 @@
 
 
 import javax.swing.JFrame;
-import java.awt.Dimension;
 
 /**
  * The main class of the game. It creates a JFrame window and adds a GamePanel into it.
  * The GamePanel contains the game's graphical components and logic.
  */
-<span class="nc" id="L45">public class Main {</span>
+<span class="nc" id="L44">public class Main {</span>
     /**
      * The main method that starts the game.
      * It creates a JFrame window, sets up the GamePanel, and starts the game thread.
@@ -50,23 +49,23 @@ import java.awt.Dimension;
      */
     public static void main(String[] args) {
 
-<span class="nc" id="L53">        JFrame window = new JFrame ();</span>
-<span class="nc" id="L54">        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L55">        window.setResizable(false);</span>
-<span class="nc" id="L56">        window.setTitle(&quot;CMPT 276 Project Game&quot;);</span>
+<span class="nc" id="L52">        JFrame window = new JFrame ();</span>
+<span class="nc" id="L53">        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L54">        window.setResizable(false);</span>
+<span class="nc" id="L55">        window.setTitle(&quot;CMPT 276 Project Game&quot;);</span>
 
-<span class="nc" id="L58">        GamePanel gamePanel = new GamePanel();</span>
-<span class="nc" id="L59">        window.add(gamePanel);</span>
+<span class="nc" id="L57">        GamePanel gamePanel = new GamePanel();</span>
+<span class="nc" id="L58">        window.add(gamePanel);</span>
 
         //to make the window to be the sized fit of the preferred size and the layouts of
         //its subcomponents GamePanel
-<span class="nc" id="L63">        window.pack();</span>
+<span class="nc" id="L62">        window.pack();</span>
 
-<span class="nc" id="L65">        window.setLocationRelativeTo(null);</span>
-<span class="nc" id="L66">        window.setVisible(true);</span>
+<span class="nc" id="L64">        window.setLocationRelativeTo(null);</span>
+<span class="nc" id="L65">        window.setVisible(true);</span>
 
-<span class="nc" id="L68">        gamePanel.setGame();</span>
-<span class="nc" id="L69">        gamePanel.gameStartThread();</span>
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L67">        gamePanel.setGame();</span>
+<span class="nc" id="L68">        gamePanel.gameStartThread();</span>
+<span class="nc" id="L69">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

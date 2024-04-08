@@ -46,10 +46,10 @@ import java.awt.Rectangle;
 <span class="nc" id="L46">		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
 
 		//checking if the tile is within the boundary
-<span class="nc bnc" id="L49" title="All 2 branches missed.">		if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">		   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">		   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">		   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {</span>
+<span class="nc bnc" id="L49" title="All 8 branches missed.">		if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
+		   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;
+		   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;
+		   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
 <span class="nc" id="L53">			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);</span>
 		}
 <span class="nc" id="L55">	}</span>

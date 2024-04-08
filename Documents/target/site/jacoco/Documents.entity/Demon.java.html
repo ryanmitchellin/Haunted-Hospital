@@ -6,78 +6,80 @@ import java.util.Random;
 
 public class Demon extends Monster {
 
+<span class="fc" id="L9">	public Random random = new Random();</span>
+	public int randomI;
+
+
     public Demon(GamePanel gp) {
-<span class="nc" id="L10">		super(gp);</span>
-		//TODO Auto-generated constructor stub
-<span class="nc" id="L12">		direction = &quot;down&quot;;</span>
-<span class="nc" id="L13">		this.vel = 2;</span>
+<span class="fc" id="L14">		super(gp);</span>
+<span class="fc" id="L15">		direction = &quot;down&quot;;</span>
+<span class="fc" id="L16">		this.vel = 2;</span>
 
-<span class="nc" id="L15">		getDemonImage();</span>
+<span class="fc" id="L18">		getDemonImage();</span>
 
-<span class="nc" id="L17">		detectionArea = new Rectangle();</span>
-<span class="nc" id="L18">		detectionArea.x = 8;</span>
-<span class="nc" id="L19">		detectionArea.y = 16;</span>
+<span class="fc" id="L20">		detectionArea = new Rectangle();</span>
+<span class="fc" id="L21">		detectionArea.x = 8;</span>
+<span class="fc" id="L22">		detectionArea.y = 8;</span>
 
 
-<span class="nc" id="L22">		detectionArea.width = 18;</span>
-<span class="nc" id="L23">		detectionArea.height = 18;</span>
-<span class="nc" id="L24">    }</span>
+<span class="fc" id="L25">		detectionArea.width = 8;</span>
+<span class="fc" id="L26">		detectionArea.height = 8;</span>
+<span class="fc" id="L27">    }</span>
     
 
     public void getDemonImage(){
-<span class="nc" id="L28">        upward1 = setup(&quot;/npc/boy_up_1&quot;);</span>
-<span class="nc" id="L29">    	upward2 = setup(&quot;/npc/boy_up_2&quot;);</span>
-<span class="nc" id="L30">    	downward1 = setup(&quot;/npc/boy_down_1&quot;);</span>
-<span class="nc" id="L31">    	downward2 = setup(&quot;/npc/boy_down_2&quot;);</span>
-<span class="nc" id="L32">    	leftward1 = setup(&quot;/npc/boy_left_1&quot;);</span>
-<span class="nc" id="L33">    	leftward2 = setup(&quot;/npc/boy_left_2&quot;);</span>
-<span class="nc" id="L34">    	rightward1 = setup(&quot;/npc/boy_right_1&quot;);</span>
-<span class="nc" id="L35">    	rightward2 = setup(&quot;/npc/boy_right_2&quot;);</span>
-<span class="nc" id="L36">    }</span>
+<span class="fc" id="L31">        upward1 = setup(&quot;/npc/boy_up_1&quot;);</span>
+<span class="fc" id="L32">    	upward2 = setup(&quot;/npc/boy_up_2&quot;);</span>
+<span class="fc" id="L33">    	downward1 = setup(&quot;/npc/boy_down_1&quot;);</span>
+<span class="fc" id="L34">    	downward2 = setup(&quot;/npc/boy_down_2&quot;);</span>
+<span class="fc" id="L35">    	leftward1 = setup(&quot;/npc/boy_left_1&quot;);</span>
+<span class="fc" id="L36">    	leftward2 = setup(&quot;/npc/boy_left_2&quot;);</span>
+<span class="fc" id="L37">    	rightward1 = setup(&quot;/npc/boy_right_1&quot;);</span>
+<span class="fc" id="L38">    	rightward2 = setup(&quot;/npc/boy_right_2&quot;);</span>
+<span class="fc" id="L39">    }</span>
 
 	public void setAction() {
 
-<span class="nc bnc" id="L40" title="All 2 branches missed.">		if (onPath) {</span>
-<span class="nc" id="L41">			int goalColumn = (gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x) / gp.tileSize;</span>
-<span class="nc" id="L42">			int goalRow = (gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y) / gp.tileSize;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if (onPath) {</span>
+<span class="fc" id="L44">			int goalColumn = (gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x) / gp.tileSize;</span>
+<span class="fc" id="L45">			int goalRow = (gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y) / gp.tileSize;</span>
 
-<span class="nc" id="L44">			searchPath(goalColumn, goalRow);</span>
-<span class="nc" id="L45">		} else {</span>
-<span class="nc" id="L46">			actionLockCount++;</span>
+<span class="fc" id="L47">			searchPath(goalColumn, goalRow);</span>
+<span class="fc" id="L48">		} else {</span>
+<span class="fc" id="L49">			actionLockCount++;</span>
 
-<span class="nc bnc" id="L48" title="All 2 branches missed.">			if (actionLockCount == 120) {</span>
-<span class="nc" id="L49">				Random random = new Random();</span>
-<span class="nc" id="L50">				int i = random.nextInt(100) + 1;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">			if (actionLockCount == 120) {</span>
+<span class="fc" id="L52">				randomI = random.nextInt(100) + 1;</span>
 
-<span class="nc bnc" id="L52" title="All 2 branches missed.">				if (i &lt;= 25) {</span>
-<span class="nc" id="L53">					direction = &quot;up&quot;;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">				if (randomI &lt;= 25) {</span>
+<span class="fc" id="L55">					direction = &quot;up&quot;;</span>
 				}
-<span class="nc bnc" id="L55" title="All 4 branches missed.">				if (i &gt; 25 &amp;&amp; i &lt;= 50) {</span>
-<span class="nc" id="L56">					direction = &quot;down&quot;;</span>
+<span class="fc bfc" id="L57" title="All 4 branches covered.">				if (randomI &gt; 25 &amp;&amp; randomI &lt;= 50) {</span>
+<span class="fc" id="L58">					direction = &quot;down&quot;;</span>
 				}
-<span class="nc bnc" id="L58" title="All 4 branches missed.">				if (i &gt; 50 &amp;&amp; i &lt;= 75) {</span>
-<span class="nc" id="L59">					direction = &quot;left&quot;;</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">				if (randomI &gt; 50 &amp;&amp; randomI &lt;= 75) {</span>
+<span class="fc" id="L61">					direction = &quot;left&quot;;</span>
 				}
-<span class="nc bnc" id="L61" title="All 4 branches missed.">				if (i &gt; 75 &amp;&amp; i &lt;= 100) {</span>
-<span class="nc" id="L62">					direction = &quot;right&quot;;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">				if (randomI &gt; 75) {</span>
+<span class="fc" id="L64">					direction = &quot;right&quot;;</span>
 				}
-<span class="nc" id="L64">				actionLockCount = 0;</span>
+<span class="fc" id="L66">				actionLockCount = 0;</span>
 			}
 		}
-<span class="nc" id="L67">	}</span>
+<span class="fc" id="L69">	}</span>
 
 	@Override
 	public void update() {
-<span class="nc" id="L71">		super.update();</span>
+<span class="fc" id="L73">		super.update();</span>
 		//System.out.println(&quot;updating demon&quot;);
-<span class="nc" id="L73">		int mainX = Math.abs(wxPos - gp.mainCharacter.wxPos);</span>
-<span class="nc" id="L74">		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);</span>
-<span class="nc" id="L75">		int tDist = (mainX + mainY)/gp.tileSize;</span>
+<span class="fc" id="L75">		int mainX = Math.abs(wxPos - gp.mainCharacter.wxPos);</span>
+<span class="fc" id="L76">		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);</span>
+<span class="fc" id="L77">		int tDist = (mainX + mainY)/gp.tileSize;</span>
 
-<span class="nc bnc" id="L77" title="All 4 branches missed.">		if (onPath == false &amp;&amp; tDist &lt;  50) {</span>
-<span class="nc" id="L78">			int i = new Random().nextInt(100)+1;</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">			if (i &gt; 50) {</span>
-<span class="nc" id="L80">				onPath = true;</span>
+<span class="fc bfc" id="L79" title="All 4 branches covered.">		if (onPath == false &amp;&amp; tDist &lt;  50) {</span>
+<span class="fc" id="L80">			int i = new Random().nextInt(100)+1;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">			if (i &gt; 50) {</span>
+<span class="fc" id="L82">				onPath = true;</span>
 			}
 		}/**
 		 if (onPath == true &amp;&amp; tDist &gt; 20) {
@@ -85,7 +87,7 @@ public class Demon extends Monster {
 		 }
 		 */
 
-<span class="nc" id="L88">	}</span>
+<span class="fc" id="L90">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
