@@ -2,23 +2,21 @@ package Documents.entity;
 
 import Documents.SearchAI.*;
 import Documents.main.GamePanel;
-import Documents.main.KeyControl;
 import Documents.tile.TileFactory;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EntityTest {
 
-    private KeyControl keyControl;
-    private GamePanel gamePanel;
-    private Entity entity;
+    private static GamePanel gamePanel;
+    private static Entity entity;
     private static int left, right, top, bottom;
     private static int leftCol, rightCol, topRow, bottomRow;
     private static int left1, left2, right1, right2, top1, top2, bottom1, bottom2;
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         gamePanel = new GamePanel();
         entity = new Entity(gamePanel);
         entity.dialogues = new String[]{"Hello", "Goodbye", null};
@@ -60,8 +58,10 @@ public class EntityTest {
 
     @Test
     public void testEntityDefaultPosition() {
-        assertEquals(0, entity.wxPos);
-        assertEquals(0, entity.wyPos);
+        GamePanel gamePanelDefault = new GamePanel();
+        Entity entityDefault = new Entity(gamePanelDefault);
+        assertEquals(0, entityDefault.wxPos);
+        assertEquals(0, entityDefault.wyPos);
     }
 
     @Test
@@ -128,16 +128,8 @@ public class EntityTest {
         entity.direction = "right";
         entity.update();
         assertEquals(initialXPos + entity.vel, entity.wxPos);
-    }
-
-    @Test
-    public void testUpdateWithCollision(){
-        entity.vel = 5;
         entity.direction = "left";
-        gamePanel.tileFactory.getTile(left).collision = true;
-        entity.wyPos = 10;
         entity.update();
-        assertEquals(10, entity.wyPos);
     }
 
     @Test
@@ -209,6 +201,17 @@ public class EntityTest {
     }
 
     @Test
+    public void testUpdateWithCollision(){
+        entity.vel = 5;
+        entity.direction = "left";
+        gamePanel.tileFactory.getTile(left).collision = true;
+        entity.wyPos = 10;
+        entity.update();
+        assertEquals(10, entity.wyPos);
+        gamePanel.tileFactory.getTile(left).collision = false;
+    }
+
+    @Test
     public void testUpdateSpriteCountSame() {
         entity.direction = "up";
         entity.spriteCount = 1;
@@ -257,9 +260,11 @@ public class EntityTest {
 
     @Test
     public void testSearchPath(){
-
-
-
+        int goalColumn = 15;
+        int goalRow = 10;
+        entity.wyPos = 10;
+        entity.wxPos = 10;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("right", entity.direction);
     }
-
 }
