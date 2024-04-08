@@ -76,9 +76,9 @@ public class TileFactory {
 <span class="fc" id="L76">		    g2.dispose();</span>
 <span class="fc" id="L77">		    tiles[i].image = newImg;</span>
 <span class="fc" id="L78">		    tiles[i].collision = collision;</span>
-<span class="nc" id="L79">		} catch(IOException e) {</span>
+<span class="pc" id="L79">		} catch(IOException e) {</span>
 <span class="nc" id="L80">			e.printStackTrace();</span>
-<span class="fc" id="L81">		}</span>
+		}
 <span class="fc" id="L82">	}</span>
 
 	/**
@@ -104,19 +104,19 @@ public class TileFactory {
 
 <span class="fc" id="L105">					tileMapNum[column][row] = num;</span>
 <span class="fc" id="L106">					column++;</span>
-<span class="fc" id="L107">				}</span>
+				}
 				//only accept max number of col that is preset in gamepanel
 <span class="pc bpc" id="L109" title="1 of 2 branches missed.">				if(column == gp.maxWCol) {</span>
 <span class="fc" id="L110">					column = 0;</span>
 					//go to next row if the col is maxed
 <span class="fc" id="L112">					row++;</span>
 				}
-<span class="fc" id="L114">			}	</span>
+			}	
 
 
-<span class="nc" id="L117">		}catch(Exception e) {</span>
+<span class="pc" id="L117">		}catch(Exception e) {</span>
 			//failed to read text file for map
-<span class="fc" id="L119">		}</span>
+		}
 <span class="fc" id="L120">	}</span>
 
     /**
@@ -157,10 +157,10 @@ public class TileFactory {
 <span class="nc" id="L157">			int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
 
 			//checking if the tile is within the boundary
-<span class="nc bnc" id="L160" title="All 8 branches missed.">			if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
-			   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;
-			   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;
-			   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+<span class="nc bnc" id="L160" title="All 2 branches missed.">			if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">			   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">			   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">			   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {</span>
 <span class="nc" id="L164">				g2.drawImage(tiles[tileNum].image, screenX, screenY, null);</span>
 			}
 <span class="nc" id="L166">			column++;</span>
@@ -170,7 +170,7 @@ public class TileFactory {
 <span class="nc" id="L170">				row++;</span>
 			}
 
-<span class="nc" id="L173">		}</span>
+		}
 		// if(drawPath == true) {
 		// 	g2.setColor(new Color(255,0,0,70));
 		// 	for(int i = 0; i &lt; gp.pFinder.pathList.size(); i++) {

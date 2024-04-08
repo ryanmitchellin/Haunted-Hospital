@@ -89,7 +89,7 @@ public class Pathfinding {
 <span class="fc" id="L89">                column = 0;</span>
 <span class="fc" id="L90">                row++;</span>
             }
-<span class="fc" id="L92">        }</span>
+        }
 <span class="fc" id="L93">    }</span>
 
     public void getCost(Node node) {
@@ -142,7 +142,7 @@ public class Pathfinding {
 <span class="fc bfc" id="L142" title="All 2 branches covered.">                if (openList.get(i).fCost &lt; bestNodefCost) {</span>
 <span class="fc" id="L143">                    bestNodeIndex = i;</span>
 <span class="fc" id="L144">                    bestNodefCost = openList.get(i).fCost;</span>
-                }
+<span class="fc" id="L145">                }</span>
                 // IF F cost is equalm check the G cost
 <span class="fc bfc" id="L147" title="All 2 branches covered.">                else if (openList.get(i).fCost == bestNodefCost) {</span>
 <span class="fc bfc" id="L148" title="All 2 branches covered.">                    if (openList.get(i).gCost &lt; openList.get(bestNodeIndex).gCost) {</span>
@@ -163,7 +163,7 @@ public class Pathfinding {
 <span class="fc" id="L163">                trackPath();</span>
             }
 <span class="fc" id="L165">            step++;</span>
-<span class="fc" id="L166">        }</span>
+        }
 <span class="fc" id="L167">        return goalReached;</span>
     }
 
