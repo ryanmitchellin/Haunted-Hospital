@@ -8,9 +8,9 @@ public class Monster extends Entity{
 
     }
 
-    
+
     public void update() {
-        super.update();
+        //super.update(); taking this out for coverage.
         //if(isCollision == false) {
             switch(direction) {
                 case "up": this.wyPos -= this.vel; break;
