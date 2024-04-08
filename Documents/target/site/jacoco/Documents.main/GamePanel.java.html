@@ -10,124 +10,123 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.nio.file.Path;
 
 /**
  * The main panel for the maze managing the game logic and rendering the maze.
  */
 public class GamePanel extends JPanel implements Runnable{
 	/** The original size of a 16 x 16 tile. */
-<span class="fc" id="L20">	final int originalTileSize = 16;</span>
+<span class="fc" id="L19">	final int originalTileSize = 16;</span>
 
 	/** The scaling factor for tiles. */
-<span class="fc" id="L23">	final int scale = 3;</span>
+<span class="fc" id="L22">	final int scale = 3;</span>
 
 	/** The size of a tile after scaling. */
-<span class="fc" id="L26">	public final int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile</span>
+<span class="fc" id="L25">	public int tileSize = originalTileSize * scale; // Tile size : 16 * 3 = 48 pixels per tile</span>
 	
 	/** The number of columns in the screen. (4 : 3 by default) */
-<span class="fc" id="L29">	public final int maxCol = 16;</span>
+<span class="fc" id="L28">	public final int maxCol = 16;</span>
 
 	/** The number of rows in the screen. (4 : 3 by default) */
-<span class="fc" id="L32">	public final int maxRow = 12;</span>
+<span class="fc" id="L31">	public final int maxRow = 12;</span>
 
 	/** The width of the screen. */
-<span class="fc" id="L35">	public final int screenWidth = tileSize * maxCol; // Width of the screen : 1152 pixels</span>
+<span class="fc" id="L34">	public final int screenWidth = tileSize * maxCol; // Width of the screen : 1152 pixels</span>
 
 	/** The height of the screen. */
-<span class="fc" id="L38">	public final int screenHeight = tileSize * maxRow; // Height of the screen : 864 pixels</span>
+<span class="fc" id="L37">	public final int screenHeight = tileSize * maxRow; // Height of the screen : 864 pixels</span>
 
 	/** The number of columns in world map. */
-<span class="fc" id="L41">	public final int maxWCol = 50;</span>
+<span class="fc" id="L40">	public int maxWCol = 50;</span>
 
 	/** The number of rows in world map. */
-<span class="fc" id="L44">	public final int maxWRow = 50;</span>
+<span class="fc" id="L43">	public int maxWRow = 50;</span>
 
 	/** The number of frames per second for the game. */
-<span class="fc" id="L47">	int FPS = 60;</span>
+<span class="fc" id="L46">	int FPS = 60;</span>
 
 	/** The tile factory for creating and managing tiles. */
-<span class="fc" id="L50">	public TileFactory tileFactory = new TileFactory(this);</span>
+<span class="fc" id="L49">	public TileFactory tileFactory = new TileFactory(this);</span>
 
 	/** The key control for managing user input. */
-<span class="fc" id="L53">	public KeyControl keyControl = new KeyControl(this);</span>
+<span class="fc" id="L52">	public KeyControl keyControl = new KeyControl(this);</span>
 
 	/** The sound manager for handling game sounds. */
-<span class="fc" id="L56">	Sound sound = new Sound();</span>
+<span class="fc" id="L55">	Sound sound = new Sound();</span>
 
 	/** The collision checker for detecting collisions in the maze. */
-<span class="fc" id="L59">	public CollisionCheck checkCollision = new CollisionCheck(this);</span>
+<span class="fc" id="L58">	public CollisionCheck checkCollision = new CollisionCheck(this);</span>
 
 	/** The asset manager for setting up the maze. */
-<span class="fc" id="L62">	public SetAsset setAsset = new SetAsset(this);</span>
+<span class="fc" id="L61">	public SetAsset setAsset = new SetAsset(this);</span>
 
 	 /** The main character inside the maze. */
-<span class="fc" id="L65">	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);</span>
-<span class="fc" id="L66">	public Pathfinding pFinder = new Pathfinding(this);</span>
+<span class="fc" id="L64">	public MainCharacter mainCharacter = new MainCharacter(this,keyControl);</span>
+<span class="fc" id="L65">	public Pathfinding pFinder = new Pathfinding(this);</span>
 	
 	/** The user interface manager for rendering UI elements. */
-<span class="fc" id="L69">	public UserInterface ui = new UserInterface(this);</span>
+<span class="fc" id="L68">	public UserInterface ui = new UserInterface(this);</span>
 	
 	/** The thread for running the maze game. */
 	Thread gameThread;
 	
 	/** The array of objects in the maze. */
-<span class="fc" id="L75">	public ObjectFactory obj[] = new ObjectFactory[30];</span>
+<span class="fc" id="L74">	public ObjectFactory obj[] = new ObjectFactory[30];</span>
 
-<span class="fc" id="L77">	public Entity npc[] = new Entity[10];</span>
+<span class="fc" id="L76">	public Entity npc[] = new Entity[10];</span>
 
-<span class="fc" id="L79">	public Entity monster[] = new Entity[20];</span>
+<span class="fc" id="L78">	public Entity monster[] = new Entity[20];</span>
 
 	//for gamestate mangement
 	public int gameState;
-<span class="fc" id="L83">	public final int titleState = 0;</span>
-<span class="fc" id="L84">	public final int playState = 1;</span>
-<span class="fc" id="L85">	public final int stopState = 2;</span>
-<span class="fc" id="L86">	public final int dialogueState = 3;</span>
-<span class="fc" id="L87">	public final int deathState = 4;</span>
-<span class="fc" id="L88">	public final int winState = 5;</span>
+<span class="fc" id="L82">	public final int titleState = 0;</span>
+<span class="fc" id="L83">	public final int playState = 1;</span>
+<span class="fc" id="L84">	public final int stopState = 2;</span>
+<span class="fc" id="L85">	public final int dialogueState = 3;</span>
+<span class="fc" id="L86">	public final int deathState = 4;</span>
+<span class="fc" id="L87">	public final int winState = 5;</span>
 
 	/**
      * Constructs a new GamePanel with default settings.
      */
-<span class="fc" id="L93">	public GamePanel() {</span>
-<span class="fc" id="L94">		this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //setting the size of panel</span>
-<span class="fc" id="L95">		this.setBackground(Color.black); //setting default background as black</span>
-<span class="fc" id="L96">		this.setDoubleBuffered(true);</span>
+<span class="fc" id="L92">	public GamePanel() {</span>
+<span class="fc" id="L93">		this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //setting the size of panel</span>
+<span class="fc" id="L94">		this.setBackground(Color.black); //setting default background as black</span>
+<span class="fc" id="L95">		this.setDoubleBuffered(true);</span>
 
 		//key control method
-<span class="fc" id="L99">		this.addKeyListener(keyControl);</span>
-<span class="fc" id="L100">		this.setFocusable(true);</span>
-<span class="fc" id="L101">	}</span>
+<span class="fc" id="L98">		this.addKeyListener(keyControl);</span>
+<span class="fc" id="L99">		this.setFocusable(true);</span>
+<span class="fc" id="L100">	}</span>
 
 	/**
      * Initializes the game settings and assets.
      */
 	public void setGame() {
-<span class="nc" id="L107">		setAsset.setObj();</span>
+<span class="nc" id="L106">		setAsset.setObj();</span>
 		// setAsset.setNpc();
 		
-<span class="nc" id="L110">		setAsset.setGhost();</span>
+<span class="nc" id="L109">		setAsset.setGhost();</span>
 		
-<span class="nc" id="L112">		setAsset.setTraps();</span>
+<span class="nc" id="L111">		setAsset.setTraps();</span>
 		
-<span class="nc" id="L114">		setAsset.setReward();</span>
-<span class="nc" id="L115">		setAsset.setDemon();</span>
+<span class="nc" id="L113">		setAsset.setReward();</span>
+<span class="nc" id="L114">		setAsset.setDemon();</span>
 
 		//map 1 music
-<span class="nc" id="L118">		musicPlay(0);</span>
-<span class="nc" id="L119">		musicStop();</span>
-<span class="nc" id="L120">		gameState = titleState;</span>
-<span class="nc" id="L121">	}</span>
+<span class="nc" id="L117">		musicPlay(0);</span>
+<span class="nc" id="L118">		musicStop();</span>
+<span class="nc" id="L119">		gameState = titleState;</span>
+<span class="nc" id="L120">	}</span>
 
 	/**
      * Starts the game thread.
      */
 	public void gameStartThread() {
 		//passing gamePanel class to thread constructor
-<span class="nc" id="L128">		gameThread = new Thread(this);</span>
-<span class="nc" id="L129">		gameThread.start();</span>
-<span class="nc" id="L130">	}</span>
+<span class="nc" id="L127">		gameThread = new Thread(this);</span>
+<span class="nc" id="L128">		gameThread.start();</span>
+<span class="nc" id="L129">	}</span>
 
 	/**
 	 * The main game loop controlling the game's update and rendering process.
@@ -135,140 +134,140 @@ public class GamePanel extends JPanel implements Runnable{
 	 */
 	@Override
 	public void run() {
-<span class="nc" id="L138">		double displayInterval = 1000000000/FPS; //1second / 60FPS = 0.16 second/frame</span>
-<span class="nc" id="L139">		double nextDrawTime = System.nanoTime() + displayInterval;</span>
+<span class="nc" id="L137">		double displayInterval = 1000000000/FPS; //1second / 60FPS = 0.16 second/frame</span>
+<span class="nc" id="L138">		double nextDrawTime = System.nanoTime() + displayInterval;</span>
 
 		//game core : if the game thread exist it will run
-<span class="nc bnc" id="L142" title="All 2 branches missed.">		while(gameThread != null) {</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">		while(gameThread != null) {</span>
 			//testing purpose to check if the loop is working
 			//System.out.println(&quot;The game running&quot;);
 
-<span class="nc" id="L146">			update();</span>
-<span class="nc" id="L147">			repaint();</span>
+<span class="nc" id="L145">			update();</span>
+<span class="nc" id="L146">			repaint();</span>
 
 			try {
-<span class="nc" id="L150">				double remainingTime = nextDrawTime - System.nanoTime();</span>
-<span class="nc" id="L151">				remainingTime = remainingTime/1000000;</span>
+<span class="nc" id="L149">				double remainingTime = nextDrawTime - System.nanoTime();</span>
+<span class="nc" id="L150">				remainingTime = remainingTime/1000000;</span>
 
-<span class="nc bnc" id="L153" title="All 2 branches missed.">				if(remainingTime &lt;= 0) {</span>
-<span class="nc" id="L154">					remainingTime = 0;</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">				if(remainingTime &lt;= 0) {</span>
+<span class="nc" id="L153">					remainingTime = 0;</span>
 				}
 
-<span class="nc" id="L157">				Thread.sleep((long) remainingTime);</span>
-<span class="nc" id="L158">				nextDrawTime += displayInterval ; </span>
+<span class="nc" id="L156">				Thread.sleep((long) remainingTime);</span>
+<span class="nc" id="L157">				nextDrawTime += displayInterval ; </span>
 
-<span class="nc" id="L160">			} catch(InterruptedException e) {</span>
-<span class="nc" id="L161">				e.printStackTrace();</span>
-			}
+<span class="nc" id="L159">			} catch(InterruptedException e) {</span>
+<span class="nc" id="L160">				e.printStackTrace();</span>
+<span class="nc" id="L161">			}</span>
 		} 
-<span class="nc" id="L164">	}</span>
+<span class="nc" id="L163">	}</span>
 
 	public void resetGame() {
-<span class="nc" id="L167">		UserInterface.score = 101;</span>
-<span class="nc" id="L168">		UserInterface.gameTime = 0;</span>
-<span class="nc" id="L169">		mainCharacter.keyNum = 0;</span>
-<span class="nc" id="L170">		mainCharacter.settingDefaultValue();</span>
-<span class="nc" id="L171">		setGame();</span>
-<span class="nc" id="L172">	}</span>
+<span class="nc" id="L166">		UserInterface.score = 101;</span>
+<span class="nc" id="L167">		UserInterface.gameTime = 0;</span>
+<span class="nc" id="L168">		mainCharacter.keyNum = 0;</span>
+<span class="nc" id="L169">		mainCharacter.settingDefaultValue();</span>
+<span class="nc" id="L170">		setGame();</span>
+<span class="nc" id="L171">	}</span>
 
 	/**
      * Updates the game logic reflecting towards the main character movement.
      */
 	public void update() {
-<span class="nc bnc" id="L178" title="All 2 branches missed.">		if(gameState == playState) {</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">		if(gameState == playState) {</span>
 			//movement for the character
-<span class="nc" id="L180">			mainCharacter.update();</span>
+<span class="nc" id="L179">			mainCharacter.update();</span>
 
 			//npc
-<span class="nc bnc" id="L183" title="All 2 branches missed.">			for(int i = 0; i &lt; npc.length; i++){</span>
-<span class="nc bnc" id="L184" title="All 2 branches missed.">				if(npc[i] != null){</span>
-<span class="nc" id="L185">					npc[i].update();</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">			for(int i = 0; i &lt; npc.length; i++){</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">				if(npc[i] != null){</span>
+<span class="nc" id="L184">					npc[i].update();</span>
 				}
 			}
-<span class="nc bnc" id="L188" title="All 2 branches missed.">			for(int i = 0; i &lt; monster.length; i++){</span>
-<span class="nc bnc" id="L189" title="All 2 branches missed.">				if(monster[i] != null){</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">			for(int i = 0; i &lt; monster.length; i++){</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">				if(monster[i] != null){</span>
 				
-<span class="nc" id="L191">					monster[i].update();</span>
+<span class="nc" id="L190">					monster[i].update();</span>
 				}
 			}
 		}
-		if(gameState == stopState) {
+<span class="nc bnc" id="L194" title="All 2 branches missed.">		if(gameState == stopState) {</span>
 			
 		}
 		
-<span class="nc" id="L199">	}</span>
+<span class="nc" id="L198">	}</span>
 
 	/**
 	 * This method draws the game tiles, objects, main character, and UI components on the screen.
 	 * @param g The Graphics object used for rendering.
 	 */
 	public void paintComponent(Graphics g) {
-<span class="nc" id="L206">		super.paintComponent(g);</span>
+<span class="nc" id="L205">		super.paintComponent(g);</span>
 
-<span class="nc" id="L208">		Graphics2D g2 = (Graphics2D)g;</span>
+<span class="nc" id="L207">		Graphics2D g2 = (Graphics2D)g;</span>
 		//tile
-<span class="nc" id="L210">		tileFactory.draw(g2);</span>
+<span class="nc" id="L209">		tileFactory.draw(g2);</span>
 
 		// Title Screen
-<span class="nc bnc" id="L213" title="All 2 branches missed.">		if(gameState == titleState) {</span>
-<span class="nc" id="L214">			ui.draw(g2);</span>
-<span class="nc" id="L215">		}</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">		if(gameState == titleState) {</span>
+<span class="nc" id="L213">			ui.draw(g2);</span>
+		}
 		// Otherwise (in-game)
 		else {
 			//object
-<span class="nc bnc" id="L219" title="All 2 branches missed.">			for(int i = 0; i &lt; obj.length; i++) {</span>
-<span class="nc bnc" id="L220" title="All 2 branches missed.">				if(obj[i] != null) {</span>
-<span class="nc" id="L221">					obj[i].draw(g2, this);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">			for(int i = 0; i &lt; obj.length; i++) {</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">				if(obj[i] != null) {</span>
+<span class="nc" id="L220">					obj[i].draw(g2, this);</span>
 				}
 			}
 
 			//main character
-<span class="nc" id="L226">			mainCharacter.draw(g2);</span>
+<span class="nc" id="L225">			mainCharacter.draw(g2);</span>
 
 			//npc
-<span class="nc bnc" id="L229" title="All 2 branches missed.">			for(int i = 0; i &lt; npc.length; i++){ //XXX</span>
-<span class="nc bnc" id="L230" title="All 2 branches missed.">				if(npc[i] != null) {</span>
-<span class="nc" id="L231">					npc[i].draw(g2);</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">			for(int i = 0; i &lt; npc.length; i++){</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">				if(npc[i] != null) {</span>
+<span class="nc" id="L230">					npc[i].draw(g2);</span>
 				}
 			}
 
-<span class="nc bnc" id="L235" title="All 2 branches missed.">			for(int i = 0; i &lt; monster.length; i++){</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">			for(int i = 0; i &lt; monster.length; i++){</span>
 				
-<span class="nc bnc" id="L237" title="All 2 branches missed.">				if(monster[i]!=null){</span>
-<span class="nc" id="L238">					monster[i].draw(g2);</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">				if(monster[i]!=null){</span>
+<span class="nc" id="L237">					monster[i].draw(g2);</span>
 				}
 			}
 
 			//ui draw method
-<span class="nc" id="L243">			ui.draw(g2);</span>
-<span class="nc" id="L244">			g2.dispose();</span>
+<span class="nc" id="L242">			ui.draw(g2);</span>
+<span class="nc" id="L243">			g2.dispose();</span>
 		}
-<span class="nc" id="L246">	}</span>
+<span class="nc" id="L245">	}</span>
 
 	/**
      * Plays the specified music track.
      * @param i The index of the music track to play.
      */
 	public void musicPlay(int i) {
-<span class="nc" id="L253">		sound.fileSet(i);</span>
-<span class="nc" id="L254">		sound.play();</span>
-<span class="nc" id="L255">		sound.loop();</span>
-<span class="nc" id="L256">	}</span>
+<span class="nc" id="L252">		sound.fileSet(i);</span>
+<span class="nc" id="L253">		sound.play();</span>
+<span class="nc" id="L254">		sound.loop();</span>
+<span class="nc" id="L255">	}</span>
 
 	/**
      * Stops the current music.
      */
 	public void musicStop() {
-<span class="nc" id="L262">		sound.stop();</span>
-<span class="nc" id="L263">	}</span>
+<span class="nc" id="L261">		sound.stop();</span>
+<span class="nc" id="L262">	}</span>
 
 	/**
      * Plays a sound effect for the specified object.
      * @param i The index of the sound effect to play.
      */
 	public void soundEffectObj(int i) {
-<span class="nc" id="L270">		sound.fileSet(i);</span>
-<span class="nc" id="L271">		sound.play();</span>
-<span class="nc" id="L272">	}</span>
+<span class="nc" id="L269">		sound.fileSet(i);</span>
+<span class="nc" id="L270">		sound.play();</span>
+<span class="nc" id="L271">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
