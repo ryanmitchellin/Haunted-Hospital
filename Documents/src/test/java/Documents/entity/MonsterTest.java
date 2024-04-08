@@ -1,6 +1,5 @@
 package Documents.entity;
 import Documents.main.GamePanel;
-import Documents.tile.TileFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +25,7 @@ public class MonsterTest {
         monster.wxPos = initialXPos;
         monster.vel = 5;
         monster.direction = "right";
-        monster.update(); // note the update is called twice in monster due to super
+        monster.update();
         assertEquals(initialXPos + monster.vel, monster.wxPos);
     }
 
@@ -47,7 +46,7 @@ public class MonsterTest {
         monster.wxPos = initialXPos;
         monster.wyPos = initialYPos;
         monster.vel = 0;
-        monster.direction = "up"; // Direction is set but should not matter due to zero velocity
+        monster.direction = "up";
         monster.isCollision = false;
         monster.update();
         assertEquals(initialXPos, monster.wxPos);
@@ -61,7 +60,7 @@ public class MonsterTest {
         monster.wxPos = initialXPos;
         monster.wyPos = initialYPos;
         monster.vel = 5;
-        monster.direction = ""; // Direction is set but should not matter due to zero velocity
+        monster.direction = "";
         monster.isCollision = false;
         monster.update();
         assertEquals(initialXPos, monster.wxPos);
@@ -104,7 +103,7 @@ public class MonsterTest {
         monster.direction = "right";
         monster.wxPos = 10;
         monster.isCollision = false;
-        monster.update(); // same as above for all these cases
+        monster.update();
         assertEquals(15, monster.wxPos);
     }
 
@@ -112,7 +111,7 @@ public class MonsterTest {
     public void testUpdateSpriteCountSame() {
         monster.direction = "up";
         monster.spriteCount = 1;
-        monster.update(); // doubling everything
+        monster.update();
         assertEquals(2, monster.spriteCount);
     }
 
