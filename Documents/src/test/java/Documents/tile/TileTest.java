@@ -2,13 +2,10 @@ package Documents.tile;
 import Documents.main.GamePanel;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-
-import java.awt.image.BufferedImage;
 
 public class TileTest {
     private TileFactory tileFactory;
@@ -46,5 +43,12 @@ public class TileTest {
         assertThrows(IllegalArgumentException.class,() -> {
             tileFactory.loadingMap("map/noneextisting.txt");
         }, "Illegal argument exception error should be tshrown");
+    }
+
+    @Test
+    void testingForNonExistingImg() {
+        assertThrows(RuntimeException.class, () -> {
+            tileFactory.setup(0, "nonexsitingimage", false);
+        }, "Expected runtimeexception to be thrown due to incorrect image import");
     }
 } 
