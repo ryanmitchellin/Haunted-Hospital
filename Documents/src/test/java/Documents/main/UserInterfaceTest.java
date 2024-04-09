@@ -77,7 +77,7 @@ public class UserInterfaceTest {
 
     }
 
-    // @Test
+    @Test
     public void drawDeathScreenTest(){
         ui.commandingNumber = 0;
         ui.spriteCount = 0;
