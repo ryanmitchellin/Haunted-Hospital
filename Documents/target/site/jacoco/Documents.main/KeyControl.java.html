@@ -42,7 +42,7 @@ public class KeyControl implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 
-<span class="nc" id="L45">	}</span>
+<span class="fc" id="L45">	}</span>
 
 	/**
      * Invoked when a key has been pressed.
@@ -53,33 +53,33 @@ public class KeyControl implements KeyListener{
 <span class="fc" id="L53">		int code = e.getKeyCode();//return int keyCode associated with the key in event</span>
 
 		// Title State and Death State
-<span class="pc bpc" id="L56" title="3 of 6 branches missed.">		if (gp.gameState == gp.titleState||gp.gameState == gp.deathState||gp.gameState == gp.winState) {</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">			if (code == KeyEvent.VK_UP) {</span>
-<span class="nc" id="L58">				gp.ui.commandingNumber--;</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">				if (gp.ui.commandingNumber &lt; 0) {</span>
-<span class="nc" id="L60">					gp.ui.commandingNumber = 2;</span>
+<span class="pc bpc" id="L56" title="2 of 6 branches missed.">		if (gp.gameState == gp.titleState||gp.gameState == gp.deathState||gp.gameState == gp.winState) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">			if (code == KeyEvent.VK_UP) {</span>
+<span class="fc" id="L58">				gp.ui.commandingNumber--;</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">				if (gp.ui.commandingNumber &lt; 0) {</span>
+<span class="fc" id="L60">					gp.ui.commandingNumber = 2;</span>
 				}
 			}
-<span class="nc bnc" id="L63" title="All 2 branches missed.">			if (code == KeyEvent.VK_DOWN) {</span>
-<span class="nc" id="L64">				gp.ui.commandingNumber++;</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">				if (gp.ui.commandingNumber &gt; 2) {</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">			if (code == KeyEvent.VK_DOWN) {</span>
+<span class="fc" id="L64">				gp.ui.commandingNumber++;</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">				if (gp.ui.commandingNumber &gt; 2) {</span>
 <span class="nc" id="L66">					gp.ui.commandingNumber = 0;</span>
 				}
 			}
-<span class="nc bnc" id="L69" title="All 2 branches missed.">			if (code == KeyEvent.VK_ENTER) {</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">				if (gp.ui.commandingNumber == 0) {</span>
-<span class="nc" id="L71">					gp.resetGame();</span>
-<span class="nc" id="L72">					gp.gameState = gp.playState;</span>
-<span class="nc" id="L73">					gp.musicPlay(0);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">			if (code == KeyEvent.VK_ENTER) {</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">				if (gp.ui.commandingNumber == 0) {</span>
+<span class="fc" id="L71">					gp.resetGame();</span>
+<span class="fc" id="L72">					gp.gameState = gp.playState;</span>
+<span class="fc" id="L73">					gp.musicPlay(0);</span>
 				}
-<span class="nc bnc" id="L75" title="All 2 branches missed.">				if (gp.ui.commandingNumber == 1) {</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">				if (gp.ui.commandingNumber == 1) {</span>
 <span class="nc" id="L76">					System.exit(0);</span>
 				}
 			}
 		}
 		//play state
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">		if(gp.gameState == gp.playState){</span>
-<span class="pc bpc" id="L82" title="1 of 7 branches missed.">			switch(code) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		if(gp.gameState == gp.playState){</span>
+<span class="fc bfc" id="L82" title="All 7 branches covered.">			switch(code) {</span>
 			case KeyEvent.VK_UP:
 <span class="fc" id="L84">				upPressed = true;</span>
 <span class="fc" id="L85">				break;</span>
@@ -100,19 +100,19 @@ public class KeyControl implements KeyListener{
 <span class="fc" id="L100">				break;</span>
 				
 			default:
-<span class="nc" id="L103">				break;</span>
+				break;
 			}
-		}
+<span class="fc" id="L105">		}</span>
 		// pause state
-<span class="nc bnc" id="L107" title="All 2 branches missed.">		else if(gp.gameState == gp.stopState){</span>
-<span class="nc bnc" id="L108" title="All 2 branches missed.">			if(code == KeyEvent.VK_P){</span>
-<span class="nc" id="L109">				gp.gameState = gp.playState;</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		else if(gp.gameState == gp.stopState){</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			if(code == KeyEvent.VK_P){</span>
+<span class="fc" id="L109">				gp.gameState = gp.playState;</span>
 			}
-		}
+<span class="fc" id="L111">		}</span>
 		//dialogue state
-<span class="nc bnc" id="L113" title="All 2 branches missed.">		else if(gp.gameState == gp.dialogueState){</span>
-<span class="nc bnc" id="L114" title="All 2 branches missed.">			if(code == KeyEvent.VK_SPACE){</span>
-<span class="nc" id="L115">				gp.gameState = gp.playState;</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">		else if(gp.gameState == gp.dialogueState){</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">			if(code == KeyEvent.VK_SPACE){</span>
+<span class="fc" id="L115">				gp.gameState = gp.playState;</span>
 			}
 		}
 <span class="fc" id="L118">	}</span>

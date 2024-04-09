@@ -262,7 +262,7 @@ public class UserInterface {
 <span class="fc bfc" id="L262" title="All 2 branches covered.">		if(spriteCount &gt; 10) {</span>
 <span class="pc bpc" id="L263" title="1 of 2 branches missed.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L264">				spriteNum = 2;</span>
-<span class="nc bnc" id="L265" title="All 2 branches missed.">			}else if(spriteNum == 2) {</span>
+<span class="pc bnc" id="L265" title="All 2 branches missed.">			}else if(spriteNum == 2) {</span>
 <span class="nc" id="L266">				spriteNum = 3;</span>
 <span class="nc bnc" id="L267" title="All 2 branches missed.">			}else if(spriteNum == 3) {</span>
 <span class="nc" id="L268">				spriteNum = 4;</span>
@@ -321,9 +321,9 @@ public class UserInterface {
 <span class="fc" id="L321">		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);</span>
 <span class="fc" id="L322">		    g2.dispose();</span>
 <span class="fc" id="L323">		    img = newImg;</span>
-<span class="nc" id="L324">		}catch(IOException e) {</span>
+<span class="pc" id="L324">		}catch(IOException e) {</span>
 <span class="nc" id="L325">			e.printStackTrace();</span>
-<span class="fc" id="L326">		}</span>
+		}
 <span class="fc" id="L327">		return img;</span>
 	}
 

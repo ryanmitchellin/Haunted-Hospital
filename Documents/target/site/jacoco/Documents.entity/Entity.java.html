@@ -126,7 +126,7 @@ public class Entity {
 <span class="fc" id="L126">				case &quot;down&quot;: this.wyPos += this.vel; break;</span>
 <span class="fc" id="L127">				case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
 <span class="fc" id="L128">				case &quot;right&quot;: this.wxPos += this.vel; break;</span>
-			}
+<span class="fc" id="L129">			}</span>
 		}
 
 		//animation
@@ -149,11 +149,11 @@ public class Entity {
 <span class="fc" id="L149">		int screenY = wyPos - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
 
 		//checking if the tile is within the boundary
-<span class="pc bpc" id="L152" title="4 of 8 branches missed.">		if(wxPos + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
-				wxPos - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;
-				wyPos + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;
-				wyPos - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
-<span class="pc bpc" id="L156" title="1 of 5 branches missed.">			switch(direction) {</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">		if(wxPos + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">				wxPos - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">				wyPos + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">				wyPos - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {</span>
+<span class="fc bfc" id="L156" title="All 5 branches covered.">			switch(direction) {</span>
 				case &quot;up&quot;:
 <span class="fc bfc" id="L158" title="All 2 branches covered.">					if(spriteNum == 1) {</span>
 <span class="fc" id="L159">						image = upward1;</span>
@@ -161,7 +161,7 @@ public class Entity {
 <span class="fc bfc" id="L161" title="All 2 branches covered.">					if(spriteNum == 2) {</span>
 <span class="fc" id="L162">						image = upward2;</span>
 					}
-					break;
+<span class="fc" id="L164">					break;</span>
 				case &quot;down&quot;:
 <span class="fc bfc" id="L166" title="All 2 branches covered.">					if(spriteNum == 1) {</span>
 <span class="fc" id="L167">						image = downward1;</span>
@@ -169,7 +169,7 @@ public class Entity {
 <span class="fc bfc" id="L169" title="All 2 branches covered.">					if(spriteNum == 2) {</span>
 <span class="fc" id="L170">						image = downward2;</span>
 					}
-					break;
+<span class="fc" id="L172">					break;</span>
 				case &quot;left&quot;:
 <span class="fc bfc" id="L174" title="All 2 branches covered.">					if(spriteNum == 1) {</span>
 <span class="fc" id="L175">						image = leftward1;</span>
@@ -177,7 +177,7 @@ public class Entity {
 <span class="fc bfc" id="L177" title="All 2 branches covered.">					if(spriteNum == 2) {</span>
 <span class="fc" id="L178">						image = leftward2;</span>
 					}
-					break;
+<span class="fc" id="L180">					break;</span>
 				case &quot;right&quot;:
 <span class="fc bfc" id="L182" title="All 2 branches covered.">					if(spriteNum == 1) {</span>
 <span class="fc" id="L183">						image = rightward1;</span>
@@ -201,9 +201,9 @@ public class Entity {
 <span class="fc" id="L201">			g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);</span>
 <span class="fc" id="L202">			g2.dispose();</span>
 <span class="fc" id="L203">			img = newImg;</span>
-<span class="nc" id="L204">		}catch(IOException e) {</span>
+<span class="pc" id="L204">		}catch(IOException e) {</span>
 <span class="nc" id="L205">			e.printStackTrace();</span>
-<span class="fc" id="L206">		}</span>
+		}
 <span class="fc" id="L207">		return img;</span>
 	}
 
@@ -225,43 +225,43 @@ public class Entity {
 <span class="fc" id="L225">			int enTopY = wyPos + detectionArea.y;</span>
 <span class="fc" id="L226">			int enBottomY = wyPos + detectionArea.y + detectionArea.height;</span>
 
-<span class="pc bpc" id="L228" title="5 of 6 branches missed.">			if (enTopY &gt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
+<span class="pc bpc" id="L228" title="1 of 6 branches missed.">			if (enTopY &gt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
 <span class="nc" id="L229">				direction = &quot;up&quot;;</span>
-			}
-<span class="pc bpc" id="L231" title="2 of 6 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
+<span class="nc" id="L230">			}</span>
+<span class="pc bpc" id="L231" title="1 of 6 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt;= nextX &amp;&amp; enRightX &lt; nextX + gp.tileSize) {</span>
 <span class="fc" id="L232">				direction = &quot;down&quot;;</span>
-			}
-<span class="pc bpc" id="L234" title="3 of 4 branches missed.">			else if (enTopY &gt;= nextY &amp;&amp; enBottomY &lt; nextY + gp.tileSize) {</span>
+<span class="fc" id="L233">			}</span>
+<span class="pc bpc" id="L234" title="1 of 4 branches missed.">			else if (enTopY &gt;= nextY &amp;&amp; enBottomY &lt; nextY + gp.tileSize) {</span>
 <span class="nc bnc" id="L235" title="All 2 branches missed.">				if (enLeftX &gt; nextX) {</span>
 <span class="nc" id="L236">					direction = &quot;left&quot;;</span>
 				}
 <span class="nc bnc" id="L238" title="All 2 branches missed.">				if (enLeftX &lt; nextX) {</span>
 <span class="nc" id="L239">					direction = &quot;right&quot;;</span>
 				}
-			}
-<span class="pc bpc" id="L242" title="3 of 4 branches missed.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
+<span class="nc" id="L241">			}</span>
+<span class="fc bfc" id="L242" title="All 4 branches covered.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
 				//up or left
-<span class="nc" id="L244">				direction = &quot;up&quot;;</span>
-<span class="nc" id="L245">				checkCollision();</span>
-<span class="nc bnc" id="L246" title="All 2 branches missed.">				if (isCollision == true) {</span>
-<span class="nc" id="L247">					direction = &quot;left&quot;;</span>
+<span class="fc" id="L244">				direction = &quot;up&quot;;</span>
+<span class="fc" id="L245">				checkCollision();</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">				if (isCollision == true) {</span>
+<span class="fc" id="L247">					direction = &quot;left&quot;;</span>
 				}
-			}
-<span class="pc bpc" id="L250" title="3 of 4 branches missed.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
-<span class="nc" id="L251">				direction = &quot;up&quot;;</span>
-<span class="nc" id="L252">				checkCollision();</span>
-<span class="nc bnc" id="L253" title="All 2 branches missed.">				if (isCollision == true) {</span>
-<span class="nc" id="L254">					direction = &quot;right&quot;;</span>
+<span class="fc" id="L249">			}</span>
+<span class="pc bpc" id="L250" title="1 of 4 branches missed.">			else if (enTopY &gt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
+<span class="fc" id="L251">				direction = &quot;up&quot;;</span>
+<span class="fc" id="L252">				checkCollision();</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">				if (isCollision == true) {</span>
+<span class="fc" id="L254">					direction = &quot;right&quot;;</span>
 				}
-			}
-<span class="pc bpc" id="L257" title="2 of 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
+<span class="fc" id="L256">			}</span>
+<span class="pc bpc" id="L257" title="1 of 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &gt; nextX) {</span>
 <span class="fc" id="L258">				direction = &quot;down&quot;;</span>
 <span class="fc" id="L259">				checkCollision();</span>
 <span class="pc bpc" id="L260" title="1 of 2 branches missed.">				if(isCollision == true) {</span>
 <span class="nc" id="L261">					direction = &quot;left&quot;;</span>
 				}
-			}
-<span class="nc bnc" id="L264" title="All 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
+<span class="nc" id="L263">			}</span>
+<span class="pc bpc" id="L264" title="2 of 4 branches missed.">			else if (enTopY &lt; nextY &amp;&amp; enLeftX &lt; nextX) {</span>
 <span class="nc" id="L265">				direction = &quot;down&quot;;</span>
 <span class="nc" id="L266">				checkCollision();</span>
 <span class="nc bnc" id="L267" title="All 2 branches missed.">				if (isCollision == true) {</span>

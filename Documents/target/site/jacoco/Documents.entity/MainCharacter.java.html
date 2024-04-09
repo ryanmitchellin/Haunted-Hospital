@@ -90,8 +90,8 @@ public class MainCharacter extends Entity {
      * Update the character direction based on the key press.
      */
 	public void update() {
-<span class="fc bfc" id="L93" title="All 8 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
-			keyControl.leftPressed == true || keyControl.rightPressed == true) {
+<span class="fc bfc" id="L93" title="All 4 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
+<span class="fc bfc" id="L94" title="All 4 branches covered.">			keyControl.leftPressed == true || keyControl.rightPressed == true) {</span>
 <span class="fc bfc" id="L95" title="All 2 branches covered.">			if(keyControl.upPressed == true) {</span>
 <span class="fc" id="L96">				direction = &quot;up&quot;;</span>
 <span class="fc bfc" id="L97" title="All 2 branches covered.">			}else if(keyControl.downPressed == true) {</span>
@@ -114,13 +114,13 @@ public class MainCharacter extends Entity {
 <span class="fc" id="L114">			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);</span>
 <span class="fc" id="L115">			interactMob(mobIndex);</span>
  
-<span class="pc bpc" id="L117" title="1 of 2 branches missed.">			if((int)(UserInterface.score-UserInterface.gameTime)&lt;=0){</span>
-<span class="nc" id="L118">				gp.gameState = gp.stopState;</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">			if((int)(UserInterface.score-UserInterface.gameTime)&lt;=0){</span>
+<span class="fc" id="L118">				gp.gameState = gp.stopState;</span>
 			}
 			//if its false, character can move else cannot
 <span class="pc bpc" id="L121" title="1 of 2 branches missed.">			if(isCollision == false) {</span>
-<span class="pc bpc" id="L122" title="1 of 2 branches missed.">				if(stall==0){</span>
-<span class="pc bpc" id="L123" title="1 of 5 branches missed.">					switch(direction) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">				if(stall==0){</span>
+<span class="fc bfc" id="L123" title="All 5 branches covered.">					switch(direction) {</span>
 <span class="fc" id="L124">					case &quot;up&quot;: this.wyPos -= this.vel; break;</span>
 <span class="fc" id="L125">					case &quot;down&quot;: this.wyPos += this.vel; break;</span>
 <span class="fc" id="L126">					case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
@@ -129,20 +129,20 @@ public class MainCharacter extends Entity {
 				}
 			}
 
-<span class="pc bpc" id="L132" title="1 of 2 branches missed.">			if(stall!=0){</span>
-<span class="nc" id="L133">				stall -=1;</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">			if(stall!=0){</span>
+<span class="fc" id="L133">				stall -=1;</span>
 			}
 			//animation
 			//the move() method gets called 60 times per second
 			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
 <span class="fc" id="L138">			spriteCount++;</span>
-<span class="pc bpc" id="L139" title="1 of 2 branches missed.">			if(spriteCount &gt; 10) {</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">				if(spriteNum == 1) {</span>
-<span class="nc" id="L141">					spriteNum = 2;</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">				}else if(spriteNum == 2) {</span>
-<span class="nc" id="L143">					spriteNum = 1;</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">			if(spriteCount &gt; 10) {</span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">				if(spriteNum == 1) {</span>
+<span class="fc" id="L141">					spriteNum = 2;</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">				}else if(spriteNum == 2) {</span>
+<span class="fc" id="L143">					spriteNum = 1;</span>
 				}
-<span class="nc" id="L145">				spriteCount = 0;</span>
+<span class="fc" id="L145">				spriteCount = 0;</span>
 			}
 		}
 <span class="fc" id="L148">	}</span>
@@ -157,7 +157,7 @@ public class MainCharacter extends Entity {
 <span class="nc" id="L157">			String objName = gp.obj[i].type;</span>
 
 			//depending on obj reaction
-<span class="nc bnc" id="L160" title="All 6 branches missed.">			switch(objName) {</span>
+<span class="pc bpc" id="L160" title="5 of 6 branches missed.">			switch(objName) {</span>
 			case &quot;keyCard&quot;:
 <span class="nc" id="L162">				gp.soundEffectObj(1);</span>
 <span class="nc" id="L163">				keyNum++;</span>
@@ -195,9 +195,9 @@ public class MainCharacter extends Entity {
 <span class="fc" id="L195">	}</span>
 
 	public void interactMob(int i){
-<span class="pc bpc" id="L198" title="1 of 2 branches missed.">		if(i != 999) {</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">		if(i != 999) {</span>
 			// System.out.println(&quot;You are hitting mob&quot;);
-<span class="nc" id="L200">			gp.gameState = gp.deathState;</span>
+<span class="fc" id="L200">			gp.gameState = gp.deathState;</span>
 		}
 <span class="fc" id="L202">	}</span>
 	/**
@@ -205,45 +205,45 @@ public class MainCharacter extends Entity {
      * @param g2 The graphics context.
      */
 	public void draw(Graphics2D g2) {
-<span class="nc" id="L208">		BufferedImage image = null;</span>
+<span class="fc" id="L208">		BufferedImage image = null;</span>
 
-<span class="nc bnc" id="L210" title="All 5 branches missed.">		switch(direction) {</span>
+<span class="fc bfc" id="L210" title="All 5 branches covered.">		switch(direction) {</span>
 		case &quot;up&quot;:
-<span class="nc bnc" id="L212" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
-<span class="nc" id="L213">				image = upward1;</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
+<span class="fc" id="L213">				image = upward1;</span>
 			}
-<span class="nc bnc" id="L215" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
-<span class="nc" id="L216">				image = upward2;</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
+<span class="fc" id="L216">				image = upward2;</span>
 			}
-			break;
+<span class="fc" id="L218">			break;</span>
 		case &quot;down&quot;:
-<span class="nc bnc" id="L220" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
-<span class="nc" id="L221">				image = downward1;</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
+<span class="fc" id="L221">				image = downward1;</span>
 			}
-<span class="nc bnc" id="L223" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
-<span class="nc" id="L224">				image = downward2;</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
+<span class="fc" id="L224">				image = downward2;</span>
 			}
-			break;
+<span class="fc" id="L226">			break;</span>
 		case &quot;left&quot;:
-<span class="nc bnc" id="L228" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
-<span class="nc" id="L229">				image = leftward1;</span>
+<span class="fc bfc" id="L228" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
+<span class="fc" id="L229">				image = leftward1;</span>
 			}
-<span class="nc bnc" id="L231" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
-<span class="nc" id="L232">				image = leftward2;</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
+<span class="fc" id="L232">				image = leftward2;</span>
 			}
-			break;
+<span class="fc" id="L234">			break;</span>
 		case &quot;right&quot;:
-<span class="nc bnc" id="L236" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
-<span class="nc" id="L237">				image = rightward1;</span>
+<span class="fc bfc" id="L236" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
+<span class="fc" id="L237">				image = rightward1;</span>
 			}
-<span class="nc bnc" id="L239" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
-<span class="nc" id="L240">				image = rightward2;</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
+<span class="fc" id="L240">				image = rightward2;</span>
 			}
 			break;
 		}
 		//image observer
-<span class="nc" id="L245">		g2.drawImage(image, screenX, screenY, null);</span>
-<span class="nc" id="L246">	}</span>
+<span class="fc" id="L245">		g2.drawImage(image, screenX, screenY, null);</span>
+<span class="fc" id="L246">	}</span>
 }
 
 
