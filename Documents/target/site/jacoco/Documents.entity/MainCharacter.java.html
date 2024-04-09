@@ -90,8 +90,8 @@ public class MainCharacter extends Entity {
      * Update the character direction based on the key press.
      */
 	public void update() {
-<span class="fc bfc" id="L93" title="All 8 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
-			keyControl.leftPressed == true || keyControl.rightPressed == true) {
+<span class="fc bfc" id="L93" title="All 4 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
+<span class="fc bfc" id="L94" title="All 4 branches covered.">			keyControl.leftPressed == true || keyControl.rightPressed == true) {</span>
 <span class="fc bfc" id="L95" title="All 2 branches covered.">			if(keyControl.upPressed == true) {</span>
 <span class="fc" id="L96">				direction = &quot;up&quot;;</span>
 <span class="fc bfc" id="L97" title="All 2 branches covered.">			}else if(keyControl.downPressed == true) {</span>
@@ -124,7 +124,7 @@ public class MainCharacter extends Entity {
 			//if its false, character can move else cannot
 <span class="pc bpc" id="L125" title="1 of 2 branches missed.">			if(isCollision == false) {</span>
 <span class="pc bpc" id="L126" title="1 of 2 branches missed.">				if(stall==0){</span>
-<span class="pc bpc" id="L127" title="1 of 5 branches missed.">					switch(direction) {</span>
+<span class="fc bfc" id="L127" title="All 5 branches covered.">					switch(direction) {</span>
 <span class="fc" id="L128">					case &quot;up&quot;: this.wyPos -= this.vel; break;</span>
 <span class="fc" id="L129">					case &quot;down&quot;: this.wyPos += this.vel; break;</span>
 <span class="fc" id="L130">					case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
@@ -161,7 +161,7 @@ public class MainCharacter extends Entity {
 <span class="nc" id="L161">			String objName = gp.obj[i].type;</span>
 
 			//depending on obj reaction
-<span class="nc bnc" id="L164" title="All 6 branches missed.">			switch(objName) {</span>
+<span class="pc bpc" id="L164" title="5 of 6 branches missed.">			switch(objName) {</span>
 			case &quot;keyCard&quot;:
 <span class="nc" id="L166">				gp.soundEffectObj(1);</span>
 <span class="nc" id="L167">				keyNum++;</span>
@@ -231,7 +231,7 @@ public class MainCharacter extends Entity {
 <span class="nc bnc" id="L231" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
 <span class="nc" id="L232">				image = upward2;</span>
 			}
-			break;
+<span class="nc" id="L234">			break;</span>
 		case &quot;down&quot;:
 <span class="nc bnc" id="L236" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
 <span class="nc" id="L237">				image = downward1;</span>
@@ -239,7 +239,7 @@ public class MainCharacter extends Entity {
 <span class="nc bnc" id="L239" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
 <span class="nc" id="L240">				image = downward2;</span>
 			}
-			break;
+<span class="nc" id="L242">			break;</span>
 		case &quot;left&quot;:
 <span class="nc bnc" id="L244" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
 <span class="nc" id="L245">				image = leftward1;</span>
@@ -247,7 +247,7 @@ public class MainCharacter extends Entity {
 <span class="nc bnc" id="L247" title="All 2 branches missed.">			if(spriteNum == 2) {</span>
 <span class="nc" id="L248">				image = leftward2;</span>
 			}
-			break;
+<span class="nc" id="L250">			break;</span>
 		case &quot;right&quot;:
 <span class="nc bnc" id="L252" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
 <span class="nc" id="L253">				image = rightward1;</span>

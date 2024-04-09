@@ -156,9 +156,9 @@ public class GamePanel extends JPanel implements Runnable{
 <span class="fc" id="L156">				Thread.sleep((long) remainingTime);</span>
 <span class="fc" id="L157">				nextDrawTime += displayInterval ; </span>
 
-<span class="nc" id="L159">			} catch(InterruptedException e) {</span>
+<span class="pc" id="L159">			} catch(InterruptedException e) {</span>
 <span class="nc" id="L160">				e.printStackTrace();</span>
-<span class="pc" id="L161">			}</span>
+			}
 		} 
 <span class="nc" id="L163">	}</span>
 
@@ -191,7 +191,7 @@ public class GamePanel extends JPanel implements Runnable{
 				}
 			}
 		}
-<span class="pc bpc" id="L194" title="1 of 2 branches missed.">		if(gameState == stopState) {</span>
+		if(gameState == stopState) {
 			
 		}
 		
@@ -211,7 +211,7 @@ public class GamePanel extends JPanel implements Runnable{
 		// Title Screen
 <span class="nc bnc" id="L212" title="All 2 branches missed.">		if(gameState == titleState) {</span>
 <span class="nc" id="L213">			ui.draw(g2);</span>
-		}
+<span class="nc" id="L214">		}</span>
 		// Otherwise (in-game)
 		else {
 			//object
