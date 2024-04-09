@@ -14,6 +14,7 @@ Documents/object/CandyTest.class
 Documents/main/CollisionCheckTest.class
 Documents/main/UserInterfaceTest.class
 Documents/object/ObjectFactoryTest.class
+Documents/main/GamePanelTest.class
 Documents/main/SetAssetTest.class
 Documents/SearchAI/PathfindingTest.class
 Documents/entity/DemonTest.class

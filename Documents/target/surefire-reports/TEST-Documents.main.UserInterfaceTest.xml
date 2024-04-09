@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.main.UserInterfaceTest" time="0.642" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.main.UserInterfaceTest" time="0.517" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter16481425267421030093.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-08T11-27-51_576-jvmRun1 surefire10048491213725349025tmp surefire_013034061157028643080tmp"/>
+    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter12860071275105129533.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-08T19-39-28_498-jvmRun1 surefire16634028993066347762tmp surefire_012814917582817003883tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/test-classes:/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/classes:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/ryanmitchellin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter16481425267421030093.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter12860071275105129533.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
@@ -58,10 +58,10 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="drawPauseScreenTest" classname="Documents.main.UserInterfaceTest" time="0.615"/>
-  <testcase name="drawWinScreenTest" classname="Documents.main.UserInterfaceTest" time="0.003"/>
+  <testcase name="drawPauseScreenTest" classname="Documents.main.UserInterfaceTest" time="0.491"/>
+  <testcase name="drawWinScreenTest" classname="Documents.main.UserInterfaceTest" time="0.004"/>
   <testcase name="drawDialogueScreenTest" classname="Documents.main.UserInterfaceTest" time="0.005"/>
   <testcase name="drawTest" classname="Documents.main.UserInterfaceTest" time="0.003"/>
-  <testcase name="drawTitleScreenTest" classname="Documents.main.UserInterfaceTest" time="0.001"/>
+  <testcase name="drawTitleScreenTest" classname="Documents.main.UserInterfaceTest" time="0"/>
   <testcase name="displayMessageTest" classname="Documents.main.UserInterfaceTest" time="0"/>
 </testsuite>

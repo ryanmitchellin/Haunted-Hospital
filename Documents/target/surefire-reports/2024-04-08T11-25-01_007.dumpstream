@@ -1,3 +1,0 @@
-# Created at 2024-04-08T11:25:01.689
-2024-04-08 11:25:01.689 java[53083:6796246] WARNING: Secure coding is automatically enabled for restorable state! However, not on all supported macOS versions of this application. Opt-in to secure coding explicitly by implementing NSApplicationDelegate.applicationSupportsSecureRestorableState:.
-
