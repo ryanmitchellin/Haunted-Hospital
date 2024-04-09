@@ -4,7 +4,6 @@ package Documents.main;
 import Documents.object.KeyCard;
 import Documents.object.Door;
 import Documents.object.Stair;
-import Documents.entity.Npc;
 import Documents.entity.Ghost;
 import Documents.entity.Demon;
 import Documents.object.Bloodstain;
@@ -80,13 +79,6 @@ public class SetAsset {
 		gp.obj[9].worldX = 11 * gp.tileSize;
 		gp.obj[9].worldY = 9* gp.tileSize;
 
-
-	}
-
-	public void setNpc() {
-		gp.npc[0] = new Npc(gp);
-		gp.npc[0].wxPos = gp.tileSize*22 - gp.tileSize/2;
-		gp.npc[0].wyPos = gp.tileSize*18 - gp.tileSize/2;
 
 	}
 

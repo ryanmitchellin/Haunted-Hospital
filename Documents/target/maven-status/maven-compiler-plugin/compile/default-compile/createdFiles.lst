@@ -2,7 +2,6 @@ Documents/main/UserInterface.class
 Documents/entity/Entity.class
 Documents/main/Sound.class
 Documents/entity/MainCharacter.class
-Documents/entity/Npc.class
 Documents/SearchAI/Pathfinding.class
 Documents/object/Bloodstain.class
 Documents/object/ObjectFactory.class
