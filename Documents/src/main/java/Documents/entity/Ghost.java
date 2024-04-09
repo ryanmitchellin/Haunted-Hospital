@@ -19,8 +19,8 @@ public class Ghost extends Monster {
         detectionArea.y = 8;
 
 
-        detectionArea.width = 8;
-        detectionArea.height = 8;
+        detectionArea.width = 16;
+        detectionArea.height = 16;
 
 
     }
