@@ -18,10 +18,10 @@ public class MainCharacter extends Entity {
     KeyControl keyControl;
     
     /** The x-coordinate of the character inside the maze. */
-    public final int screenX;
+    public int screenX;
     
     /** The y-coordinate of the character inside the maze */
-    public final int screenY;
+    public int screenY;
     
     /** The number of keys the character currently holds. */
     public int keyNum = 0;
