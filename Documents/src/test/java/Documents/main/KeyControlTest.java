@@ -26,8 +26,7 @@ public class KeyControlTest {
         keyControl = new KeyControl(gamePanel);
         gamePanel.gameState = gamePanel.playState;
         KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_UP, 'U');
-        keyControl.keyPressed(keyEvent);
-        keyControl.upPressed = false; //Testing only
+        keyControl.keyReleased(keyEvent);
         assertFalse(keyControl.upPressed);
     }
 
@@ -47,8 +46,7 @@ public class KeyControlTest {
         keyControl = new KeyControl(gamePanel);
         gamePanel.gameState = gamePanel.playState;
         KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_DOWN, 'D');
-        keyControl.keyPressed(keyEvent);
-        keyControl.downPressed = false; //Testing only
+        keyControl.keyReleased(keyEvent);
         assertFalse(keyControl.downPressed);
     }
 
@@ -68,8 +66,7 @@ public class KeyControlTest {
         keyControl = new KeyControl(gamePanel);
         gamePanel.gameState = gamePanel.playState;
         KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_LEFT, 'L');
-        keyControl.keyPressed(keyEvent);
-        keyControl.leftPressed = false; //Testing only
+        keyControl.keyReleased(keyEvent);
         assertFalse(keyControl.leftPressed);
     }
 
@@ -89,8 +86,7 @@ public class KeyControlTest {
         keyControl = new KeyControl(gamePanel);
         gamePanel.gameState = gamePanel.playState;
         KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_RIGHT, 'R');
-        keyControl.keyPressed(keyEvent);
-        keyControl.rightPressed = false; //Testing only
+        keyControl.keyReleased(keyEvent);
         assertFalse(keyControl.rightPressed);
     }
 }
