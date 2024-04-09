@@ -2,6 +2,7 @@ package Documents.tile;
 
 import Documents.main.GamePanel;
 import javax.imageio.ImageIO;
+
 import java.io.IOException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -66,9 +67,13 @@ public class TileFactory {
 		
 	}
 	public void setup(int i, String imgPath,boolean collision) {
+		InputStream is = getClass().getResourceAsStream("/tiles/" + imgPath + ".png");
+		if(is == null) {
+			throw new RuntimeException("image file not found: /tiles/" + imgPath + ".png");
+		}
 		try {
 			tiles[i] = new Tile();
-		    BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imgPath + ".png"));
+		    BufferedImage originalImage = ImageIO.read(is);
 		    //ensure the image supports alpha (transparency)
 		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
 		    Graphics2D g2 = newImg.createGraphics();
@@ -77,7 +82,7 @@ public class TileFactory {
 		    tiles[i].image = newImg;
 		    tiles[i].collision = collision;
 		} catch(IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException("Fail to load the image",e);
 		}
 	}
 
@@ -85,7 +90,7 @@ public class TileFactory {
      * Loads a map from a text file.
      * @param fileName The name of the file containing the map.
      */
-	public void loadingMap(String fileName) {
+	public void loadingMap(String fileName) throws IllegalArgumentException {
 		try {
 			InputStream is = getClass().getResourceAsStream(fileName);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -116,6 +121,7 @@ public class TileFactory {
 
 		}catch(Exception e) {
 			//failed to read text file for map
+			throw new IllegalArgumentException("The map has not loaded correctly");
 		}
 	}
 
