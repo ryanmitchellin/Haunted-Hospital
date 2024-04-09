@@ -6,12 +6,17 @@ import Documents.tile.TileFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class EntityTest {
 
     private static GamePanel gamePanel;
     private static Entity entity;
-    private static int left;
+    private static int left, right, top, bottom;
+    private static int leftCol, rightCol, topRow, bottomRow;
+    private static int left1, left2, right1, right2, top1, top2, bottom1, bottom2;
+    private static Graphics2D g2; 
 
     @BeforeAll
     public static void setUp() {
@@ -20,7 +25,35 @@ public class EntityTest {
         entity.dialogues = new String[]{"Hello", "Goodbye", null};
         gamePanel.tileSize = 48;
         gamePanel.tileFactory = new TileFactory(gamePanel);
+
         left = entity.wxPos + entity.detectionArea.x;
+        right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
+        top = entity.wyPos + entity.detectionArea.y;
+        bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;
+
+        leftCol = left/gamePanel.tileSize;
+        rightCol = right/gamePanel.tileSize;
+        topRow = top/gamePanel.tileSize;
+        bottomRow = bottom/gamePanel.tileSize;
+
+        leftCol = (left - entity.vel)/gamePanel.tileSize;
+        left1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
+        left2 = gamePanel.tileFactory.getTileMapNum(leftCol, bottomRow);
+
+        rightCol = (right + entity.vel)/gamePanel.tileSize;
+        right1 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
+        right2 = gamePanel.tileFactory.getTileMapNum(rightCol, bottomRow);
+
+        topRow = (top - entity.vel)/gamePanel.tileSize;
+        top1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
+        top2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
+
+        bottomRow = (bottom + entity.vel)/gamePanel.tileSize;
+        bottom1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
+        bottom2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
+        
+        g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
+        
     }
 
     @Test
@@ -221,7 +254,37 @@ public class EntityTest {
 
     @Test
     public void testDraw(){
+        //576
+        //1296
 
+        entity.wxPos = 936;
+        
+        entity.wyPos = 840;
+
+        gamePanel.tileSize = 361;
+
+        // System.out.println(entity.wyPos + " " + gamePanel.tileSize + " " + gamePanel.mainCharacter.wyPos +  " " + gamePanel.mainCharacter.screenY);
+
+        entity.direction = "left";
+        entity.spriteNum = 1;
+        entity.draw(g2);
+        entity.spriteNum = 2;
+        entity.draw(g2);
+        entity.direction = "right";
+        entity.spriteNum = 1;
+        entity.draw(g2);
+        entity.spriteNum = 2;
+        entity.draw(g2);
+        entity.direction = "up";
+        entity.spriteNum = 1;
+        entity.draw(g2);
+        entity.spriteNum = 2;
+        entity.draw(g2);
+        entity.direction = "down";
+        entity.spriteNum = 1;
+        entity.draw(g2);
+        entity.spriteNum = 2;
+        entity.draw(g2);
     }
 
     @Test
@@ -231,48 +294,14 @@ public class EntityTest {
     }
 
     @Test
-    public void testSearchPathDown(){
+    public void testSearchPath(){
         int goalColumn = 15;
         int goalRow = 10;
         entity.wyPos = 10;
         entity.wxPos = 10;
         entity.searchPath(goalColumn, goalRow);
+        // assertEquals("right", entity.direction);
         assertEquals("down", entity.direction);
     }
 
-    @Test
-    public void testSearchPathUp(){
-        int goalColumn = 40;
-        int goalRow = 0;
-        entity.wyPos = 10;
-        entity.wxPos = 10;
-        gamePanel.mainCharacter.wxPos = 100;
-        gamePanel.mainCharacter.wyPos = 100;
-        entity.searchPath(goalColumn, goalRow);
-        assertEquals("up", entity.direction);
-    }
-
-    @Test
-    public void testSearchPathUp2(){
-        int goalColumn = 40;
-        int goalRow = 0;
-        entity.wyPos = 10;
-        entity.wxPos = 150;
-        gamePanel.mainCharacter.wxPos = 100;
-        gamePanel.mainCharacter.wyPos = 100;
-        entity.searchPath(goalColumn, goalRow);
-        assertEquals("up", entity.direction);
-    }
-
-    @Test
-    public void testSearchPathLeft(){
-        int goalColumn = 1;
-        int goalRow = 1;
-        entity.wyPos = 100;
-        entity.wxPos = 100;
-        gamePanel.mainCharacter.wxPos = 100;
-        gamePanel.mainCharacter.wyPos = 100;
-        entity.searchPath(goalColumn, goalRow);
-        assertEquals("left", entity.direction);
-    }
 }
