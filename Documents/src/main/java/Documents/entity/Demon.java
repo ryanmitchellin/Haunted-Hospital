@@ -6,6 +6,10 @@ import java.util.Random;
 
 public class Demon extends Monster {
 
+	public Random random = new Random();
+	public int randomI;
+
+
     public Demon(GamePanel gp) {
 		super(gp);
 		direction = "down";
@@ -43,8 +47,7 @@ public class Demon extends Monster {
 			searchPath(goalColumn, goalRow);
 		} else {
 			actionLockCount++;
-			Random random = new Random();
-			int randomI;
+
 			if (actionLockCount == 120) {
 				randomI = random.nextInt(100) + 1;
 
@@ -57,7 +60,7 @@ public class Demon extends Monster {
 				if (randomI > 50 && randomI <= 75) {
 					direction = "left";
 				}
-				if (randomI > 75 && randomI <= 100) {
+				if (randomI > 75) {
 					direction = "right";
 				}
 				actionLockCount = 0;
