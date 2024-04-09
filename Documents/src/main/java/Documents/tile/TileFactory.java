@@ -85,7 +85,7 @@ public class TileFactory {
      * Loads a map from a text file.
      * @param fileName The name of the file containing the map.
      */
-	public void loadingMap(String fileName) {
+	public void loadingMap(String fileName) throws IllegalArgumentException {
 		try {
 			InputStream is = getClass().getResourceAsStream(fileName);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -116,6 +116,7 @@ public class TileFactory {
 
 		}catch(Exception e) {
 			//failed to read text file for map
+			throw new IllegalArgumentException("The map has not loaded correctly");
 		}
 	}
 
