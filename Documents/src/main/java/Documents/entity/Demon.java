@@ -76,6 +76,7 @@ public class Demon extends Monster {
 		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);
 		int tDist = (mainX + mainY)/gp.tileSize;
 
+		
 		if (onPath == false && tDist <  50) {
 			int i = new Random().nextInt(100)+1;
 			if (i > 50) {
@@ -87,6 +88,7 @@ public class Demon extends Monster {
 		 }
 		 */
 
+		setAction();
 	}
 
 }
