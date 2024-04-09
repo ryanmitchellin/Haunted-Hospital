@@ -110,4 +110,63 @@ public class KeyControlTest {
         assertTrue(keyControl.enterPressed);
     }
 
+    @Test
+    public void testKeyTyped() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_TYPED, 0, 0, KeyEvent.VK_UNDEFINED, 'a');
+        assertDoesNotThrow(() -> keyControl.keyTyped(keyEvent));
+    }
+
+    @Test
+    public void testPKeyStop() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.stopState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_P, 'P');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(gamePanel.playState, gamePanel.gameState);
+    }
+
+    @Test
+    public void testSpaceKeyDialogue() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.dialogueState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, ' ');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(gamePanel.playState, gamePanel.gameState);
+    }
+
+    @Test
+    public void testUpKeyTitle() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.titleState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_UP, 'U');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(2, gamePanel.ui.commandingNumber);
+    }
+
+    @Test
+    public void testDownKeyTitle() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.titleState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_DOWN, 'D');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(1, gamePanel.ui.commandingNumber);
+    }
+
+    @Test
+    public void testEnterKeyTitle() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.titleState;
+        gamePanel.ui.commandingNumber = 0;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_ENTER, 'E');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(gamePanel.playState, gamePanel.gameState);
+    }
+
 }
