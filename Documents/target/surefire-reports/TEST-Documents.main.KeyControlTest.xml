@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.main.KeyControlTest" time="0.314" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Documents.main.KeyControlTest" time="0.26" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter13139280278270240463.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-08T22-37-56_200-jvmRun1 surefire16622665891917319319tmp surefire_011218711808590480185tmp"/>
+    <property name="sun.java.command" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter14909780686355680359.jar /Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire 2024-04-08T23-47-16_213-jvmRun1 surefire12208170749887097789tmp surefire_04716131077684375573tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/test-classes:/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/classes:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/ryanmitchellin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/ryanmitchellin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter13139280278270240463.jar"/>
+    <property name="surefire.real.class.path" value="/Users/ryanmitchellin/Desktop/CMPT 276/assignments/MAZE GAME/CMPT276S24_group20/Documents/target/surefire/surefirebooter14909780686355680359.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
@@ -58,20 +58,20 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testRightKeyPressed" classname="Documents.main.KeyControlTest" time="0.015"/>
-  <testcase name="testSpaceKeyPressed" classname="Documents.main.KeyControlTest" time="0.014"/>
-  <testcase name="testUpKeyReleased" classname="Documents.main.KeyControlTest" time="0.024"/>
-  <testcase name="testPKeyStop" classname="Documents.main.KeyControlTest" time="0.014"/>
-  <testcase name="testEnterKeyTitle" classname="Documents.main.KeyControlTest" time="0.12"/>
+  <testcase name="testRightKeyPressed" classname="Documents.main.KeyControlTest" time="0.01"/>
+  <testcase name="testSpaceKeyPressed" classname="Documents.main.KeyControlTest" time="0.01"/>
+  <testcase name="testUpKeyReleased" classname="Documents.main.KeyControlTest" time="0.013"/>
+  <testcase name="testPKeyStop" classname="Documents.main.KeyControlTest" time="0.011"/>
+  <testcase name="testEnterKeyTitle" classname="Documents.main.KeyControlTest" time="0.093"/>
   <testcase name="testLeftKeyPressed" classname="Documents.main.KeyControlTest" time="0.012"/>
-  <testcase name="testDownKeyReleased" classname="Documents.main.KeyControlTest" time="0.011"/>
+  <testcase name="testDownKeyReleased" classname="Documents.main.KeyControlTest" time="0.01"/>
   <testcase name="testDownKeyTitle" classname="Documents.main.KeyControlTest" time="0.01"/>
   <testcase name="testKeyTyped" classname="Documents.main.KeyControlTest" time="0.01"/>
-  <testcase name="testRightKeyReleased" classname="Documents.main.KeyControlTest" time="0.01"/>
-  <testcase name="testSpaceKeyDialogue" classname="Documents.main.KeyControlTest" time="0.012"/>
-  <testcase name="testUpKeyPressed" classname="Documents.main.KeyControlTest" time="0.017"/>
-  <testcase name="testDownKeyPressed" classname="Documents.main.KeyControlTest" time="0.009"/>
+  <testcase name="testRightKeyReleased" classname="Documents.main.KeyControlTest" time="0.011"/>
+  <testcase name="testSpaceKeyDialogue" classname="Documents.main.KeyControlTest" time="0.01"/>
+  <testcase name="testUpKeyPressed" classname="Documents.main.KeyControlTest" time="0.013"/>
+  <testcase name="testDownKeyPressed" classname="Documents.main.KeyControlTest" time="0.016"/>
   <testcase name="testLeftKeyReleased" classname="Documents.main.KeyControlTest" time="0.01"/>
-  <testcase name="testPKeyPressed" classname="Documents.main.KeyControlTest" time="0.01"/>
-  <testcase name="testUpKeyTitle" classname="Documents.main.KeyControlTest" time="0.014"/>
+  <testcase name="testPKeyPressed" classname="Documents.main.KeyControlTest" time="0.009"/>
+  <testcase name="testUpKeyTitle" classname="Documents.main.KeyControlTest" time="0.009"/>
 </testsuite>
