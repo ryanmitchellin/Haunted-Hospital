@@ -180,40 +180,40 @@ public class UserInterface {
 <span class="fc" id="L180">		y += gp.tileSize*2;</span>
 		
 <span class="fc" id="L182">		spriteCount++;</span>
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">		if(spriteCount &gt; 10) {</span>
-<span class="nc bnc" id="L184" title="All 2 branches missed.">			if(spriteNum == 1) {</span>
-<span class="nc" id="L185">				spriteNum = 2;</span>
-<span class="nc bnc" id="L186" title="All 2 branches missed.">			}else if(spriteNum == 2) {</span>
-<span class="nc" id="L187">				spriteNum = 3;</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">			}else if(spriteNum == 3) {</span>
-<span class="nc" id="L189">				spriteNum = 4;</span>
-<span class="nc bnc" id="L190" title="All 2 branches missed.">			}else if(spriteNum == 4) {</span>
-<span class="nc" id="L191">				spriteNum = 5;</span>
-<span class="nc bnc" id="L192" title="All 2 branches missed.">			}else if(spriteNum == 5) {</span>
-<span class="nc" id="L193">				spriteNum = 6;</span>
-<span class="nc bnc" id="L194" title="All 2 branches missed.">			}else if(spriteNum == 6) {</span>
-<span class="nc" id="L195">				spriteNum = 1;</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">		if(spriteCount &gt; 10) {</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
+<span class="fc" id="L185">				spriteNum = 2;</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">			}else if(spriteNum == 2) {</span>
+<span class="fc" id="L187">				spriteNum = 3;</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">			}else if(spriteNum == 3) {</span>
+<span class="fc" id="L189">				spriteNum = 4;</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">			}else if(spriteNum == 4) {</span>
+<span class="fc" id="L191">				spriteNum = 5;</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">			}else if(spriteNum == 5) {</span>
+<span class="fc" id="L193">				spriteNum = 6;</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">			}else if(spriteNum == 6) {</span>
+<span class="fc" id="L195">				spriteNum = 1;</span>
 			}
 
-<span class="nc" id="L198">			spriteCount = 0;</span>
+<span class="fc" id="L198">			spriteCount = 0;</span>
 		}
-<span class="pc bpc" id="L200" title="1 of 2 branches missed.">		if(spriteNum==1){</span>
-<span class="nc" id="L201">			g2.drawImage(setup(&quot;/skull/skull0&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">		if(spriteNum==1){</span>
+<span class="fc" id="L201">			g2.drawImage(setup(&quot;/skull/skull0&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
-<span class="pc bpc" id="L203" title="1 of 2 branches missed.">		if(spriteNum==2){</span>
-<span class="nc" id="L204">			g2.drawImage(setup(&quot;/skull/skull1&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">		if(spriteNum==2){</span>
+<span class="fc" id="L204">			g2.drawImage(setup(&quot;/skull/skull1&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
-<span class="pc bpc" id="L206" title="1 of 2 branches missed.">		if(spriteNum==3){</span>
-<span class="nc" id="L207">			g2.drawImage(setup(&quot;/skull/skull2&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">		if(spriteNum==3){</span>
+<span class="fc" id="L207">			g2.drawImage(setup(&quot;/skull/skull2&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
-<span class="pc bpc" id="L209" title="1 of 2 branches missed.">		if(spriteNum==4){</span>
-<span class="nc" id="L210">			g2.drawImage(setup(&quot;/skull/skull3&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">		if(spriteNum==4){</span>
+<span class="fc" id="L210">			g2.drawImage(setup(&quot;/skull/skull3&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
-<span class="pc bpc" id="L212" title="1 of 2 branches missed.">		if(spriteNum==5){</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">		if(spriteNum==5){</span>
 <span class="fc" id="L213">			g2.drawImage(setup(&quot;/skull/skull2&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
-<span class="pc bpc" id="L215" title="1 of 2 branches missed.">		if(spriteNum==6){</span>
-<span class="nc" id="L216">			g2.drawImage(setup(&quot;/skull/skull1&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">		if(spriteNum==6){</span>
+<span class="fc" id="L216">			g2.drawImage(setup(&quot;/skull/skull1&quot;), x, y, gp.tileSize*2, gp.tileSize*2, null);</span>
 		}
 
 		// Menu
@@ -223,15 +223,15 @@ public class UserInterface {
 <span class="fc" id="L223">		x = getXCenterText(text);</span>
 <span class="fc" id="L224">		y += gp.tileSize*4;</span>
 <span class="fc" id="L225">		g2.drawString(text,x,y);</span>
-<span class="pc bpc" id="L226" title="1 of 2 branches missed.">		if (commandingNumber == 0) {</span>
-<span class="nc" id="L227">			g2.drawString(&quot;&gt;&quot;, x-gp.tileSize, y);</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">		if (commandingNumber == 0) {</span>
+<span class="fc" id="L227">			g2.drawString(&quot;&gt;&quot;, x-gp.tileSize, y);</span>
 		}
 
 <span class="fc" id="L230">		text = &quot;GIVE UP&quot;;</span>
 <span class="fc" id="L231">		x = getXCenterText(text);</span>
 <span class="fc" id="L232">		y += gp.tileSize;</span>
 <span class="fc" id="L233">		g2.drawString(text, x, y);</span>
-<span class="pc bpc" id="L234" title="1 of 2 branches missed.">		if (commandingNumber == 1) {</span>
+<span class="fc bfc" id="L234" title="All 2 branches covered.">		if (commandingNumber == 1) {</span>
 <span class="fc" id="L235">			g2.drawString(&quot;&gt;&quot;, x-gp.tileSize, y);</span>
 		}
 <span class="fc" id="L237">	}</span>
@@ -260,16 +260,16 @@ public class UserInterface {
 		
 <span class="fc" id="L261">		spriteCount++;</span>
 <span class="fc bfc" id="L262" title="All 2 branches covered.">		if(spriteCount &gt; 10) {</span>
-<span class="pc bpc" id="L263" title="1 of 2 branches missed.">			if(spriteNum == 1) {</span>
+<span class="fc bfc" id="L263" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L264">				spriteNum = 2;</span>
-<span class="pc bnc" id="L265" title="All 2 branches missed.">			}else if(spriteNum == 2) {</span>
-<span class="nc" id="L266">				spriteNum = 3;</span>
-<span class="nc bnc" id="L267" title="All 2 branches missed.">			}else if(spriteNum == 3) {</span>
-<span class="nc" id="L268">				spriteNum = 4;</span>
-<span class="nc bnc" id="L269" title="All 2 branches missed.">			}else if(spriteNum == 4) {</span>
-<span class="nc" id="L270">				spriteNum = 5;</span>
-<span class="nc bnc" id="L271" title="All 2 branches missed.">			}else if(spriteNum == 5) {</span>
-<span class="nc" id="L272">				spriteNum = 1;</span>
+<span class="fc bfc" id="L265" title="All 2 branches covered.">			}else if(spriteNum == 2) {</span>
+<span class="fc" id="L266">				spriteNum = 3;</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">			}else if(spriteNum == 3) {</span>
+<span class="fc" id="L268">				spriteNum = 4;</span>
+<span class="fc bfc" id="L269" title="All 2 branches covered.">			}else if(spriteNum == 4) {</span>
+<span class="fc" id="L270">				spriteNum = 5;</span>
+<span class="pc bpc" id="L271" title="1 of 2 branches missed.">			}else if(spriteNum == 5) {</span>
+<span class="fc" id="L272">				spriteNum = 1;</span>
 			}
 
 <span class="fc" id="L275">			spriteCount = 0;</span>
@@ -321,9 +321,9 @@ public class UserInterface {
 <span class="fc" id="L321">		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);</span>
 <span class="fc" id="L322">		    g2.dispose();</span>
 <span class="fc" id="L323">		    img = newImg;</span>
-<span class="pc" id="L324">		}catch(IOException e) {</span>
+<span class="nc" id="L324">		}catch(IOException e) {</span>
 <span class="nc" id="L325">			e.printStackTrace();</span>
-		}
+<span class="fc" id="L326">		}</span>
 <span class="fc" id="L327">		return img;</span>
 	}
 
