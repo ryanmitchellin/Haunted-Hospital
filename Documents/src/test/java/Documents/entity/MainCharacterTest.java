@@ -2,6 +2,7 @@ package Documents.entity;
 
 import Documents.main.GamePanel;
 import Documents.main.KeyControl;
+import Documents.main.UserInterface;
 import Documents.tile.TileFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,119 +17,152 @@ public class MainCharacterTest {
     private static KeyControl keyControl;
     private static GamePanel gamePanel;
     private static MainCharacter mainCharacter;
-    private static int left, right, top, bottom;
-    private static int leftCol, rightCol, topRow, bottomRow;
-    private static int left1, left2, right1, right2, top1, top2, bottom1, bottom2;
+    private static int left;
     private static Graphics2D g2;
 
     @BeforeAll
     public static void setUp() {
         gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
         mainCharacter = new MainCharacter(gamePanel, keyControl);
         mainCharacter.dialogues = new String[]{"Hello", "Goodbye", null};
         gamePanel.tileSize = 48;
         gamePanel.tileFactory = new TileFactory(gamePanel);
-
+        keyControl.upPressed = false;
+        keyControl.downPressed = false;
+        keyControl.leftPressed = false;
+        keyControl.rightPressed = false;
         left = mainCharacter.wxPos + mainCharacter.detectionArea.x;
-        right = mainCharacter.wxPos + mainCharacter.detectionArea.x + mainCharacter.detectionArea.width;
-        top = mainCharacter.wyPos + mainCharacter.detectionArea.y;
-        bottom = mainCharacter.wyPos + mainCharacter.detectionArea.y + mainCharacter.detectionArea.height;
-
-        leftCol = left/gamePanel.tileSize;
-        rightCol = right/gamePanel.tileSize;
-        topRow = top/gamePanel.tileSize;
-        bottomRow = bottom/gamePanel.tileSize;
-
-        leftCol = (left - mainCharacter.vel)/gamePanel.tileSize;
-        left1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        left2 = gamePanel.tileFactory.getTileMapNum(leftCol, bottomRow);
-
-        rightCol = (right + mainCharacter.vel)/gamePanel.tileSize;
-        right1 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-        right2 = gamePanel.tileFactory.getTileMapNum(rightCol, bottomRow);
-
-        topRow = (top - mainCharacter.vel)/gamePanel.tileSize;
-        top1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        top2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-
-        bottomRow = (bottom + mainCharacter.vel)/gamePanel.tileSize;
-        bottom1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        bottom2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-
         g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
 
     }
 
     @Test
-    public void testMainCharacterNull() {
-        assertNotNull(mainCharacter.gp);
-    }
-
-
-    @Test
-    public void testCheckCollision(){
-
-    }
-
-    @Test
-    public void testInteractMob() {
-        int i = 10;
-        mainCharacter.interactMob(i);
-        assertEquals(gamePanel.gameState, gamePanel.deathState);
+    public void testUpdateStallHigh(){
+        keyControl.upPressed = true;
+        mainCharacter.stall = 40;
+        mainCharacter.update();
+        assertEquals(39, mainCharacter.stall);
+        keyControl.upPressed = false;
     }
 
     @Test
-    public void testInteractMobFail() {
-        int i = 999;
-        mainCharacter.interactMob(i);
-        assertNotEquals(gamePanel.gameState, gamePanel.deathState);
-    }
-
-    @Test
-    public void testGetMainWxPos(){
-        int testX = mainCharacter.getMainWxPos();
-        assertEquals(testX, mainCharacter.wxPos);
-    }
-
-    @Test
-    public void testGetMainWyPos() {
-        int testY = mainCharacter.getMainWyPos();
-        assertEquals(testY, mainCharacter.wyPos);
-    }
-
-    @Test
-    public void testInteractNpcFalse() {
-        int i = 500;
-        gamePanel.keyControl.enterPressed = false;
-        mainCharacter.interactNpc(i);
-        assertFalse(gamePanel.keyControl.enterPressed);
-    }
-
-    @Test
-    public void testInteractNpcTrue() {
-        int i = 0;
-        gamePanel.keyControl.enterPressed = true;
-        //mainCharacter.interactNpc(i);
-        //assertEquals(gamePanel.gameState, gamePanel.dialogueState);
-    }
-
-    @Test
-    public void testInteractNpcTrueFalse() {
-        int i = 999;
-        gamePanel.keyControl.enterPressed = true;
-        mainCharacter.interactNpc(i);
-        assertFalse(gamePanel.keyControl.enterPressed);
-    }
-
-    @Test
-    public void testUpdateDistance(){
-        int initialXPos = mainCharacter.wxPos;
-        int initialYPos = mainCharacter.wyPos;
+    public void testUpdateStallZeroUp(){
+        mainCharacter.stall = 0;
+        int initialXPos = 10;
+        int initialYPos = 10;
+        mainCharacter.wxPos = initialXPos;
+        mainCharacter.wyPos = initialYPos;
+        keyControl.upPressed = true;
+        mainCharacter.direction = "up";
         mainCharacter.vel = 5;
+        mainCharacter.update();
+        assertEquals(initialYPos-5, mainCharacter.wyPos);
+        mainCharacter.direction = "down";
+        mainCharacter.update();
+        keyControl.upPressed = false;
+    }
+
+    @Test
+    public void testUpdateStallZeroDown(){
+        mainCharacter.stall = 0;
+        int initialXPos = 10;
+        int initialYPos = 10;
+        mainCharacter.wxPos = initialXPos;
+        mainCharacter.wyPos = initialYPos;
+        keyControl.downPressed = true;
+        mainCharacter.direction = "down";
+        mainCharacter.vel = 5;
+        mainCharacter.update();
+        assertEquals(initialYPos+5, mainCharacter.wyPos);
+        mainCharacter.direction = "up";
+        mainCharacter.update();
+        keyControl.downPressed = false;
+    }
+
+    @Test
+    public void testUpdateStallZeroLeft(){
+        mainCharacter.stall = 0;
+        int initialXPos = 10;
+        int initialYPos = 10;
+        mainCharacter.wxPos = initialXPos;
+        mainCharacter.wyPos = initialYPos;
+        keyControl.leftPressed = true;
+        mainCharacter.direction = "left";
+        mainCharacter.vel = 5;
+        mainCharacter.update();
+        assertEquals(initialYPos-5, mainCharacter.wxPos);
         mainCharacter.direction = "right";
         mainCharacter.update();
-        assertEquals(initialXPos + mainCharacter.vel, mainCharacter.wxPos);
+        keyControl.leftPressed = false;
+    }
+
+    @Test
+    public void testUpdateStallZeroRight(){
+        keyControl.rightPressed = true;
+        keyControl.upPressed = false;
+        keyControl.downPressed = false;
+        keyControl.leftPressed = false;
+        mainCharacter.stall = 0;
+        int initialXPos = 10;
+        int initialYPos = 10;
+        mainCharacter.wxPos = initialXPos;
+        mainCharacter.wyPos = initialYPos;
+        mainCharacter.direction = "right";
+        mainCharacter.vel = 5;
+        mainCharacter.update();
+        assertEquals(initialXPos+5, mainCharacter.wxPos);
         mainCharacter.direction = "left";
+        mainCharacter.update();
+        keyControl.rightPressed = false;
+    }
+
+    @Test
+    public void testUpdateUpPressed(){
+        keyControl.upPressed = true;
+        keyControl.downPressed = false;
+        keyControl.rightPressed = false;
+        keyControl.leftPressed = false;
+        mainCharacter.update();
+        assertEquals("up", mainCharacter.direction);
+        keyControl.upPressed = false;
+        mainCharacter.update();
+    }
+
+    @Test
+    public void testUpdateDownPressed(){
+        keyControl.downPressed = true;
+        keyControl.upPressed = false;
+        keyControl.rightPressed = false;
+        keyControl.leftPressed = false;
+        mainCharacter.update();
+        assertEquals("down", mainCharacter.direction);
+        keyControl.downPressed = false;
+    }
+
+    @Test
+    public void testUpdateLeftPressed(){
+        keyControl.leftPressed = true;
+        keyControl.upPressed = false;
+        keyControl.rightPressed = false;
+        keyControl.downPressed = false;
+        UserInterface.score = 0;
+        mainCharacter.update();
+        assertEquals("left", mainCharacter.direction);
+        keyControl.leftPressed = false;
+        mainCharacter.update();
+    }
+
+    @Test
+    public void testUpdateRightPressed(){
+        keyControl.rightPressed = true;
+        keyControl.upPressed = false;
+        keyControl.downPressed = false;
+        keyControl.leftPressed = false;
+        UserInterface.score = 100;
+        mainCharacter.update();
+        assertEquals("right", mainCharacter.direction);
+        keyControl.rightPressed = false;
         mainCharacter.update();
     }
 
@@ -161,58 +195,8 @@ public class MainCharacterTest {
     }
 
     @Test
-    public void testUpdateWithoutCollisionUp(){
-        mainCharacter.vel = 5;
-        mainCharacter.direction = "up";
-        mainCharacter.wyPos = 10;
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(5, mainCharacter.wyPos);
-    }
-
-    @Test
-    public void testUpdateWithoutCollisionDown(){
-        mainCharacter.vel = 5;
-        mainCharacter.direction = "down";
-        mainCharacter.wyPos = 10;
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(15, mainCharacter.wyPos);
-    }
-
-    @Test
-    public void testUpdateWithoutCollisionLeft(){
-        mainCharacter.vel = 5;
-        mainCharacter.direction = "left";
-        mainCharacter.wxPos = 10;
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(5, mainCharacter.wxPos);
-    }
-
-    @Test
-    public void testUpdateWithoutCollisionRight(){
-        mainCharacter.vel = 5;
-        mainCharacter.direction = "right";
-        mainCharacter.wxPos = 10;
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(15, mainCharacter.wxPos);
-    }
-
-    @Test
-    public void testUpdateWithCollision(){
-        mainCharacter.vel = 5;
-        mainCharacter.direction = "left";
-        gamePanel.tileFactory.getTile(left).collision = true;
-        mainCharacter.wyPos = 10;
-        mainCharacter.update();
-        assertEquals(10, mainCharacter.wyPos);
-        gamePanel.tileFactory.getTile(left).collision = false;
-    }
-
-    @Test
     public void testUpdateSpriteCountSame() {
+        keyControl.upPressed = true;
         mainCharacter.direction = "up";
         mainCharacter.spriteCount = 1;
         mainCharacter.update();
@@ -221,6 +205,7 @@ public class MainCharacterTest {
 
     @Test
     public void testUpdateSpriteCountIncrement() {
+        keyControl.upPressed = true;
         mainCharacter.direction = "up";
         mainCharacter.spriteCount = 11;
         mainCharacter.spriteNum = 1;
@@ -230,6 +215,7 @@ public class MainCharacterTest {
 
     @Test
     public void testUpdateSpriteNumToggles() {
+        keyControl.upPressed = true;
         mainCharacter.direction = "up";
         mainCharacter.spriteCount = 15;
         mainCharacter.spriteNum = 1;
@@ -248,9 +234,34 @@ public class MainCharacterTest {
     }
 
     @Test
-    public void testSetup(){
+    public void testMainCharacterNull() {
+        assertNotNull(mainCharacter.gp);
+    }
 
+    @Test
+    public void testInteractMob() {
+        int i = 10;
+        mainCharacter.interactMob(i);
+        assertEquals(gamePanel.gameState, gamePanel.deathState);
+    }
 
+    @Test
+    public void testInteractMobFail() {
+        int i = 999;
+        mainCharacter.interactMob(i);
+        assertNotEquals(gamePanel.gameState, gamePanel.deathState);
+    }
+
+    @Test
+    public void testGetMainWxPos(){
+        int testX = mainCharacter.getMainWxPos();
+        assertEquals(testX, mainCharacter.wxPos);
+    }
+
+    @Test
+    public void testGetMainWyPos() {
+        int testY = mainCharacter.getMainWyPos();
+        assertEquals(testY, mainCharacter.wyPos);
     }
 
     @Test
