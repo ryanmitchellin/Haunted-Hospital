@@ -220,7 +220,6 @@ public class Entity {
 			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;
 			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
 
-
 			// Entity's solidArea position
 			int enLeftX = wxPos + detectionArea.x;
 			int enRightX = wxPos + detectionArea.x + detectionArea.width;
