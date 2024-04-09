@@ -295,13 +295,62 @@ public class EntityTest {
 
     @Test
     public void testSearchPath(){
-        int goalColumn = 15;
-        int goalRow = 10;
-        entity.wyPos = 10;
-        entity.wxPos = 10;
+
+        
+
+        int goalColumn = 25;
+        int goalRow = 25;
+        
+        int successfulX = -1;
+        int successfulY = -1;
+        
+
+        entity.wxPos = 625;
+        entity.wyPos = 500;
         entity.searchPath(goalColumn, goalRow);
-        // assertEquals("right", entity.direction);
+        assertEquals("up", entity.direction);
+
+        entity.wxPos = 0;
+        entity.wyPos = 150;
+        entity.searchPath(goalColumn, goalRow);
         assertEquals("down", entity.direction);
+
+        entity.wxPos = 400;
+        entity.wyPos = 500;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("left", entity.direction);
+
+        entity.wxPos = 0;
+        entity.wyPos = 625;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("right", entity.direction);
+
+        entity.wxPos = 400;
+        entity.wyPos = 875;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("up", entity.direction);
+
+        entity.wxPos = 400;
+        entity.wyPos = 500;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("left", entity.direction);
+
+        entity.wxPos = 0;
+        entity.wyPos = 450;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("up", entity.direction);
+
+        entity.wxPos = 450;
+        entity.wyPos = 550;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("right", entity.direction);
+
+        entity.wxPos = 25;
+        entity.wyPos = 150;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("down", entity.direction);
+    
+    
     }
 
 }
