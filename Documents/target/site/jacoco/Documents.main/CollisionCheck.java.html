@@ -215,8 +215,8 @@ public class CollisionCheck {
 <span class="fc bfc" id="L215" title="All 5 branches covered.">		switch(entity.direction) {</span>
 		case &quot;up&quot;:
 <span class="fc" id="L217">			entity.detectionArea.y -= entity.vel;</span>
-<span class="fc bfc" id="L218" title="All 2 branches covered.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
-<span class="fc" id="L219">					entity.isCollision = true;</span>
+<span class="pc bpc" id="L218" title="1 of 2 branches missed.">			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {</span>
+<span class="nc" id="L219">					entity.isCollision = true;</span>
 			}
 			break;
 		case &quot;down&quot;:

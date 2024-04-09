@@ -79,7 +79,7 @@ public class KeyControl implements KeyListener{
 		}
 		//play state
 <span class="pc bpc" id="L81" title="1 of 2 branches missed.">		if(gp.gameState == gp.playState){</span>
-<span class="pc bpc" id="L82" title="3 of 7 branches missed.">			switch(code) {</span>
+<span class="pc bpc" id="L82" title="1 of 7 branches missed.">			switch(code) {</span>
 			case KeyEvent.VK_UP:
 <span class="fc" id="L84">				upPressed = true;</span>
 <span class="fc" id="L85">				break;</span>
@@ -93,11 +93,11 @@ public class KeyControl implements KeyListener{
 <span class="fc" id="L93">				rightPressed = true;</span>
 <span class="fc" id="L94">				break;</span>
 			case KeyEvent.VK_P:
-<span class="nc" id="L96">				gp.gameState = gp.stopState;</span>
-<span class="nc" id="L97">				break;</span>
+<span class="fc" id="L96">				gp.gameState = gp.stopState;</span>
+<span class="fc" id="L97">				break;</span>
 			case KeyEvent.VK_SPACE:
-<span class="nc" id="L99">				enterPressed = true;</span>
-<span class="nc" id="L100">				break;</span>
+<span class="fc" id="L99">				enterPressed = true;</span>
+<span class="fc" id="L100">				break;</span>
 				
 			default:
 <span class="nc" id="L103">				break;</span>
@@ -123,24 +123,24 @@ public class KeyControl implements KeyListener{
      */
 	@Override
 	public void keyReleased(KeyEvent e) {
-<span class="nc" id="L126">		int code = e.getKeyCode();//return int keyCode associated with the key in event</span>
+<span class="fc" id="L126">		int code = e.getKeyCode();//return int keyCode associated with the key in event</span>
 
-<span class="nc bnc" id="L128" title="All 5 branches missed.">		switch(code) {</span>
+<span class="pc bpc" id="L128" title="1 of 5 branches missed.">		switch(code) {</span>
 		case KeyEvent.VK_UP:
-<span class="nc" id="L130">			upPressed = false;</span>
-<span class="nc" id="L131">			break;</span>
+<span class="fc" id="L130">			upPressed = false;</span>
+<span class="fc" id="L131">			break;</span>
 		case KeyEvent.VK_DOWN:
-<span class="nc" id="L133">			downPressed = false;</span>
-<span class="nc" id="L134">			break;</span>
+<span class="fc" id="L133">			downPressed = false;</span>
+<span class="fc" id="L134">			break;</span>
 		case KeyEvent.VK_LEFT:
-<span class="nc" id="L136">			leftPressed = false;</span>
-<span class="nc" id="L137">			break;</span>
+<span class="fc" id="L136">			leftPressed = false;</span>
+<span class="fc" id="L137">			break;</span>
 		case KeyEvent.VK_RIGHT:
-<span class="nc" id="L139">			rightPressed = false;</span>
-<span class="nc" id="L140">			break;</span>
+<span class="fc" id="L139">			rightPressed = false;</span>
+<span class="fc" id="L140">			break;</span>
 		default:
 			break;
 		}
-<span class="nc" id="L144">	}</span>
+<span class="fc" id="L144">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

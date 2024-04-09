@@ -112,7 +112,6 @@ public class Entity {
 		gp.checkCollision.tileCheck(this);
 		gp.checkCollision.objCheck(this, false);
 		gp.checkCollision.playerCheck(this);
-		gp.checkCollision.entityCheck(this,gp.npc);
 		gp.checkCollision.entityCheck(this, gp.monster);
 	}
 
