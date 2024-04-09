@@ -11,9 +11,7 @@ public class EntityTest {
 
     private static GamePanel gamePanel;
     private static Entity entity;
-    private static int left, right, top, bottom;
-    private static int leftCol, rightCol, topRow, bottomRow;
-    private static int left1, left2, right1, right2, top1, top2, bottom1, bottom2;
+    private static int left;
 
     @BeforeAll
     public static void setUp() {
@@ -22,33 +20,7 @@ public class EntityTest {
         entity.dialogues = new String[]{"Hello", "Goodbye", null};
         gamePanel.tileSize = 48;
         gamePanel.tileFactory = new TileFactory(gamePanel);
-
         left = entity.wxPos + entity.detectionArea.x;
-        right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
-        top = entity.wyPos + entity.detectionArea.y;
-        bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;
-
-        leftCol = left/gamePanel.tileSize;
-        rightCol = right/gamePanel.tileSize;
-        topRow = top/gamePanel.tileSize;
-        bottomRow = bottom/gamePanel.tileSize;
-
-        leftCol = (left - entity.vel)/gamePanel.tileSize;
-        left1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        left2 = gamePanel.tileFactory.getTileMapNum(leftCol, bottomRow);
-
-        rightCol = (right + entity.vel)/gamePanel.tileSize;
-        right1 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-        right2 = gamePanel.tileFactory.getTileMapNum(rightCol, bottomRow);
-
-        topRow = (top - entity.vel)/gamePanel.tileSize;
-        top1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        top2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-
-        bottomRow = (bottom + entity.vel)/gamePanel.tileSize;
-        bottom1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
-        bottom2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
-
     }
 
     @Test
