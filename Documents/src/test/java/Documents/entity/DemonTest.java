@@ -125,10 +125,10 @@ public class DemonTest {
     public void testUpdateWithoutDistanceExceeding2(){
         demon.vel = 5;
         demon.direction = "right";
-        demon.wxPos = 2500;
-        demon.wyPos = 2500;
-        gamePanel.mainCharacter.wxPos = 1250;
-        gamePanel.mainCharacter.wyPos = 1250;
+        demon.wxPos = 1000;
+        demon.wyPos = 1000;
+        gamePanel.mainCharacter.wxPos = 500;
+        gamePanel.mainCharacter.wyPos = 500;
         demon.onPath = true;
         demon.isCollision = false;
         demon.update();
