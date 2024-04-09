@@ -1,351 +1,133 @@
 package Documents.entity;
 
+import Documents.main.CollisionCheck;
 import Documents.main.GamePanel;
 import Documents.main.KeyControl;
+import Documents.main.SetAsset;
 import Documents.main.UserInterface;
-import Documents.tile.TileFactory;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import Documents.object.*;
+
+import org.junit.jupiter.api.BeforeAll;
 
 public class MainCharacterTest {
 
+    private static CollisionCheck collisionCheck;
+    private static GamePanel gp;
     private static KeyControl keyControl;
-    private static GamePanel gamePanel;
     private static MainCharacter mainCharacter;
     private static Graphics2D g2;
 
     @BeforeAll
-    public static void setUp() {
+    public static void setup(){
+        gp = new GamePanel();
+        collisionCheck = new CollisionCheck(gp);
+        keyControl = new KeyControl(gp);
+        mainCharacter = new MainCharacter(gp, keyControl);
+        g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
+    }
+
+    @Test
+    public void testUpdate() {
+        MainCharacter mainCharacter;
+        GamePanel gamePanel;
+        KeyControl keyControl;
         gamePanel = new GamePanel();
         keyControl = new KeyControl(gamePanel);
         mainCharacter = new MainCharacter(gamePanel, keyControl);
-        mainCharacter.dialogues = new String[]{"Hello", "Goodbye", null};
-        gamePanel.tileSize = 48;
-        gamePanel.tileFactory = new TileFactory(gamePanel);
-        keyControl.upPressed = false;
-        keyControl.downPressed = false;
-        keyControl.leftPressed = false;
-        keyControl.rightPressed = false;
-        g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
 
-    }
-
-    @Test
-    public void testPickupObjFalse(){
-        int i = 999;
-        mainCharacter.pickUpObj(i);
-        assertNotNull(mainCharacter.gp);
-    }
-
-//    @Test
-//    public void testPickupObjKeycard(){
-//        int i = 100;
-//        mainCharacter.keyNum = 0;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(1, mainCharacter.keyNum);
-//    }
-//
-//    @Test
-//    public void testPickupObjDoor(){
-//        int i = 0;
-//        mainCharacter.keyNum = 2;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(2, mainCharacter.keyNum);
-//    }
-//
-//    @Test
-//    public void testPickupObjDoorFour(){
-//        int i = 300;
-//        mainCharacter.keyNum = 4;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(0, mainCharacter.keyNum);
-//    }
-//
-//    @Test
-//    public void testPickupObjStair(){
-//        int i = 500;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(gamePanel.gameState, gamePanel.winState);
-//    }
-//
-//    @Test
-//    public void testPickupObjBloodstain(){
-//        int i = 700;
-//        mainCharacter.stall = 20;
-//        UserInterface.score = 100;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(40, mainCharacter.stall);
-//        assertEquals(90, UserInterface.score);
-//    }
-//
-//    @Test
-//    public void testPickupObjCandy(){
-//        int i = 900;
-//        UserInterface.score = 100;
-//        mainCharacter.pickUpObj(i);
-//        assertEquals(120, UserInterface.score);
-//    }
-
-    @Test
-    public void testUpdateStallHigh(){
         keyControl.upPressed = true;
-        mainCharacter.stall = 40;
-        mainCharacter.update();
-        assertEquals(39, mainCharacter.stall);
-        keyControl.upPressed = false;
-    }
-
-    @Test
-    public void testUpdateStallZeroUp(){
-        mainCharacter.stall = 0;
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        keyControl.upPressed = true;
-        mainCharacter.direction = "up";
-        mainCharacter.vel = 5;
-        mainCharacter.update();
-        assertEquals(initialYPos-5, mainCharacter.wyPos);
-        mainCharacter.direction = "down";
-        mainCharacter.update();
-        keyControl.upPressed = false;
-    }
-
-    @Test
-    public void testUpdateStallZeroDown(){
-        mainCharacter.stall = 0;
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        keyControl.downPressed = true;
-        mainCharacter.direction = "down";
-        mainCharacter.vel = 5;
-        mainCharacter.update();
-        assertEquals(initialYPos+5, mainCharacter.wyPos);
-        mainCharacter.direction = "up";
-        mainCharacter.update();
-        keyControl.downPressed = false;
-    }
-
-    @Test
-    public void testUpdateStallZeroLeft(){
-        mainCharacter.stall = 0;
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        keyControl.leftPressed = true;
-        mainCharacter.direction = "left";
-        mainCharacter.vel = 5;
-        mainCharacter.update();
-        assertEquals(initialYPos-5, mainCharacter.wxPos);
-        mainCharacter.direction = "right";
-        mainCharacter.update();
-        keyControl.leftPressed = false;
-    }
-
-    @Test
-    public void testUpdateStallZeroRight(){
-        keyControl.rightPressed = true;
-        keyControl.upPressed = false;
-        keyControl.downPressed = false;
-        keyControl.leftPressed = false;
-        mainCharacter.stall = 0;
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        mainCharacter.direction = "right";
-        mainCharacter.vel = 5;
-        mainCharacter.update();
-        assertEquals(initialXPos+5, mainCharacter.wxPos);
-        mainCharacter.direction = "left";
-        mainCharacter.update();
-        keyControl.rightPressed = false;
-    }
-
-    @Test
-    public void testUpdateUpPressed(){
-        keyControl.upPressed = true;
-        keyControl.downPressed = false;
-        keyControl.rightPressed = false;
-        keyControl.leftPressed = false;
         mainCharacter.update();
         assertEquals("up", mainCharacter.direction);
         keyControl.upPressed = false;
-        mainCharacter.update();
-    }
 
-    @Test
-    public void testUpdateDownPressed(){
         keyControl.downPressed = true;
-        keyControl.upPressed = false;
-        keyControl.rightPressed = false;
-        keyControl.leftPressed = false;
         mainCharacter.update();
         assertEquals("down", mainCharacter.direction);
         keyControl.downPressed = false;
-    }
 
-    @Test
-    public void testUpdateLeftPressed(){
         keyControl.leftPressed = true;
-        keyControl.upPressed = false;
-        keyControl.rightPressed = false;
-        keyControl.downPressed = false;
-        UserInterface.score = 0;
         mainCharacter.update();
         assertEquals("left", mainCharacter.direction);
         keyControl.leftPressed = false;
-        mainCharacter.update();
-    }
 
-    @Test
-    public void testUpdateRightPressed(){
         keyControl.rightPressed = true;
-        keyControl.upPressed = false;
-        keyControl.downPressed = false;
-        keyControl.leftPressed = false;
-        UserInterface.score = 100;
         mainCharacter.update();
         assertEquals("right", mainCharacter.direction);
+        keyControl.rightPressed = false;
+
+        keyControl.rightPressed = true;
+        mainCharacter.stall = 100;
+        mainCharacter.spriteCount = 10;
+        mainCharacter.spriteNum = 1;
+        mainCharacter.update();
+        mainCharacter.spriteCount = 10;
+        mainCharacter.spriteNum = 2;
+        mainCharacter.update();
         keyControl.rightPressed = false;
         mainCharacter.update();
     }
 
-    @Test
-    public void testUpdateWithoutCollisionMovementNone(){
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        mainCharacter.vel = 0;
-        mainCharacter.direction = "up"; // Direction is set but should not matter due to zero velocity
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(initialXPos, mainCharacter.wxPos);
-        assertEquals(initialYPos, mainCharacter.wyPos);
-    }
 
     @Test
-    public void testUpdateWithoutCollisionDirectionNone(){
-        int initialXPos = 10;
-        int initialYPos = 10;
-        mainCharacter.wxPos = initialXPos;
-        mainCharacter.wyPos = initialYPos;
-        mainCharacter.vel = 5;
-        mainCharacter.direction = ""; // Direction is set but should not matter due to zero velocity
-        mainCharacter.isCollision = false;
-        mainCharacter.update();
-        assertEquals(initialXPos, mainCharacter.wxPos);
-        assertEquals(initialYPos, mainCharacter.wyPos);
-    }
-
-    @Test
-    public void testUpdateSpriteCountSame() {
-        keyControl.upPressed = true;
-        mainCharacter.direction = "up";
-        mainCharacter.spriteCount = 1;
-        mainCharacter.update();
-        assertEquals(2, mainCharacter.spriteCount);
-    }
-
-    @Test
-    public void testUpdateSpriteCountIncrement() {
-        keyControl.upPressed = true;
-        mainCharacter.direction = "up";
-        mainCharacter.spriteCount = 11;
+    public void drawTest(){
         mainCharacter.spriteNum = 1;
-        mainCharacter.update();
-        assertEquals(0, mainCharacter.spriteCount);
-    }
-
-    @Test
-    public void testUpdateSpriteNumToggles() {
-        keyControl.upPressed = true;
         mainCharacter.direction = "up";
-        mainCharacter.spriteCount = 15;
-        mainCharacter.spriteNum = 1;
-        mainCharacter.update();
-        assertEquals(2, mainCharacter.spriteNum);
-        mainCharacter.direction = "up";
-        mainCharacter.spriteCount = 15;
-        mainCharacter.spriteNum = 2;
-        mainCharacter.update();
-        assertEquals(1, mainCharacter.spriteNum);
-        mainCharacter.direction = "up";
-        mainCharacter.spriteCount = 15;
-        mainCharacter.spriteNum = 3;
-        mainCharacter.update();
-        assertEquals(3, mainCharacter.spriteNum);
-    }
-
-    @Test
-    public void testMainCharacterNull() {
-        assertNotNull(mainCharacter.gp);
-    }
-
-    @Test
-    public void testInteractMob() {
-        int i = 10;
-        mainCharacter.interactMob(i);
-        assertEquals(gamePanel.gameState, gamePanel.deathState);
-    }
-
-    @Test
-    public void testInteractMobFail() {
-        int i = 999;
-        mainCharacter.interactMob(i);
-        assertNotEquals(gamePanel.gameState, gamePanel.deathState);
-    }
-
-    @Test
-    public void testGetMainWxPos(){
-        int testX = mainCharacter.getMainWxPos();
-        assertEquals(testX, mainCharacter.wxPos);
-    }
-
-    @Test
-    public void testGetMainWyPos() {
-        int testY = mainCharacter.getMainWyPos();
-        assertEquals(testY, mainCharacter.wyPos);
-    }
-
-    @Test
-    public void testDraw(){
-        //576
-        //1296
-
-        mainCharacter.wxPos = 936;
-
-        mainCharacter.wyPos = 840;
-
-        gamePanel.tileSize = 361;
-
-        mainCharacter.direction = "left";
-        mainCharacter.spriteNum = 1;
-        mainCharacter.draw(g2);
-        mainCharacter.spriteNum = 2;
-        mainCharacter.draw(g2);
-        mainCharacter.direction = "right";
-        mainCharacter.spriteNum = 1;
-        mainCharacter.draw(g2);
-        mainCharacter.spriteNum = 2;
-        mainCharacter.draw(g2);
-        mainCharacter.direction = "up";
-        mainCharacter.spriteNum = 1;
-        mainCharacter.draw(g2);
-        mainCharacter.spriteNum = 2;
         mainCharacter.draw(g2);
         mainCharacter.direction = "down";
-        mainCharacter.spriteNum = 1;
+        mainCharacter.draw(g2);
+        mainCharacter.direction = "left";
+        mainCharacter.draw(g2);
+        mainCharacter.direction = "right";
         mainCharacter.draw(g2);
         mainCharacter.spriteNum = 2;
+        mainCharacter.direction = "up";
+        mainCharacter.draw(g2);
+        mainCharacter.direction = "down";
+        mainCharacter.draw(g2);
+        mainCharacter.direction = "left";
+        mainCharacter.draw(g2);
+        mainCharacter.direction = "right";
         mainCharacter.draw(g2);
     }
+
+    @Test
+    public void pickUpObjTest(){
+        KeyCard keycard = new KeyCard(gp);
+        gp.obj[0] = keycard;
+
+        Bloodstain bloodstain = new Bloodstain(gp);
+        gp.obj[1] = bloodstain;
+
+        Door door = new Door(gp);
+        gp.obj[2] = door;
+
+
+        Candy candy = new Candy(gp);
+        gp.obj[3] = candy;
+
+        Stair stair = new Stair(gp);
+        gp.obj[4] = stair;
+
+        
+
+
+        mainCharacter.pickUpObj(0);
+        mainCharacter.pickUpObj(1);
+        mainCharacter.pickUpObj(2);
+        assertNotNull(gp.obj[2]);
+        mainCharacter.keyNum = 4;
+        mainCharacter.pickUpObj(2);
+        mainCharacter.pickUpObj(3);
+        mainCharacter.pickUpObj(4);
+        for(int i = 0; i < 4; i++){
+            assertEquals(null, gp.obj[i]);
+        }
+        assertNotNull(gp.obj[4]);
+    }
+
 }

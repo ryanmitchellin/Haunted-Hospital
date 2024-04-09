@@ -32,7 +32,7 @@ public class UserInterfaceTest {
         keyControl = new KeyControl(gp);
         mainCharacter = new MainCharacter(gp, keyControl);
         setAsset = new SetAsset(gp);
-        ui = new  UserInterface(gp);
+        ui = new UserInterface(gp);
         g2 = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB).createGraphics();
         ui.g2 = g2;
 
@@ -79,23 +79,29 @@ public class UserInterfaceTest {
 
     @Test
     public void drawDeathScreenTest(){
-        ui.commandingNumber = 0;
+        
+        ui.commandingNumber = 1;
         ui.spriteCount = 0;
         ui.drawDeathScreen();
-        ui.spriteCount = 10;
         ui.spriteNum = 1;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
         ui.spriteNum = 2;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
         ui.spriteNum = 3;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
         ui.spriteNum = 4;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
         ui.spriteNum = 5;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
         ui.spriteNum = 6;
+        ui.spriteCount = 10;
         ui.drawDeathScreen();
-        ui.commandingNumber = 1;
+        ui.commandingNumber = 0;
         ui.drawDeathScreen();
 
     }
@@ -109,14 +115,19 @@ public class UserInterfaceTest {
         ui.spriteNum = 1;
         ui.drawWinScreen();
         ui.spriteNum = 2;
+        ui.spriteCount = 10;
         ui.drawWinScreen();
         ui.spriteNum = 3;
+        ui.spriteCount = 10;
         ui.drawWinScreen();
         ui.spriteNum = 4;
+        ui.spriteCount = 10;
         ui.drawWinScreen();
         ui.spriteNum = 5;
+        ui.spriteCount = 10;
         ui.drawWinScreen();
         ui.commandingNumber = 1;
+        ui.spriteCount = 10;
         ui.drawWinScreen();
     }
 

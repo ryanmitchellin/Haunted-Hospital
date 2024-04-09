@@ -4,6 +4,10 @@ package Documents.main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import Documents.object.*;
+import Documents.entity.*;
 
 
 class GamePanelTest {
@@ -31,5 +35,21 @@ class GamePanelTest {
         
         gamePanel.gameStartThread();
         assertNotNull(gamePanel.gameThread, "gamethread should not be null after startThread");
+    }
+
+    @Test
+    void paintTest(){
+        BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        Graphics graphics = img.getGraphics();
+
+        gamePanel.paintComponent(graphics);
+        gamePanel.gameState = gamePanel.titleState;
+        gamePanel.paintComponent(graphics);
+        Bloodstain bloodstain = new Bloodstain(gamePanel);
+        gamePanel.obj[0] = bloodstain;
+        Ghost ghost = new Ghost(gamePanel);
+        gamePanel.monster[0] = ghost;
+        gamePanel.gameState = gamePanel.playState;
+        gamePanel.paintComponent(graphics);
     }
 }
