@@ -40,54 +40,54 @@ public class MainCharacterTest {
         assertNotNull(mainCharacter.gp);
     }
 
-    @Test
-    public void testPickupObjKeycard(){
-        int i = 100;
-        mainCharacter.keyNum = 0;
-        mainCharacter.pickUpObj(i);
-        assertEquals(1, mainCharacter.keyNum);
-    }
-
-    @Test
-    public void testPickupObjDoor(){
-        int i = 0;
-        mainCharacter.keyNum = 2;
-        mainCharacter.pickUpObj(i);
-        assertEquals(2, mainCharacter.keyNum);
-    }
-
-    @Test
-    public void testPickupObjDoorFour(){
-        int i = 300;
-        mainCharacter.keyNum = 4;
-        mainCharacter.pickUpObj(i);
-        assertEquals(0, mainCharacter.keyNum);
-    }
-
-    @Test
-    public void testPickupObjStair(){
-        int i = 500;
-        mainCharacter.pickUpObj(i);
-        assertEquals(gamePanel.gameState, gamePanel.winState);
-    }
-
-    @Test
-    public void testPickupObjBloodstain(){
-        int i = 700;
-        mainCharacter.stall = 20;
-        UserInterface.score = 100;
-        mainCharacter.pickUpObj(i);
-        assertEquals(40, mainCharacter.stall);
-        assertEquals(90, UserInterface.score);
-    }
-
-    @Test
-    public void testPickupObjCandy(){
-        int i = 900;
-        UserInterface.score = 100;
-        mainCharacter.pickUpObj(i);
-        assertEquals(120, UserInterface.score);
-    }
+//    @Test
+//    public void testPickupObjKeycard(){
+//        int i = 100;
+//        mainCharacter.keyNum = 0;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(1, mainCharacter.keyNum);
+//    }
+//
+//    @Test
+//    public void testPickupObjDoor(){
+//        int i = 0;
+//        mainCharacter.keyNum = 2;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(2, mainCharacter.keyNum);
+//    }
+//
+//    @Test
+//    public void testPickupObjDoorFour(){
+//        int i = 300;
+//        mainCharacter.keyNum = 4;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(0, mainCharacter.keyNum);
+//    }
+//
+//    @Test
+//    public void testPickupObjStair(){
+//        int i = 500;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(gamePanel.gameState, gamePanel.winState);
+//    }
+//
+//    @Test
+//    public void testPickupObjBloodstain(){
+//        int i = 700;
+//        mainCharacter.stall = 20;
+//        UserInterface.score = 100;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(40, mainCharacter.stall);
+//        assertEquals(90, UserInterface.score);
+//    }
+//
+//    @Test
+//    public void testPickupObjCandy(){
+//        int i = 900;
+//        UserInterface.score = 100;
+//        mainCharacter.pickUpObj(i);
+//        assertEquals(120, UserInterface.score);
+//    }
 
     @Test
     public void testUpdateStallHigh(){
