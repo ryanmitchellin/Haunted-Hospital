@@ -11,6 +11,8 @@ public class Pathfinding {
     Node startNode, goalNode, currentNode;
     boolean goalReached = false;
     int step = 0;
+    private int column = 0;
+    private int row = 0;
 
     public Pathfinding(GamePanel gp) {
         this.gp = gp;
@@ -19,8 +21,8 @@ public class Pathfinding {
     public void instantiateNodes() {
         node = new Node[gp.maxWCol][gp.maxWRow];
 
-        int column = 0;
-        int row = 0;
+        column = 0;
+        row = 0;
 
         while(column < gp.maxWCol && row < gp.maxWRow) {
             node[column][row] = new Node(column, row);
@@ -33,8 +35,8 @@ public class Pathfinding {
         }
     }
     public void resetNodes() {
-        int column = 0;
-        int row = 0;
+        column = 0;
+        row = 0;
 
         while (column < gp.maxWCol && row < gp.maxWRow) {
 
@@ -65,8 +67,8 @@ public class Pathfinding {
         goalNode = node[goalCol][goalRow];
         openList.add(currentNode);
 
-        int column = 0;
-        int row = 0;
+        column = 0;
+        row = 0;
 
         while (column < gp.maxWCol && row < gp.maxWRow) {
 
@@ -107,8 +109,8 @@ public class Pathfinding {
 
     public boolean search() {
         while (goalReached == false && step < 500) {
-            int column = currentNode.column;
-            int row = currentNode.row;
+            column = currentNode.column;
+            row = currentNode.row;
 
             // Check the current node
             currentNode.checked = true;
