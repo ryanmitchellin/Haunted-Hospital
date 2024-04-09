@@ -259,13 +259,48 @@ public class EntityTest {
     }
 
     @Test
-    public void testSearchPath(){
+    public void testSearchPathDown(){
         int goalColumn = 15;
         int goalRow = 10;
         entity.wyPos = 10;
         entity.wxPos = 10;
         entity.searchPath(goalColumn, goalRow);
-        // assertEquals("right", entity.direction);
         assertEquals("down", entity.direction);
+    }
+
+    @Test
+    public void testSearchPathUp(){
+        int goalColumn = 40;
+        int goalRow = 0;
+        entity.wyPos = 10;
+        entity.wxPos = 10;
+        gamePanel.mainCharacter.wxPos = 100;
+        gamePanel.mainCharacter.wyPos = 100;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("up", entity.direction);
+    }
+
+    @Test
+    public void testSearchPathUp2(){
+        int goalColumn = 40;
+        int goalRow = 0;
+        entity.wyPos = 10;
+        entity.wxPos = 150;
+        gamePanel.mainCharacter.wxPos = 100;
+        gamePanel.mainCharacter.wyPos = 100;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("up", entity.direction);
+    }
+
+    @Test
+    public void testSearchPathLeft(){
+        int goalColumn = 1;
+        int goalRow = 1;
+        entity.wyPos = 100;
+        entity.wxPos = 100;
+        gamePanel.mainCharacter.wxPos = 100;
+        gamePanel.mainCharacter.wyPos = 100;
+        entity.searchPath(goalColumn, goalRow);
+        assertEquals("left", entity.direction);
     }
 }
