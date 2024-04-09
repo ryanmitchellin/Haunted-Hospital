@@ -60,7 +60,7 @@ public class Demon extends Monster {
 				if (randomI > 50 && randomI <= 75) {
 					direction = "left";
 				}
-				if (randomI > 75) {
+				if (randomI > 75 && randomI <= 100) {
 					direction = "right";
 				}
 				actionLockCount = 0;
