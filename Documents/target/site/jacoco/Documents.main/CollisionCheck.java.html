@@ -180,9 +180,9 @@ public class CollisionCheck {
 					break;
 				case &quot;left&quot;:
 <span class="fc" id="L182">					entity.detectionArea.x -= entity.vel;</span>
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
-<span class="nc" id="L184">						entity.isCollision = true;</span>
-<span class="nc" id="L185">							index = i;</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">					if(entity.detectionArea.intersects(target[i].detectionArea)) {</span>
+<span class="fc" id="L184">						entity.isCollision = true;</span>
+<span class="fc" id="L185">							index = i;</span>
 					}
 					break;
 				case &quot;right&quot;:
