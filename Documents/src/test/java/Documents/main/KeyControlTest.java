@@ -89,4 +89,25 @@ public class KeyControlTest {
         keyControl.keyReleased(keyEvent);
         assertFalse(keyControl.rightPressed);
     }
+
+    @Test
+    public void testPKeyPressed() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.playState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_P, 'P');
+        keyControl.keyPressed(keyEvent);
+        assertEquals(gamePanel.stopState, gamePanel.gameState);
+    }
+
+    @Test
+    public void testSpaceKeyPressed() {
+        gamePanel = new GamePanel();
+        keyControl = new KeyControl(gamePanel);
+        gamePanel.gameState = gamePanel.playState;
+        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, ' ');
+        keyControl.keyPressed(keyEvent);
+        assertTrue(keyControl.enterPressed);
+    }
+
 }
