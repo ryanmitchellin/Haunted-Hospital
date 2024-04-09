@@ -110,10 +110,6 @@ public class MainCharacter extends Entity {
 			int objIndex = gp.checkCollision.objCheck(this,true);
 			pickUpObj(objIndex);
 
-			// npc collision
-			int npcIndex = gp.checkCollision.entityCheck(this,gp.npc);
-			interactNpc(npcIndex);
-
 			//monster collision
 			int mobIndex = gp.checkCollision.entityCheck(this,gp.monster);
 			interactMob(mobIndex);
@@ -197,18 +193,6 @@ public class MainCharacter extends Entity {
 			}
 		}
 	}
-
-	public void interactNpc(int i){
-		if(i != 999){
-			//System.out.println("you are hitting npc");
-			if(gp.keyControl.enterPressed == true){
-				gp.gameState = gp.dialogueState;
-				gp.npc[i].speak();
-			}
-		}
-		gp.keyControl.enterPressed = false;
-	}
-
 
 	public void interactMob(int i){
 		if(i != 999) {

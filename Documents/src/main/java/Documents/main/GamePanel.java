@@ -73,8 +73,6 @@ public class GamePanel extends JPanel implements Runnable{
 	/** The array of objects in the maze. */
 	public ObjectFactory obj[] = new ObjectFactory[30];
 
-	public Entity npc[] = new Entity[10];
-
 	public Entity monster[] = new Entity[20];
 
 	//for gamestate mangement
@@ -104,7 +102,6 @@ public class GamePanel extends JPanel implements Runnable{
      */
 	public void setGame() {
 		setAsset.setObj();
-		// setAsset.setNpc();
 		
 		setAsset.setGhost();
 		
@@ -178,12 +175,6 @@ public class GamePanel extends JPanel implements Runnable{
 			//movement for the character
 			mainCharacter.update();
 
-			//npc
-			for(int i = 0; i < npc.length; i++){
-				if(npc[i] != null){
-					npc[i].update();
-				}
-			}
 			for(int i = 0; i < monster.length; i++){
 				if(monster[i] != null){
 				
@@ -223,13 +214,6 @@ public class GamePanel extends JPanel implements Runnable{
 
 			//main character
 			mainCharacter.draw(g2);
-
-			//npc
-			for(int i = 0; i < npc.length; i++){
-				if(npc[i] != null) {
-					npc[i].draw(g2);
-				}
-			}
 
 			for(int i = 0; i < monster.length; i++){
 				
