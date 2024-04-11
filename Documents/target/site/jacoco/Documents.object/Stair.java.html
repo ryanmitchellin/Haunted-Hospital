@@ -4,21 +4,31 @@ import Documents.main.GamePanel;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
+/**
+ * Represents a stair object in the maze.
+ */
 public class Stair extends ObjectFactory {
 	GamePanel gp;
 
-<span class="fc" id="L10">	public Stair(GamePanel gp) {</span>
-<span class="fc" id="L11">		this.gp = gp;</span>
-<span class="fc" id="L12">		this.type = &quot;stair&quot;;</span>
+	/**
+     * Constructs a Stair object.
+	 * @param gp The GamePanel instance associate with stair object.
+     */
+<span class="fc" id="L17">	public Stair(GamePanel gp) {</span>
+<span class="fc" id="L18">		this.gp = gp;</span>
+<span class="fc" id="L19">		this.type = &quot;stair&quot;;</span>
 
 		try {
-<span class="fc" id="L15">			img = ImageIO.read(getClass().getResourceAsStream(&quot;/objects/stair.png&quot;));</span>
-<span class="fc" id="L16">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
-<span class="pc" id="L17">		} catch(IOException e) {</span>
-<span class="nc" id="L18">			e.printStackTrace();</span>
+<span class="fc" id="L22">			img = ImageIO.read(getClass().getResourceAsStream(&quot;/objects/stair.png&quot;));</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">			if (img == null) {</span>
+<span class="nc" id="L24">                throw new IOException(&quot;Failed to load stair image&quot;);</span>
+            }
+<span class="fc" id="L26">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
+<span class="pc" id="L27">		} catch(IOException e) {</span>
+<span class="nc" id="L28">			e.printStackTrace();</span>
 		}
-<span class="fc" id="L20">		isCollision = true;</span>
-<span class="fc" id="L21">	}</span>
+<span class="fc" id="L30">		isCollision = true;</span>
+<span class="fc" id="L31">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

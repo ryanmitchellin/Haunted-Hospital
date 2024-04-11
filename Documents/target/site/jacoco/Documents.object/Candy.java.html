@@ -6,19 +6,29 @@ import javax.imageio.ImageIO;
 
 import Documents.main.GamePanel;
 
+/**
+ * Represents a candy object in the maze.
+ */
 public class Candy extends ObjectFactory{
     GamePanel gp;
 
-<span class="fc" id="L12">    public Candy(GamePanel gp) {</span>
-<span class="fc" id="L13">		this.gp = gp;</span>
-<span class="fc" id="L14">		this.type = &quot;candy&quot;;</span>
+	/**
+     * Constructs a Candy object.
+	 * @param gp The GamePanel instance associate with candy object.
+     */
+<span class="fc" id="L19">    public Candy(GamePanel gp) {</span>
+<span class="fc" id="L20">		this.gp = gp;</span>
+<span class="fc" id="L21">		this.type = &quot;candy&quot;;</span>
 
 		try {
-<span class="fc" id="L17">			img = ImageIO.read(getClass().getResourceAsStream(&quot;/objects/reward.png&quot;));</span>
-<span class="fc" id="L18">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
-<span class="pc" id="L19">		} catch(IOException e) {</span>
-<span class="nc" id="L20">			e.printStackTrace();</span>
+<span class="fc" id="L24">			img = ImageIO.read(getClass().getResourceAsStream(&quot;/objects/reward.png&quot;));</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">			if (img == null) {</span>
+<span class="nc" id="L26">                throw new IOException(&quot;Failed to load reward image&quot;);</span>
+            }
+<span class="fc" id="L28">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
+<span class="pc" id="L29">		} catch(IOException e) {</span>
+<span class="nc" id="L30">			e.printStackTrace();</span>
 		}
-<span class="fc" id="L22">	}</span>
+<span class="fc" id="L32">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

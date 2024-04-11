@@ -20,12 +20,15 @@ public class Door extends ObjectFactory {
 
 		try {
 <span class="fc" id="L22">			img = ImageIO.read(getClass().getResourceAsStream(&quot;/objects/door.png&quot;));</span>
-<span class="fc" id="L23">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
-<span class="pc" id="L24">		} catch(IOException e) {</span>
-<span class="nc" id="L25">			e.printStackTrace();</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">			if (img == null) {</span>
+<span class="nc" id="L24">                throw new IOException(&quot;Failed to load door image&quot;);</span>
+            }
+<span class="fc" id="L26">			tools.scaleImg(img, gp.tileSize, gp.tileSize);</span>
+<span class="pc" id="L27">		} catch(IOException e) {</span>
+<span class="nc" id="L28">			e.printStackTrace();</span>
 		}
-<span class="fc" id="L27">		isCollision = true;</span>
-<span class="fc" id="L28">	}</span>
+<span class="fc" id="L30">		isCollision = true;</span>
+<span class="fc" id="L31">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
