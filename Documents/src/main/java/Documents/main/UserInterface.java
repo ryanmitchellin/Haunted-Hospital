@@ -249,13 +249,40 @@ public class UserInterface {
 	}
 
 	private void drawSprite(String imgDirectory, int x, int y, int width, int height) {
-        spriteCount++;
-        if (spriteCount > 10) {
-            spriteNum = (spriteNum % 5) + 1;
-            spriteCount = 0;
-        }
-        String imgPath = imgDirectory + (spriteNum - 1);
-        g2.drawImage(setup(imgPath), x, y, width, height, null);
+		spriteCount++;
+		if(spriteCount > 10) {
+			if(spriteNum == 1) {
+				spriteNum = 2;
+			}else if(spriteNum == 2) {
+				spriteNum = 3;
+			}else if(spriteNum == 3) {
+				spriteNum = 4;
+			}else if(spriteNum == 4) {
+				spriteNum = 5;
+			}else if(spriteNum == 5) {
+				spriteNum = 1;
+			}
+
+			spriteCount = 0;
+		}
+		if(spriteNum==1){
+			g2.drawImage(setup(imgDirectory+"0"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==2){
+			g2.drawImage(setup(imgDirectory+"1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==3){
+			g2.drawImage(setup(imgDirectory+"2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==4){
+			g2.drawImage(setup(imgDirectory+"3"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==5){
+			g2.drawImage(setup(imgDirectory+"2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
+		if(spriteNum==6){
+			g2.drawImage(setup(imgDirectory+"1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
+		}
     }
 
 	public BufferedImage setup(String imgPath) {
