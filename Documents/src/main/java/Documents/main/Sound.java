@@ -60,4 +60,11 @@ public class Sound {
 		clip.stop();
 	}
 
+	/**
+     * Completely close the audio file.
+     */
+	public void close() {
+		clip.close();
+	}
+
 }
