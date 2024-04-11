@@ -20,6 +20,9 @@ public class Stair extends ObjectFactory {
 
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/objects/stair.png"));
+			if (img == null) {
+                throw new IOException("Failed to load stair image");
+            }
 			tools.scaleImg(img, gp.tileSize, gp.tileSize);
 		} catch(IOException e) {
 			e.printStackTrace();

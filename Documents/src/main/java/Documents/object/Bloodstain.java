@@ -22,6 +22,9 @@ public class Bloodstain extends ObjectFactory{
 
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/objects/trap.png"));
+			if (img == null) {
+                throw new IOException("Failed to load trap image");
+            }
 			tools.scaleImg(img, gp.tileSize, gp.tileSize);
 		} catch(IOException e) {
 			e.printStackTrace();

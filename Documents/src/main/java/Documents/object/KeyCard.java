@@ -20,6 +20,9 @@ public class KeyCard extends ObjectFactory {
 
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/objects/cardkey.png"));
+			if (img == null) {
+                throw new IOException("Failed to load key card image");
+            }
 			tools.scaleImg(img, gp.tileSize, gp.tileSize);
 		} catch(IOException e) {
 			e.printStackTrace();

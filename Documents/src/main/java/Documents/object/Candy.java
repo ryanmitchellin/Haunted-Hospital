@@ -22,6 +22,9 @@ public class Candy extends ObjectFactory{
 
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/objects/reward.png"));
+			if (img == null) {
+                throw new IOException("Failed to load reward image");
+            }
 			tools.scaleImg(img, gp.tileSize, gp.tileSize);
 		} catch(IOException e) {
 			e.printStackTrace();

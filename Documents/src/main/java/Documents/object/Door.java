@@ -20,6 +20,9 @@ public class Door extends ObjectFactory {
 
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+			if (img == null) {
+                throw new IOException("Failed to load door image");
+            }
 			tools.scaleImg(img, gp.tileSize, gp.tileSize);
 		} catch(IOException e) {
 			e.printStackTrace();
