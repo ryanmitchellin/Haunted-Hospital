@@ -179,42 +179,7 @@ public class UserInterface {
 		x = gp.screenWidth/2- (gp.tileSize*2)/2;
 		y += gp.tileSize*2;
 		
-		spriteCount++;
-		if(spriteCount > 10) {
-			if(spriteNum == 1) {
-				spriteNum = 2;
-			}else if(spriteNum == 2) {
-				spriteNum = 3;
-			}else if(spriteNum == 3) {
-				spriteNum = 4;
-			}else if(spriteNum == 4) {
-				spriteNum = 5;
-			}else if(spriteNum == 5) {
-				spriteNum = 6;
-			}else if(spriteNum == 6) {
-				spriteNum = 1;
-			}
-
-			spriteCount = 0;
-		}
-		if(spriteNum==1){
-			g2.drawImage(setup("/skull/skull0"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==2){
-			g2.drawImage(setup("/skull/skull1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==3){
-			g2.drawImage(setup("/skull/skull2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==4){
-			g2.drawImage(setup("/skull/skull3"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==5){
-			g2.drawImage(setup("/skull/skull2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==6){
-			g2.drawImage(setup("/skull/skull1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
+		drawSprite("/skull/skull", x, y, gp.tileSize*2, gp.tileSize*2);
 
 		// Menu
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
@@ -258,37 +223,7 @@ public class UserInterface {
 		x = gp.screenWidth/2- (gp.tileSize*2)/2;
 		y += gp.tileSize*2;
 		
-		spriteCount++;
-		if(spriteCount > 10) {
-			if(spriteNum == 1) {
-				spriteNum = 2;
-			}else if(spriteNum == 2) {
-				spriteNum = 3;
-			}else if(spriteNum == 3) {
-				spriteNum = 4;
-			}else if(spriteNum == 4) {
-				spriteNum = 5;
-			}else if(spriteNum == 5) {
-				spriteNum = 1;
-			}
-
-			spriteCount = 0;
-		}
-		if(spriteNum==1){
-			g2.drawImage(setup("/trophy/trophy0"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==2){
-			g2.drawImage(setup("/trophy/trophy1"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==3){
-			g2.drawImage(setup("/trophy/trophy2"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==4){
-			g2.drawImage(setup("/trophy/trophy3"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
-		if(spriteNum==5){
-			g2.drawImage(setup("/trophy/trophy4"), x, y, gp.tileSize*2, gp.tileSize*2, null);
-		}
+		drawSprite("/trophy/trophy", x, y, gp.tileSize*2, gp.tileSize*2);
 
 		// Menu
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
@@ -310,6 +245,17 @@ public class UserInterface {
 		}
 
 	}
+
+	private void drawSprite(String imgDirectory, int x, int y, int width, int height) {
+        spriteCount++;
+        if (spriteCount > 10) {
+            spriteNum = (spriteNum % 5) + 1;
+            spriteCount = 0;
+        }
+        String imgPath = imgDirectory + (spriteNum - 1);
+        g2.drawImage(setup(imgPath), x, y, width, height, null);
+    }
+
 	public BufferedImage setup(String imgPath) {
 		BufferedImage img = null;
 
