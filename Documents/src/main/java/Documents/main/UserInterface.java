@@ -20,6 +20,7 @@ import java.awt.BasicStroke;
 public class UserInterface {
 	/** The GamePanel associated with this user interface. */
 	GamePanel gp;
+	int gpTileSize;
 
 	Graphics2D g2; //maybe rename
 	Font arialFont_40,arialFont_80;
@@ -50,6 +51,7 @@ public class UserInterface {
 		arialFont_80 = new Font("Arial", Font.BOLD, 80);
 		KeyCard keyCard = new KeyCard(gp);
 		cardKeyImg = keyCard.img;
+		gpTileSize = this.gp.tileSize;
 	}
 
 	public void displayMessage(String text) {
@@ -83,16 +85,16 @@ public class UserInterface {
 		if (gp.gameState == gp.playState) {
 			g2.setFont(arialFont_40);
 			g2.setColor(Color.white);
-			g2.drawImage(cardKeyImg, gp.tileSize/2, gp.tileSize/6, gp.tileSize, gp.tileSize, null);
+			g2.drawImage(cardKeyImg, gpTileSize/2, gpTileSize/6, gpTileSize, gpTileSize, null);
 			g2.drawString(" x " + gp.mainCharacter.keyNum + " / 8", 74, 50);
 			gameTime += (double)1/60;
-			g2.drawString("Time:" + dFormat.format(gameTime), gp.tileSize*11, 50);
-			g2.drawString("Score:" + (int) (score-gameTime), gp.tileSize*11, 100);
+			g2.drawString("Time:" + dFormat.format(gameTime), gpTileSize*11, 50);
+			g2.drawString("Score:" + (int) (score-gameTime), gpTileSize*11, 100);
 
 			//displaying message
 			if(printMessage == true) {
 				g2.setFont(g2.getFont().deriveFont(20));
-				g2.drawString(msg,gp.tileSize,gp.tileSize * 5); 
+				g2.drawString(msg,gpTileSize,gpTileSize * 5); 
 
 				msgCount++;
 
@@ -121,7 +123,7 @@ public class UserInterface {
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
 		String text = "Ghost Castle";
 		int x = getXCenterText(text);
-		int y = gp.tileSize*3;
+		int y = gpTileSize*3;
 
 		// Shadow
 		g2.setColor(Color.gray);
@@ -132,27 +134,27 @@ public class UserInterface {
 		g2.drawString(text, x, y);
 
 		// Boy Image
-		x = gp.screenWidth/2- (gp.tileSize*2)/2;
-		y += gp.tileSize*2;
-		g2.drawImage(gp.mainCharacter.downward1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+		x = gp.screenWidth/2- (gpTileSize*2)/2;
+		y += gpTileSize*2;
+		g2.drawImage(gp.mainCharacter.downward1, x, y, gpTileSize*2, gpTileSize*2, null);
 
 		// Menu
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
 
 		text = "NEW GAME";
 		x = getXCenterText(text);
-		y += gp.tileSize*4;
+		y += gpTileSize*4;
 		g2.drawString(text,x,y);
 		if (commandingNumber == 0) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 
 		text = "QUIT";
 		x = getXCenterText(text);
-		y += gp.tileSize;
+		y += gpTileSize;
 		g2.drawString(text, x, y);
 		if (commandingNumber == 1) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 	}
 
@@ -165,7 +167,7 @@ public class UserInterface {
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
 		String text = "You Died!";
 		int x = getXCenterText(text);
-		int y = gp.tileSize*3;
+		int y = gpTileSize*3;
 
 		// Shadow
 		g2.setColor(Color.gray);
@@ -176,28 +178,28 @@ public class UserInterface {
 		g2.drawString(text, x, y);
 
 		// Boy Image
-		x = gp.screenWidth/2- (gp.tileSize*2)/2;
-		y += gp.tileSize*2;
+		x = gp.screenWidth/2- (gpTileSize*2)/2;
+		y += gpTileSize*2;
 		
-		drawSprite("/skull/skull", x, y, gp.tileSize*2, gp.tileSize*2);
+		drawSprite("/skull/skull", x, y, gpTileSize*2, gpTileSize*2);
 
 		// Menu
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
 
 		text = "TRY AGAIN";
 		x = getXCenterText(text);
-		y += gp.tileSize*4;
+		y += gpTileSize*4;
 		g2.drawString(text,x,y);
 		if (commandingNumber == 0) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 
 		text = "GIVE UP";
 		x = getXCenterText(text);
-		y += gp.tileSize;
+		y += gpTileSize;
 		g2.drawString(text, x, y);
 		if (commandingNumber == 1) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 	}
 
@@ -209,7 +211,7 @@ public class UserInterface {
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
 		String text = "You Won!";
 		int x = getXCenterText(text);
-		int y = gp.tileSize*3;
+		int y = gpTileSize*3;
 
 		// Shadow
 		g2.setColor(Color.gray);
@@ -220,28 +222,28 @@ public class UserInterface {
 		g2.drawString(text, x, y);
 
 		// Boy Image
-		x = gp.screenWidth/2- (gp.tileSize*2)/2;
-		y += gp.tileSize*2;
+		x = gp.screenWidth/2- (gpTileSize*2)/2;
+		y += gpTileSize*2;
 		
-		drawSprite("/trophy/trophy", x, y, gp.tileSize*2, gp.tileSize*2);
+		drawSprite("/trophy/trophy", x, y, gpTileSize*2, gpTileSize*2);
 
 		// Menu
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
 
 		text = "PLAY AGAIN";
 		x = getXCenterText(text);
-		y += gp.tileSize*4;
+		y += gpTileSize*4;
 		g2.drawString(text,x,y);
 		if (commandingNumber == 0) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 
 		text = "QUIT";
 		x = getXCenterText(text);
-		y += gp.tileSize;
+		y += gpTileSize;
 		g2.drawString(text, x, y);
 		if (commandingNumber == 1) {
-			g2.drawString(">", x-gp.tileSize, y);
+			g2.drawString(">", x-gpTileSize, y);
 		}
 
 	}
@@ -262,9 +264,9 @@ public class UserInterface {
 		try {
 			img = ImageIO.read(getClass().getResourceAsStream(imgPath + ".png"));
 		    //ensure the image supports alpha (transparency)
-		    BufferedImage newImg = new BufferedImage(gp.tileSize, gp.tileSize, BufferedImage.TYPE_INT_ARGB);
+		    BufferedImage newImg = new BufferedImage(gpTileSize, gpTileSize, BufferedImage.TYPE_INT_ARGB);
 		    Graphics2D g2 = newImg.createGraphics();
-		    g2.drawImage(img, 0, 0, gp.tileSize, gp.tileSize, null);
+		    g2.drawImage(img, 0, 0, gpTileSize, gpTileSize, null);
 		    g2.dispose();
 		    img = newImg;
 		}catch(IOException e) {
@@ -285,16 +287,16 @@ public class UserInterface {
 
 	public void drawDialogueScreen(){
 		//Window
-		int x = gp.tileSize*2;
-		int y = gp.tileSize/2;
-		int width = gp.screenWidth - (gp.tileSize*4);
-		int height = gp.tileSize*5;
+		int x = gpTileSize*2;
+		int y = gpTileSize/2;
+		int width = gp.screenWidth - (gpTileSize*4);
+		int height = gpTileSize*5;
 
 		drawSubWindow(x, y, width, height);
 
 		g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32F));
-		x += gp.tileSize;
-		y += gp.tileSize;
+		x += gpTileSize;
+		y += gpTileSize;
 		//g2.drawString(currentDialogue, x, y);
 
 		for(String line: currentDialogue.split("\n")){
