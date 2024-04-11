@@ -90,8 +90,8 @@ public class MainCharacter extends Entity {
      * Update the character direction based on the key press.
      */
 	public void update() {
-<span class="fc bfc" id="L93" title="All 4 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
-<span class="fc bfc" id="L94" title="All 4 branches covered.">			keyControl.leftPressed == true || keyControl.rightPressed == true) {</span>
+<span class="fc bfc" id="L93" title="All 8 branches covered.">		if(keyControl.upPressed == true || keyControl.downPressed == true ||</span>
+			keyControl.leftPressed == true || keyControl.rightPressed == true) {
 <span class="fc bfc" id="L95" title="All 2 branches covered.">			if(keyControl.upPressed == true) {</span>
 <span class="fc" id="L96">				direction = &quot;up&quot;;</span>
 <span class="fc bfc" id="L97" title="All 2 branches covered.">			}else if(keyControl.downPressed == true) {</span>
@@ -122,7 +122,7 @@ public class MainCharacter extends Entity {
 			//if its false, character can move else cannot
 <span class="pc bpc" id="L123" title="1 of 2 branches missed.">			if(isCollision == false) {</span>
 <span class="pc bpc" id="L124" title="1 of 2 branches missed.">				if(stall==0){</span>
-<span class="fc bfc" id="L125" title="All 5 branches covered.">					switch(direction) {</span>
+<span class="pc bpc" id="L125" title="1 of 5 branches missed.">					switch(direction) {</span>
 <span class="fc" id="L126">					case &quot;up&quot;: this.wyPos -= this.vel; break;</span>
 <span class="fc" id="L127">					case &quot;down&quot;: this.wyPos += this.vel; break;</span>
 <span class="fc" id="L128">					case &quot;left&quot;: this.wxPos -= this.vel; break;</span>
@@ -159,7 +159,7 @@ public class MainCharacter extends Entity {
 <span class="fc" id="L159">			String objName = gp.obj[i].type;</span>
 
 			//depending on obj reaction
-<span class="fc bfc" id="L162" title="All 6 branches covered.">			switch(objName) {</span>
+<span class="pc bpc" id="L162" title="1 of 6 branches missed.">			switch(objName) {</span>
 			case &quot;keyCard&quot;:
 <span class="fc" id="L164">				gp.soundEffectObj(1);</span>
 <span class="fc" id="L165">				keyNum++;</span>
@@ -213,7 +213,7 @@ public class MainCharacter extends Entity {
 	public void draw(Graphics2D g2) {
 <span class="fc" id="L214">		BufferedImage image = null;</span>
 
-<span class="fc bfc" id="L216" title="All 5 branches covered.">		switch(direction) {</span>
+<span class="pc bpc" id="L216" title="1 of 5 branches missed.">		switch(direction) {</span>
 		case &quot;up&quot;:
 <span class="fc bfc" id="L218" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L219">				image = upward1;</span>
@@ -221,7 +221,7 @@ public class MainCharacter extends Entity {
 <span class="fc bfc" id="L221" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
 <span class="fc" id="L222">				image = upward2;</span>
 			}
-<span class="fc" id="L224">			break;</span>
+			break;
 		case &quot;down&quot;:
 <span class="fc bfc" id="L226" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L227">				image = downward1;</span>
@@ -229,7 +229,7 @@ public class MainCharacter extends Entity {
 <span class="fc bfc" id="L229" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
 <span class="fc" id="L230">				image = downward2;</span>
 			}
-<span class="fc" id="L232">			break;</span>
+			break;
 		case &quot;left&quot;:
 <span class="fc bfc" id="L234" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L235">				image = leftward1;</span>
@@ -237,7 +237,7 @@ public class MainCharacter extends Entity {
 <span class="fc bfc" id="L237" title="All 2 branches covered.">			if(spriteNum == 2) {</span>
 <span class="fc" id="L238">				image = leftward2;</span>
 			}
-<span class="fc" id="L240">			break;</span>
+			break;
 		case &quot;right&quot;:
 <span class="fc bfc" id="L242" title="All 2 branches covered.">			if(spriteNum == 1) {</span>
 <span class="fc" id="L243">				image = rightward1;</span>

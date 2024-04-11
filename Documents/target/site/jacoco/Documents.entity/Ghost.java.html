@@ -48,14 +48,14 @@ public class Ghost extends Monster {
 
 <span class="fc bfc" id="L49" title="All 2 branches covered.">        if(distance&gt;(Math.abs(mainX-(wxPos+vel))+Math.abs(mainY-(wyPos)))){</span>
 <span class="fc" id="L50">            wxPos += vel;</span>
-<span class="fc" id="L51">        }</span>
+        }
 <span class="fc bfc" id="L52" title="All 2 branches covered.">        else if(distance&gt;(Math.abs(mainX-(wxPos-vel))+Math.abs(mainY-(wyPos)))){</span>
 <span class="fc" id="L53">            wxPos -= vel;</span>
         }
 
 <span class="fc bfc" id="L56" title="All 2 branches covered.">        if(distance&gt;(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos+vel)))){</span>
 <span class="fc" id="L57">            wyPos += vel;</span>
-<span class="fc" id="L58">        }</span>
+        }
 <span class="fc bfc" id="L59" title="All 2 branches covered.">        else if(distance&gt;(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos-vel)))){</span>
 <span class="fc" id="L60">            wyPos -= vel;</span>
         }
