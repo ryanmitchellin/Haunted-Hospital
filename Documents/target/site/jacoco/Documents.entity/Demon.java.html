@@ -76,10 +76,11 @@ public class Demon extends Monster {
 <span class="fc" id="L76">		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);</span>
 <span class="fc" id="L77">		int tDist = (mainX + mainY)/gp.tileSize;</span>
 
-<span class="fc bfc" id="L79" title="All 4 branches covered.">		if (onPath == false &amp;&amp; tDist &lt;  50) {</span>
-<span class="fc" id="L80">			int i = new Random().nextInt(100)+1;</span>
-<span class="fc bfc" id="L81" title="All 2 branches covered.">			if (i &gt; 50) {</span>
-<span class="fc" id="L82">				onPath = true;</span>
+		
+<span class="fc bfc" id="L80" title="All 4 branches covered.">		if (onPath == false &amp;&amp; tDist &lt;  50) {</span>
+<span class="fc" id="L81">			int i = new Random().nextInt(100)+1;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">			if (i &gt; 50) {</span>
+<span class="fc" id="L83">				onPath = true;</span>
 			}
 		}/**
 		 if (onPath == true &amp;&amp; tDist &gt; 20) {
@@ -87,7 +88,8 @@ public class Demon extends Monster {
 		 }
 		 */
 
-<span class="fc" id="L90">	}</span>
+<span class="fc" id="L91">		setAction();</span>
+<span class="fc" id="L92">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

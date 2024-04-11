@@ -6,9 +6,16 @@ import javax.imageio.ImageIO;
 
 import Documents.main.GamePanel;
 
+/**
+ * Represents a candy object in the maze.
+ */
 public class Candy extends ObjectFactory{
     GamePanel gp;
 
+	/**
+     * Constructs a Candy object.
+	 * @param gp The GamePanel instance associate with candy object.
+     */
     public Candy(GamePanel gp) {
 		this.gp = gp;
 		this.type = "candy";

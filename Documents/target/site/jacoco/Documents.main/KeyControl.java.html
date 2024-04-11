@@ -100,15 +100,15 @@ public class KeyControl implements KeyListener{
 <span class="fc" id="L100">				break;</span>
 				
 			default:
-<span class="fc" id="L103">				break;</span>
+				break;
 			}
-		}
+<span class="fc" id="L105">		}</span>
 		// pause state
 <span class="fc bfc" id="L107" title="All 2 branches covered.">		else if(gp.gameState == gp.stopState){</span>
 <span class="pc bpc" id="L108" title="1 of 2 branches missed.">			if(code == KeyEvent.VK_P){</span>
 <span class="fc" id="L109">				gp.gameState = gp.playState;</span>
 			}
-		}
+<span class="fc" id="L111">		}</span>
 		//dialogue state
 <span class="fc bfc" id="L113" title="All 2 branches covered.">		else if(gp.gameState == gp.dialogueState){</span>
 <span class="pc bpc" id="L114" title="1 of 2 branches missed.">			if(code == KeyEvent.VK_SPACE){</span>
