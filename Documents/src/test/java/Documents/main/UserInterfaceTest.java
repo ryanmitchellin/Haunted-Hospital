@@ -64,9 +64,6 @@ public class UserInterfaceTest {
         ui.draw(g2);
         gp.gameState = gp.stopState;
         ui.draw(g2);
-        gp.gameState = gp.dialogueState;
-        ui.draw(g2);
-
     }
     @Test
     public void drawTitleScreenTest(){
@@ -136,9 +133,5 @@ public class UserInterfaceTest {
         ui.drawPauseScreen();
     }
 
-    @Test
-    public void drawDialogueScreenTest(){
-        ui.drawDialogueScreen();
-    }
 
 }

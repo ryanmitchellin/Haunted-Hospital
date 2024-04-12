@@ -35,7 +35,7 @@ public class UserInterface {
 	public boolean printMessage = false;
 	public String msg = "";
 	public boolean gameDone = false;
-	public String currentDialogue = "";
+
 	public static double gameTime;
 	public static double score = 101;
 	DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -108,10 +108,7 @@ public class UserInterface {
 		if (gp.gameState == gp.stopState) {
 			drawPauseScreen();
 		}
-		//dialogue state
-		if (gp.gameState == gp.dialogueState) {
-			drawDialogueScreen();
-		}
+
 	}
 
 	public void drawTitleScreen() {
@@ -310,26 +307,6 @@ public class UserInterface {
 		int y = gp.screenHeight/2;
 
 		g2.drawString(text, x, y);
-	}
-
-	public void drawDialogueScreen(){
-		//Window
-		int x = gpTileSize*2;
-		int y = gpTileSize/2;
-		int width = gp.screenWidth - (gpTileSize*4);
-		int height = gpTileSize*5;
-
-		drawSubWindow(x, y, width, height);
-
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32F));
-		x += gpTileSize;
-		y += gpTileSize;
-		//g2.drawString(currentDialogue, x, y);
-
-		for(String line: currentDialogue.split("\n")){
-			g2.drawString(line, x, y);
-			y += 40;
-		}
 	}
 	public void drawSubWindow (int x, int y, int width, int height){
 		Color c = new Color(0,0,0, 220);

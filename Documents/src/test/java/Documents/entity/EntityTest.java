@@ -22,7 +22,6 @@ public class EntityTest {
     public static void setUp() {
         gamePanel = new GamePanel();
         entity = new Entity(gamePanel);
-        entity.dialogues = new String[]{"Hello", "Goodbye", null};
         gamePanel.tileSize = 48;
         gamePanel.tileFactory = new TileFactory(gamePanel);
 
