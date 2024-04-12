@@ -53,6 +53,7 @@ public class Entity {
 	/** Indicates if the Entities are on a path towards the main character. */
 	public boolean onPath = false;
 
+	/** Sprite count for the animation */
 	public int spriteCount = 0;
 
 	/** The number of sprites for the entity's movement animation. */
@@ -70,21 +71,35 @@ public class Entity {
 	/** Indicates the states whether the entity is currently collides with another entity. */
 	public boolean isCollision = false;
 
+	/** Counting for the locking the action */
 	public int actionLockCount = 0;
+
+	/** Testing variable for debugging */
 	int test;
 
+	/** array to store dialgoues */
 	String dialogues[] = new String[20];
+
+	/** index of the dialogues */
 	int dialogueIndex = 0;
 
+	/** 
+	 * Constructor for the Entity class which constructs new entity with reference
+	 * to the GamePanel for interaction
+	 * @param gp the game panel instance to which this entity belongs to
+	 */
 	public Entity (GamePanel gp) {
 		this.gp = gp;
 	}
 
+	/**
+	 * Sets the next action for the entity
+	 */
+	public void setAction(){}
 
-	public void setAction(){
-
-	}
-
+	/**
+	 * displaying the next dialogue from the dialogue array above
+	 */
 	public void speak(){
 		if(dialogues[dialogueIndex] == null){
 			dialogueIndex = 0;
@@ -108,6 +123,10 @@ public class Entity {
 		}
 	}
 
+	/** 
+	 * Checking collision with the tiles, objects, main character, and other entities
+	 * it updates the collision flag
+	 */
 	public void checkCollision() {
 		isCollision = false;
 		gp.checkCollision.tileCheck(this);
@@ -116,6 +135,9 @@ public class Entity {
 		gp.checkCollision.entityCheck(this, gp.monster);
 	}
 
+	/** 
+	 * updating the entity's location (position) and the state, including movement and animation
+	 */
 	public void update(){
 		setAction();
 		checkCollision();
@@ -143,7 +165,12 @@ public class Entity {
 			spriteCount = 0;
 		}
 	}
-
+	/**
+	 * Drawing the entity and its current position on Graphic 2D context
+	 * 
+	 * @param g2 is the Graphic 2D context on which to draw the entity
+	 *
+	 */
 	public void draw(Graphics2D g2){
 		BufferedImage image = null;
 		int screenX = wxPos - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
@@ -191,6 +218,13 @@ public class Entity {
 			g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
+
+	/**
+	 * loads an image from the specified path and scales it to the game panel's tile size
+	 * 
+	 * @param imgPath is the path to the image file
+	 * @return returning scaled image
+	 */
 	public BufferedImage setup(String imgPath) {
 		BufferedImage img = null;
 
@@ -208,6 +242,12 @@ public class Entity {
 		return img;
 	}
 
+	/**
+	 * searching the path towards a specified goal using the pathfinding
+	 * 
+	 * @param goalColumn is the destination column on the map
+	 * @param goalRow is the destination row on the map
+	 */
 	public void searchPath(int goalColumn, int goalRow) {
 		int startColumn = (wxPos + detectionArea.x)/gp.tileSize;
 		int startRow = (wyPos + detectionArea.y)/gp.tileSize;
