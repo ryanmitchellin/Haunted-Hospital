@@ -7,6 +7,7 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
 public class Lighting {
 
@@ -37,6 +38,24 @@ public class Lighting {
         Area lightArea = new Area(circleShape);
         screenArea.subtract(new Area(lightArea));
 
+        Color color[] = new Color[5];
+        float[] fraction = new float[5];
+
+        color[0] = new Color(0,0,0,0f);
+        color[1] = new Color(0,0,0,0.25f);
+        color[2] = new Color(0,0,0,0.5f);
+        color[3] = new Color(0,0,0,0.98f);
+
+        fraction[0] = 0f;
+        fraction[1] = 0.25f;
+        fraction[2] = 0.5f;
+        fraction[3] = 0.75f;
+        fraction[4] = 1f;
+
+        // Create gradian
+        RadialGradientPaint gradientPaint = new RadialGradientPaint(centerX, centerY, (circleSize/2), fraction, color);
+
+        g2.setPaint();
         // Set colour
         g2.setColor(new Color(0, 0, 0, 0.95f));
 
