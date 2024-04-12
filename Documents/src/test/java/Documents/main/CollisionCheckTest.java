@@ -29,29 +29,29 @@ public class CollisionCheckTest {
         collisionCheck = new CollisionCheck(gp);
         keyControl = new KeyControl(gp);
         mainCharacter = new MainCharacter(gp, keyControl);
-        left = mainCharacter.wxPos + mainCharacter.detectionArea.x;
-        right = mainCharacter.wxPos + mainCharacter.detectionArea.x + mainCharacter.detectionArea.width;
-        top = mainCharacter.wyPos + mainCharacter.detectionArea.y;
-        bottom = mainCharacter.wyPos + mainCharacter.detectionArea.y + mainCharacter.detectionArea.height;
+        left = mainCharacter.worldXPos + mainCharacter.detectionArea.x;
+        right = mainCharacter.worldXPos + mainCharacter.detectionArea.x + mainCharacter.detectionArea.width;
+        top = mainCharacter.worldYPos + mainCharacter.detectionArea.y;
+        bottom = mainCharacter.worldYPos + mainCharacter.detectionArea.y + mainCharacter.detectionArea.height;
 
         leftCol = left/gp.tileSize;
         rightCol = right/gp.tileSize;
         topRow = top/gp.tileSize;
         bottomRow = bottom/gp.tileSize;
 
-        leftCol = (left - mainCharacter.vel)/gp.tileSize;
+        leftCol = (left - mainCharacter.velocity)/gp.tileSize;
         left1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
         left2 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
 
-        rightCol = (right + mainCharacter.vel)/gp.tileSize;
+        rightCol = (right + mainCharacter.velocity)/gp.tileSize;
         right1 = gp.tileFactory.getTileMapNum(rightCol, topRow);
         right2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
 
-        topRow = (top - mainCharacter.vel)/gp.tileSize;
+        topRow = (top - mainCharacter.velocity)/gp.tileSize;
         top1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
         top2 = gp.tileFactory.getTileMapNum(rightCol, topRow);
 
-        bottomRow = (bottom + mainCharacter.vel)/gp.tileSize;
+        bottomRow = (bottom + mainCharacter.velocity)/gp.tileSize;
         bottom1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
         bottom2 = gp.tileFactory.getTileMapNum(rightCol, topRow);
 
@@ -185,7 +185,7 @@ public class CollisionCheckTest {
 
         gp.obj[0] = new Bloodstain(gp);
         gp.obj[0].worldX = left;
-        gp.obj[0].worldY = mainCharacter.wyPos;
+        gp.obj[0].worldY = mainCharacter.worldYPos;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "left";
         collisionCheck.objCheck(mainCharacter, true);
@@ -201,7 +201,7 @@ public class CollisionCheckTest {
 
         gp.obj[0] = new Bloodstain(gp);
         gp.obj[0].worldX = left;
-        gp.obj[0].worldY = mainCharacter.wyPos;
+        gp.obj[0].worldY = mainCharacter.worldYPos;
         gp.obj[0].isCollision = false;
         mainCharacter.direction = "left";
         collisionCheck.objCheck(mainCharacter, true);
@@ -233,7 +233,7 @@ public class CollisionCheckTest {
 
         gp.obj[0] = new Bloodstain(gp);
         gp.obj[0].worldX = left;
-        gp.obj[0].worldY = mainCharacter.wyPos;
+        gp.obj[0].worldY = mainCharacter.worldYPos;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "left";
         collisionCheck.objCheck(mainCharacter, false);
@@ -266,7 +266,7 @@ public class CollisionCheckTest {
 
         gp.obj[0] = new Bloodstain(gp);
         gp.obj[0].worldX = right;
-        gp.obj[0].worldY = mainCharacter.wyPos;
+        gp.obj[0].worldY = mainCharacter.worldYPos;
         gp.obj[0].isCollision = false;
         mainCharacter.direction = "right";
         collisionCheck.objCheck(mainCharacter, true);
@@ -298,7 +298,7 @@ public class CollisionCheckTest {
 
         gp.obj[0] = new Bloodstain(gp);
         gp.obj[0].worldX = right;
-        gp.obj[0].worldY = mainCharacter.wyPos;
+        gp.obj[0].worldY = mainCharacter.worldYPos;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "right";
         collisionCheck.objCheck(mainCharacter, false);
@@ -313,7 +313,7 @@ public class CollisionCheckTest {
     public void objCheckUp1(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = top;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "up";
@@ -329,7 +329,7 @@ public class CollisionCheckTest {
     public void objCheckUp2(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = top;
         gp.obj[0].isCollision = false;
         mainCharacter.direction = "up";
@@ -361,7 +361,7 @@ public class CollisionCheckTest {
     public void objCheckUp4(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = top;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "up";
@@ -378,7 +378,7 @@ public class CollisionCheckTest {
     public void objCheckDown1(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = bottom;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "down";
@@ -394,7 +394,7 @@ public class CollisionCheckTest {
     public void objCheckDown2(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = bottom;
         gp.obj[0].isCollision = false;
         mainCharacter.direction = "down";
@@ -426,7 +426,7 @@ public class CollisionCheckTest {
     public void objCheckDown4(){
 
         gp.obj[0] = new Bloodstain(gp);
-        gp.obj[0].worldX = mainCharacter.wxPos;
+        gp.obj[0].worldX = mainCharacter.worldXPos;
         gp.obj[0].worldY = bottom;
         gp.obj[0].isCollision = true;
         mainCharacter.direction = "down";
@@ -442,8 +442,8 @@ public class CollisionCheckTest {
     public void entityCheckLeft1(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = left;
-        gp.monster[0].wyPos = mainCharacter.wyPos;
+        gp.monster[0].worldXPos = left;
+        gp.monster[0].worldYPos = mainCharacter.worldYPos;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "left";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -456,8 +456,8 @@ public class CollisionCheckTest {
     public void entityCheckLeft2(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = 0;
-        gp.monster[0].wyPos = 0;
+        gp.monster[0].worldXPos = 0;
+        gp.monster[0].worldYPos = 0;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "left";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -470,8 +470,8 @@ public class CollisionCheckTest {
     public void entityCheckRight1(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = right;
-        gp.monster[0].wyPos = mainCharacter.wyPos;
+        gp.monster[0].worldXPos = right;
+        gp.monster[0].worldYPos = mainCharacter.worldYPos;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "right";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -484,8 +484,8 @@ public class CollisionCheckTest {
     public void entityCheckRight2(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = 0;
-        gp.monster[0].wyPos = 0;
+        gp.monster[0].worldXPos = 0;
+        gp.monster[0].worldYPos = 0;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "right";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -498,8 +498,8 @@ public class CollisionCheckTest {
     public void entityCheckUp1(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = mainCharacter.wxPos;
-        gp.monster[0].wyPos = top;
+        gp.monster[0].worldXPos = mainCharacter.worldXPos;
+        gp.monster[0].worldYPos = top;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "up";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -512,8 +512,8 @@ public class CollisionCheckTest {
     public void entityCheckUp2(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = 0;
-        gp.monster[0].wyPos = 0;
+        gp.monster[0].worldXPos = 0;
+        gp.monster[0].worldYPos = 0;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "up";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -526,8 +526,8 @@ public class CollisionCheckTest {
     // public void entityCheckLeft1(){
 
     //     gp.monster[0] = new Ghost(gp);
-    //     gp.monster[0].wxPos = left;
-    //     gp.monster[0].wyPos = top;
+    //     gp.monster[0].worldXPos = left;
+    //     gp.monster[0].worldYPos = top;
     //     gp.monster[0].isCollision = true;
     //     mainCharacter.direction = "left";
     //     collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -540,8 +540,8 @@ public class CollisionCheckTest {
     public void entityCheckDown1(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = mainCharacter.wxPos;
-        gp.monster[0].wyPos = bottom;
+        gp.monster[0].worldXPos = mainCharacter.worldXPos;
+        gp.monster[0].worldYPos = bottom;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "down";
         collisionCheck.entityCheck(mainCharacter, gp.monster);
@@ -555,8 +555,8 @@ public class CollisionCheckTest {
     public void entityCheckDown2(){
 
         gp.monster[0] = new Ghost(gp);
-        gp.monster[0].wxPos = 0;
-        gp.monster[0].wyPos = 0;
+        gp.monster[0].worldXPos = 0;
+        gp.monster[0].worldYPos = 0;
         gp.monster[0].isCollision = true;
         mainCharacter.direction = "down";
         collisionCheck.entityCheck(mainCharacter, gp.monster);

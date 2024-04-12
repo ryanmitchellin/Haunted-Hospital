@@ -16,95 +16,95 @@ public class MonsterTest {
         gamePanel = new GamePanel();
         monster = new Monster(gamePanel);
         gamePanel.tileSize = 48;
-        left = monster.wxPos + monster.detectionArea.x;
+        left = monster.worldXPos + monster.detectionArea.x;
     }
 
     @Test
     public void testUpdateDistance(){
         int initialXPos = 0;
-        monster.wxPos = initialXPos;
-        monster.vel = 5;
+        monster.worldXPos = initialXPos;
+        monster.velocity = 5;
         monster.direction = "right";
         monster.update();
-        assertEquals(initialXPos + monster.vel, monster.wxPos);
+        assertEquals(initialXPos + monster.velocity, monster.worldXPos);
     }
 
     @Test
     public void testUpdateWithCollision(){
-        monster.vel = 5;
+        monster.velocity = 5;
         monster.direction = "left";
         gamePanel.tileFactory.getTile(left).collision = true;
-        monster.wyPos = 10;
+        monster.worldYPos = 10;
         monster.update();
-        assertEquals(10, monster.wyPos);
+        assertEquals(10, monster.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionMovementNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        monster.wxPos = initialXPos;
-        monster.wyPos = initialYPos;
-        monster.vel = 0;
+        monster.worldXPos = initialXPos;
+        monster.worldYPos = initialYPos;
+        monster.velocity = 0;
         monster.direction = "up";
         monster.isCollision = false;
         monster.update();
-        assertEquals(initialXPos, monster.wxPos);
-        assertEquals(initialYPos, monster.wyPos);
+        assertEquals(initialXPos, monster.worldXPos);
+        assertEquals(initialYPos, monster.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDirectionNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        monster.wxPos = initialXPos;
-        monster.wyPos = initialYPos;
-        monster.vel = 5;
+        monster.worldXPos = initialXPos;
+        monster.worldYPos = initialYPos;
+        monster.velocity = 5;
         monster.direction = "";
         monster.isCollision = false;
         monster.update();
-        assertEquals(initialXPos, monster.wxPos);
-        assertEquals(initialYPos, monster.wyPos);
+        assertEquals(initialXPos, monster.worldXPos);
+        assertEquals(initialYPos, monster.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionUp(){
-        monster.vel = 5;
+        monster.velocity = 5;
         monster.direction = "up";
-        monster.wyPos = 10;
+        monster.worldYPos = 10;
         monster.isCollision = false;
         monster.update();
-        assertEquals(5, monster.wyPos);
+        assertEquals(5, monster.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDown(){
-        monster.vel = 5;
+        monster.velocity = 5;
         monster.direction = "down";
-        monster.wyPos = 10;
+        monster.worldYPos = 10;
         monster.isCollision = false;
         monster.update();
-        assertEquals(15, monster.wyPos);
+        assertEquals(15, monster.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionLeft(){
-        monster.vel = 5;
+        monster.velocity = 5;
         monster.direction = "left";
-        monster.wxPos = 10;
+        monster.worldXPos = 10;
         monster.isCollision = false;
         monster.update();
-        assertEquals(5, monster.wxPos);
+        assertEquals(5, monster.worldXPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionRight(){
-        monster.vel = 5;
+        monster.velocity = 5;
         monster.direction = "right";
-        monster.wxPos = 10;
+        monster.worldXPos = 10;
         monster.isCollision = false;
         monster.update();
-        assertEquals(15, monster.wxPos);
+        assertEquals(15, monster.worldXPos);
     }
 
     @Test

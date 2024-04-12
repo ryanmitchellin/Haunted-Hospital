@@ -20,77 +20,77 @@ public class GhostTest {
         @Test
         public void testUpdateDistance(){
             int initialXPos = 0;
-            ghost.wxPos = initialXPos;
-            ghost.vel = 5;
+            ghost.worldXPos = initialXPos;
+            ghost.velocity = 5;
             ghost.direction = "right";
             ghost.update();
-            assertEquals(initialXPos + ghost.vel, ghost.wxPos);
+            assertEquals(initialXPos + ghost.velocity, ghost.worldXPos);
         }
 
         @Test
         public void testUpdateMovementNone(){
             int initialXPos = 10;
             int initialYPos = 10;
-            ghost.wxPos = initialXPos;
-            ghost.wyPos = initialYPos;
-            ghost.vel = 0;
+            ghost.worldXPos = initialXPos;
+            ghost.worldYPos = initialYPos;
+            ghost.velocity = 0;
             ghost.update();
-            assertEquals(initialXPos, ghost.wxPos);
-            assertEquals(initialYPos, ghost.wyPos);
+            assertEquals(initialXPos, ghost.worldXPos);
+            assertEquals(initialYPos, ghost.worldYPos);
         }
 
         @Test
         public void testUpdateUp(){
-            ghost.vel = 5;
-            ghost.wxPos = 10;
-            ghost.wyPos = 10;
-            gamePanel.mainCharacter.wxPos = 10;
-            gamePanel.mainCharacter.wyPos = 5;
+            ghost.velocity = 5;
+            ghost.worldXPos = 10;
+            ghost.worldYPos = 10;
+            gamePanel.mainCharacter.worldXPos = 10;
+            gamePanel.mainCharacter.worldYPos = 5;
             ghost.update();
-            assertEquals(5, ghost.wyPos);
+            assertEquals(5, ghost.worldYPos);
         }
 
         @Test
         public void testUpdateDown(){
-            ghost.vel = 5;
-            ghost.wxPos = 10;
-            ghost.wyPos = 10;
-            gamePanel.mainCharacter.wxPos = 10;
-            gamePanel.mainCharacter.wyPos = 15;
+            ghost.velocity = 5;
+            ghost.worldXPos = 10;
+            ghost.worldYPos = 10;
+            gamePanel.mainCharacter.worldXPos = 10;
+            gamePanel.mainCharacter.worldYPos = 15;
             ghost.update();
-            assertEquals(15, ghost.wyPos);
+            assertEquals(15, ghost.worldYPos);
         }
 
         @Test
         public void testUpdateLeft(){
-            ghost.vel = 5;
-            ghost.wxPos = 10;
-            ghost.wyPos = 10;
-            gamePanel.mainCharacter.wxPos = 5;
-            gamePanel.mainCharacter.wyPos = 10;
+            ghost.velocity = 5;
+            ghost.worldXPos = 10;
+            ghost.worldYPos = 10;
+            gamePanel.mainCharacter.worldXPos = 5;
+            gamePanel.mainCharacter.worldYPos = 10;
             ghost.update();
-            assertEquals(5, ghost.wxPos);
+            assertEquals(5, ghost.worldXPos);
         }
 
         @Test
         public void testUpdateRight(){
-            ghost.vel = 5;
-            ghost.wxPos = 10;
-            ghost.wyPos = 10;
-            gamePanel.mainCharacter.wxPos = 15;
-            gamePanel.mainCharacter.wyPos = 10;
+            ghost.velocity = 5;
+            ghost.worldXPos = 10;
+            ghost.worldYPos = 10;
+            gamePanel.mainCharacter.worldXPos = 15;
+            gamePanel.mainCharacter.worldYPos = 10;
             ghost.update();
-            assertEquals(15, ghost.wxPos);
+            assertEquals(15, ghost.worldXPos);
         }
 
         @Test
         public void testUpdateWithoutDistanceExceeding1(){
-            ghost.vel = 5;
+            ghost.velocity = 5;
             ghost.direction = "right";
-            ghost.wxPos = 2500;
-            ghost.wyPos = 2500;
-            gamePanel.mainCharacter.wxPos = 1250;
-            gamePanel.mainCharacter.wyPos = 1250;
+            ghost.worldXPos = 2500;
+            ghost.worldYPos = 2500;
+            gamePanel.mainCharacter.worldXPos = 1250;
+            gamePanel.mainCharacter.worldYPos = 1250;
             ghost.onPath = false;
             ghost.isCollision = false;
             ghost.update();
@@ -99,12 +99,12 @@ public class GhostTest {
 
         @Test
         public void testUpdateWithoutDistanceExceeding2(){
-            ghost.vel = 5;
+            ghost.velocity = 5;
             ghost.direction = "right";
-            ghost.wxPos = 2500;
-            ghost.wyPos = 2500;
-            gamePanel.mainCharacter.wxPos = 1250;
-            gamePanel.mainCharacter.wyPos = 1250;
+            ghost.worldXPos = 2500;
+            ghost.worldYPos = 2500;
+            gamePanel.mainCharacter.worldXPos = 1250;
+            gamePanel.mainCharacter.worldYPos = 1250;
             ghost.onPath = true;
             ghost.isCollision = false;
             ghost.update();

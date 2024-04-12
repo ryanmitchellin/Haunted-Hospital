@@ -26,29 +26,29 @@ public class EntityTest {
         gamePanel.tileSize = 48;
         gamePanel.tileFactory = new TileFactory(gamePanel);
 
-        left = entity.wxPos + entity.detectionArea.x;
-        right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
-        top = entity.wyPos + entity.detectionArea.y;
-        bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;
+        left = entity.worldXPos + entity.detectionArea.x;
+        right = entity.worldXPos + entity.detectionArea.x + entity.detectionArea.width;
+        top = entity.worldYPos + entity.detectionArea.y;
+        bottom = entity.worldYPos + entity.detectionArea.y + entity.detectionArea.height;
 
         leftCol = left/gamePanel.tileSize;
         rightCol = right/gamePanel.tileSize;
         topRow = top/gamePanel.tileSize;
         bottomRow = bottom/gamePanel.tileSize;
 
-        leftCol = (left - entity.vel)/gamePanel.tileSize;
+        leftCol = (left - entity.velocity)/gamePanel.tileSize;
         left1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
         left2 = gamePanel.tileFactory.getTileMapNum(leftCol, bottomRow);
 
-        rightCol = (right + entity.vel)/gamePanel.tileSize;
+        rightCol = (right + entity.velocity)/gamePanel.tileSize;
         right1 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
         right2 = gamePanel.tileFactory.getTileMapNum(rightCol, bottomRow);
 
-        topRow = (top - entity.vel)/gamePanel.tileSize;
+        topRow = (top - entity.velocity)/gamePanel.tileSize;
         top1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
         top2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
 
-        bottomRow = (bottom + entity.vel)/gamePanel.tileSize;
+        bottomRow = (bottom + entity.velocity)/gamePanel.tileSize;
         bottom1 = gamePanel.tileFactory.getTileMapNum(leftCol, topRow);
         bottom2 = gamePanel.tileFactory.getTileMapNum(rightCol, topRow);
         
@@ -65,8 +65,8 @@ public class EntityTest {
     public void testEntityDefaultPosition() {
         GamePanel gamePanelDefault = new GamePanel();
         Entity entityDefault = new Entity(gamePanelDefault);
-        assertEquals(0, entityDefault.wxPos);
-        assertEquals(0, entityDefault.wyPos);
+        assertEquals(0, entityDefault.worldXPos);
+        assertEquals(0, entityDefault.worldYPos);
     }
 
 
@@ -77,12 +77,12 @@ public class EntityTest {
 
     @Test
     public void testUpdateDistance(){
-        int initialXPos = entity.wxPos;
-        int initialYPos = entity.wyPos;
-        entity.vel = 5;
+        int initialXPos = entity.worldXPos;
+        int initialYPos = entity.worldYPos;
+        entity.velocity = 5;
         entity.direction = "right";
         entity.update();
-        assertEquals(initialXPos + entity.vel, entity.wxPos);
+        assertEquals(initialXPos + entity.velocity, entity.worldXPos);
         entity.direction = "left";
         entity.update();
     }
@@ -91,78 +91,78 @@ public class EntityTest {
     public void testUpdateWithoutCollisionMovementNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        entity.wxPos = initialXPos;
-        entity.wyPos = initialYPos;
-        entity.vel = 0;
-        entity.direction = "up"; // Direction is set but should not matter due to zero velocity
+        entity.worldXPos = initialXPos;
+        entity.worldYPos = initialYPos;
+        entity.velocity = 0;
+        entity.direction = "up"; // Direction is set but should not matter due to zero velocityocity
         entity.isCollision = false;
         entity.update();
-        assertEquals(initialXPos, entity.wxPos);
-        assertEquals(initialYPos, entity.wyPos);
+        assertEquals(initialXPos, entity.worldXPos);
+        assertEquals(initialYPos, entity.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDirectionNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        entity.wxPos = initialXPos;
-        entity.wyPos = initialYPos;
-        entity.vel = 5;
-        entity.direction = ""; // Direction is set but should not matter due to zero velocity
+        entity.worldXPos = initialXPos;
+        entity.worldYPos = initialYPos;
+        entity.velocity = 5;
+        entity.direction = ""; // Direction is set but should not matter due to zero velocityocity
         entity.isCollision = false;
         entity.update();
-        assertEquals(initialXPos, entity.wxPos);
-        assertEquals(initialYPos, entity.wyPos);
+        assertEquals(initialXPos, entity.worldXPos);
+        assertEquals(initialYPos, entity.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionUp(){
-        entity.vel = 5;
+        entity.velocity = 5;
         entity.direction = "up";
-        entity.wyPos = 10;
+        entity.worldYPos = 10;
         entity.isCollision = false;
         entity.update();
-        assertEquals(5, entity.wyPos);
+        assertEquals(5, entity.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDown(){
-        entity.vel = 5;
+        entity.velocity = 5;
         entity.direction = "down";
-        entity.wyPos = 10;
+        entity.worldYPos = 10;
         entity.isCollision = false;
         entity.update();
-        assertEquals(15, entity.wyPos);
+        assertEquals(15, entity.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionLeft(){
-        entity.vel = 5;
+        entity.velocity = 5;
         entity.direction = "left";
-        entity.wxPos = 10;
+        entity.worldXPos = 10;
         entity.isCollision = false;
         entity.update();
-        assertEquals(5, entity.wxPos);
+        assertEquals(5, entity.worldXPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionRight(){
-        entity.vel = 5;
+        entity.velocity = 5;
         entity.direction = "right";
-        entity.wxPos = 10;
+        entity.worldXPos = 10;
         entity.isCollision = false;
         entity.update();
-        assertEquals(15, entity.wxPos);
+        assertEquals(15, entity.worldXPos);
     }
 
     @Test
     public void testUpdateWithCollision(){
-        entity.vel = 5;
+        entity.velocity = 5;
         entity.direction = "left";
         gamePanel.tileFactory.getTile(left).collision = true;
-        entity.wyPos = 10;
+        entity.worldYPos = 10;
         entity.update();
-        assertEquals(10, entity.wyPos);
+        assertEquals(10, entity.worldYPos);
         gamePanel.tileFactory.getTile(left).collision = false;
     }
 
@@ -207,13 +207,13 @@ public class EntityTest {
         //576
         //1296
 
-        entity.wxPos = 936;
+        entity.worldXPos = 936;
         
-        entity.wyPos = 840;
+        entity.worldYPos = 840;
 
         gamePanel.tileSize = 361;
 
-        // System.out.println(entity.wyPos + " " + gamePanel.tileSize + " " + gamePanel.mainCharacter.wyPos +  " " + gamePanel.mainCharacter.screenY);
+        // System.out.println(entity.worldYPos + " " + gamePanel.tileSize + " " + gamePanel.mainCharacter.worldYPos +  " " + gamePanel.mainCharacter.screenY);
 
         entity.direction = "left";
         entity.spriteNum = 1;
@@ -255,48 +255,48 @@ public class EntityTest {
         int successfulY = -1;
         
 
-        entity.wxPos = 625;
-        entity.wyPos = 500;
+        entity.worldXPos = 625;
+        entity.worldYPos = 500;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("up", entity.direction);
 
-        entity.wxPos = 0;
-        entity.wyPos = 150;
+        entity.worldXPos = 0;
+        entity.worldYPos = 150;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("down", entity.direction);
 
-        entity.wxPos = 400;
-        entity.wyPos = 500;
+        entity.worldXPos = 400;
+        entity.worldYPos = 500;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("left", entity.direction);
 
-        entity.wxPos = 0;
-        entity.wyPos = 625;
+        entity.worldXPos = 0;
+        entity.worldYPos = 625;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("right", entity.direction);
 
-        entity.wxPos = 400;
-        entity.wyPos = 875;
+        entity.worldXPos = 400;
+        entity.worldYPos = 875;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("up", entity.direction);
 
-        entity.wxPos = 400;
-        entity.wyPos = 500;
+        entity.worldXPos = 400;
+        entity.worldYPos = 500;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("left", entity.direction);
 
-        entity.wxPos = 0;
-        entity.wyPos = 450;
+        entity.worldXPos = 0;
+        entity.worldYPos = 450;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("up", entity.direction);
 
-        entity.wxPos = 450;
-        entity.wyPos = 550;
+        entity.worldXPos = 450;
+        entity.worldYPos = 550;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("right", entity.direction);
 
-        entity.wxPos = 25;
-        entity.wyPos = 150;
+        entity.worldXPos = 25;
+        entity.worldYPos = 150;
         entity.searchPath(goalColumn, goalRow);
         assertEquals("down", entity.direction);
     

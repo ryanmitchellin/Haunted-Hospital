@@ -16,105 +16,105 @@ public class DemonTest {
         gamePanel = new GamePanel();
         demon = new Demon(gamePanel);
         gamePanel.tileSize = 48;
-        left = demon.wxPos + demon.detectionArea.x;
+        left = demon.worldXPos + demon.detectionArea.x;
     }
 
     @Test
     public void testUpdateDistance(){
         int initialXPos = 0;
-        demon.wxPos = initialXPos;
-        demon.vel = 5;
+        demon.worldXPos = initialXPos;
+        demon.velocity = 5;
         demon.direction = "right";
         demon.update();
-        assertEquals(initialXPos + demon.vel, demon.wxPos);
+        assertEquals(initialXPos + demon.velocity, demon.worldXPos);
     }
 
     @Test
     public void testUpdateWithCollision(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "left";
         gamePanel.tileFactory.getTile(left).collision = true;
-        demon.wyPos = 10;
+        demon.worldYPos = 10;
         demon.update();
-        assertEquals(10, demon.wyPos);
+        assertEquals(10, demon.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionMovementNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        demon.wxPos = initialXPos;
-        demon.wyPos = initialYPos;
-        demon.vel = 0;
-        demon.direction = "up"; // Direction is set but should not matter due to zero velocity
+        demon.worldXPos = initialXPos;
+        demon.worldYPos = initialYPos;
+        demon.velocity = 0;
+        demon.direction = "up"; // Direction is set but should not matter due to zero velocityocity
         demon.isCollision = false;
         demon.update();
-        assertEquals(initialXPos, demon.wxPos);
-        assertEquals(initialYPos, demon.wyPos);
+        assertEquals(initialXPos, demon.worldXPos);
+        assertEquals(initialYPos, demon.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDirectionNone(){
         int initialXPos = 10;
         int initialYPos = 10;
-        demon.wxPos = initialXPos;
-        demon.wyPos = initialYPos;
-        demon.vel = 5;
-        demon.direction = ""; // Direction is set but should not matter due to zero velocity
+        demon.worldXPos = initialXPos;
+        demon.worldYPos = initialYPos;
+        demon.velocity = 5;
+        demon.direction = ""; // Direction is set but should not matter due to zero velocityocity
         demon.isCollision = false;
         demon.update();
-        assertEquals(initialXPos, demon.wxPos);
-        assertEquals(initialYPos, demon.wyPos);
+        assertEquals(initialXPos, demon.worldXPos);
+        assertEquals(initialYPos, demon.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionUp(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "up";
-        demon.wyPos = 10;
+        demon.worldYPos = 10;
         demon.isCollision = false;
         demon.update();
-        assertEquals(5, demon.wyPos);
+        assertEquals(5, demon.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionDown(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "down";
-        demon.wyPos = 10;
+        demon.worldYPos = 10;
         demon.isCollision = false;
         demon.update();
-        assertEquals(15, demon.wyPos);
+        assertEquals(15, demon.worldYPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionLeft(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "left";
-        demon.wxPos = 10;
+        demon.worldXPos = 10;
         demon.isCollision = false;
         demon.update();
-        assertEquals(5, demon.wxPos);
+        assertEquals(5, demon.worldXPos);
     }
 
     @Test
     public void testUpdateWithoutCollisionRight(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "right";
-        demon.wxPos = 10;
+        demon.worldXPos = 10;
         demon.isCollision = false;
         demon.update(); // same as above for all these cases
-        assertEquals(15, demon.wxPos);
+        assertEquals(15, demon.worldXPos);
     }
 
     @Test
     public void testUpdateWithoutDistanceExceeding1(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "right";
-        demon.wxPos = 2500;
-        demon.wyPos = 2500;
-        gamePanel.mainCharacter.wxPos = 1250;
-        gamePanel.mainCharacter.wyPos = 1250;
+        demon.worldXPos = 2500;
+        demon.worldYPos = 2500;
+        gamePanel.mainCharacter.worldXPos = 1250;
+        gamePanel.mainCharacter.worldYPos = 1250;
         demon.onPath = false;
         demon.isCollision = false;
         demon.update();
@@ -123,12 +123,12 @@ public class DemonTest {
 
     @Test
     public void testUpdateWithoutDistanceExceeding2(){
-        demon.vel = 5;
+        demon.velocity = 5;
         demon.direction = "right";
-        demon.wxPos = 1000;
-        demon.wyPos = 1000;
-        gamePanel.mainCharacter.wxPos = 500;
-        gamePanel.mainCharacter.wyPos = 500;
+        demon.worldXPos = 1000;
+        demon.worldYPos = 1000;
+        gamePanel.mainCharacter.worldXPos = 500;
+        gamePanel.mainCharacter.worldYPos = 500;
         demon.onPath = true;
         demon.isCollision = false;
         demon.update();
