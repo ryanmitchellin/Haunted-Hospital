@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import Documents.main.GamePanel;
+import Documents.main.UtilityTools;
 
 /**
  * Represents an entity inside the maze.
@@ -151,19 +152,11 @@ public class Entity {
 				case "right": this.wxPos += this.vel; break;
 			}
 		}
+		spriteNum = UtilityTools.spriteCountCalculations(spriteCount, spriteNum);
 
 		//animation
 		//the move() method gets called 60 times per second
 		//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
-		spriteCount++;
-		if(spriteCount > 10) {
-			if(spriteNum == 1) {
-				spriteNum = 2;
-			}else if(spriteNum == 2) {
-				spriteNum = 1;
-			}
-			spriteCount = 0;
-		}
 	}
 	/**
 	 * Drawing the entity and its current position on Graphic 2D context

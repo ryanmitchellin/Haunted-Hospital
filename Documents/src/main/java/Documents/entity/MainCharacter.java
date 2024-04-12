@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 import Documents.main.UserInterface;
+import Documents.main.UtilityTools;
+
 /**
  * Represents the main character in the maze, extending the Entity class.
  */
@@ -137,15 +139,7 @@ public class MainCharacter extends Entity {
 			//animation
 			//the move() method gets called 60 times per second
 			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
-			spriteCount++;
-			if(spriteCount > 10) {
-				if(spriteNum == 1) {
-					spriteNum = 2;
-				}else if(spriteNum == 2) {
-					spriteNum = 1;
-				}
-				spriteCount = 0;
-			}
+			spriteNum = UtilityTools.spriteCountCalculations(spriteCount, spriteNum);
 		}
 	}
 
