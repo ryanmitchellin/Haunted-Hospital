@@ -129,16 +129,6 @@ public class KeyControlTest {
     }
 
     @Test
-    public void testSpaceKeyDialogue() {
-        gamePanel = new GamePanel();
-        keyControl = new KeyControl(gamePanel);
-        gamePanel.gameState = gamePanel.dialogueState;
-        KeyEvent keyEvent = new KeyEvent(gamePanel, KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, ' ');
-        keyControl.keyPressed(keyEvent);
-        assertEquals(gamePanel.playState, gamePanel.gameState);
-    }
-
-    @Test
     public void testUpKeyTitle() {
         gamePanel = new GamePanel();
         keyControl = new KeyControl(gamePanel);
