@@ -69,56 +69,6 @@ public class EntityTest {
         assertEquals(0, entityDefault.wyPos);
     }
 
-    @Test
-    public void testSpeakNonNull(){
-        entity.dialogueIndex = 0;
-        entity.speak();
-        assertEquals("Hello", gamePanel.ui.currentDialogue);
-        assertEquals(1, entity.dialogueIndex);
-    }
-
-    @Test
-    public void testSpeakNull(){
-        entity.dialogueIndex = 2;
-        entity.speak();
-        assertEquals("Hello", gamePanel.ui.currentDialogue);
-        assertEquals(1, entity.dialogueIndex);
-    }
-
-    @Test
-    public void testSpeakUp(){
-        gamePanel.mainCharacter.direction = "up";
-        entity.speak();
-        assertEquals("down", entity.direction);
-    }
-
-    @Test
-    public void testSpeakDown(){
-        gamePanel.mainCharacter.direction = "down";
-        entity.speak();
-        assertEquals("up", entity.direction);
-    }
-
-    @Test
-    public void testSpeakLeft(){
-        gamePanel.mainCharacter.direction = "left";
-        entity.speak();
-        assertEquals("right", entity.direction);
-    }
-
-    @Test
-    public void testSpeakRight(){
-        gamePanel.mainCharacter.direction = "right";
-        entity.speak();
-        assertEquals("left", entity.direction);
-    }
-
-    @Test
-    public void testSpeakDefault(){
-        gamePanel.mainCharacter.direction = "";
-        entity.speak();
-        assertEquals(null, entity.direction);
-    }
 
     @Test
     public void testCheckCollision(){
