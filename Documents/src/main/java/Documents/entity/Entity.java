@@ -73,8 +73,6 @@ public class Entity {
 	public int actionLockCount = 0;
 	int test;
 
-	String dialogues[] = new String[20];
-	int dialogueIndex = 0;
 
 	public Entity (GamePanel gp) {
 		this.gp = gp;

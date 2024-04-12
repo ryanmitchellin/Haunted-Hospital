@@ -109,12 +109,6 @@ public class KeyControl implements KeyListener{
 				gp.gameState = gp.playState;
 			}
 		}
-		//dialogue state
-		else if(gp.gameState == gp.dialogueState){
-			if(code == KeyEvent.VK_SPACE){
-				gp.gameState = gp.playState;
-			}
-		}
 	}
 
 	/**
