@@ -1,6 +1,7 @@
 package Documents.main;
 import Documents.SearchAI.Pathfinding;
 import Documents.entity.MainCharacter;
+import Documents.environment.EnvironmentManager;
 import Documents.tile.TileFactory;
 import Documents.object.ObjectFactory;
 import Documents.entity.Entity;
@@ -47,6 +48,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 	/** The tile factory for creating and managing tiles. */
 	public TileFactory tileFactory = new TileFactory(this);
+
+	/** The Environment manager for creating the light circle */
+	EnvironmentManager eManager = new EnvironmentManager(this);
 
 	/** The key control for managing user input. */
 	public KeyControl keyControl = new KeyControl(this);
@@ -110,6 +114,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		setAsset.setReward();
 		setAsset.setDemon();
+		eManager.setup();
 
 		//map 1 music
 		musicPlay(0);
@@ -201,6 +206,8 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		//tile
 		tileFactory.draw(g2);
+
+		eManager.draw(g2);
 
 		// Title Screen
 		if(gameState == titleState) {
