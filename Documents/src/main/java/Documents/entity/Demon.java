@@ -21,14 +21,13 @@ public class Demon extends Monster {
     public Demon(GamePanel gp) {
 		super(gp);
 		direction = "down";
-		this.vel = 2;
+		this.velocity = 2;
 
 		getDemonImage();
 
 		detectionArea = new Rectangle();
 		detectionArea.x = 8;
 		detectionArea.y = 8;
-
 
 		detectionArea.width = 8;
 		detectionArea.height = 8;
@@ -56,8 +55,8 @@ public class Demon extends Monster {
 	 */
 	public void setAction() {
 		if (onPath) {
-			int goalColumn = (gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x) / gp.tileSize;
-			int goalRow = (gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y) / gp.tileSize;
+			int goalColumn = (gp.mainCharacter.worldXPos + gp.mainCharacter.detectionArea.x) / gp.tileSize;
+			int goalRow = (gp.mainCharacter.worldYPos + gp.mainCharacter.detectionArea.y) / gp.tileSize;
 
 			searchPath(goalColumn, goalRow);
 		}
@@ -70,8 +69,8 @@ public class Demon extends Monster {
 	public void update() {
 		super.update();
 		//System.out.println("updating demon");
-		int mainX = Math.abs(wxPos - gp.mainCharacter.wxPos);
-		int mainY = Math.abs(wyPos - gp.mainCharacter.wyPos);
+		int mainX = Math.abs(worldXPos - gp.mainCharacter.worldXPos);
+		int mainY = Math.abs(worldYPos - gp.mainCharacter.worldYPos);
 		int tDist = (mainX + mainY)/gp.tileSize;
 
 		

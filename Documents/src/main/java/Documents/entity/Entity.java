@@ -16,13 +16,13 @@ public class Entity {
 	GamePanel gp;
 
 	/** The x-coordinate for the entity. */
-	public int wxPos;
+	public int worldXPos;
 
 	/** The y-coordinate for the entity. */
-	public int wyPos;
+	public int worldYPos;
 
 	/** The velocity for the entity. */
-	public int vel;
+	public int velocity;
 
 	/** The image for the entity facing upward motion 1. */
 	public BufferedImage upward1;
@@ -120,10 +120,10 @@ public class Entity {
 		//if its false, character can move else cannot
 		if(isCollision == false) {
 			switch(direction) {
-				case "up": this.wyPos -= this.vel; break;
-				case "down": this.wyPos += this.vel; break;
-				case "left": this.wxPos -= this.vel; break;
-				case "right": this.wxPos += this.vel; break;
+				case "up": this.worldYPos -= this.velocity; break;
+				case "down": this.worldYPos += this.velocity; break;
+				case "left": this.worldXPos -= this.velocity; break;
+				case "right": this.worldXPos += this.velocity; break;
 			}
 		}
 		spriteNum = UtilityTools.spriteCountCalculations(spriteCount, spriteNum);
@@ -140,14 +140,14 @@ public class Entity {
 	 */
 	public void draw(Graphics2D g2){
 		BufferedImage image = null;
-		int screenX = wxPos - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		int screenY = wyPos - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+		int screenX = worldXPos - gp.mainCharacter.worldXPos + gp.mainCharacter.screenX;
+		int screenY = worldYPos - gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;
 
 		//checking if the tile is within the boundary
-		if(wxPos + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
-				wxPos - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-				wyPos + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-				wyPos - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+		if(worldXPos + gp.tileSize > gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &&
+				worldXPos - gp.tileSize < gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &&
+				worldYPos + gp.tileSize > gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &&
+				worldYPos - gp.tileSize < gp.mainCharacter.worldYPos + gp.mainCharacter.screenY) {
 			switch(direction) {
 				case "up":
 					if(spriteNum == 1) {
@@ -216,23 +216,23 @@ public class Entity {
 	 * @param goalRow is the destination row on the map
 	 */
 	public void searchPath(int goalColumn, int goalRow) {
-		int startColumn = (wxPos + detectionArea.x)/gp.tileSize;
-		int startRow = (wyPos + detectionArea.y)/gp.tileSize;
+		int startColumn = (worldXPos + detectionArea.x)/gp.tileSize;
+		int startRow = (worldYPos + detectionArea.y)/gp.tileSize;
 
 		gp.pFinder.setNode(startColumn, startRow, goalColumn, goalRow);
 
 		if(gp.pFinder.search() == true) {
 
-			// Next wxPos and wyPos
+			// Next worldXPos and wyPos
 			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;
 			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
 
 
 			// Entity's solidArea position
-			int enLeftX = wxPos + detectionArea.x;
-			int enRightX = wxPos + detectionArea.x + detectionArea.width;
-			int enTopY = wyPos + detectionArea.y;
-			int enBottomY = wyPos + detectionArea.y + detectionArea.height;
+			int enLeftX = worldXPos + detectionArea.x;
+			int enRightX = worldXPos + detectionArea.x + detectionArea.width;
+			int enTopY = worldYPos + detectionArea.y;
+			int enBottomY = worldYPos + detectionArea.y + detectionArea.height;
 
 			if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
 				test = 1;

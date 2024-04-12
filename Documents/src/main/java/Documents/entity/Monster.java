@@ -5,7 +5,6 @@ import Documents.main.GamePanel;
 public class Monster extends Entity{
     public Monster(GamePanel gp){
         super(gp);
-
     }
 
 
@@ -13,10 +12,10 @@ public class Monster extends Entity{
         //super.update(); taking this out for coverage.
         //if(isCollision == false) {
             switch(direction) {
-                case "up": this.wyPos -= this.vel; break;
-                case "down": this.wyPos += this.vel; break;
-                case "left": this.wxPos -= this.vel; break;
-                case "right": this.wxPos += this.vel; break;
+                case "up": this.worldYPos -= this.velocity; break;
+                case "down": this.worldYPos += this.velocity; break;
+                case "left": this.worldXPos -= this.velocity; break;
+                case "right": this.worldXPos += this.velocity; break;
             }
        // }
         //checking collision with the wall tile

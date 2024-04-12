@@ -57,19 +57,19 @@ public class MainCharacter extends Entity {
 	}
 
 	public int getMainWxPos(){
-		return wxPos;
+		return worldXPos;
 	}
 
 	public int getMainWyPos(){
-		return wyPos;
+		return worldYPos;
 	}
 	/**
      * Initializes the default values for the character.
      */
 	public void settingDefaultValue() {
-		wxPos = gp.tileSize * 20 - gp.tileSize/2;
-		wyPos = gp.tileSize * 18 - gp.tileSize/2;
-		vel = 6;
+		worldXPos = gp.tileSize * 20 - gp.tileSize/2;
+		worldYPos = gp.tileSize * 18 - gp.tileSize/2;
+		velocity = 6;
 
 		direction = "down";
 	}
@@ -125,10 +125,10 @@ public class MainCharacter extends Entity {
 			if(isCollision == false) {
 				if(stall==0){
 					switch(direction) {
-					case "up": this.wyPos -= this.vel; break;
-					case "down": this.wyPos += this.vel; break;
-					case "left": this.wxPos -= this.vel; break;
-					case "right": this.wxPos += this.vel; break;
+					case "up": this.worldYPos -= this.velocity; break;
+					case "down": this.worldYPos += this.velocity; break;
+					case "left": this.worldXPos -= this.velocity; break;
+					case "right": this.worldXPos += this.velocity; break;
 					}
 				}
 			}

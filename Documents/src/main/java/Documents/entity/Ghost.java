@@ -10,7 +10,7 @@ public class Ghost extends Monster {
         
 
         direction = "down";
-        this.vel = 1;
+        this.velocity = 1;
 
         getGhostImage();
      
@@ -44,24 +44,22 @@ public class Ghost extends Monster {
         int mainX = gp.mainCharacter.getMainWxPos();
         int mainY = gp.mainCharacter.getMainWyPos();
 
-        int distance = Math.abs(mainX - wxPos) + Math.abs(mainY - wyPos);
+        int distance = Math.abs(mainX - worldXPos) + Math.abs(mainY - worldYPos);
 
-        if(distance>(Math.abs(mainX-(wxPos+vel))+Math.abs(mainY-(wyPos)))){
-            wxPos += vel;
+        if(distance>(Math.abs(mainX-(worldXPos+velocity))+Math.abs(mainY-(worldYPos)))){
+            worldXPos += velocity;
         }
-        else if(distance>(Math.abs(mainX-(wxPos-vel))+Math.abs(mainY-(wyPos)))){
-            wxPos -= vel;
+        else if(distance>(Math.abs(mainX-(worldXPos-velocity))+Math.abs(mainY-(worldYPos)))){
+            worldXPos -= velocity;
         }
 
-        if(distance>(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos+vel)))){
-            wyPos += vel;
+        if(distance>(Math.abs(mainX-(worldXPos))+Math.abs(mainY-(worldYPos+velocity)))){
+            worldYPos += velocity;
         }
-        else if(distance>(Math.abs(mainX-(wxPos))+Math.abs(mainY-(wyPos-vel)))){
-            wyPos -= vel;
+        else if(distance>(Math.abs(mainX-(worldXPos))+Math.abs(mainY-(worldYPos-velocity)))){
+            worldYPos -= velocity;
         }
-        
-   
-    
+
         //animation
         //the move() method gets called 60 times per second
         //the spritecount gets increments 1 per frame and every 20 frames the sprite image change
