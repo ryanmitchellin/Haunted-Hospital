@@ -98,32 +98,6 @@ public class Entity {
 	 */
 	public void setAction(){}
 
-	/**
-	 * displaying the next dialogue from the dialogue array above
-	 */
-	public void speak(){
-		if(dialogues[dialogueIndex] == null){
-			dialogueIndex = 0;
-		}
-		gp.ui.currentDialogue = dialogues[dialogueIndex];
-		dialogueIndex++;
-
-		switch(gp.mainCharacter.direction){
-			case "up":
-				direction = "down";
-				break;
-			case "down":
-				direction = "up";
-				break;
-			case "left":
-				direction = "right";
-				break;
-			case "right":
-				direction = "left";
-				break;
-		}
-	}
-
 	/** 
 	 * Checking collision with the tiles, objects, main character, and other entities
 	 * it updates the collision flag
@@ -260,15 +234,6 @@ public class Entity {
 			int enTopY = wyPos + detectionArea.y;
 			int enBottomY = wyPos + detectionArea.y + detectionArea.height;
 
-			// System.out.println(enTopY + " " + nextY);
-			// System.out.println(enBottomY + " " + (nextY+gp.tileSize));
-			// System.out.println(enLeftX + " " + nextX);
-			// System.out.println(enRightX + " " + (nextX+gp.tileSize));
-			// System.out.println(gp.tileSize + " " + detectionArea.height);
-			// System.out.println(detectionArea.y + " " + detectionArea.x);
-			
-
-
 			if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
 				test = 1;
 				direction = "up";
@@ -324,12 +289,6 @@ public class Entity {
 					direction = "right";
 				}
 			}
-
-			// int nextColumn = gp.pFinder.pathList.get(0).column;
-			// int nextRow = gp.pFinder.pathList.get(0).row;
-			// if(nextColumn == goalColumn && nextRow == goalRow) {
-			// 	onPath = false;
-			// }
 		}
 	}
 }
