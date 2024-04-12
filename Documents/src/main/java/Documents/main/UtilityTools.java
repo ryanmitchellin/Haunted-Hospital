@@ -1,5 +1,7 @@
 package Documents.main;
 
+import Documents.entity.Entity;
+import Documents.entity.MainCharacter;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 
@@ -13,4 +15,15 @@ public class UtilityTools {
 
 		return scaledImg;
 	}
+
+
+	public static int spriteCountCalculations(int spriteCount, int spriteNum) {
+		spriteCount++;
+		if (spriteCount > 10) {
+			spriteNum = (spriteNum == 1) ? 2 : 1;
+			spriteCount = 0; // Reset the sprite count
+		}
+		return spriteNum; // Return the updated sprite number
+	}
+
 }
