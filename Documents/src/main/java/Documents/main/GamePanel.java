@@ -204,10 +204,10 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D)g;
+
 		//tile
 		tileFactory.draw(g2);
 
-		eManager.draw(g2);
 
 		// Title Screen
 		if(gameState == titleState) {
@@ -233,7 +233,7 @@ public class GamePanel extends JPanel implements Runnable{
 					monster[i].draw(g2);
 				}
 			}
-
+			eManager.draw(g2);
 			//ui draw method
 			ui.draw(g2);
 			g2.dispose();
