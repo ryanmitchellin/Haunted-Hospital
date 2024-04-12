@@ -46,25 +46,25 @@ public class Demon extends Monster {
 
 			searchPath(goalColumn, goalRow);
 		} else {
-			actionLockCount++;
+			// actionLockCount++;
 
-			if (actionLockCount == 120) {
-				randomI = random.nextInt(100) + 1;
+			// if (actionLockCount == 120) {
+			// 	randomI = random.nextInt(100) + 1;
 
-				if (randomI <= 25) {
-					direction = "up";
-				}
-				if (randomI > 25 && randomI <= 50) {
-					direction = "down";
-				}
-				if (randomI > 50 && randomI <= 75) {
-					direction = "left";
-				}
-				if (randomI > 75) {
-					direction = "right";
-				}
-				actionLockCount = 0;
-			}
+			// 	if (randomI <= 25) {
+			// 		direction = "up";
+			// 	}
+			// 	if (randomI > 25 && randomI <= 50) {
+			// 		direction = "down";
+			// 	}
+			// 	if (randomI > 50 && randomI <= 75) {
+			// 		direction = "left";
+			// 	}
+			// 	if (randomI > 75) {
+			// 		direction = "right";
+			// 	}
+			// 	actionLockCount = 0;
+			// }
 		}
 	}
 
