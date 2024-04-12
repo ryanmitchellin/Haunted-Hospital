@@ -25,10 +25,10 @@ public class CollisionCheck {
      */
 	public void tileCheck(Entity entity) {
 		if(!(entity instanceof Ghost)){
-			int left = entity.wxPos + entity.detectionArea.x;
-			int right = entity.wxPos + entity.detectionArea.x + entity.detectionArea.width;
-			int top = entity.wyPos + entity.detectionArea.y;
-			int bottom = entity.wyPos + entity.detectionArea.y + entity.detectionArea.height;
+			int left = entity.worldXPos + entity.detectionArea.x;
+			int right = entity.worldXPos + entity.detectionArea.x + entity.detectionArea.width;
+			int top = entity.worldYPos + entity.detectionArea.y;
+			int bottom = entity.worldYPos + entity.detectionArea.y + entity.detectionArea.height;
 
 			int leftCol = left/gp.tileSize;
 			int rightCol = right/gp.tileSize;
@@ -39,7 +39,7 @@ public class CollisionCheck {
 
 			switch(entity.direction) {
 			case "up":
-				topRow = (top - entity.vel)/gp.tileSize;
+				topRow = (top - entity.velocity)/gp.tileSize;
 				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
 				tile2 = gp.tileFactory.getTileMapNum(rightCol, topRow);
 				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
@@ -47,7 +47,7 @@ public class CollisionCheck {
 				}
 				break;
 			case "down":
-				bottomRow = (bottom + entity.vel)/gp.tileSize;
+				bottomRow = (bottom + entity.velocity)/gp.tileSize;
 				tile1 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
 				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
 				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
@@ -55,7 +55,7 @@ public class CollisionCheck {
 				}
 				break;
 			case "left":
-				leftCol = (left - entity.vel)/gp.tileSize;
+				leftCol = (left - entity.velocity)/gp.tileSize;
 				tile1 = gp.tileFactory.getTileMapNum(leftCol, topRow);
 				tile2 = gp.tileFactory.getTileMapNum(leftCol, bottomRow);
 				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
@@ -63,7 +63,7 @@ public class CollisionCheck {
 				}
 				break;
 			case "right":
-				rightCol = (right + entity.vel)/gp.tileSize;
+				rightCol = (right + entity.velocity)/gp.tileSize;
 				tile1 = gp.tileFactory.getTileMapNum(rightCol, topRow);
 				tile2 = gp.tileFactory.getTileMapNum(rightCol, bottomRow);
 				if(gp.tileFactory.getTile(tile1).collision || gp.tileFactory.getTile(tile2).collision) {
@@ -86,8 +86,8 @@ public class CollisionCheck {
 		for(int i = 0; i < gp.obj.length; i++) {
 			if(gp.obj[i] != null) {
 				//get Entity's detection area pos
-				entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
-				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
+				entity.detectionArea.x = entity.worldXPos + entity.detectionArea.x;
+				entity.detectionArea.y = entity.worldYPos + entity.detectionArea.y;
 
 				//get the object's detection area pos
 				gp.obj[i].detectionArea.x = gp.obj[i].worldX + gp.obj[i].detectionArea.x;
@@ -95,7 +95,7 @@ public class CollisionCheck {
 
 				switch(entity.direction) {
 				case "up":
-					entity.detectionArea.y -= entity.vel;
+					entity.detectionArea.y -= entity.velocity;
 					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
 						if(gp.obj[i].isCollision == true) {
 							entity.isCollision = true;
@@ -106,7 +106,7 @@ public class CollisionCheck {
 					}
 					break;
 				case "down":
-					entity.detectionArea.y += entity.vel;
+					entity.detectionArea.y += entity.velocity;
 					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
 						if(gp.obj[i].isCollision == true) {
 							entity.isCollision = true;
@@ -117,7 +117,7 @@ public class CollisionCheck {
 					}
 					break;
 				case "left":
-					entity.detectionArea.x -= entity.vel;
+					entity.detectionArea.x -= entity.velocity;
 					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
 						if(gp.obj[i].isCollision == true) {
 							entity.isCollision = true;
@@ -128,7 +128,7 @@ public class CollisionCheck {
 					}
 					break;
 				case "right":
-					entity.detectionArea.x += entity.vel;
+					entity.detectionArea.x += entity.velocity;
 					if(entity.detectionArea.intersects(gp.obj[i].detectionArea)) {
 						if(gp.obj[i].isCollision == true) {
 							entity.isCollision = true;
@@ -156,37 +156,37 @@ public class CollisionCheck {
 		for(int i = 0; i < target.length; i++) {
 			if(target[i] != null) {
 				//get Entity's detection area pos
-				entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
-				entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
+				entity.detectionArea.x = entity.worldXPos + entity.detectionArea.x;
+				entity.detectionArea.y = entity.worldYPos + entity.detectionArea.y;
 
 				//get the object's detection area pos
-				target[i].detectionArea.x = target[i].wxPos + target[i].detectionArea.x;
-				target[i].detectionArea.y = target[i].wyPos + target[i].detectionArea.y;
+				target[i].detectionArea.x = target[i].worldXPos + target[i].detectionArea.x;
+				target[i].detectionArea.y = target[i].worldYPos + target[i].detectionArea.y;
 
 				switch(entity.direction) {
 				case "up":
-					entity.detectionArea.y -= entity.vel;
+					entity.detectionArea.y -= entity.velocity;
 					if(entity.detectionArea.intersects(target[i].detectionArea)) {
 							entity.isCollision = true;
 							index = i;
 					}
 					break;
 				case "down":
-					entity.detectionArea.y += entity.vel;
+					entity.detectionArea.y += entity.velocity;
 					if(entity.detectionArea.intersects(target[i].detectionArea)) {
 						entity.isCollision = true;
 							index = i;
 					}
 					break;
 				case "left":
-					entity.detectionArea.x -= entity.vel;
+					entity.detectionArea.x -= entity.velocity;
 					if(entity.detectionArea.intersects(target[i].detectionArea)) {
 						entity.isCollision = true;
 							index = i;
 					}
 					break;
 				case "right":
-					entity.detectionArea.x += entity.vel;
+					entity.detectionArea.x += entity.velocity;
 					if(entity.detectionArea.intersects(target[i].detectionArea)) {
 						entity.isCollision = true;
 							index = i;
@@ -205,34 +205,34 @@ public class CollisionCheck {
 
 	public boolean playerCheck(Entity entity){
 		//get Entity's detection area pos
-		entity.detectionArea.x = entity.wxPos + entity.detectionArea.x;
-		entity.detectionArea.y = entity.wyPos + entity.detectionArea.y;
+		entity.detectionArea.x = entity.worldXPos + entity.detectionArea.x;
+		entity.detectionArea.y = entity.worldYPos + entity.detectionArea.y;
 
 		//get the object's detection area pos
-		gp.mainCharacter.detectionArea.x = gp.mainCharacter.wxPos + gp.mainCharacter.detectionArea.x;
-		gp.mainCharacter.detectionArea.y = gp.mainCharacter.wyPos + gp.mainCharacter.detectionArea.y;
+		gp.mainCharacter.detectionArea.x = gp.mainCharacter.worldXPos + gp.mainCharacter.detectionArea.x;
+		gp.mainCharacter.detectionArea.y = gp.mainCharacter.worldYPos + gp.mainCharacter.detectionArea.y;
 
 		switch(entity.direction) {
 		case "up":
-			entity.detectionArea.y -= entity.vel;
+			entity.detectionArea.y -= entity.velocity;
 			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 					entity.isCollision = true;
 			}
 			break;
 		case "down":
-			entity.detectionArea.y += entity.vel;
+			entity.detectionArea.y += entity.velocity;
 			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}
 			break;
 		case "left":
-			entity.detectionArea.x -= entity.vel;
+			entity.detectionArea.x -= entity.velocity;
 			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}
 			break;
 		case "right":
-			entity.detectionArea.x += entity.vel;
+			entity.detectionArea.x += entity.velocity;
 			if(entity.detectionArea.intersects(gp.mainCharacter.detectionArea)) {
 				entity.isCollision = true;
 			}

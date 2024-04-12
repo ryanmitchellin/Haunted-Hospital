@@ -84,16 +84,15 @@ public class SetAsset {
 	}
 
 
-
 	public void setGhost() { 
 		gp.monster[0] = new Ghost(gp);
-		gp.monster[0].wxPos = gp.tileSize*30 - gp.tileSize/2;
-		gp.monster[0].wyPos = gp.tileSize*30 - gp.tileSize/2;
-		gp.monster[0].vel = 1;
+		gp.monster[0].worldXPos = gp.tileSize*30 - gp.tileSize/2;
+		gp.monster[0].worldYPos = gp.tileSize*30 - gp.tileSize/2;
+		gp.monster[0].velocity = 1;
 		gp.monster[1] = new Ghost(gp);
-		gp.monster[1].wxPos = gp.tileSize*10 - gp.tileSize/2;
-		gp.monster[1].wyPos = gp.tileSize*5 - gp.tileSize/2;
-		gp.monster[1].vel = 2;
+		gp.monster[1].worldXPos = gp.tileSize*10 - gp.tileSize/2;
+		gp.monster[1].worldYPos = gp.tileSize*5 - gp.tileSize/2;
+		gp.monster[1].velocity = 2;
 	}
 	
 	public void setTraps(){
@@ -138,7 +137,7 @@ public class SetAsset {
 
 	public void setDemon() {
 		gp.monster[2] = new Demon(gp);
-		gp.monster[2].wxPos = gp.tileSize*22 - gp.tileSize/2;
-		gp.monster[2].wyPos = gp.tileSize*18 - gp.tileSize/2;
+		gp.monster[2].worldXPos = gp.tileSize*22 - gp.tileSize/2;
+		gp.monster[2].worldYPos = gp.tileSize*18 - gp.tileSize/2;
 	}
 }

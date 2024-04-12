@@ -154,14 +154,14 @@ public class TileFactory {
 
 			int worldX = column * gp.tileSize;
 			int worldY = row * gp.tileSize;
-			int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-			int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+			int screenX = worldX - gp.mainCharacter.worldXPos + gp.mainCharacter.screenX;
+			int screenY = worldY - gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;
 
 			//checking if the tile is within the boundary
-			if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
-			   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-			   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-			   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+			if(worldX + gp.tileSize > gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &&
+			   worldX - gp.tileSize < gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &&
+			   worldY + gp.tileSize > gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &&
+			   worldY - gp.tileSize < gp.mainCharacter.worldYPos + gp.mainCharacter.screenY) {
 				g2.drawImage(tiles[tileNum].image, screenX, screenY, null);
 			}
 			column++;
@@ -172,16 +172,5 @@ public class TileFactory {
 			}
 
 		}
-		// if(drawPath == true) {
-		// 	g2.setColor(new Color(255,0,0,70));
-		// 	for(int i = 0; i < gp.pFinder.pathList.size(); i++) {
-		// 		int worldX = gp.pFinder.pathList.get(i).column * gp.tileSize;
-		// 		int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
-		// 		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		// 		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
-
-		// 		g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
-		// 	}
-		// }
 	}
 }
