@@ -19,8 +19,8 @@ public class ObjectFactoryTest {
         // pre-setup
         objectFactory.worldX = 0;
         objectFactory.worldY = 0;
-        gp.mainCharacter.wxPos = 10;
-        gp.mainCharacter.wyPos = 10;
+        gp.mainCharacter.worldXPos = 10;
+        gp.mainCharacter.worldYPos = 10;
         gp.mainCharacter.screenX = 5;
         gp.mainCharacter.screenY = 5;
         gp.tileSize = 20;
@@ -30,10 +30,10 @@ public class ObjectFactoryTest {
 
         objectFactory.draw(g2, gp);
 
-        boolean isDraw = objectFactory.worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX && 
-                         objectFactory.worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-                         objectFactory.worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-                         objectFactory.worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+        boolean isDraw = objectFactory.worldX + gp.tileSize > gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &&
+                         objectFactory.worldX - gp.tileSize < gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &&
+                         objectFactory.worldY + gp.tileSize > gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &&
+                         objectFactory.worldY - gp.tileSize < gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;
         
         assertTrue(isDraw);
     }
