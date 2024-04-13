@@ -72,8 +72,6 @@ public class Entity {
 	/** Indicates the states whether the entity is currently collides with another entity. */
 	public boolean isCollision = false;
 
-	/** Counting for the locking the action */
-	public int actionLockCount = 0;
 
 	/** 
 	 * Constructor for the Entity class which constructs new entity with reference
