@@ -24,9 +24,7 @@ public class KeyControl implements KeyListener{
 
 	/** Indicates whether the enter key is currently pressed. */
     public boolean enterPressed;
-
-	boolean checkDrawTime = false;
-
+ 
 	/**
      * Constructs a KeyControl object with the specified GamePanel instance.
      * @param gp The GamePanel instance to associate with the KeyControl object.
