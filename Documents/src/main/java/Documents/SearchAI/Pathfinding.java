@@ -88,7 +88,6 @@ public class Pathfinding {
                 node[column][row].solid = true;
             }
 
-            // Set Cost
             getCost(node[column][row]);
 
             column++;
@@ -114,65 +113,76 @@ public class Pathfinding {
     }
 
     public boolean search() {
-        while (goalReached == false && step < 500) {
+        while (!goalReached && step < 500) {
             int column = currentNode.column;
             int row = currentNode.row;
 
-            // Check the current node
             currentNode.checked = true;
             openList.remove(currentNode);
 
-            //Open the Up node
-            if (row - 1 >= 0) {
-                openNode(node[column][row-1]);
-            }
-            //Open the left node
-            if (column - 1 >= 0) {
-                openNode(node[column-1][row]);
-            }
-            //Open the down node
-            if (row + 1 >= 0) {
-                openNode(node[column][row+1]);
-            }
-            //Open the right node
-            if (column + 1 >= 0) {
-                openNode(node[column+1][row]);
-            }
+            openAdjacentNodes(column, row);
 
-            // Finding best node
-            int bestNodeIndex = 0;
-            int bestNodefCost = 999;
-
-            for(int i = 0; i < openList.size(); i++) {
-
-                // Check if this node's F cost is better
-                if (openList.get(i).fCost < bestNodefCost) {
-                    bestNodeIndex = i;
-                    bestNodefCost = openList.get(i).fCost;
-                }
-                // IF F cost is equalm check the G cost
-                else if (openList.get(i).fCost == bestNodefCost) {
-                    if (openList.get(i).gCost < openList.get(bestNodeIndex).gCost) {
-                        bestNodeIndex = i;
-                    }
-                }
-            }
-
-            // IF there is no node in openList, end loop
-            if (openList.size() == 0) {
+            if (!findBestNodeIndex()) {
                 break;
             }
-            // After the loop, openList[bestNodeIndex] is the next step
-            currentNode = openList.get(bestNodeIndex);
 
-            if (currentNode == goalNode) {
-                goalReached = true;
-                trackPath();
-            }
             step++;
         }
         return goalReached;
     }
+
+    public void openAdjacentNodes(int column, int row) {
+        // Open the Up node
+        if (row - 1 >= 0) {
+            openNode(node[column][row - 1]);
+        }
+        // Open the left node
+        if (column - 1 >= 0) {
+            openNode(node[column - 1][row]);
+        }
+        // Open the down node
+        if (row + 1 >= 0) {
+            openNode(node[column][row + 1]);
+        }
+        // Open the right node
+        if (column + 1 >= 0) {
+            openNode(node[column + 1][row]);
+        }
+    }
+
+    public boolean findBestNodeIndex() {
+        if (openList.isEmpty()) {
+            return false;
+        }
+
+        int bestNodeIndex = 0;
+        int bestNodefCost = Integer.MAX_VALUE;
+
+        for (int i = 0; i < openList.size(); i++) {
+            Node thisNode = openList.get(i);
+            if (thisNode.fCost < bestNodefCost) {
+                bestNodeIndex = i;
+                bestNodefCost = thisNode.fCost;
+            } else if (thisNode.fCost == bestNodefCost && thisNode.gCost < openList.get(bestNodeIndex).gCost) {
+                bestNodeIndex = i;
+            }
+        }
+
+        currentNode = openList.get(bestNodeIndex);
+        openList.remove(bestNodeIndex); // Optionally remove the node from open list
+        return checkGoalReached();
+    }
+
+    public boolean checkGoalReached() {
+        if (currentNode.equals(goalNode)) {
+            goalReached = true;
+            trackPath();
+            return false;
+        }
+        return true;
+    }
+
+
 
     public void openNode(Node node) {
 
