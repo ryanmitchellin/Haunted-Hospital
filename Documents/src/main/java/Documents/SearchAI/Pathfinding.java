@@ -64,20 +64,25 @@ public class Pathfinding {
 
     public void setNode(int startCol, int startRow, int goalCol, int goalRow) {
         resetNodes();
+        initializeStartAndGoalNodes(startCol, startRow, goalCol, goalRow);
+        initializeNodeStates();
+    }
 
+    public void initializeStartAndGoalNodes(int startCol, int startRow, int goalCol, int goalRow) {
         // Set Start and Goal node
         startNode = node[startCol][startRow];
         currentNode = startNode;
         goalNode = node[goalCol][goalRow];
         openList.add(currentNode);
+    }
 
+
+    public void initializeNodeStates() {
         int column = 0;
         int row = 0;
 
         while (column < gp.maxWCol && row < gp.maxWRow) {
 
-            // Set Solid NOde
-            // Check tiles
             int tileNum = gp.tileFactory.tileMapNum[column][row];
             if (gp.tileFactory.getTile(tileNum).collision == true) {
                 node[column][row].solid = true;
