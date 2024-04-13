@@ -8,11 +8,6 @@ import java.util.Random;
  * demon entity within the game, which extends the Monster class
  */
 public class Demon extends Monster {
-
-	public Random random = new Random();
-	public int randomI;
-
-
 	/**
 	 * constructor for demon class, ititalizes the movement setting and load images
 	 * 
