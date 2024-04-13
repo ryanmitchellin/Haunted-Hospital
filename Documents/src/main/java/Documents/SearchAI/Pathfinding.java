@@ -33,11 +33,14 @@ public class Pathfinding {
         }
     }
     public void resetNodes() {
+        resetNodeStates();
+    }
+
+    private void resetNodeStates() {
         int column = 0;
         int row = 0;
 
         while (column < gp.maxWCol && row < gp.maxWRow) {
-
             // Reset open, checked and solid state
             node[column][row].open = false;
             node[column][row].checked = false;
@@ -49,13 +52,16 @@ public class Pathfinding {
                 row++;
             }
         }
+        resetSearchSettings();
+    }
 
-        // Reset settings
+    private void resetSearchSettings() {
         openList.clear();
         pathList.clear();
         goalReached = false;
         step = 0;
     }
+
     public void setNode(int startCol, int startRow, int goalCol, int goalRow) {
         resetNodes();
 
