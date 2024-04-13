@@ -49,14 +49,14 @@ public class ObjectFactory {
      * @param gp The GamePanel instance.
      */
 	public void draw(Graphics2D g2, GamePanel gp) {
-		screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
+		screenX = worldX - gp.mainCharacter.worldXPos + gp.mainCharacter.screenX;
+		screenY = worldY - gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;
 
 		//checking if the tile is within the boundary
-		if(worldX + gp.tileSize > gp.mainCharacter.wxPos - gp.mainCharacter.screenX &&
-		   worldX - gp.tileSize < gp.mainCharacter.wxPos + gp.mainCharacter.screenX &&
-		   worldY + gp.tileSize > gp.mainCharacter.wyPos - gp.mainCharacter.screenY &&
-		   worldY - gp.tileSize < gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+		if(worldX + gp.tileSize > gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &&
+		   worldX - gp.tileSize < gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &&
+		   worldY + gp.tileSize > gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &&
+		   worldY - gp.tileSize < gp.mainCharacter.worldYPos + gp.mainCharacter.screenY) {
 			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
 	}
