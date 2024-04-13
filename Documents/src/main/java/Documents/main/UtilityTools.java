@@ -1,7 +1,5 @@
 package Documents.main;
 
-import Documents.entity.Entity;
-import Documents.entity.MainCharacter;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 

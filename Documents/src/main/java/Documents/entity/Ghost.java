@@ -3,7 +3,16 @@ package Documents.entity;
 import Documents.main.GamePanel;
 import java.awt.Rectangle;
 
+/** 
+ * Ghost class extending Monster class
+ * It handles the ghost specific attributes and methods
+ * */
+
 public class Ghost extends Monster {
+    /** 
+     * Constructs the ghost object, initializing its default setting
+     * @param gp is game panel this ghost class is associated with
+     * */
 
     public Ghost(GamePanel gp) {
         super(gp);
@@ -25,6 +34,10 @@ public class Ghost extends Monster {
 
     }
 
+    /** 
+     * Loading images for the ghost animation
+     * */
+
     public void getGhostImage(){
         upward1 = setup("/ghost/upward1");
     	upward2 = setup("/ghost/upward2");
@@ -36,7 +49,10 @@ public class Ghost extends Monster {
     	rightward2 = setup("/ghost/right2");
     }
 
-
+    /** 
+     * updates the ghost's position and animation frame
+     * This method calculates the distance between main character and adjusts the ghost's position
+     * */
 
     @Override
     public void update() {

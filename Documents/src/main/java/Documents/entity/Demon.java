@@ -4,12 +4,20 @@ import Documents.main.GamePanel;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * demon entity within the game, which extends the Monster class
+ */
 public class Demon extends Monster {
 
 	public Random random = new Random();
 	public int randomI;
 
 
+	/**
+	 * constructor for demon class, ititalizes the movement setting and load images
+	 * 
+	 * @param gp gamePanel instance that manges the game elements
+	 */
     public Demon(GamePanel gp) {
 		super(gp);
 		direction = "down";
@@ -25,7 +33,9 @@ public class Demon extends Monster {
 		detectionArea.height = 8;
     }
     
-
+	/**
+	 * loading the images for the demon 
+	 */
     public void getDemonImage(){
         upward1 = setup("/demon/boy_up_1");
     	upward2 = setup("/demon/boy_up_2");
@@ -37,8 +47,13 @@ public class Demon extends Monster {
     	rightward2 = setup("/demon/boy_right_2");
     }
 
+	/**
+	 * defines the demon's action. The action the demon will take is based on the algorithm 
+	 * that pathfinds the location of the main character and creats path
+	 * 
+	 * if the path is correctly found then the demon will proceed
+	 */
 	public void setAction() {
-
 		if (onPath) {
 			int goalColumn = (gp.mainCharacter.worldXPos + gp.mainCharacter.detectionArea.x) / gp.tileSize;
 			int goalRow = (gp.mainCharacter.worldYPos + gp.mainCharacter.detectionArea.y) / gp.tileSize;
@@ -47,6 +62,9 @@ public class Demon extends Monster {
 		}
 	}
 
+	/**
+	 * updates the demon state and behaviour each frame
+	 */
 	@Override
 	public void update() {
 		super.update();
@@ -61,12 +79,7 @@ public class Demon extends Monster {
 			if (i > 50) {
 				onPath = true;
 			}
-		}/**
-		 if (onPath == true && tDist > 20) {
-		 onPath = false;
-		 }
-		 */
-
+		}
 		setAction();
 	}
 
