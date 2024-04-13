@@ -138,7 +138,9 @@ public class MainCharacter extends Entity {
 			//animation
 			//the move() method gets called 60 times per second
 			//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
-			spriteNum = UtilityTools.spriteCountCalculations(spriteCount, spriteNum);
+            int[] animationResults = UtilityTools.updateSpriteAnimation(spriteCount, spriteNum, 10);
+            spriteCount = animationResults[0];
+            spriteNum = animationResults[1];
 		}
 	}
 
