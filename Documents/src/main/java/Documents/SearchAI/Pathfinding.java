@@ -3,6 +3,12 @@ package Documents.SearchAI;
 import Documents.main.GamePanel;
 import java.util.ArrayList;
 
+/** 
+ * Implements pathfinding method using grid based map
+ * The class uses A* search algorithm to determine the shortest path
+ * from start node to goal node in 2 dimensional gird.
+ * */
+
 public class Pathfinding {
     GamePanel gp;
     Node[][] node;
@@ -12,10 +18,19 @@ public class Pathfinding {
     boolean goalReached = false;
     int step = 0;
 
+    /** 
+     * Constructs pathfinding object associated with gamepanel
+     * @param gp the game panel which the pathfinding is asscoiated with
+     *           it is used to access the game's tile amp and setting
+     * */
     public Pathfinding(GamePanel gp) {
         this.gp = gp;
         instantiateNodes(); //potential error #1
     }
+
+    /** 
+     * instantiates the grid of nodes that will be utilized for pathfinding
+     * */
     public void instantiateNodes() {
         node = new Node[gp.maxWCol][gp.maxWRow];
 
@@ -32,10 +47,17 @@ public class Pathfinding {
             }
         }
     }
+
+    /** 
+     * resetting the state of all nodoes to their initial state
+     * */
     public void resetNodes() {
         resetNodeStates();
     }
 
+    /** 
+     * resets the nodes in the grid
+     * */
     private void resetNodeStates() {
         int column = 0;
         int row = 0;
@@ -55,6 +77,9 @@ public class Pathfinding {
         resetSearchSettings();
     }
 
+    /** 
+     * resets the setting used for the search process
+     * */
     private void resetSearchSettings() {
         openList.clear();
         pathList.clear();
@@ -62,12 +87,27 @@ public class Pathfinding {
         step = 0;
     }
 
+    /** 
+     * initialize the start and goal node and sets the grid state for the pathfinding
+     * 
+     * @param startCol is the column index of the start node
+     * @param startRow is the row index of the start node
+     * @param goalCol is the column index of the goal node
+     * @param goalRow is the row index of the goal node
+     * */
     public void setNode(int startCol, int startRow, int goalCol, int goalRow) {
         resetNodes();
         initializeStartAndGoalNodes(startCol, startRow, goalCol, goalRow);
         initializeNodeStates();
     }
 
+    /** 
+     * initializes the satrt and goal based on provided indices
+     * @param startCol is the column index of the start node
+     * @param startRow is the row index of the start node
+     * @param goalCol is the column index of the goal node
+     * @param goalRow is the row index of the goal node
+     * */
     public void initializeStartAndGoalNodes(int startCol, int startRow, int goalCol, int goalRow) {
         // Set Start and Goal node
         startNode = node[startCol][startRow];
@@ -77,6 +117,11 @@ public class Pathfinding {
     }
 
 
+
+    /** 
+     * Initializes the state of each node based on the game panel's tile map
+     * setting nodes as solid if they are not passable
+     * */
     public void initializeNodeStates() {
         int column = 0;
         int row = 0;
@@ -98,6 +143,12 @@ public class Pathfinding {
         }
     }
 
+    /** 
+     * calculates the cost for moving to specific node from start node and the estimated
+     * cost from that node to the goal node
+     * 
+     * @param node is the node for which costs are calculated
+     * */
     public void getCost(Node node) {
 
         //G cost
