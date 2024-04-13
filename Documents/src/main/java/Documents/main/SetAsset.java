@@ -33,10 +33,6 @@ public class SetAsset {
      * Sets their world positions based on tile coordinates.
      */
 	public void setObj() {
-		//setting the keycard information that will be displayed on screen
-		//setting the keycard information that will be displayed on screen
-		//setting the keycard information that will be displayed on screen
-		//setting the keycard information that will be displayed on screen
 		gp.obj[0] = new KeyCard(gp);
 		gp.obj[0].worldX = 38 * gp.tileSize;
 		gp.obj[0].worldY = 27 * gp.tileSize;
