@@ -106,9 +106,6 @@ public class Entity {
 		}
 		spriteNum = UtilityTools.spriteCountCalculations(spriteCount, spriteNum);
 
-		//animation
-		//the move() method gets called 60 times per second
-		//the spritecount gets increments 1 per frame and every 20 frames the sprite image change
 	}
 
 	public void draw(Graphics2D g2){
