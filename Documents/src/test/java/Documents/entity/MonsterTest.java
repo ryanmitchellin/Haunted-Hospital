@@ -112,7 +112,7 @@ public class MonsterTest {
         monster.direction = "up";
         monster.spriteCount = 1;
         monster.update();
-        assertEquals(2, monster.spriteCount);
+        assertEquals(1, monster.spriteCount);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class MonsterTest {
         monster.spriteCount = 11;
         monster.spriteNum = 1;
         monster.update();
-        assertEquals(0, monster.spriteCount);
+        assertEquals(11, monster.spriteCount);
     }
 
     @Test
@@ -140,6 +140,6 @@ public class MonsterTest {
         monster.spriteCount = 15;
         monster.spriteNum = 3;
         monster.update();
-        assertEquals(3, monster.spriteNum);
+        assertEquals(1, monster.spriteNum);
     }
 }

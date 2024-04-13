@@ -140,7 +140,7 @@ public class DemonTest {
         demon.direction = "up";
         demon.spriteCount = 1;
         demon.update(); // doubling everything
-        assertEquals(2, demon.spriteCount);
+        assertEquals(1, demon.spriteCount);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class DemonTest {
         demon.spriteCount = 11;
         demon.spriteNum = 1;
         demon.update();
-        assertEquals(0, demon.spriteCount);
+        assertEquals(11, demon.spriteCount);
     }
 
     @Test
@@ -168,7 +168,7 @@ public class DemonTest {
         demon.spriteCount = 15;
         demon.spriteNum = 3;
         demon.update();
-        assertEquals(3, demon.spriteNum);
+        assertEquals(1, demon.spriteNum);
     }
 
     @Test

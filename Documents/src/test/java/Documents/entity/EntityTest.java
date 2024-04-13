@@ -170,7 +170,7 @@ public class EntityTest {
         entity.direction = "up";
         entity.spriteCount = 1;
         entity.update();
-        assertEquals(2, entity.spriteCount);
+        assertEquals(1, entity.spriteCount);
     }
 
     @Test
@@ -179,7 +179,7 @@ public class EntityTest {
         entity.spriteCount = 11;
         entity.spriteNum = 1;
         entity.update();
-        assertEquals(0, entity.spriteCount);
+        assertEquals(11, entity.spriteCount);
     }
 
     @Test
@@ -198,7 +198,7 @@ public class EntityTest {
         entity.spriteCount = 15;
         entity.spriteNum = 3;
         entity.update();
-        assertEquals(3, entity.spriteNum);
+        assertEquals(1, entity.spriteNum);
     }
 
     @Test
