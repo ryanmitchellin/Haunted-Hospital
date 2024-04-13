@@ -101,9 +101,12 @@ public class Pathfinding {
     public void getCost(Node node) {
 
         //G cost
+        int sum = 0;
+        int difference = 0;
         int xDist = Math.abs(node.column - startNode.column);
         int yDist = Math.abs(node.row - startNode.row);
-        node.gCost = xDist + yDist;
+        sum = xDist + yDist;
+        node.gCost = sum;
         // H Cost
         xDist = Math.abs(node.column - goalNode.column);
         yDist = Math.abs(node.row - goalNode.row);
