@@ -72,7 +72,6 @@ public class Entity {
 	public boolean isCollision = false;
 
 	public int actionLockCount = 0;
-	int test;
 
 
 	public Entity (GamePanel gp) {
@@ -188,83 +187,55 @@ public class Entity {
 			int nextX = gp.pFinder.pathList.get(0).column * gp.tileSize;
 			int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
 
-
 			// Entity's solidArea position
 			int enLeftX = worldXPos + detectionArea.x;
 			int enRightX = worldXPos + detectionArea.x + detectionArea.width;
 			int enTopY = worldYPos + detectionArea.y;
 			int enBottomY = worldYPos + detectionArea.y + detectionArea.height;
 
-			// System.out.println(enTopY + " " + nextY);
-			// System.out.println(enBottomY + " " + (nextY+gp.tileSize));
-			// System.out.println(enLeftX + " " + nextX);
-			// System.out.println(enRightX + " " + (nextX+gp.tileSize));
-			// System.out.println(gp.tileSize + " " + detectionArea.height);
-			// System.out.println(detectionArea.y + " " + detectionArea.x);
-			
-
-
 			if (enTopY > nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-				test = 1;
 				direction = "up";
 			}
 			else if (enTopY < nextY && enLeftX >= nextX && enRightX < nextX + gp.tileSize) {
-				test = 2;
 				direction = "down";
 			}
 			else if (enTopY >= nextY && enBottomY < nextY + gp.tileSize) {
 				if (enLeftX > nextX) {
-					test = 3;
 					direction = "left";
 				}
 				if (enLeftX < nextX) {
-					test = 4;
 					direction = "right";
 				}
 			}
 			else if (enTopY > nextY && enLeftX > nextX) {
 				//up or left
-				test = 5;
 				direction = "up";
 				checkCollision();
 				if (isCollision == true) {
-					test = 6;
 					direction = "left";
 				}
 			}
 			else if (enTopY > nextY && enLeftX < nextX) {
 				direction = "up";
-				test = 7;
 				checkCollision();
 				if (isCollision == true) {
-					test = 8;
 					direction = "right";
 				}
 			}
 			else if (enTopY < nextY && enLeftX > nextX) {
 				direction = "down";
-				test = 9;
 				checkCollision();
 				if(isCollision == true) {
-					test = 10;
 					direction = "left";
 				}
 			}
 			else if (enTopY < nextY && enLeftX < nextX) {
 				direction = "down";
-				test = 11;
 				checkCollision();
 				if (isCollision == true) {
-					test = 12;
 					direction = "right";
 				}
 			}
-
-			// int nextColumn = gp.pFinder.pathList.get(0).column;
-			// int nextRow = gp.pFinder.pathList.get(0).row;
-			// if(nextColumn == goalColumn && nextRow == goalRow) {
-			// 	onPath = false;
-			// }
 		}
 	}
 }
