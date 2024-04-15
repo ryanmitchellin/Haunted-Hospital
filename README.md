@@ -7,5 +7,5 @@ This is a maze game where a little boy as a main character will roaming around t
 2. Next, compile the project using: ```mvn compile```
 3. Then run the project using: ```java -cp target/classes Documents.main.Main```
 4. After opening the game page, you have choice either to start new game or quit the game. You can select them by pressing enter.
-5. As soon as you start the game, you can navigate the main character using the arrow keyboard.
+5. As soon as you start the game, you can navigate the main character using the arrow key.
 6. Have fun!
