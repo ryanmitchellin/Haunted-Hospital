@@ -49,14 +49,14 @@ import java.awt.Rectangle;
      * @param gp The GamePanel instance.
      */
 	public void draw(Graphics2D g2, GamePanel gp) {
-<span class="fc" id="L52">		screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;</span>
-<span class="fc" id="L53">		screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
+<span class="fc" id="L52">		screenX = worldX - gp.mainCharacter.worldXPos + gp.mainCharacter.screenX;</span>
+<span class="fc" id="L53">		screenY = worldY - gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;</span>
 
 		//checking if the tile is within the boundary
-<span class="pc bpc" id="L56" title="3 of 8 branches missed.">		if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
-		   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;
-		   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;
-		   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
+<span class="pc bpc" id="L56" title="4 of 8 branches missed.">		if(worldX + gp.tileSize &gt; gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &amp;&amp;</span>
+		   worldX - gp.tileSize &lt; gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &amp;&amp;
+		   worldY + gp.tileSize &gt; gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &amp;&amp;
+		   worldY - gp.tileSize &lt; gp.mainCharacter.worldYPos + gp.mainCharacter.screenY) {
 <span class="fc" id="L60">			g2.drawImage(img, screenX, screenY, gp.tileSize, gp.tileSize, null);</span>
 		}
 <span class="fc" id="L62">	}</span>

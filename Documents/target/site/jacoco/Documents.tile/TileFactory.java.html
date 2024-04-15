@@ -144,45 +144,34 @@ public class TileFactory {
      * @param g2 The graphics context.
      */
 	public void draw(Graphics2D g2) {
-<span class="fc" id="L147">		int column = 0;</span>
-<span class="fc" id="L148">		int row = 0;</span>
+<span class="nc" id="L147">		int column = 0;</span>
+<span class="nc" id="L148">		int row = 0;</span>
 
-<span class="pc bpc" id="L150" title="1 of 4 branches missed.">		while(column &lt; gp.maxWCol &amp;&amp; row &lt; gp.maxWRow) {</span>
+<span class="nc bnc" id="L150" title="All 4 branches missed.">		while(column &lt; gp.maxWCol &amp;&amp; row &lt; gp.maxWRow) {</span>
 			//extracting tile map number which stored in tileMapNum[0][0]
 			//use this as index for type of tile that needs to be printed on the map
-<span class="fc" id="L153">			int tileNum = tileMapNum[column][row];</span>
+<span class="nc" id="L153">			int tileNum = tileMapNum[column][row];</span>
 
-<span class="fc" id="L155">			int worldX = column * gp.tileSize;</span>
-<span class="fc" id="L156">			int worldY = row * gp.tileSize;</span>
-<span class="fc" id="L157">			int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;</span>
-<span class="fc" id="L158">			int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;</span>
+<span class="nc" id="L155">			int worldX = column * gp.tileSize;</span>
+<span class="nc" id="L156">			int worldY = row * gp.tileSize;</span>
+<span class="nc" id="L157">			int screenX = worldX - gp.mainCharacter.worldXPos + gp.mainCharacter.screenX;</span>
+<span class="nc" id="L158">			int screenY = worldY - gp.mainCharacter.worldYPos + gp.mainCharacter.screenY;</span>
 
 			//checking if the tile is within the boundary
-<span class="fc bfc" id="L161" title="All 8 branches covered.">			if(worldX + gp.tileSize &gt; gp.mainCharacter.wxPos - gp.mainCharacter.screenX &amp;&amp;</span>
-			   worldX - gp.tileSize &lt; gp.mainCharacter.wxPos + gp.mainCharacter.screenX &amp;&amp;
-			   worldY + gp.tileSize &gt; gp.mainCharacter.wyPos - gp.mainCharacter.screenY &amp;&amp;
-			   worldY - gp.tileSize &lt; gp.mainCharacter.wyPos + gp.mainCharacter.screenY) {
-<span class="fc" id="L165">				g2.drawImage(tiles[tileNum].image, screenX, screenY, null);</span>
+<span class="nc bnc" id="L161" title="All 8 branches missed.">			if(worldX + gp.tileSize &gt; gp.mainCharacter.worldXPos - gp.mainCharacter.screenX &amp;&amp;</span>
+			   worldX - gp.tileSize &lt; gp.mainCharacter.worldXPos + gp.mainCharacter.screenX &amp;&amp;
+			   worldY + gp.tileSize &gt; gp.mainCharacter.worldYPos - gp.mainCharacter.screenY &amp;&amp;
+			   worldY - gp.tileSize &lt; gp.mainCharacter.worldYPos + gp.mainCharacter.screenY) {
+<span class="nc" id="L165">				g2.drawImage(tiles[tileNum].image, screenX, screenY, null);</span>
 			}
-<span class="fc" id="L167">			column++;</span>
+<span class="nc" id="L167">			column++;</span>
 
-<span class="fc bfc" id="L169" title="All 2 branches covered.">			if(column == gp.maxWCol) {</span>
-<span class="fc" id="L170">				column = 0;</span>
-<span class="fc" id="L171">				row++;</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">			if(column == gp.maxWCol) {</span>
+<span class="nc" id="L170">				column = 0;</span>
+<span class="nc" id="L171">				row++;</span>
 			}
 
-<span class="fc" id="L174">		}</span>
-		// if(drawPath == true) {
-		// 	g2.setColor(new Color(255,0,0,70));
-		// 	for(int i = 0; i &lt; gp.pFinder.pathList.size(); i++) {
-		// 		int worldX = gp.pFinder.pathList.get(i).column * gp.tileSize;
-		// 		int worldY = gp.pFinder.pathList.get(i).row * gp.tileSize;
-		// 		int screenX = worldX - gp.mainCharacter.wxPos + gp.mainCharacter.screenX;
-		// 		int screenY = worldY - gp.mainCharacter.wyPos + gp.mainCharacter.screenY;
-
-		// 		g2.fillRect(screenX, screenY, gp.tileSize, gp.tileSize);
-		// 	}
-		// }
-<span class="fc" id="L186">	}</span>
+<span class="nc" id="L174">		}</span>
+<span class="nc" id="L175">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
