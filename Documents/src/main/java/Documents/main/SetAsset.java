@@ -133,7 +133,7 @@ public class SetAsset {
 
 	public void setDemon() {
 		gp.monster[2] = new Demon(gp);
-		gp.monster[2].worldXPos = gp.tileSize*22 - gp.tileSize/2;
+		gp.monster[2].worldXPos = gp.tileSize*25 - gp.tileSize/2;
 		gp.monster[2].worldYPos = gp.tileSize*18 - gp.tileSize/2;
 	}
 }
