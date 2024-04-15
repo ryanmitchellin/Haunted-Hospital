@@ -118,7 +118,7 @@ public class UserInterface {
 
 		// Title Name
 		g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
-		String text = "Ghost Castle";
+		String text = "Haunted Hospital";
 		int x = getXCenterText(text);
 		int y = gpTileSize*3;
 
